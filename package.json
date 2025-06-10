@@ -6,7 +6,10 @@
         "dev": "next dev --turbopack",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "fix": "npx eslint . --fix",
+        "format": "exec prettier . --write",
+        "check": "exec prettier . --check"
     },
     "dependencies": {
         "@radix-ui/react-dialog": "^1.1.14",
