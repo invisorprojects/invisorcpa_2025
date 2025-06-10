@@ -40,9 +40,9 @@ export function NavBar() {
             <nav className="flex flex-row items-center justify-center md:hidden">
                 <Sheet>
                     <SheetTrigger>
-                        <Menu />
+                        <Menu className="size-8" />
                     </SheetTrigger>
-                    <SheetContent>
+                    <SheetContent className="flex flex-col gap-4 p-4">
                         <SheetTitle></SheetTitle>
 
                         {NavItems.map((item, index) => (
