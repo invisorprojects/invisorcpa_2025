@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import TrustedPartners from '@/components/trusted-partners';
 
 export default function Home() {
     return (
@@ -28,6 +29,7 @@ export default function Home() {
                         />
                     </div>
                 </div>
+                <TrustedPartners />
             </section>
         </main>
     );
