@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import TrustedPartners from '@/components/trusted-partners';
 import { Button } from '@/components/ui/button';
+import { ScheduleMeeting } from '@/components/ScheduleMeeting';
 
 export default function Home() {
     return (
@@ -83,6 +84,9 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
+            </section>
+            <section className="flex items-center justify-center bg-[#EFF0F4] px-2 sm:px-4 md:px-8 lg:px-12 xl:px-24">
+                <ScheduleMeeting />
             </section>
         </main>
     );
