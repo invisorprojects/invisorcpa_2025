@@ -2,11 +2,12 @@ import Image from 'next/image';
 import TrustedPartners from '@/components/trusted-partners';
 import { Button } from '@/components/ui/button';
 import { ScheduleMeeting } from '@/components/ScheduleMeeting';
+import { CircleArrowRight } from 'lucide-react';
 
 export default function Home() {
     return (
         <main className="">
-            <section className="flex flex-col justify-between gap-4 px-2 sm:px-4 md:px-8 lg:px-12 xl:px-24">
+            <section className="flex flex-col justify-between gap-4 px-2 py-2 sm:px-4 sm:py-4 md:px-8 md:py-6 lg:px-12 lg:py-8 xl:px-24 xl:py-10">
                 <div className="mt-4">
                     <h1 className="text-4xl font-bold md:text-5xl 2xl:text-6xl">
                         Trust Us to Handle What Counts with Financial Support
@@ -88,6 +89,29 @@ export default function Home() {
             <section className="flex items-center justify-center bg-[#EFF0F4] px-2 sm:px-4 md:px-8 lg:px-12 xl:px-24">
                 <ScheduleMeeting />
             </section>
+
+            <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
+                <div className="mb-20 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:justify-between">
+                    <div className="max-w-sm">
+                        <h2 className="text-4xl font-bold">
+                            Organizations we've helped
+                        </h2>
+                    </div>
+                    <div className="flex max-w-lg flex-col items-start gap-4">
+                        <p className="text-[#686666]">
+                            Reach out knowing we've helped some of the best
+                            companies in Canada with tax planning, bookkeeping
+                            and structuring their
+                        </p>
+
+                        <Button className="flex items-center gap-2 rounded-full">
+                            <span className="">View Case Studies</span>
+                            <CircleArrowRight className="h-4 w-4" />
+                        </Button>
+                    </div>
+                </div>
+                <CompanyLogos />
+            </section>
         </main>
     );
 }
@@ -125,3 +149,26 @@ function StatsGrid() {
         </div>
     );
 }
+
+const CompanyLogos = () => {
+    return (
+        <div
+            data-aos="fade-up"
+            className="grid h-full w-full grid-cols-4 place-items-center gap-8 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6"
+        >
+            {[
+                1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3,
+                4, 5, 6,
+            ].map((num, index) => (
+                <Image
+                    key={index}
+                    className="h-16 w-auto"
+                    src={`/assets/company-logos/logo-${num}.webp`}
+                    alt={`Company Logo ${num}`}
+                    width={160}
+                    height={100}
+                />
+            ))}
+        </div>
+    );
+};
