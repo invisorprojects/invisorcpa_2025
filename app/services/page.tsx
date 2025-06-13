@@ -1,5 +1,6 @@
 import ServicesCard from '@/components/ServicesCard';
 import services from '@/constants/services';
+import { MessageCircle } from 'lucide-react';
 import { Metadata } from 'next';
 import Image from 'next/image';
 
@@ -38,6 +39,39 @@ export default function Page() {
                     className="rounded-4xl shadow-md"
                 />
             </section>
+            <section className="flex flex-col items-center justify-between gap-4 p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
+                <div className="mx-auto max-w-5xl text-center">
+                    <h2 className="text-primary mb-4 text-3xl font-extrabold sm:text-4xl">
+                        Why Our Clients Prefer Working with Us
+                    </h2>
+                    <p className="max-w-3xl text-base leading-relaxed font-medium sm:text-lg">
+                        At the heart of every successful business is a financial
+                        partner that truly understands its needs. Here's why our
+                        clients consistently choose us—and stay with us.
+                    </p>
+                </div>
+                <div className="mt-8 flex flex-col items-center justify-between gap-8 md:flex-row">
+                    <div>
+                        <Image
+                            src="/assets/features-section.jpg"
+                            alt="Services"
+                            width={1280}
+                            height={800}
+                            className="w-auto rounded-2xl shadow-md"
+                        />
+                    </div>
+                    <div className="flex flex-col gap-4">
+                        {features.map((feature, index) => (
+                            <FeatureCard
+                                key={index}
+                                title={feature.title}
+                                description={feature.description}
+                                icon={feature.icon}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </section>
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-4">
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
                     {services.map((service, index) => (
@@ -50,5 +84,75 @@ export default function Page() {
                 </div>
             </section>
         </main>
+    );
+}
+
+import {
+    BrainCircuit,
+    Lightbulb,
+    Cog,
+    MessagesSquare,
+    ChartBar,
+} from 'lucide-react';
+const iconMap = {
+    BrainCircuit,
+    Lightbulb,
+    Cog,
+    MessagesSquare,
+    ChartNoAxesCombined: ChartBar, // Fallback, adjust as needed
+};
+const features = [
+    {
+        title: 'Expertise You Can Count On',
+        description:
+            'Our experienced professionals bring deep knowledge in accounting, tax, and financial management to ensure your business stays compliant and financially healthy.',
+        icon: 'BrainCircuit',
+    },
+    {
+        title: 'Tailored Solutions',
+        description:
+            'We understand that every business is different. That’s why we offer customized services designed to meet your specific goals and challenges.',
+        icon: 'Lightbulb',
+    },
+    {
+        title: 'Tech-Driven Efficiency',
+        description:
+            'We leverage powerful tools like QuickBooks, Zoho, and cloud-based platforms to automate, streamline, and optimize your financial operations.',
+        icon: 'Cog',
+    },
+    {
+        title: 'Reliable & Transparent',
+        description:
+            'With clear communication and dependable service, we become an extension of your team—committed to your success and growth.',
+        icon: 'MessagesSquare',
+    },
+    {
+        title: 'Scalable Support',
+        description:
+            "Whether you're a solo entrepreneur or a growing enterprise, our services scale with you—offering the flexibility and expertise you need at every stage.",
+        icon: 'ChartNoAxesCombined',
+    },
+];
+
+function FeatureCard({
+    title,
+    description,
+    icon,
+}: {
+    title: string;
+    description: string;
+    icon: string;
+}) {
+    const Icon = iconMap[icon as keyof typeof iconMap];
+    return (
+        <div className="flex max-w-xl items-start gap-4">
+            <div className="rounded-lg bg-[#1B1E65] p-2">
+                <Icon className="h-5 w-5 text-white" />
+            </div>
+            <div>
+                <h4 className="font-semibold">{title}</h4>
+                <p className="text-sm leading-relaxed">{description}</p>
+            </div>
+        </div>
     );
 }
