@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Header } from '@/components/layout/Header';
-
+import { Header } from '@/components/layout/header';
+import Footer from '@/components/layout/footer';
+``;
 export const metadata: Metadata = {
     title: {
         template: 'Invisor Business Facts | %s ',
@@ -21,6 +22,7 @@ export default function RootLayout({
             <body>
                 <Header />
                 {children}
+                <Footer />
             </body>
         </html>
     );
