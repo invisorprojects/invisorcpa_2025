@@ -6,6 +6,7 @@ import { CircleArrowRight, Quote } from 'lucide-react';
 import ServicesCard from '@/components/ServicesCard';
 import services from '@/constants/services';
 import Link from 'next/link';
+import ContactUs from '@/components/contact-us';
 
 export default function Home() {
     return (
@@ -201,6 +202,8 @@ export default function Home() {
                     </div>
                 </div>
             </section>
+
+            <ContactUs />
         </main>
     );
 }

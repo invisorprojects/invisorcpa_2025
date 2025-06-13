@@ -1,6 +1,5 @@
 import ServicesCard from '@/components/ServicesCard';
 import services from '@/constants/services';
-import { MessageCircle } from 'lucide-react';
 import { Metadata } from 'next';
 import Image from 'next/image';
 
@@ -72,8 +71,8 @@ export default function Page() {
                     </div>
                 </div>
             </section>
-            <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-4">
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+            <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {services.map((service, index) => (
                         <ServicesCard
                             key={index}
@@ -83,6 +82,8 @@ export default function Page() {
                     ))}
                 </div>
             </section>
+
+            <ContactUs />
         </main>
     );
 }
@@ -94,6 +95,9 @@ import {
     MessagesSquare,
     ChartBar,
 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import ContactUs from '@/components/contact-us';
 const iconMap = {
     BrainCircuit,
     Lightbulb,
