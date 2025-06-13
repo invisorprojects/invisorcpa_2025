@@ -3,6 +3,9 @@ import TrustedPartners from '@/components/trusted-partners';
 import { Button } from '@/components/ui/button';
 import { ScheduleMeeting } from '@/components/ScheduleMeeting';
 import { CircleArrowRight, Quote } from 'lucide-react';
+import ServicesCard from '@/components/ServicesCard';
+import services from '@/constants/services';
+import Link from 'next/link';
 
 export default function Home() {
     return (
@@ -95,7 +98,7 @@ export default function Home() {
                                 precision, so you can focus on growing your
                                 business.
                             </p>
-                            <Button className="rounded-full">Learn More</Button>
+                            <Button className="rounded-full"></Button>
                         </div>
                     </div>
                 </div>
@@ -130,7 +133,7 @@ export default function Home() {
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
                 <div className="mb-20 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:justify-between">
                     <div className="max-w-sm">
-                        <h3 className="text-xl font-medium text-sky-500">
+                        <h3 className="text-secondary text-xl font-medium">
                             TESTIMONIALS
                         </h3>
                         <h2 className="text-primary text-4xl font-bold">
@@ -153,6 +156,49 @@ export default function Home() {
                             name={t.name}
                         />
                     ))}
+                </div>
+            </section>
+
+            <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
+                <div className="mb-8 text-center">
+                    <h6 className="text-secondary mb-4 text-xl font-semibold tracking-widest uppercase">
+                        Our Services
+                    </h6>
+
+                    <h2 className="text-primary mb-4 text-3xl font-extrabold sm:text-4xl">
+                        Innovative Accounting <br className="hidden sm:block" />
+                        Solutions for Your Business
+                    </h2>
+
+                    <p className="text-muted-foreground mx-auto max-w-xl text-base font-medium">
+                        We provide expert accounting and tax services
+                        <br className="hidden sm:block" />
+                        with a focus on accuracy and efficiency.
+                    </p>
+                </div>
+                <div className="flex flex-col gap-4">
+                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                        {services.slice(0, 6).map((service, index) => (
+                            <ServicesCard
+                                key={index}
+                                title={service.title}
+                                description={service.description}
+                            />
+                        ))}
+                    </div>
+                    <div className="flex w-full justify-end py-8">
+                        <Link href="/services">
+                            <Button
+                                variant={'outline'}
+                                className="border-primary flex items-center gap-2 rounded-full"
+                            >
+                                <span className="text-primary">
+                                    More Services
+                                </span>
+                                <CircleArrowRight className="h-4 w-4" />
+                            </Button>
+                        </Link>
+                    </div>
                 </div>
             </section>
         </main>

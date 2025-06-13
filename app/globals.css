@@ -42,20 +42,20 @@
     --radius-xl: calc(var(--radius) + 4px);
     --animate-marquee: marquee var(--duration) infinite linear;
     --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
-  @keyframes marquee {
-  from {
-    transform: translateX(0);
+    @keyframes marquee {
+        from {
+            transform: translateX(0);
         }
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
+        to {
+            transform: translateX(calc(-100% - var(--gap)));
         }
     }
-  @keyframes marquee-vertical {
-  from {
-    transform: translateY(0);
+    @keyframes marquee-vertical {
+        from {
+            transform: translateY(0);
         }
-  to {
-    transform: translateY(calc(-100% - var(--gap)));
+        to {
+            transform: translateY(calc(-100% - var(--gap)));
         }
     }
 }
@@ -70,11 +70,11 @@
     --popover-foreground: oklch(0.129 0.042 264.695);
     --primary: oklch(0.286 0.1219 273.77);
     --primary-foreground: oklch(0.984 0.003 247.858);
-    --secondary: oklch(0.968 0.007 247.896);
+    --secondary: oklch(0.688 0.1673 243.36);
     --secondary-foreground: oklch(0.286 0.1219 273.77);
-    --muted: oklch(0.968 0.007 247.896);
+    --muted: oklch(0.688 0.1673 243.36);
     --muted-foreground: oklch(0.554 0.046 257.417);
-    --accent: oklch(0.968 0.007 247.896);
+    --accent: oklch(0.688 0.1673 243.36);
     --accent-foreground: oklch(0.286 0.1219 273.77);
     --destructive: oklch(0.577 0.245 27.325);
     --border: oklch(0.929 0.013 255.508);
@@ -89,7 +89,7 @@
     --sidebar-foreground: oklch(0.129 0.042 264.695);
     --sidebar-primary: oklch(0.286 0.1219 273.77);
     --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-    --sidebar-accent: oklch(0.968 0.007 247.896);
+    --sidebar-accent: oklch(0.688 0.1673 243.36);
     --sidebar-accent-foreground: oklch(0.286 0.1219 273.77);
     --sidebar-border: oklch(0.929 0.013 255.508);
     --sidebar-ring: oklch(0.704 0.04 256.788);
