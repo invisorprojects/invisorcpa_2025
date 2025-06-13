@@ -6,8 +6,8 @@ import { useEffect } from 'react';
 export function ScheduleMeeting() {
     useEffect(() => {
         // Optional: reinitialize Calendly widget if needed
-        if (window.Calendly) {
-            window.Calendly.initInlineWidgets();
+        if ((window as any).Calendly) {
+            (window as any).Calendly.initInlineWidgets();
         }
     }, []);
 
