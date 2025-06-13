@@ -7,34 +7,48 @@ import { CircleArrowRight, Quote } from 'lucide-react';
 export default function Home() {
     return (
         <main className="">
-            <section className="flex flex-col justify-between gap-4 px-2 py-2 sm:px-4 sm:py-4 md:px-8 md:py-6 lg:px-12 lg:py-8 xl:px-24 xl:py-10">
-                <div className="mt-4">
-                    <h1 className="text-4xl font-bold md:text-5xl 2xl:text-6xl">
-                        Trust Us to Handle What Counts with Financial Support
-                        You Can Rely On
-                    </h1>
-                    <p className="text-lg">
-                        We simplify your bookkeeping and financial processes so
-                        you can focus on growing your business with confidence
-                        and clarity.
-                    </p>
-                </div>
-                <div className="flex flex-col-reverse items-center justify-between gap-4 md:flex-row">
-                    <StatsGrid />
-                    <div className="relative h-fit w-fit bg-blue-50">
-                        <div className="absolute top-0 left-0 h-1/4 w-full bg-white"></div>
-                        <Image
-                            className="relative"
-                            src="/assets/laptop-lady.webp"
-                            alt="Hero"
-                            width={500}
-                            height={500}
-                        />
+            <section className="flex flex-col gap-4 p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
+                <div className="flex h-full flex-col items-end justify-between gap-4 sm:flex-row">
+                    <div className="flex flex-col items-start justify-between gap-8 sm:w-2/3">
+                        <div className="flex flex-col items-start justify-between gap-4">
+                            <h1 className="text-4xl font-bold sm:text-5xl">
+                                Trust Us to Handle What Counts with Financial
+                                Support You Can Rely On
+                            </h1>
+                            <p className="max-w-xl text-lg">
+                                We simplify your bookkeeping and financial
+                                processes so you can focus on growing your
+                                business with confidence and clarity.
+                            </p>
+                        </div>
+                        <StatsGrid />
+                    </div>
+
+                    <div className="w-full sm:w-1/3">
+                        <div className="relative h-fit w-fit bg-blue-50">
+                            <div className="absolute top-0 left-0 h-1/4 w-full bg-white"></div>
+                            <div className="absolute top-36 -left-24 max-w-52 rounded-2xl border bg-white p-4 shadow-md drop-shadow-lg">
+                                <h6 className="text-base font-bold">
+                                    Canada’s Trusted Bookkeeping & Accounting
+                                    Experts
+                                </h6>
+                            </div>
+                            <Image
+                                className="relative"
+                                src="/assets/laptop-lady.webp"
+                                alt="Hero"
+                                width={500}
+                                height={500}
+                            />
+                        </div>
                     </div>
                 </div>
-                <TrustedPartners />
+                <div className="w-full">
+                    <TrustedPartners />
+                </div>
             </section>
-            <section className="flex flex-col bg-[#EFF0F4] px-2 sm:flex-row sm:px-4 md:px-8 lg:px-12 xl:px-24">
+
+            <section className="flex flex-col items-center justify-between bg-[#EFF0F4] p-4 px-2 sm:flex-row sm:p-8 sm:px-4 md:p-12 md:px-8 lg:p-16 lg:px-12 xl:p-24 xl:px-24">
                 <div className="p-4 sm:w-1/2">
                     <Image
                         className="h-auto w-full rounded-3xl"
@@ -87,7 +101,7 @@ export default function Home() {
                 </div>
             </section>
             <section className="flex items-center justify-center bg-[#EFF0F4] px-2 sm:px-4 md:px-8 lg:px-12 xl:px-24">
-                <ScheduleMeeting />
+                {/* <ScheduleMeeting /> */}
             </section>
 
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
