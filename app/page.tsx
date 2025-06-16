@@ -112,6 +112,86 @@ export default function Home() {
             <ScheduleMeeting />
 
             <OrganizationsSection />
+            <section className="flex flex-col items-center justify-between bg-[#E5F2F8] p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
+                <div className="mb-20 flex w-full flex-col items-start justify-center gap-4 md:flex-row md:items-center md:justify-between">
+                    <div className="max-w-2xl space-y-2">
+                        <h3 className="text-secondary text-xl font-medium uppercase">
+                            About Us
+                        </h3>
+                        <h2 className="text-primary text-4xl font-bold md:text-5xl">
+                            Your Partner in Accounting Success
+                        </h2>
+                    </div>
+                    <div className="flex max-w-lg flex-col items-start gap-4">
+                        <p className="text-[#686666]">
+                            Our expert team is committed to delivering
+                            personalized accounting and tax services to help you
+                            achieve stability and growth.
+                        </p>
+                        <Link href="/about-us">
+                            <Button className="flex items-center gap-2 rounded-full bg-[#1E1E5A] px-6 py-4 text-white hover:bg-[#131346]">
+                                <span className="font-bold">More About Us</span>
+                                <CircleArrowRight className="h-4 w-4" />
+                            </Button>
+                        </Link>
+                    </div>
+                </div>
+
+                {/* Image and Text Section */}
+                <div className="flex w-full flex-col md:flex-row md:items-center md:justify-between">
+                    {/* Image */}
+                    <div className="md:w-1/2">
+                        <Image
+                            src="/assets/about-us.jpg" // Replace with your image path
+                            alt="Accounting Team"
+                            width={2048}
+                            height={1169}
+                            className="h-auto w-full rounded-xl object-cover"
+                        />
+                    </div>
+
+                    {/* Text Content */}
+                    <div className="space-y-6 md:w-1/2">
+                        <h3 className="text-primary text-3xl font-bold md:text-3xl">
+                            Our Journey in Accounting Services
+                        </h3>
+                        <p className="max-w-xl leading-relaxed">
+                            We are a team of dedicated professionals committed
+                            to delivering exceptional financial services. With
+                            years of expertise in accounting, tax filing, and
+                            consulting, we focus on building long-term
+                            relationships with clients, helping them achieve
+                            financial clarity and growth.
+                        </p>
+
+                        {/* Stats Row */}
+                        <div className="grid grid-cols-3 gap-4 pt-4 text-start">
+                            <div>
+                                <h4 className="text-primary text-3xl font-bold md:text-4xl">
+                                    20+
+                                </h4>
+                                <p className="mt-2 text-lg">
+                                    Professional Experts
+                                </p>
+                            </div>
+                            <div>
+                                <h4 className="text-primary text-3xl font-bold md:text-4xl">
+                                    15+
+                                </h4>
+                                <p className="mt-2 text-lg">Years Experience</p>
+                            </div>
+                            <div>
+                                <h4 className="text-primary text-3xl font-bold md:text-4xl">
+                                    1K+
+                                </h4>
+                                <p className="mt-2 text-lg">
+                                    Satisfied Clients
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
                 <div className="mb-8 text-center">
