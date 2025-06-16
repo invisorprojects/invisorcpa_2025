@@ -249,7 +249,7 @@ export default function Home() {
                         Solutions for Your Business
                     </h2>
 
-                    <p className="text-muted-foreground mx-auto max-w-xl text-base font-medium">
+                    <p className="text-primary mx-auto max-w-xl font-bold">
                         We provide expert accounting and tax services
                         <br className="hidden sm:block" />
                         with a focus on accuracy and efficiency.
@@ -269,10 +269,120 @@ export default function Home() {
                         <Link href="/services">
                             <Button
                                 variant={'outline'}
-                                className="border-primary flex items-center gap-2 rounded-full"
+                                className="border-primary flex items-center gap-2 rounded-full hover:bg-sky-50 hover:underline"
                             >
                                 <span className="text-primary">
                                     More Services
+                                </span>
+                                <CircleArrowRight className="h-4 w-4" />
+                            </Button>
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
+            <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
+                <div className="mb-8 text-center">
+                    <h6 className="text-secondary mb-4 text-xl font-semibold tracking-widest uppercase">
+                        CASE STUDIES
+                    </h6>
+
+                    <h2 className="text-primary mb-4 text-3xl font-extrabold sm:text-4xl">
+                        Client Success Stories: Real
+                        <br className="hidden sm:block" />
+                        Results, Real Impact
+                    </h2>
+
+                    <p className="text-primary mx-auto max-w-xl font-bold">
+                        Discover how we’ve helped businesses overcome challenges
+                        and
+                        <br className="hidden sm:block" />
+                        achieve their financial goals with tailored solutions.
+                    </p>
+                </div>
+                <div className="flex flex-col gap-4">
+                    <div className="flex w-full flex-col gap-4 md:flex-row">
+                        <div className="flex max-w-sm flex-col overflow-hidden rounded-xl bg-gray-100 hover:bg-sky-50">
+                            <Image
+                                src="/assets/case-studies/case-study-1.jpg" // Replace with your image path
+                                alt="Case Study"
+                                width={2048}
+                                height={1152}
+                                className="h-64 w-full object-cover"
+                            />
+                            <div className="flex flex-col gap-6 p-8">
+                                <h3 className="text-primary text-lg font-bold">
+                                    Optimizing Financial Management for
+                                    E-Commerce Growth and Efficiency
+                                </h3>
+                                <Link href="/case-studies/1">
+                                    <Button
+                                        variant="ghost"
+                                        className="text-primary flex items-center gap-2 px-0 text-sm font-bold hover:bg-sky-50 hover:underline"
+                                    >
+                                        View Case Study
+                                        <CircleArrowRight className="h-5 w-5" />
+                                    </Button>
+                                </Link>
+                            </div>
+                        </div>
+                        <div className="flex max-w-sm flex-col overflow-hidden rounded-xl bg-gray-100 hover:bg-sky-50">
+                            <Image
+                                src="/assets/case-studies/case-study-2.jpg" // Replace with your image path
+                                alt="Case Study"
+                                width={2048}
+                                height={1152}
+                                className="h-64 w-full object-cover"
+                            />
+                            <div className="flex flex-col gap-6 p-8">
+                                <h3 className="text-primary text-lg font-bold">
+                                    Streamlining Financial Operations for an
+                                    Audiology Service Provider
+                                </h3>
+                                <Link href="/case-studies/2">
+                                    <Button
+                                        variant="ghost"
+                                        className="text-primary flex items-center gap-2 px-0 text-sm font-bold hover:bg-sky-50 hover:underline"
+                                    >
+                                        View Case Study
+                                        <CircleArrowRight className="h-5 w-5" />
+                                    </Button>
+                                </Link>
+                            </div>
+                        </div>
+                        <div className="flex max-w-sm flex-col overflow-hidden rounded-xl bg-gray-100 hover:bg-sky-50">
+                            <Image
+                                src="/assets/case-studies/case-study-3.jpg" // Replace with your image path
+                                alt="Case Study"
+                                width={2048}
+                                height={1152}
+                                className="h-64 w-full object-cover"
+                            />
+                            <div className="flex flex-col gap-6 p-8">
+                                <h3 className="text-primary text-lg font-bold">
+                                    Optimizing Financial Management for IT
+                                    Solutions Provider
+                                </h3>
+                                <Link href="/case-studies/2">
+                                    <Button
+                                        variant="ghost"
+                                        className="text-primary flex items-center gap-2 px-0 text-sm font-bold hover:bg-sky-50 hover:underline"
+                                    >
+                                        View Case Study
+                                        <CircleArrowRight className="h-5 w-5" />
+                                    </Button>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex w-full justify-end py-8">
+                        <Link href="/case-studies">
+                            <Button
+                                variant={'outline'}
+                                className="border-primary flex items-center gap-2 rounded-full hover:bg-sky-50 hover:underline"
+                            >
+                                <span className="text-primary">
+                                    All Case Studies
                                 </span>
                                 <CircleArrowRight className="h-4 w-4" />
                             </Button>
