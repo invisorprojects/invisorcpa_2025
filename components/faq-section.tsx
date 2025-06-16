@@ -55,7 +55,7 @@ function FaqAccordion() {
                         className="py-2"
                     >
                         <AccordionPrimitive.Header className="flex">
-                            <AccordionPrimitive.Trigger className="focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-center gap-4 rounded-md py-2 text-left text-base leading-6 font-semibold transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&>svg]:-order-1 [&>svg>path:last-child]:origin-center [&>svg>path:last-child]:transition-all [&>svg>path:last-child]:duration-200 [&[data-state=open]>svg]:rotate-180 [&[data-state=open]>svg>path:last-child]:rotate-90 [&[data-state=open]>svg>path:last-child]:opacity-0">
+                            <AccordionPrimitive.Trigger className="focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-center gap-4 rounded-md py-2 text-left text-lg leading-6 font-semibold transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&>svg]:-order-1 [&>svg>path:last-child]:origin-center [&>svg>path:last-child]:transition-all [&>svg>path:last-child]:duration-200 [&[data-state=open]>svg]:rotate-180 [&[data-state=open]>svg>path:last-child]:rotate-90 [&[data-state=open]>svg>path:last-child]:opacity-0">
                                 {item.title}
                                 <PlusIcon
                                     color="#1B1E65"
@@ -83,7 +83,7 @@ export default function Faq() {
                     Frequently Asked Questions
                 </h6>
 
-                <h2 className="text-primary mb-4 text-3xl leading-snug font-extrabold sm:text-4xl">
+                <h2 className="text-primary mb-4 text-4xl leading-snug font-bold sm:text-5xl">
                     Your Questions,
                     <br />
                     Answered

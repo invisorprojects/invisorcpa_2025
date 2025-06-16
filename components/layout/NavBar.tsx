@@ -23,7 +23,7 @@ export function NavBar() {
                         href={item.disabled ? `${path}` : item.href}
                     >
                         <span
-                            className={`flex ${
+                            className={`flex text-lg font-semibold ${
                                 path === item.href
                                     ? 'text-blue-500'
                                     : 'hover:text-blue-500'

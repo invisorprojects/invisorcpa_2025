@@ -5,7 +5,7 @@ import { Button } from '../ui/button';
 
 export function Header() {
     return (
-        <header className="flex h-20 flex-row items-center justify-between border-b px-2 shadow-sm sm:px-4 md:px-8 lg:px-12 xl:px-24">
+        <header className="sticky top-0 z-50 flex h-20 flex-row items-center justify-between border-b bg-white px-2 shadow-sm sm:px-4 md:px-8 lg:px-12 xl:px-24">
             <Link className="" href={'/'}>
                 <Image
                     className=""
@@ -18,8 +18,8 @@ export function Header() {
             </Link>
             <div className="flex items-center justify-between gap-10 sm:flex-row-reverse md:flex-row">
                 <NavBar />
-                <Button className="hidden rounded-sm p-4 sm:flex">
-                    <span className="font-medium">Contact Us</span>
+                <Button className="hidden rounded-sm px-4 py-5 sm:flex">
+                    <span className="text-lg font-extrabold">Contact Us</span>
                 </Button>
             </div>
         </header>
