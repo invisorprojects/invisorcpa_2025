@@ -16,7 +16,7 @@ export default function Page() {
                         <h3 className="text-secondary text-xl font-medium">
                             SERVICES
                         </h3>
-                        <h2 className="text-primary text-4xl font-bold sm:text-5xl">
+                        <h2 className="text-primary mt-4 text-4xl font-bold sm:text-5xl">
                             Innovative Accounting Solutions for Your
                             Business{' '}
                         </h2>
