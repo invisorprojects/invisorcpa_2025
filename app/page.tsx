@@ -393,6 +393,191 @@ export default function Home() {
 
             <TestimonialsSection />
 
+            <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
+                <div className="mb-20 flex w-full flex-col items-start justify-center gap-4 md:flex-row md:items-center md:justify-between">
+                    <div className="max-w-2xl space-y-2">
+                        <h3 className="text-secondary text-xl font-medium uppercase">
+                            Blogs
+                        </h3>
+                        <h2 className="text-primary text-4xl font-bold md:text-5xl">
+                            Explore Our Knowledge Hub
+                        </h2>
+                    </div>
+                    <div className="flex max-w-lg flex-col items-start gap-4">
+                        <p className="text-[#686666]">
+                            Dive into our collection of insightful articles,
+                            designed to help you stay informed and make informed
+                            financial decisions.
+                        </p>
+                        <Link href="/blogs">
+                            <Button className="bg-primary flex items-center gap-2 rounded-full px-6 py-4 text-white">
+                                <span className="font-bold">See More</span>
+                                <CircleArrowRight className="h-4 w-4" />
+                            </Button>
+                        </Link>
+                    </div>
+                </div>
+
+                {/* Image and Text Section */}
+                <div className="flex w-full flex-col gap-8 md:flex-row md:items-start md:justify-between">
+                    {/* Image */}
+                    <div className="md:w-1/2">
+                        <div className="flex flex-col items-center gap-4 p-2">
+                            {/* Left: Image */}
+                            <div className="w-full overflow-hidden rounded-lg">
+                                <Image
+                                    src="/assets/blogs/blog-1.jpg" // replace with your actual image path
+                                    alt="Outsourcing bookkeeping"
+                                    width={2048}
+                                    height={1366}
+                                    className="h-full w-auto rounded-lg object-cover"
+                                />
+                            </div>
+
+                            {/* Right: Content */}
+                            <div className="flex w-full flex-col gap-2 p-2">
+                                <h6 className="text-primary text-base font-medium">
+                                    How Technology is Transforming Modern
+                                    Accounting Practices
+                                </h6>
+                                <p className="text-xs leading-relaxed text-gray-500">
+                                    The accounting industry is undergoing a
+                                    significant transformation as new
+                                    technologies revolutionize traditional
+                                    bookkeeping and financial management
+                                    processes.
+                                </p>
+
+                                <Link href="/blogs/1">
+                                    <Button
+                                        variant={'outline'}
+                                        className="text-primary border-primary hover:bg-primary flex items-center gap-4 rounded-full hover:text-white"
+                                    >
+                                        <span className="">Read More</span>
+                                        <CircleArrowRight className="h-4 w-4" />
+                                    </Button>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Text Content */}
+                    <div className="space-y-6 md:w-1/2">
+                        <div className="flex flex-col items-center gap-4 p-1 md:flex-row">
+                            {/* Left: Image */}
+                            <div className="w-full overflow-hidden rounded-lg md:w-1/3">
+                                <Image
+                                    src="/assets/blogs/blog-2.jpg" // replace with your actual image path
+                                    alt="Outsourcing bookkeeping"
+                                    width={2048}
+                                    height={1366}
+                                    className="h-full w-full rounded-lg object-cover"
+                                />
+                            </div>
+
+                            {/* Right: Content */}
+                            <div className="flex w-full flex-col gap-2 p-2 md:w-2/3">
+                                <h6 className="text-primary text-base font-medium">
+                                    Top 5 Benefits of Outsourcing Your
+                                    Bookkeeping to Experts
+                                </h6>
+                                <p className="text-xs leading-relaxed text-gray-500">
+                                    Managing bookkeeping is critical to any
+                                    business, but handling it in-house can often
+                                    become time-consuming, error-prone, and
+                                    costly.
+                                </p>
+
+                                <Link href="/blogs/2">
+                                    <Button
+                                        variant={'outline'}
+                                        className="text-primary border-primary hover:bg-primary flex items-center gap-4 rounded-full hover:text-white"
+                                    >
+                                        <span className="">Read More</span>
+                                        <CircleArrowRight className="h-4 w-4" />
+                                    </Button>
+                                </Link>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col items-center gap-4 p-1 md:flex-row">
+                            {/* Left: Image */}
+                            <div className="w-full overflow-hidden rounded-lg md:w-1/3">
+                                <Image
+                                    src="/assets/blogs/blog-3.jpg" // replace with your actual image path
+                                    alt="Outsourcing bookkeeping"
+                                    width={2048}
+                                    height={1366}
+                                    className="h-full w-full rounded-lg object-cover"
+                                />
+                            </div>
+
+                            {/* Right: Content */}
+                            <div className="flex w-full flex-col gap-2 p-2 md:w-2/3">
+                                <h6 className="text-primary text-base font-medium">
+                                    How QuickBooks Integration Can Streamline
+                                    Your Business Operations
+                                </h6>
+                                <p className="text-xs leading-relaxed text-gray-500">
+                                    ‍Managing business finances can quickly
+                                    become complex without the right tools. Many
+                                    businesses struggle to keep track of income,
+                                    expenses, and overall financial health.
+                                </p>
+
+                                <Link href="/blogs/3">
+                                    <Button
+                                        variant={'outline'}
+                                        className="text-primary border-primary hover:bg-primary flex items-center gap-4 rounded-full hover:text-white"
+                                    >
+                                        <span className="">Read More</span>
+                                        <CircleArrowRight className="h-4 w-4" />
+                                    </Button>
+                                </Link>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col items-center gap-4 p-1 md:flex-row">
+                            {/* Left: Image */}
+                            <div className="w-full overflow-hidden rounded-lg md:w-1/3">
+                                <Image
+                                    src="/assets/blogs/blog-4.jpg" // replace with your actual image path
+                                    alt="Outsourcing bookkeeping"
+                                    width={2048}
+                                    height={1366}
+                                    className="h-full w-full rounded-lg object-cover"
+                                />
+                            </div>
+
+                            {/* Right: Content */}
+                            <div className="flex w-full flex-col gap-2 p-2 md:w-2/3">
+                                <h6 className="text-primary text-base font-medium">
+                                    Why Accurate Bookkeeping is Critical for
+                                    Your Business Growth
+                                </h6>
+                                <p className="text-xs leading-relaxed text-gray-500">
+                                    ‍Accurate bookkeeping isn’t just a routine
+                                    task—it’s a vital element that fuels
+                                    business growth. Without it, businesses risk
+                                    disorganized finances, poor decision-making,
+                                    and compliance issues.
+                                </p>
+
+                                <Link href="/blogs/4">
+                                    <Button
+                                        variant={'outline'}
+                                        className="text-primary border-primary hover:bg-primary flex items-center gap-4 rounded-full hover:text-white"
+                                    >
+                                        <span className="">Read More</span>
+                                        <CircleArrowRight className="h-4 w-4" />
+                                    </Button>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <Faq />
 
             <ContactUs />
