@@ -281,6 +281,8 @@ export default function Home() {
                 </div>
             </section>
 
+            <OurTools />
+
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
                 <div className="mb-8 text-center">
                     <h6 className="text-secondary mb-4 text-xl font-semibold tracking-widest uppercase">
@@ -613,6 +615,7 @@ const whyChooseUs = [
 ];
 
 import { BrainCircuit, Handshake, HandHelping, UserLock } from 'lucide-react';
+import OurTools from '@/components/our-tools';
 
 const iconMap = {
     BrainCircuit,
