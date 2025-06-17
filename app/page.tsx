@@ -9,6 +9,8 @@ import Link from 'next/link';
 import ContactUs from '@/components/contact-us';
 import Faq from '@/components/faq-section';
 import { TestimonialsSection } from '@/components/testimonials-section';
+import OurTools from '@/components/our-tools';
+import OurAchievements from '@/components/our-achievements';
 import { OrganizationsSection } from '@/components/organizations-section';
 
 export default function Home() {
@@ -395,6 +397,8 @@ export default function Home() {
 
             <TestimonialsSection />
 
+            <OurAchievements />
+
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
                 <div className="mb-20 flex w-full flex-col items-start justify-center gap-4 md:flex-row md:items-center md:justify-between">
                     <div className="max-w-2xl space-y-2">
@@ -615,7 +619,6 @@ const whyChooseUs = [
 ];
 
 import { BrainCircuit, Handshake, HandHelping, UserLock } from 'lucide-react';
-import OurTools from '@/components/our-tools';
 
 const iconMap = {
     BrainCircuit,

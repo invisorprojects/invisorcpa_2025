@@ -4,7 +4,7 @@ import Image from 'next/image';
 export default function TrustedPartners() {
     return (
         <div className="my-8 flex items-center justify-between">
-            <h4 className="mx-8 text-lg font-semibold text-nowrap">
+            <h4 className="uppercase` mx-8 text-lg font-semibold text-nowrap">
                 TRUSTED BY
             </h4>
             <Marquee pauseOnHover className="[--duration:10s]">
