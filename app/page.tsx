@@ -12,6 +12,8 @@ import { TestimonialsSection } from '@/components/testimonials-section';
 import OurTools from '@/components/our-tools';
 import OurAchievements from '@/components/our-achievements';
 import { OrganizationsSection } from '@/components/organizations-section';
+import { BehindTheTeam } from '@/components/behind-the-team';
+import { WhyChooseUs } from '@/components/why-choose-us-section';
 
 export default function Home() {
     return (
@@ -195,50 +197,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
-                <div className="mb-20 flex w-full flex-col items-start justify-center gap-4 md:flex-row md:items-center md:justify-between">
-                    <div className="max-w-2xl space-y-2">
-                        <h3 className="text-secondary text-xl font-medium uppercase">
-                            Why Choose Us
-                        </h3>
-                        <h2 className="text-primary text-4xl font-bold md:text-5xl">
-                            Your Trusted Accounting Partner
-                        </h2>
-                    </div>
-                    <div className="flex max-w-lg flex-col items-start gap-4">
-                        <p className="text-[#686666]">
-                            We understand that finding the right Accounting
-                            partner is essential. With our deep expertise in
-                            accounting, bookkeeping, and taxation, we guide you
-                            toward success.
-                        </p>
-                    </div>
-                </div>
-                {/* Image and Text Section */}
-                <div className="flex w-full flex-col-reverse gap-8 md:flex-row md:items-center md:justify-between">
-                    {/* Text Content */}
-                    <div className="space-y-6 md:w-1/2">
-                        {whyChooseUs.map((item, index) => (
-                            <WhyChooseUsCard
-                                key={index}
-                                title={item.title}
-                                description={item.description}
-                                icon={item.icon}
-                            />
-                        ))}
-                    </div>
-                    {/* Image */}
-                    <div className="flex justify-center md:w-1/2 md:justify-end">
-                        <Image
-                            src="/assets/why-choose-us.jpg" // Replace with your image path
-                            alt="Accounting Team"
-                            width={1777}
-                            height={1999}
-                            className="border-primary h-auto w-full max-w-lg rounded-sm rounded-tl-[6.25rem] rounded-br-[6.25rem] border-t-8 border-r-8 object-cover shadow-lg"
-                        />
-                    </div>
-                </div>
-            </section>
+            <WhyChooseUs />
 
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
                 <div className="mb-8 text-center">
@@ -395,53 +354,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
-                <div className="mb-8 text-center">
-                    <h6 className="text-secondary mb-4 text-xl font-semibold tracking-widest uppercase">
-                        BEHIND THE TEAM{' '}
-                    </h6>
-
-                    <h2 className="text-primary mb-4 text-3xl font-extrabold sm:text-4xl">
-                        Dynamic Team of Accounting
-                        <br className="hidden sm:block" />
-                        Specialists
-                    </h2>
-
-                    <p className="text-primary mx-auto max-w-xl font-bold">
-                        Our team’s dedication and expertise drive every project
-                        <br className="hidden sm:block" />
-                        forward, delivering excellence in every accounting
-                        solution.
-                    </p>
-                </div>
-                <div className="flex flex-col gap-4">
-                    <div className="flex w-full flex-col gap-4 md:flex-row">
-                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                            {teams.slice(0, 4).map((team, index) => (
-                                <TeamCard
-                                    key={index}
-                                    name={team.name}
-                                    qualification={team.qualification}
-                                    path={index}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                    <div className="flex w-full justify-end py-8">
-                        <Link href="/team">
-                            <Button
-                                variant={'outline'}
-                                className="border-primary flex items-center gap-2 rounded-full hover:bg-sky-50 hover:underline"
-                            >
-                                <span className="text-primary">
-                                    Expolre Team
-                                </span>
-                                <CircleArrowRight className="h-4 w-4" />
-                            </Button>
-                        </Link>
-                    </div>
-                </div>
-            </section>
+            <BehindTheTeam />
 
             <TestimonialsSection />
 
@@ -636,68 +549,6 @@ export default function Home() {
 
             <ContactUs />
         </main>
-    );
-}
-
-const whyChooseUs = [
-    {
-        title: 'Innovative Approaches',
-        description:
-            'Leveraging the latest technologies, we provide efficient solutions tailored to your needs.',
-        icon: 'BrainCircuit',
-    },
-    {
-        title: 'Client-Focused Service',
-        description:
-            'Our commitment is to put your needs first, offering customized strategies for your unique goals.',
-        icon: 'Handshake',
-    },
-    {
-        title: 'Ongoing Support',
-        description:
-            'Our team is always available, offering reliable support whenever you need it.',
-        icon: 'HandHelping',
-    },
-    {
-        title: 'Personalized Solutions',
-        description:
-            'We tailor our services to match your specific financial objectives, ensuring the best results for your business.',
-        icon: 'UserLock',
-    },
-];
-
-import { BrainCircuit, Handshake, HandHelping, UserLock } from 'lucide-react';
-import { TeamCard } from './team/page';
-import teams from '@/constants/teams';
-
-const iconMap = {
-    BrainCircuit,
-    Handshake,
-    HandHelping,
-    UserLock,
-};
-
-function WhyChooseUsCard({
-    title,
-    description,
-    icon,
-}: {
-    title: string;
-    description: string;
-    icon: string;
-}) {
-    const IconComponent = iconMap[icon as keyof typeof iconMap];
-
-    return (
-        <div className="group flex items-start justify-center gap-4 rounded-lg bg-gray-100 p-6 transition-all duration-500 group-hover:bg-sky-100 hover:bg-sky-100">
-            <div className="flex items-center justify-center rounded-sm bg-sky-50 p-2 shadow-md transition-all duration-500 group-hover:bg-gray-100">
-                <IconComponent className="h-6 w-6 text-[#1E1E5A]" />
-            </div>
-            <div>
-                <h4 className="text-lg font-bold text-black">{title}</h4>
-                <p className="mt-1">{description}</p>
-            </div>
-        </div>
     );
 }
 
