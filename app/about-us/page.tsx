@@ -20,6 +20,33 @@ const stats = [
     { value: '20+', label: 'Year of Affiliate Experience' },
 ];
 
+const timeline = [
+    {
+        year: '1972',
+        title: 'Founding of the Company',
+        description:
+            'Robert W. Anderson & Associates was founded by Robert Anderson, establishing a strong foundation of excellence in financial services.',
+    },
+    {
+        year: '2011',
+        title: 'A New Chapter',
+        description:
+            'Leadership transitioned to Robyn Anderson-Garlough following Robert Anderson’s passing, ensuring continuity and growth.',
+    },
+    {
+        year: '2016',
+        title: 'Expanding Services',
+        description:
+            'The firm merged with Business Facts Ltd., broadening its offerings in bookkeeping and tax preparation for Central Wellington County and surrounding areas.',
+    },
+    {
+        year: '2024',
+        title: 'Growing Together',
+        description:
+            'Invisor proudly acquired Business Facts Ltd and rebranded our trade name as Invisor Business Facts Ltd, uniting legacies and expanding our ability to serve clients with innovation and expertise.',
+    },
+];
+
 export default function Page() {
     return (
         <main>
@@ -51,7 +78,7 @@ export default function Page() {
                     height={1800}
                     className="rounded-4xl object-contain shadow-md"
                 />
-                <section className="w-full px-4 py-12">
+                <section className="w-full px-4 pt-12">
                     <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 text-center md:grid-cols-4">
                         {stats.map((item, index) => (
                             <div key={index}>
@@ -68,6 +95,62 @@ export default function Page() {
                 {/* Counts Section */}
             </section>
             {/* Business Facts */}
+
+            <section className="mb-16 flex flex-col items-center justify-between px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24">
+                <div className="mb-8 text-center">
+                    <h6 className="text-secondary mb-4 text-xl font-semibold tracking-widest uppercase">
+                        Business Facts{' '}
+                    </h6>
+
+                    <h2 className="text-primary mb-4 text-3xl font-extrabold sm:text-4xl">
+                        A New Chapter in Our Story
+                    </h2>
+
+                    <p className="text-primary mx-auto max-w-4xl font-bold">
+                        With the acquisition of Business Facts Ltd., we honor
+                        their legacy of excellence while expanding our services.
+                        Together, we’re committed to empowering our clients with
+                        innovative and reliable financial solutions.
+                    </p>
+                </div>
+                <div className="mx-auto mt-8 w-full max-w-6xl space-y-12">
+                    {timeline.map((item, index) => (
+                        <div
+                            key={index}
+                            className={`grid grid-cols-1 items-center justify-between gap-8 md:grid-cols-2 ${
+                                index % 2 !== 0 ? 'md:flex-row-reverse' : ''
+                            }`}
+                        >
+                            {/* Text */}
+                            <div
+                                className={`w-full max-w-md text-justify ${index % 2 !== 0 ? 'md:order-2' : ''}`}
+                            >
+                                <h4 className="text-secondary text-lg font-semibold md:text-2xl">
+                                    {item.year}
+                                </h4>
+                                <h3 className="text-primary mt-1 text-xl font-bold md:text-xl">
+                                    {item.title}
+                                </h3>
+                                <p className="mt-2 text-sm leading-relaxed md:text-base">
+                                    {item.description}
+                                </p>
+                            </div>
+
+                            {/* Placeholder Image */}
+                            <div className="flex w-full items-center justify-center rounded-lg text-sm text-gray-500 md:justify-between">
+                                <Image
+                                    src="https://placehold.co/1280x720.png"
+                                    width={1280}
+                                    height={720}
+                                    alt={`Timeline image for ${item.year}`}
+                                    className="h-60 w-auto object-contain"
+                                />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
             <TrustedPartners />
             {/* Our Mission */}
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
