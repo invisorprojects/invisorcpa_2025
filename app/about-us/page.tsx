@@ -13,6 +13,12 @@ import { UserSearch, ChartLine, HandCoins } from 'lucide-react';
 export const metadata: Metadata = {
     title: 'Pricing',
 };
+const stats = [
+    { value: '20+', label: 'Professional Experts' },
+    { value: '15+', label: 'Years Experience' },
+    { value: '1K+', label: 'Satisfied Clients' },
+    { value: '20+', label: 'Year of Affiliate Experience' },
+];
 
 export default function Page() {
     return (
@@ -45,6 +51,20 @@ export default function Page() {
                     height={1800}
                     className="rounded-4xl object-contain shadow-md"
                 />
+                <section className="w-full px-4 py-12">
+                    <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 text-center md:grid-cols-4">
+                        {stats.map((item, index) => (
+                            <div key={index}>
+                                <h3 className="text-4xl font-bold text-[#1B1E65] sm:text-5xl">
+                                    {item.value}
+                                </h3>
+                                <p className="mt-2 text-base text-black">
+                                    {item.label}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
                 {/* Counts Section */}
             </section>
             {/* Business Facts */}
