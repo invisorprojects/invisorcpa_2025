@@ -8,6 +8,7 @@ import TrustedPartners from '@/components/trusted-partners';
 import { WhyChooseUs } from '@/components/why-choose-us-section';
 import { Metadata } from 'next';
 import Image from 'next/image';
+import { UserSearch, ChartLine, HandCoins } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: 'Pricing',
@@ -141,6 +142,67 @@ export default function Page() {
             <WhyChooseUs />
             <OurTools />
             {/* Our Process */}
+            <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
+                <div className="h-full w-full rounded-xl bg-[#EFF0F4] px-8 py-16">
+                    {/* Heading Section */}
+                    <div className="mx-auto mb-20 flex max-w-6xl flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                        <div className="space-y-4">
+                            <p className="text-secondary text-base font-semibold uppercase md:text-xl">
+                                Our Process
+                            </p>
+                            <h2 className="text-primary text-3xl leading-snug font-bold md:text-4xl">
+                                Your Path to Accounting{' '}
+                                <br className="hidden md:block" />
+                                Success
+                            </h2>
+                        </div>
+                        <p className="max-w-xl text-base text-gray-600">
+                            We guide you through every step of the process,
+                            ensuring you're informed and involved at all times.
+                        </p>
+                    </div>
+
+                    {/* Steps Grid */}
+                    <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-3">
+                        {/* Step 1 */}
+                        <div className="text-primary flex flex-col items-start gap-3">
+                            <UserSearch className="h-12 w-12" />
+                            <h4 className="text-lg font-semibold md:text-xl">
+                                Discovery and Consultation
+                            </h4>
+                            <p className="text-sm text-gray-600">
+                                We start by understanding your unique accounting
+                                situation, needs, and goals.
+                            </p>
+                        </div>
+
+                        {/* Step 2 */}
+                        <div className="text-primary flex flex-col items-start gap-3">
+                            <ChartLine className="h-12 w-12" />
+                            <h4 className="text-lg font-semibold md:text-xl">
+                                Strategy Development
+                            </h4>
+                            <p className="text-sm text-gray-600">
+                                We craft a personalized plan with clear steps to
+                                achieve your accounting objectives.
+                            </p>
+                        </div>
+
+                        {/* Step 3 */}
+                        <div className="text-primary flex flex-col items-start gap-3">
+                            <HandCoins className="h-12 w-12" />
+                            <h4 className="text-lg font-semibold md:text-xl">
+                                Execution and Support
+                            </h4>
+                            <p className="text-sm text-gray-600">
+                                We implement the strategy and provide continuous
+                                support, making adjustments as needed to ensure
+                                ongoing success.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <OrganizationsSection />
             <BehindTheTeam />
             <TestimonialsSection />
