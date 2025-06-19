@@ -1,9 +1,9 @@
-interface NavItems {
+interface NAV_ITEMS {
     title: string;
     href: string;
     disabled: boolean;
 }
-export const NavItems: NavItems[] = [
+export const NAV_ITEMS: NAV_ITEMS[] = [
     {
         title: 'Home',
         href: '/',

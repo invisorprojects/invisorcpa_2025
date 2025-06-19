@@ -1,6 +1,6 @@
 'use client';
 
-import { NavItems } from '@/constants/NavItems';
+import { NAV_ITEMS } from '@/constants/NAV_ITEMS';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
@@ -17,7 +17,7 @@ export function NavBar() {
     return (
         <>
             <nav className="hidden flex-row items-center justify-center gap-2 md:flex md:gap-4 lg:gap-10 xl:gap-12">
-                {NavItems.map((item, index) => (
+                {NAV_ITEMS.map((item, index) => (
                     <Link
                         key={index}
                         href={item.disabled ? `${path}` : item.href}
@@ -43,7 +43,7 @@ export function NavBar() {
                     <SheetContent className="flex flex-col gap-4 p-4">
                         <SheetTitle></SheetTitle>
 
-                        {NavItems.map((item, index) => (
+                        {NAV_ITEMS.map((item, index) => (
                             <Link
                                 key={index}
                                 href={item.disabled ? `${path}` : item.href}

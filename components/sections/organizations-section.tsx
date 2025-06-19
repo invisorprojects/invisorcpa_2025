@@ -1,5 +1,5 @@
 import { CircleArrowRight } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import Image from 'next/image';
 
 export function OrganizationsSection() {
@@ -8,12 +8,12 @@ export function OrganizationsSection() {
             <div className="mb-20 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:justify-between">
                 <div className="max-w-sm">
                     <h2 className="text-primary text-4xl font-bold">
-                        Organizations we've helped
+                        Organizations we&#39;ve helped
                     </h2>
                 </div>
                 <div className="flex max-w-lg flex-col items-start gap-4">
                     <p className="text-[#686666]">
-                        Reach out knowing we've helped some of the best
+                        Reach out knowing we&#39;ve helped some of the best
                         companies in Canada with tax planning, bookkeeping and
                         structuring their financial back office.
                     </p>

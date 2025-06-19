@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Header } from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
-import { openSans, poppins } from '@/constants/fonts';
-``;
+import { openSans, poppins } from '@/constants/FONTS';
+
 export const metadata: Metadata = {
     title: {
         template: 'Invisor Business Facts | %s ',

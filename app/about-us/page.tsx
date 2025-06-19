@@ -1,11 +1,11 @@
-import { BehindTheTeam } from '@/components/behind-the-team';
-import ContactUs from '@/components/contact-us';
-import Faq from '@/components/faq-section';
-import { OrganizationsSection } from '@/components/organizations-section';
-import OurTools from '@/components/our-tools';
-import { TestimonialsSection } from '@/components/testimonials-section';
-import TrustedPartners from '@/components/trusted-partners';
-import { WhyChooseUs } from '@/components/why-choose-us-section';
+import { BehindTheTeam } from '@/components/sections/behind-the-team';
+import ContactUs from '@/components/sections/contact-us';
+import Faq from '@/components/sections/faq-section';
+import { OrganizationsSection } from '@/components/sections/organizations-section';
+import OurTools from '@/components/sections/our-tools';
+import { TestimonialsSection } from '@/components/sections/testimonials-section';
+import TrustedPartners from '@/components/sections/trusted-partners';
+import { WhyChooseUs } from '@/components/sections/why-choose-us-section';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { UserSearch, ChartLine, HandCoins } from 'lucide-react';
@@ -31,7 +31,7 @@ const timeline = [
         year: '2011',
         title: 'A New Chapter',
         description:
-            'Leadership transitioned to Robyn Anderson-Garlough following Robert Anderson’s passing, ensuring continuity and growth.',
+            "Leadership transitioned to Robyn Anderson-Garlough following Robert Anderson's passing, ensuring continuity and growth.",
     },
     {
         year: '2016',
@@ -109,8 +109,8 @@ export default function Page() {
                     <p className="text-primary mx-auto max-w-4xl font-bold">
                         With the acquisition of Business Facts Ltd., we honor
                         their legacy of excellence while expanding our services.
-                        Together, we’re committed to empowering our clients with
-                        innovative and reliable financial solutions.
+                        Together, we&#39;re committed to empowering our clients
+                        with innovative and reliable financial solutions.
                     </p>
                 </div>
                 <div className="mx-auto mt-8 w-full max-w-6xl space-y-12">
@@ -216,8 +216,8 @@ export default function Page() {
                                     growth. By embracing technology and industry
                                     best practices, we aim to provide a
                                     seamless, forward-thinking financial
-                                    experience that evolves with our clients'
-                                    needs.
+                                    experience that evolves with our
+                                    clients&#39; needs.
                                 </p>
                             </div>
 
@@ -233,9 +233,9 @@ export default function Page() {
                                     business and individual, crafting solutions
                                     that deliver both immediate results and
                                     sustainable long-term growth. Our commitment
-                                    is to ensure our clients’ financial peace of
-                                    mind and success at every stage of their
-                                    journey.
+                                    is to ensure our clients&#39; financial
+                                    peace of mind and success at every stage of
+                                    their journey.
                                 </p>
                             </div>
                         </div>
@@ -261,7 +261,8 @@ export default function Page() {
                         </div>
                         <p className="max-w-xl text-base text-gray-600">
                             We guide you through every step of the process,
-                            ensuring you're informed and involved at all times.
+                            ensuring you&#39;re informed and involved at all
+                            times.
                         </p>
                     </div>
 

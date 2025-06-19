@@ -1,18 +1,19 @@
 import Image from 'next/image';
-import TrustedPartners from '@/components/trusted-partners';
+import TrustedPartners from '@/components/sections/trusted-partners';
 import { Button } from '@/components/ui/button';
-import { ScheduleMeeting } from '@/components/ScheduleMeeting';
+import { ScheduleMeeting } from '@/components/sections/ScheduleMeeting';
 import { CircleArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import ContactUs from '@/components/contact-us';
-import Faq from '@/components/faq-section';
-import { TestimonialsSection } from '@/components/testimonials-section';
-import OurTools from '@/components/our-tools';
-import OurAchievements from '@/components/our-achievements';
-import { OrganizationsSection } from '@/components/organizations-section';
-import { BehindTheTeam } from '@/components/behind-the-team';
-import { WhyChooseUs } from '@/components/why-choose-us-section';
-import { services, ServicesCard } from './services/page';
+import ContactUs from '@/components/sections/contact-us';
+import Faq from '@/components/sections/faq-section';
+import { TestimonialsSection } from '@/components/sections/testimonials-section';
+import OurTools from '@/components/sections/our-tools';
+import OurAchievements from '@/components/sections/our-achievements';
+import { OrganizationsSection } from '@/components/sections/organizations-section';
+import { BehindTheTeam } from '@/components/sections/behind-the-team';
+import { WhyChooseUs } from '@/components/sections/why-choose-us-section';
+import { SERVICES } from '@/constants/SERVICES';
+import { ServicesCard } from '@/components/service-card';
 
 export default function Home() {
     return (
@@ -39,8 +40,8 @@ export default function Home() {
                             <div className="absolute top-0 left-0 h-1/4 w-full bg-white"></div>
                             <div className="absolute top-36 -left-24 max-w-52 rounded-2xl border bg-white p-4 shadow-md drop-shadow-lg">
                                 <h6 className="text-base font-bold">
-                                    Canada’s Trusted Bookkeeping & Accounting
-                                    Experts
+                                    Canada&#39;s Trusted Bookkeeping &
+                                    Accounting Experts
                                 </h6>
                             </div>
                             <Image
@@ -74,7 +75,7 @@ export default function Home() {
                             Simplify Your Accounts, Maximize Your Success!
                         </h3>
                         <p>
-                            Whether you’re managing accounting or navigating
+                            Whether you&#39;re managing accounting or navigating
                             taxes, our dedicated team is here to support you. We
                             provide expert accounting, tax planning, and
                             bookkeeping services to simplify your accounting
@@ -97,7 +98,7 @@ export default function Home() {
                         />
                         <div className="flex flex-col items-start justify-between gap-4 py-4">
                             <h4 className="text-primary text-xl font-bold">
-                                Canada&apos;s Leading Bookkeeping Service
+                                Canada&#39;s Leading Bookkeeping Service
                                 providers - Trusted by Over 1,000 Clients
                                 Nationwide
                             </h4>
@@ -217,7 +218,7 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col gap-4">
                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                        {services.slice(0, 6).map((service, index) => (
+                        {SERVICES.slice(0, 6).map((service, index) => (
                             <ServicesCard
                                 key={index}
                                 title={service.title}
@@ -256,8 +257,8 @@ export default function Home() {
                     </h2>
 
                     <p className="text-primary mx-auto max-w-xl font-bold">
-                        Discover how we’ve helped businesses overcome challenges
-                        and
+                        Discover how we&#39;ve helped businesses overcome
+                        challenges and
                         <br className="hidden sm:block" />
                         achieve their financial goals with tailored solutions.
                     </p>
@@ -522,11 +523,11 @@ export default function Home() {
                                     Your Business Growth
                                 </h6>
                                 <p className="text-xs leading-relaxed text-gray-500">
-                                    Accurate bookkeeping isn’t just a routine
-                                    task—it’s a vital element that fuels
-                                    business growth. Without it, businesses risk
-                                    disorganized finances, poor decision-making,
-                                    and compliance issues.
+                                    Accurate bookkeeping isn&#39;t just a
+                                    routine task—it&#39;s a vital element that
+                                    fuels business growth. Without it,
+                                    businesses risk disorganized finances, poor
+                                    decision-making, and compliance issues.
                                 </p>
 
                                 <Link href="/blogs/4">
@@ -576,7 +577,7 @@ function StatsGrid() {
                 <div className="flex h-2/3 flex-col justify-center rounded-lg bg-blue-100 p-6 text-[#11135f]">
                     <h2 className="text-3xl font-bold sm:text-4xl">1k+</h2>
                     <p className="mt-1 text-gray-700">
-                        Canada's trusted accounting experts, proudly serving
+                        Canada&#39;s trusted accounting experts, proudly serving
                         1000+ clients nationwide
                     </p>
                 </div>

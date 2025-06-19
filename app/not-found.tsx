@@ -12,7 +12,7 @@ export default function NotFound() {
                     Oops! The page you are looking for does not exist or has
                     been moved.
                     <br />
-                    Let's get you back to where you belong.
+                    Let&#39;s get you back to where you belong.
                 </p>
                 <Link href="/">
                     <button className="mt-4 rounded-full bg-[#1E1E5A] px-8 py-4 text-lg font-bold text-white transition-colors hover:cursor-pointer hover:bg-[#131346]">

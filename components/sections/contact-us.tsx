@@ -1,5 +1,5 @@
 import { CircleArrowRight } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -18,7 +18,8 @@ export default function ContactUs() {
                 </div>
                 <div className="z-10 flex max-w-2xl flex-col items-center justify-between gap-8">
                     <h2 className="text-primary text-center text-3xl font-bold sm:text-4xl">
-                        Let's Connect : Schedule Your Consultation Today!{' '}
+                        Let&#39;s Connect : Schedule Your Consultation
+                        Today!{' '}
                     </h2>
                     <Link href="/contact-us">
                         <Button className="flex items-center gap-2 rounded-full">

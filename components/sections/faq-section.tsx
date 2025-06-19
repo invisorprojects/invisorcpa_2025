@@ -90,9 +90,9 @@ export default function Faq() {
                 </h2>
 
                 <p className="text-primary text-base leading-relaxed font-medium sm:text-lg">
-                    We've compiled a list of the most common questions we
-                    receive. From service details to general inquiries, we've
-                    got you covered.
+                    We&#39;ve compiled a list of the most common questions we
+                    receive. From service details to general inquiries,
+                    we&#39;ve got you covered.
                 </p>
             </div>
             <FaqAccordion />

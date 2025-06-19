@@ -1,7 +1,8 @@
 import { CircleArrowRight } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import Link from 'next/link';
-import { TeamCard, teams } from '@/app/team/page';
+import { TeamCard } from '../team-card';
+import { TEAMS } from '@/constants/TEAMS';
 
 export function BehindTheTeam() {
     return (
@@ -26,7 +27,7 @@ export function BehindTheTeam() {
             <div className="flex flex-col gap-4">
                 <div className="flex w-full flex-col gap-4 md:flex-row">
                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                        {teams.slice(0, 4).map((team, index) => (
+                        {TEAMS.slice(0, 4).map((team, index) => (
                             <TeamCard
                                 key={index}
                                 name={team.name}
