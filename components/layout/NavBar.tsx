@@ -59,9 +59,11 @@ export function NavBar() {
                                 </span>
                             </Link>
                         ))}
-                        <Button className="rounded-sm p-4 sm:hidden">
-                            <span className="font-medium">Contact Us</span>
-                        </Button>
+                        <Link href="/contact-us">
+                            <Button className="hidden rounded-sm px-4 py-5 hover:cursor-pointer sm:flex">
+                                <span className="font-medium">Contact Us</span>
+                            </Button>
+                        </Link>
                     </SheetContent>
                 </Sheet>
             </nav>
