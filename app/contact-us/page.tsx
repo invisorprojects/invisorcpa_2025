@@ -1,6 +1,7 @@
 import ContactUs from '@/components/sections/contact-us';
 import { Metadata } from 'next';
 import Image from 'next/image';
+import { WorldMapDemo } from './WorldMapDemo';
 
 export const metadata: Metadata = {
     title: 'Contact Us',
@@ -31,6 +32,9 @@ export default function ContactUsPage() {
             </section>
             <ContactUs />
             <GetInTouchSection />
+            <section className="flex flex-col items-center justify-between px-4 py-4 sm:px-8 md:px-12 lg:px-16 xl:px-24">
+                <WorldMapDemo />
+            </section>
         </main>
     );
 }
