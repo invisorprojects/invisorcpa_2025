@@ -11,7 +11,7 @@ import Image from 'next/image';
 import { UserSearch, ChartLine, HandCoins } from 'lucide-react';
 
 export const metadata: Metadata = {
-    title: 'Pricing',
+    title: 'About Us',
 };
 const stats = [
     { value: '20+', label: 'Professional Experts' },

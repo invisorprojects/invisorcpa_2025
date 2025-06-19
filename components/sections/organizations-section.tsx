@@ -1,6 +1,7 @@
 import { CircleArrowRight } from 'lucide-react';
 import { Button } from '../ui/button';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export function OrganizationsSection() {
     return (
@@ -17,13 +18,14 @@ export function OrganizationsSection() {
                         companies in Canada with tax planning, bookkeeping and
                         structuring their financial back office.
                     </p>
-
-                    <Button className="flex items-center gap-2 rounded-full">
-                        <span className="mx-4 text-sm font-medium">
-                            View Case Studies
-                        </span>
-                        <CircleArrowRight className="h-4 w-4" />
-                    </Button>
+                    <Link href="/case-studies">
+                        <Button className="flex items-center gap-2 rounded-full">
+                            <span className="mx-4 text-sm font-medium">
+                                View Case Studies
+                            </span>
+                            <CircleArrowRight className="h-4 w-4" />
+                        </Button>
+                    </Link>
                 </div>
             </div>
             <CompanyLogos />

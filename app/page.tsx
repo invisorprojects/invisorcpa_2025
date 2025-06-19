@@ -14,6 +14,7 @@ import { BehindTheTeam } from '@/components/sections/behind-the-team';
 import { WhyChooseUs } from '@/components/sections/why-choose-us-section';
 import { SERVICES } from '@/constants/SERVICES';
 import { ServicesCard } from '@/components/service-card';
+import { CaseStudiesCard } from '@/components/case-studies-card';
 
 export default function Home() {
     return (
@@ -264,80 +265,7 @@ export default function Home() {
                     </p>
                 </div>
                 <div className="flex flex-col gap-4">
-                    <div className="flex w-full flex-col gap-4 md:flex-row">
-                        <div className="flex max-w-sm flex-col overflow-hidden rounded-xl bg-gray-100 hover:bg-sky-50">
-                            <Image
-                                src="/assets/case-studies/case-study-1.jpg" // Replace with your image path
-                                alt="Case Study"
-                                width={2048}
-                                height={1152}
-                                className="h-64 w-full object-cover"
-                            />
-                            <div className="flex flex-col gap-6 p-8">
-                                <h3 className="text-primary text-lg font-bold">
-                                    Optimizing Financial Management for
-                                    E-Commerce Growth and Efficiency
-                                </h3>
-                                <Link href="/case-studies/1">
-                                    <Button
-                                        variant="ghost"
-                                        className="text-primary flex items-center gap-2 px-0 text-sm font-bold hover:bg-sky-50 hover:underline"
-                                    >
-                                        View Case Study
-                                        <CircleArrowRight className="h-5 w-5" />
-                                    </Button>
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="flex max-w-sm flex-col overflow-hidden rounded-xl bg-gray-100 hover:bg-sky-50">
-                            <Image
-                                src="/assets/case-studies/case-study-2.jpg" // Replace with your image path
-                                alt="Case Study"
-                                width={2048}
-                                height={1152}
-                                className="h-64 w-full object-cover"
-                            />
-                            <div className="flex flex-col gap-6 p-8">
-                                <h3 className="text-primary text-lg font-bold">
-                                    Streamlining Financial Operations for an
-                                    Audiology Service Provider
-                                </h3>
-                                <Link href="/case-studies/2">
-                                    <Button
-                                        variant="ghost"
-                                        className="text-primary flex items-center gap-2 px-0 text-sm font-bold hover:bg-sky-50 hover:underline"
-                                    >
-                                        View Case Study
-                                        <CircleArrowRight className="h-5 w-5" />
-                                    </Button>
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="flex max-w-sm flex-col overflow-hidden rounded-xl bg-gray-100 hover:bg-sky-50">
-                            <Image
-                                src="/assets/case-studies/case-study-3.jpg" // Replace with your image path
-                                alt="Case Study"
-                                width={2048}
-                                height={1152}
-                                className="h-64 w-full object-cover"
-                            />
-                            <div className="flex flex-col gap-6 p-8">
-                                <h3 className="text-primary text-lg font-bold">
-                                    Optimizing Financial Management for IT
-                                    Solutions Provider
-                                </h3>
-                                <Link href="/case-studies/2">
-                                    <Button
-                                        variant="ghost"
-                                        className="text-primary flex items-center gap-2 px-0 text-sm font-bold hover:bg-sky-50 hover:underline"
-                                    >
-                                        View Case Study
-                                        <CircleArrowRight className="h-5 w-5" />
-                                    </Button>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
+                    <CaseStudiesCard />
                     <div className="flex w-full justify-end py-8">
                         <Link href="/case-studies">
                             <Button
