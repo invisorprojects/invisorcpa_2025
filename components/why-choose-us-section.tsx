@@ -95,13 +95,13 @@ function WhyChooseUsCard({
     const IconComponent = iconMap[icon as keyof typeof iconMap];
 
     return (
-        <div className="group flex items-start justify-center gap-4 rounded-lg bg-gray-100 p-6 transition-all duration-500 group-hover:bg-sky-100 hover:bg-sky-100">
+        <div className="group flex items-start justify-start gap-4 rounded-lg bg-gray-100 p-6 transition-all duration-500 group-hover:bg-sky-100 hover:bg-sky-100">
             <div className="flex items-center justify-center rounded-sm bg-sky-50 p-2 shadow-md transition-all duration-500 group-hover:bg-gray-100">
                 <IconComponent className="h-6 w-6 text-[#1E1E5A]" />
             </div>
             <div>
                 <h4 className="text-lg font-bold text-black">{title}</h4>
-                <p className="mt-1">{description}</p>
+                <p className="mt-1 max-w-lg">{description}</p>
             </div>
         </div>
     );

@@ -1,8 +1,7 @@
 import { CircleArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 import Link from 'next/link';
-import teams from '@/constants/teams';
-import { TeamCard } from '@/app/team/page';
+import { TeamCard, teams } from '@/app/team/page';
 
 export function BehindTheTeam() {
     return (

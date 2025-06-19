@@ -3,8 +3,6 @@ import TrustedPartners from '@/components/trusted-partners';
 import { Button } from '@/components/ui/button';
 import { ScheduleMeeting } from '@/components/ScheduleMeeting';
 import { BrainCog, CircleArrowRight, Quote } from 'lucide-react';
-import ServicesCard from '@/components/ServicesCard';
-import services from '@/constants/services';
 import Link from 'next/link';
 import ContactUs from '@/components/contact-us';
 import Faq from '@/components/faq-section';
@@ -14,6 +12,7 @@ import OurAchievements from '@/components/our-achievements';
 import { OrganizationsSection } from '@/components/organizations-section';
 import { BehindTheTeam } from '@/components/behind-the-team';
 import { WhyChooseUs } from '@/components/why-choose-us-section';
+import { services, ServicesCard } from './services/page';
 
 export default function Home() {
     return (
