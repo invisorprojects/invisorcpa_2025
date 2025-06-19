@@ -17,7 +17,8 @@ const eslintConfig = [
             'unused-imports': unusedImports,
         },
         rules: {
-            '@typescript-eslint/no-unused-vars': 'off', // Turn off the TypeScript rule
+            'react/no-unescaped-entities': 'warn',
+            '@typescript-eslint/no-unused-vars': 'warn', // Turn off the TypeScript rule
             'unused-imports/no-unused-imports': 'warn', // Error on unused imports
             'unused-imports/no-unused-vars': [
                 'warn',
