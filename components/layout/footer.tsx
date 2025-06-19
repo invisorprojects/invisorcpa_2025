@@ -55,10 +55,18 @@ export default function Footer() {
                     <div>
                         <h4 className="mb-2 font-semibold">Explore</h4>
                         <ul className="space-y-1">
-                            <li>Home</li>
-                            <li>About Us</li>
-                            <li>Team</li>
-                            <li>Blog</li>
+                            <li>
+                                <Link href="/">Home</Link>
+                            </li>
+                            <li>
+                                <Link href="/about-us">About Us</Link>
+                            </li>
+                            <li>
+                                <Link href="/team">Team</Link>
+                            </li>
+                            {/* <li>
+                                <Link href="/blog">Blog</Link>
+                            </li> */}
                         </ul>
                     </div>
 
@@ -66,10 +74,18 @@ export default function Footer() {
                     <div>
                         <h4 className="mb-2 font-semibold">Solutions</h4>
                         <ul className="space-y-1">
-                            <li>Services</li>
-                            <li>Industries</li>
-                            <li>Tax Season</li>
-                            <li>Case Study</li>
+                            <li>
+                                <Link href="/services">Services</Link>
+                            </li>
+                            {/* <li>
+                                <Link href="/industries">Industries</Link>
+                            </li> */}
+                            {/* <li>
+                                <Link href="/tax-season">Tax Season</Link>
+                            </li> */}
+                            <li>
+                                <Link href="/case-studies">Case Study</Link>
+                            </li>
                         </ul>
                     </div>
 
@@ -77,8 +93,12 @@ export default function Footer() {
                     <div>
                         <h4 className="mb-2 font-semibold">Get in Touch</h4>
                         <ul className="space-y-1">
-                            <li>Contact Us</li>
-                            <li>Pricing</li>
+                            <li>
+                                <Link href="/contact-us">Contact Us</Link>
+                            </li>
+                            <li>
+                                <Link href="/pricing">Pricing</Link>
+                            </li>
                         </ul>
                     </div>
                 </div>
