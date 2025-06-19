@@ -3,6 +3,7 @@ import './globals.css';
 import { Header } from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { openSans, poppins } from '@/constants/FONTS';
+import FloatingButtons from '@/components/layout/floating-buttons';
 
 export const metadata: Metadata = {
     title: {
@@ -27,6 +28,7 @@ export default function RootLayout({
                 <Header />
                 {children}
                 <Footer />
+                <FloatingButtons />
             </body>
         </html>
     );
