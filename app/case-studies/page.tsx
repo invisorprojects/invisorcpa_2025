@@ -30,7 +30,7 @@ export default function CaseStudies() {
                 </div>
                 <Image
                     src="/assets/banners/banner-1.jpg"
-                    alt="Services"
+                    alt="Case Studies"
                     width={4096}
                     height={1632}
                     className="rounded-4xl shadow-md"
