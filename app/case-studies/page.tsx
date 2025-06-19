@@ -23,7 +23,7 @@ export default function CaseStudies() {
                     <div className="flex max-w-lg flex-col items-start gap-4">
                         <p className="text-[#686666]">
                             Each case study provides a detailed look at a
-                            specific client's challenges, goals, and the
+                            specific client&apos;s challenges, goals, and the
                             customized solutions.
                         </p>
                     </div>

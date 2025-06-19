@@ -1,6 +1,5 @@
 import ContactUs from '@/components/sections/contact-us';
 import { Metadata } from 'next';
-import Image from 'next/image';
 import { WorldMapDemo } from './WorldMapDemo';
 
 export const metadata: Metadata = {
@@ -17,12 +16,13 @@ export default function ContactUsPage() {
                             CONTACT US
                         </h3>
                         <h2 className="text-primary mt-4 text-4xl font-bold sm:text-5xl">
-                            Let's Connect : Schedule  Your Consultation Today!
+                            Let&apos;s Connect : Schedule Your Consultation
+                            Today!
                         </h2>
                     </div>
                     <div className="flex max-w-lg flex-col items-start gap-4">
                         <p className="text-[#686666]">
-                            We’re here to help with your bookkeeping and
+                            We&apos;re here to help with your bookkeeping and
                             accounting needs. Reach out to our team for expert
                             guidance, service inquiries, or to get started with
                             a customized financial solution for your business.
