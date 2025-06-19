@@ -94,7 +94,6 @@ import {
     ChartBar,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
 import ContactUs from '@/components/contact-us';
 const iconMap = {
     BrainCircuit,

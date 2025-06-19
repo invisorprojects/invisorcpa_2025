@@ -2,7 +2,7 @@ import Image from 'next/image';
 import TrustedPartners from '@/components/trusted-partners';
 import { Button } from '@/components/ui/button';
 import { ScheduleMeeting } from '@/components/ScheduleMeeting';
-import { BrainCog, CircleArrowRight, Quote } from 'lucide-react';
+import { CircleArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import ContactUs from '@/components/contact-us';
 import Faq from '@/components/faq-section';
