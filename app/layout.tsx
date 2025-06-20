@@ -4,6 +4,7 @@ import { Header } from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { openSans, poppins } from '@/constants/FONTS';
 import FloatingButtons from '@/components/layout/floating-buttons';
+import StoryblokProvider from '@/components/StoryblokProvider';
 
 export const metadata: Metadata = {
     title: {
@@ -20,16 +21,18 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html
-            lang="en"
-            className={`${poppins.variable} ${openSans.variable} antialiased`}
-        >
-            <body>
-                <Header />
-                {children}
-                <Footer />
-                <FloatingButtons />
-            </body>
-        </html>
+        <StoryblokProvider>
+            <html
+                lang="en"
+                className={`${poppins.variable} ${openSans.variable} antialiased`}
+            >
+                <body>
+                    <Header />
+                    {children}
+                    <Footer />
+                    <FloatingButtons />
+                </body>
+            </html>
+        </StoryblokProvider>
     );
 }
