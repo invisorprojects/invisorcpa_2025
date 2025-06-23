@@ -1,6 +1,11 @@
+export const dynamic = 'force-static';
+export const revalidate = false;
+
 import ContactUs from '@/components/sections/contact-us';
 import { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { getStoryblokApi } from '@/lib/storyblok';
 
 export const metadata: Metadata = {
@@ -13,7 +18,7 @@ async function fetchData(slug: string) {
         const { data } = await storyblokApi.get(
             `cdn/stories/case-studies/${slug}`,
             {
-                version: 'draft',
+                version: 'published',
             }
         );
         return data;
@@ -69,8 +74,6 @@ export default async function Page({
     );
 }
 
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
 function CaseStudyDetails({ content }: { content: any }) {
     return (
         <section className="w-full px-4 py-12">
@@ -270,4 +273,16 @@ function CaseStudyDetails({ content }: { content: any }) {
             </div>
         </section>
     );
+}
+
+export async function generateStaticParams() {
+    const storyblokApi = getStoryblokApi();
+    const { data } = await storyblokApi.get('cdn/stories', {
+        starts_with: 'case-studies/',
+        version: 'published',
+    });
+
+    return data.stories.map((story: any) => ({
+        slug: story.slug.replace('case-studies/', ''),
+    }));
 }
