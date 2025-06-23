@@ -18,7 +18,10 @@ async function fetchData(slug: string) {
         const { data } = await storyblokApi.get(
             `cdn/stories/case-studies/${slug}`,
             {
-                version: 'published',
+                version:
+                    process.env.NODE_ENV === 'production'
+                        ? 'published'
+                        : 'draft',
             }
         );
         return data;
@@ -279,7 +282,7 @@ export async function generateStaticParams() {
     const storyblokApi = getStoryblokApi();
     const { data } = await storyblokApi.get('cdn/stories', {
         starts_with: 'case-studies/',
-        version: 'published',
+        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
     });
 
     return data.stories.map((story: any) => ({
