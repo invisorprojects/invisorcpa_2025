@@ -13,12 +13,12 @@ export function CaseStudiesCard() {
         {
             image: '/assets/case-studies/case-study-2.jpg',
             title: 'Streamlining Financial Operations for an Audiology Service Provider',
-            link: '/case-studies/1',
+            link: '/case-studies/2',
         },
         {
             image: '/assets/case-studies/case-study-3.jpg',
             title: 'Optimizing Financial Management for IT Solutions Provider',
-            link: '/case-studies/1',
+            link: '/case-studies/3',
         },
     ];
 
