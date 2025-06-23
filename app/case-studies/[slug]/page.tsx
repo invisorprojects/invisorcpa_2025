@@ -1,12 +1,43 @@
 import ContactUs from '@/components/sections/contact-us';
 import { Metadata } from 'next';
 import Image from 'next/image';
+import { getStoryblokApi } from '@/lib/storyblok';
 
 export const metadata: Metadata = {
     title: 'Case Studies',
 };
 
-export default function Page() {
+async function fetchData(slug: string) {
+    const storyblokApi = getStoryblokApi();
+    try {
+        const { data } = await storyblokApi.get(
+            `cdn/stories/case-studies/${slug}`,
+            {
+                version: 'draft',
+            }
+        );
+        return data;
+    } catch (error) {
+        console.log('Error fetching data:', error);
+        return null;
+    }
+}
+
+export default async function Page({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
+    const { slug } = await params;
+    const data = await fetchData(slug);
+    if (!data) {
+        return notFound();
+    }
+
+    console.log('data', data);
+    const header = data.story.content.body[0];
+    const content = data.story.content.body[1];
+    console.log('data', data.story.content.body);
     return (
         <main>
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
@@ -16,38 +47,31 @@ export default function Page() {
                             CASE STUDIES
                         </h3>
                         <h2 className="text-primary mt-4 text-4xl font-bold 2xl:text-5xl">
-                            Streamlining Financial Operations for an Audiology
-                            Service Provider
+                            {header.title}
                         </h2>
                     </div>
                     <div className="flex max-w-lg flex-col items-start gap-4">
-                        <p className="text-[#686666]">
-                            An established audiology provider faced challenges
-                            with disorganized bookkeeping, leading to delays and
-                            tax filing issues. Despite their success in
-                            healthcare, financial inefficiencies held them back.
-                            This case study showcases how our expert solutions
-                            improved their record-keeping, enhanced compliance,
-                            and brought clarity to their financial processes.
-                        </p>
+                        <p className="text-[#686666]">{header.description}</p>
                     </div>
                 </div>
+
                 <Image
-                    src="/assets/banners/banner-9.jpg"
+                    src={header.background_image.filename}
                     alt="Case Studies"
                     width={4096}
                     height={1638}
                     className="rounded-4xl shadow-md"
                 />
             </section>
-            <CaseStudyDetails />
+            <CaseStudyDetails content={content} />
             <ContactUs />
         </main>
     );
 }
 
 import Link from 'next/link';
-function CaseStudyDetails() {
+import { notFound } from 'next/navigation';
+function CaseStudyDetails({ content }: { content: any }) {
     return (
         <section className="w-full px-4 py-12">
             <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 lg:grid-cols-3">
@@ -58,37 +82,23 @@ function CaseStudyDetails() {
                             Client Background
                         </h3>
                         <p className="mt-2 text-gray-700">
-                            The client is a trusted provider of hearing
-                            solutions, dedicated to helping individuals with
-                            hearing loss improve their quality of life. With a
-                            strong reputation for expert audiology services, the
-                            company focuses on delivering personalized care.
-                            However, despite its success, the company struggled
-                            with managing financial records, which impacted the
-                            efficiency of their operations and caused
-                            complications during tax filing and reporting.
+                            {content.client_background}
                         </p>
                     </div>
 
                     <div>
                         <h3 className="text-xl font-semibold">The Challenge</h3>
                         <p className="mt-2 text-gray-700">
-                            The company faced significant challenges due to the
-                            lack of a proper bookkeeping and accounting system.
-                            Their financial records were disorganized, leading
-                            to inefficiencies and errors in tax preparation.
-                            This disarray resulted in delays during critical
-                            periods, causing added stress and risk of
-                            non-compliance. As a result, their ability to focus
-                            on delivering quality care to clients was impacted,
-                            and the business struggled with maintaining accurate
-                            and up-to-date financial information.
+                            {content.the_challenge}
                         </p>
                     </div>
 
                     <div>
                         <h3 className="text-xl font-semibold">Our Approach</h3>
-                        <ul className="mt-2 list-disc space-y-1 pl-5 text-gray-700">
+                        <p className="mt-2 text-gray-700">
+                            {content.our_approach}
+                        </p>
+                        {/* <ul className="mt-2 list-disc space-y-1 pl-5 text-gray-700">
                             <li>
                                 <strong>Assessment:</strong> We conducted a
                                 thorough review of their financial processes to
@@ -106,12 +116,15 @@ function CaseStudyDetails() {
                                 ensuring compliance with regulations and
                                 providing accurate financial records.
                             </li>
-                        </ul>
+                        </ul> */}
                     </div>
 
                     <div>
                         <h3 className="text-xl font-semibold">The Results</h3>
-                        <ul className="mt-2 list-disc space-y-1 pl-5 text-gray-700">
+                        <p className="mt-2 text-gray-700">
+                            {content.the_results}
+                        </p>
+                        {/* <ul className="mt-2 list-disc space-y-1 pl-5 text-gray-700">
                             <li>
                                 <strong>Efficiency Boost:</strong> QuickBooks
                                 streamlined their financial management, reducing
@@ -127,10 +140,10 @@ function CaseStudyDetails() {
                                 and compliance managed by our team, the company
                                 could focus entirely on serving their clients.
                             </li>
-                        </ul>
+                        </ul> */}
                     </div>
 
-                    <div>
+                    {/* <div>
                         <h3 className="text-xl font-semibold">
                             Value We Bring to Every Client
                         </h3>
@@ -173,7 +186,7 @@ function CaseStudyDetails() {
                                 never overpaying or underprepared.
                             </li>
                         </ul>
-                    </div>
+                    </div> */}
 
                     <div>
                         <h3 className="text-xl font-semibold">Conclusion</h3>
