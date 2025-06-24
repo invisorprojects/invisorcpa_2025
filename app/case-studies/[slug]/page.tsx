@@ -66,14 +66,15 @@ export default async function Page({
                         <p className="text-[#686666]">{content.description}</p>
                     </div>
                 </div>
-
-                <Image
-                    src={content.image.filename}
-                    alt="Case Studies"
-                    width={4096}
-                    height={1638}
-                    className="rounded-4xl shadow-md"
-                />
+                <div>
+                    <Image
+                        src={content.image.filename}
+                        alt="Case Studies"
+                        width={4096}
+                        height={1638}
+                        className="max-h-[500px] rounded-4xl object-cover object-top shadow-md"
+                    />
+                </div>
             </section>
 
             <CaseStudyDetails content={content} />
