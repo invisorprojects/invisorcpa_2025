@@ -14,7 +14,7 @@ import { BehindTheTeam } from '@/components/sections/behind-the-team';
 import { WhyChooseUs } from '@/components/sections/why-choose-us-section';
 import { SERVICES } from '@/constants/SERVICES';
 import { ServicesCard } from '@/components/service-card';
-import { CaseStudiesCard } from '@/components/case-studies-card';
+// import { CaseStudiesCard } from '@/components/case-studies-card';
 
 export default function Home() {
     return (
@@ -265,7 +265,7 @@ export default function Home() {
                     </p>
                 </div>
                 <div className="flex flex-col gap-4">
-                    <CaseStudiesCard />
+                    {/* <CaseStudiesCard /> */}
                     <div className="flex w-full justify-end py-8">
                         <Link href="/case-studies">
                             <Button
