@@ -1,7 +1,4 @@
-import {
-    storyblokEditable,
-    StoryblokServerComponent,
-} from '@storyblok/react/rsc';
+import { StoryblokServerComponent } from '@storyblok/react/rsc';
 
 export default function Page({ blok }: { blok: any }) {
     return (
