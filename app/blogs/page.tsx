@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: 'Blogs',
 };
 
-export default async function CaseStudies() {
+export default async function Blogs() {
     const storyblokApi = getStoryblokApi();
     const blogs = await storyblokApi.getAll('cdn/stories', {
         version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
@@ -41,7 +41,7 @@ export default async function CaseStudies() {
                 </div>
                 <Image
                     src="/assets/banners/banner-3.jpg"
-                    alt="Case Studies"
+                    alt="Blogs"
                     width={4096}
                     height={1632}
                     className="h-[500px] rounded-4xl object-cover shadow-md"

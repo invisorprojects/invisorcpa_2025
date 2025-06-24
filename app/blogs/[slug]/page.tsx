@@ -14,22 +14,17 @@ import { StoryblokRichText } from '@storyblok/react';
 // https://www.storyblok.com/docs/packages/storyblok-react#storyblokrichtext
 
 export const metadata: Metadata = {
-    title: 'Case Studies',
+    title: 'Blog Post',
 };
 
 async function fetchData(slug: string) {
     const storyblokApi = getStoryblokApi();
     try {
-        const { data } = await storyblokApi.get(
-            `cdn/stories/case-studies/${slug}`,
-            {
-                content_type: 'case_study',
-                version:
-                    process.env.NODE_ENV === 'production'
-                        ? 'published'
-                        : 'draft',
-            }
-        );
+        const { data } = await storyblokApi.get(`cdn/stories/blogs/${slug}`, {
+            content_type: 'blog',
+            version:
+                process.env.NODE_ENV === 'production' ? 'published' : 'draft',
+        });
         return data;
     } catch (error) {
         console.log('Error fetching data:', error);
@@ -56,7 +51,7 @@ export default async function Page({
                 <div className="mb-20 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:justify-between">
                     <div className="max-w-2xl">
                         <h3 className="text-secondary text-xl font-medium">
-                            CASE STUDIES
+                            BLOGS
                         </h3>
                         <h2 className="text-primary mt-4 text-4xl font-bold 2xl:text-5xl">
                             {content.title}
@@ -69,7 +64,7 @@ export default async function Page({
                 <div>
                     <Image
                         src={content.image.filename}
-                        alt="Case Studies"
+                        alt="Blogs"
                         width={4096}
                         height={1638}
                         className="max-h-[500px] rounded-4xl object-cover object-top shadow-md"
@@ -77,13 +72,13 @@ export default async function Page({
                 </div>
             </section>
 
-            <CaseStudyDetails content={content} />
+            <BlogDetails content={content} />
             <ContactUs />
         </main>
     );
 }
 
-function CaseStudyDetails({ content }: { content: any }) {
+function BlogDetails({ content }: { content: any }) {
     return (
         <section className="w-full px-4 py-12">
             <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 lg:grid-cols-3">
@@ -96,12 +91,12 @@ function CaseStudyDetails({ content }: { content: any }) {
                 <aside className="space-y-10">
                     <div className="rounded-md bg-sky-50 p-6 shadow-sm">
                         <h4 className="mb-4 text-lg font-semibold text-sky-800">
-                            Recent Case Studies
+                            Recent Blogs
                         </h4>
                         <ul className="list-disc space-y-2 pl-5 text-sm text-gray-700">
                             <li>
                                 <Link
-                                    href="/case-studies/3"
+                                    href="/blogs/3"
                                     className="underline hover:text-sky-600"
                                 >
                                     Optimizing Financial Management for IT
@@ -110,7 +105,7 @@ function CaseStudyDetails({ content }: { content: any }) {
                             </li>
                             <li>
                                 <Link
-                                    href="/case-studies/1"
+                                    href="/blogs/1"
                                     className="underline hover:text-sky-600"
                                 >
                                     Optimizing Financial Management for
@@ -161,11 +156,11 @@ function CaseStudyDetails({ content }: { content: any }) {
 export async function generateStaticParams() {
     const storyblokApi = getStoryblokApi();
     const { data } = await storyblokApi.get('cdn/stories', {
-        starts_with: 'case-studies/',
+        starts_with: 'blogs/',
         version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
     });
 
     return data.stories.map((story: any) => ({
-        slug: story.slug.replace('case-studies/', ''),
+        slug: story.slug.replace('blogs/', ''),
     }));
 }

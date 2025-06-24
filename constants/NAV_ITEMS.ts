@@ -17,7 +17,7 @@ export const NAV_ITEMS: NAV_ITEMS[] = [
     {
         title: 'Tax Season',
         href: '/tax-season',
-        disabled: false,
+        disabled: true,
     },
     {
         title: 'Pricing',
