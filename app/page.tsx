@@ -14,9 +14,19 @@ import { BehindTheTeam } from '@/components/sections/behind-the-team';
 import { WhyChooseUs } from '@/components/sections/why-choose-us-section';
 import { SERVICES } from '@/constants/SERVICES';
 import { ServicesCard } from '@/components/service-card';
-// import { CaseStudiesCard } from '@/components/case-studies-card';
+import { CaseStudyCard } from '@/components/case-study-card';
+import { getStoryblokApi } from '@/lib/storyblok';
 
-export default function Home() {
+export default async function Home() {
+    const storyblokApi = getStoryblokApi();
+    const caseStudies = await storyblokApi.getAll('cdn/stories', {
+        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
+        starts_with: 'case-studies',
+        content_type: 'case_study',
+        sort_by: 'first_published_at:desc',
+        per_page: 3,
+    });
+    console.log('caseStudies length:', caseStudies.length);
     return (
         <main className="">
             <section className="flex flex-col gap-4 p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
@@ -265,7 +275,16 @@ export default function Home() {
                     </p>
                 </div>
                 <div className="flex flex-col gap-4">
-                    {/* <CaseStudiesCard /> */}
+                    <div className="flex w-full flex-col items-center justify-center gap-4 md:flex-row md:items-stretch">
+                        {caseStudies.slice(0, 3).map((study) => (
+                            <CaseStudyCard
+                                key={study.slug}
+                                content={study.content}
+                                slug={study.slug}
+                            />
+                        ))}
+                    </div>
+
                     <div className="flex w-full justify-end py-8">
                         <Link href="/case-studies">
                             <Button
