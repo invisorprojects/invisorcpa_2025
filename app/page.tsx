@@ -26,6 +26,14 @@ export default async function Home() {
         sort_by: 'first_published_at:desc',
         per_page: 3,
     });
+    const blogs = await storyblokApi.getAll('cdn/stories', {
+        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
+        starts_with: 'blogs',
+        content_type: 'blog',
+        sort_by: 'first_published_at:desc',
+        per_page: 4,
+    });
+    console.log('blogs::', blogs);
     return (
         <main className="">
             <section className="flex flex-col gap-4 p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
@@ -339,7 +347,7 @@ export default async function Home() {
                             {/* Left: Image */}
                             <div className="w-full overflow-hidden rounded-lg">
                                 <Image
-                                    src="/assets/blogs/blog-1.jpg" // replace with your actual image path
+                                    src={blogs[0].content.image.filename} // replace with your actual image path
                                     alt="Outsourcing bookkeeping"
                                     width={2048}
                                     height={1366}
@@ -350,18 +358,13 @@ export default async function Home() {
                             {/* Right: Content */}
                             <div className="flex w-full flex-col gap-2 p-2">
                                 <h6 className="text-primary text-base font-medium">
-                                    How Technology is Transforming Modern
-                                    Accounting Practices
+                                    {blogs[0].content.title}
                                 </h6>
                                 <p className="text-xs leading-relaxed text-gray-500">
-                                    The accounting industry is undergoing a
-                                    significant transformation as new
-                                    technologies revolutionize traditional
-                                    bookkeeping and financial management
-                                    processes.
+                                    {blogs[0].content.description}
                                 </p>
 
-                                <Link href="/blogs/1">
+                                <Link href={`/blogs/${blogs[0].slug}`}>
                                     <Button
                                         variant={'outline'}
                                         className="text-primary border-primary hover:bg-primary flex items-center gap-4 rounded-full hover:text-white"
@@ -376,117 +379,43 @@ export default async function Home() {
 
                     {/* Text Content */}
                     <div className="space-y-6 md:w-1/2">
-                        <div className="flex flex-col items-center gap-4 p-1 md:flex-row">
-                            {/* Left: Image */}
-                            <div className="w-full overflow-hidden rounded-lg md:w-1/3">
-                                <Image
-                                    src="/assets/blogs/blog-2.jpg" // replace with your actual image path
-                                    alt="Outsourcing bookkeeping"
-                                    width={2048}
-                                    height={1366}
-                                    className="h-full w-full rounded-lg object-cover"
-                                />
+                        {blogs.slice(1).map((blog, index) => (
+                            <div
+                                key={index}
+                                className="flex flex-col items-center gap-4 p-1 md:flex-row"
+                            >
+                                {/* Left: Image */}
+                                <div className="w-full overflow-hidden rounded-lg md:w-1/3">
+                                    <Image
+                                        src={blog.content.image.filename}
+                                        alt="Outsourcing bookkeeping"
+                                        width={2048}
+                                        height={1366}
+                                        className="h-full w-full rounded-lg object-cover"
+                                    />
+                                </div>
+
+                                {/* Right: Content */}
+                                <div className="flex w-full flex-col gap-2 p-2 md:w-2/3">
+                                    <h6 className="text-primary text-base font-medium">
+                                        {blog.content.title}
+                                    </h6>
+                                    <p className="text-xs leading-relaxed text-gray-500">
+                                        {blog.content.description}
+                                    </p>
+
+                                    <Link href={`/blogs/${blog.slug}`}>
+                                        <Button
+                                            variant={'outline'}
+                                            className="text-primary border-primary hover:bg-primary flex items-center gap-4 rounded-full hover:text-white"
+                                        >
+                                            <span className="">Read More</span>
+                                            <CircleArrowRight className="h-4 w-4" />
+                                        </Button>
+                                    </Link>
+                                </div>
                             </div>
-
-                            {/* Right: Content */}
-                            <div className="flex w-full flex-col gap-2 p-2 md:w-2/3">
-                                <h6 className="text-primary text-base font-medium">
-                                    Top 5 Benefits of Outsourcing Your
-                                    Bookkeeping to Experts
-                                </h6>
-                                <p className="text-xs leading-relaxed text-gray-500">
-                                    Managing bookkeeping is critical to any
-                                    business, but handling it in-house can often
-                                    become time-consuming, error-prone, and
-                                    costly.
-                                </p>
-
-                                <Link href="/blogs/2">
-                                    <Button
-                                        variant={'outline'}
-                                        className="text-primary border-primary hover:bg-primary flex items-center gap-4 rounded-full hover:text-white"
-                                    >
-                                        <span className="">Read More</span>
-                                        <CircleArrowRight className="h-4 w-4" />
-                                    </Button>
-                                </Link>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col items-center gap-4 p-1 md:flex-row">
-                            {/* Left: Image */}
-                            <div className="w-full overflow-hidden rounded-lg md:w-1/3">
-                                <Image
-                                    src="/assets/blogs/blog-3.jpg" // replace with your actual image path
-                                    alt="Outsourcing bookkeeping"
-                                    width={2048}
-                                    height={1366}
-                                    className="h-full w-full rounded-lg object-cover"
-                                />
-                            </div>
-
-                            {/* Right: Content */}
-                            <div className="flex w-full flex-col gap-2 p-2 md:w-2/3">
-                                <h6 className="text-primary text-base font-medium">
-                                    How QuickBooks Integration Can Streamline
-                                    Your Business Operations
-                                </h6>
-                                <p className="text-xs leading-relaxed text-gray-500">
-                                    ‍Managing business finances can quickly
-                                    become complex without the right tools. Many
-                                    businesses struggle to keep track of income,
-                                    expenses, and overall financial health.
-                                </p>
-
-                                <Link href="/blogs/3">
-                                    <Button
-                                        variant={'outline'}
-                                        className="text-primary border-primary hover:bg-primary flex items-center gap-4 rounded-full hover:text-white"
-                                    >
-                                        <span className="">Read More</span>
-                                        <CircleArrowRight className="h-4 w-4" />
-                                    </Button>
-                                </Link>
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col items-center gap-4 p-1 md:flex-row">
-                            {/* Left: Image */}
-                            <div className="w-full overflow-hidden rounded-lg md:w-1/3">
-                                <Image
-                                    src="/assets/blogs/blog-4.jpg" // replace with your actual image path
-                                    alt="Outsourcing bookkeeping"
-                                    width={2048}
-                                    height={1366}
-                                    className="h-full w-full rounded-lg object-cover"
-                                />
-                            </div>
-
-                            {/* Right: Content */}
-                            <div className="flex w-full flex-col gap-2 p-2 md:w-2/3">
-                                <h6 className="text-primary text-base font-medium">
-                                    Why Accurate Bookkeeping is Critical for
-                                    Your Business Growth
-                                </h6>
-                                <p className="text-xs leading-relaxed text-gray-500">
-                                    Accurate bookkeeping isn&#39;t just a
-                                    routine task—it&#39;s a vital element that
-                                    fuels business growth. Without it,
-                                    businesses risk disorganized finances, poor
-                                    decision-making, and compliance issues.
-                                </p>
-
-                                <Link href="/blogs/4">
-                                    <Button
-                                        variant={'outline'}
-                                        className="text-primary border-primary hover:bg-primary flex items-center gap-4 rounded-full hover:text-white"
-                                    >
-                                        <span className="">Read More</span>
-                                        <CircleArrowRight className="h-4 w-4" />
-                                    </Button>
-                                </Link>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>

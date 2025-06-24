@@ -20,8 +20,7 @@ export default function BlogCard({
             />
             <div className="absolute right-0 bottom-0 left-0 m-4 rounded-xl bg-white p-6 shadow-md transition-transform duration-300 group-hover:scale-95">
                 <h3 className="text-lg leading-snug font-bold">
-                    How QuickBooks Integration Can Streamline Your Business
-                    Operations
+                    {content.title}
                 </h3>
                 <Link
                     href={`/blogs/${slug}`}
