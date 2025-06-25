@@ -74,7 +74,6 @@ export default function Footer() {
                     <div>
                         <h4 className="mb-2 font-semibold">Solutions</h4>
                         <ul className="space-y-1">
-                            Case
                             <li>
                                 <Link href="/services">Services</Link>
                             </li>
