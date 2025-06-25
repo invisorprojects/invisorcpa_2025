@@ -4,6 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export function OrganizationsSection() {
+    const logos = Array.from(
+        { length: 39 },
+        (_, i) => `/assets/customer-logos/logo-${i + 1}.png`
+    );
     return (
         <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
             <div className="mb-20 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:justify-between">
@@ -28,30 +32,20 @@ export function OrganizationsSection() {
                     </Link>
                 </div>
             </div>
-            <CompanyLogos />
+            <div className="grid grid-cols-2 items-center justify-center gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+                {logos.map((src, index) => (
+                    <div
+                        key={index}
+                        className="flex items-center justify-center p-4"
+                    >
+                        <img
+                            src={src}
+                            alt={`Company Logo ${index + 1}`}
+                            className="max-h-12 w-auto object-contain transition-all duration-300 hover:scale-110"
+                        />
+                    </div>
+                ))}
+            </div>
         </section>
     );
 }
-
-const CompanyLogos = () => {
-    return (
-        <div
-            data-aos="fade-up"
-            className="grid h-full w-full grid-cols-4 place-items-center gap-8 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6"
-        >
-            {[
-                1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3,
-                4, 5, 6,
-            ].map((num, index) => (
-                <Image
-                    key={index}
-                    className="h-16 w-auto"
-                    src={`/assets/company-logos/logo-${num}.webp`}
-                    alt={`Company Logo ${num}`}
-                    width={160}
-                    height={100}
-                />
-            ))}
-        </div>
-    );
-};
