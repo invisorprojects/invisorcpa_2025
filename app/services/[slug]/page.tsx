@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button';
 import { SERVICES } from '@/constants/SERVICES';
 import {
     BarChart3,
-    CheckCheck,
     CheckCircle,
     CircleArrowRight,
     SquareCheck,

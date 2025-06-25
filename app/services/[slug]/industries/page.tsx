@@ -135,7 +135,6 @@ const industries = [
         ],
     },
 ];
-import Link from 'next/link';
 function CaseStudyDetails() {
     return (
         <section className="w-full px-4 py-12">
