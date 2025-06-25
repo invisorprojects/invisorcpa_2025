@@ -283,7 +283,7 @@ export default async function Home() {
                 </div>
                 <div className="flex flex-col gap-4">
                     <div className="flex w-full flex-col items-center justify-center gap-4 md:flex-row md:items-stretch">
-                        {caseStudies.slice(0, 3).map((study) => (
+                        {caseStudies.map((study) => (
                             <CaseStudyCard
                                 key={study.slug}
                                 content={study.content}
