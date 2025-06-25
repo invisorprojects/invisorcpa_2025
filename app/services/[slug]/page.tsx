@@ -1,5 +1,5 @@
 import ContactUs from '@/components/sections/contact-us';
-import { BarChart3 } from 'lucide-react';
+import { BarChart3, CheckCircle } from 'lucide-react';
 import { Metadata } from 'next';
 import Image from 'next/image';
 
@@ -61,7 +61,7 @@ export default function Page() {
                 />
             </section>
 
-            <section className="bg-white py-16 text-center">
+            <section className="p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
                 <h2 className="text-primary mb-24 text-3xl font-bold lg:text-4xl">
                     Why Choose Our Sales Tax Reporting Services?
                 </h2>
@@ -82,6 +82,66 @@ export default function Page() {
                             </p>
                         </div>
                     ))}
+                </div>
+            </section>
+
+            <section className="bg-[#E5F2F8] px-4 py-12 sm:px-8 lg:px-16 xl:px-24">
+                <div className="flex flex-col items-center justify-between gap-10 py-4 lg:flex-row">
+                    {/* Left Image */}
+                    <div className="h-[400px] w-full max-w-xl overflow-hidden rounded-xl shadow">
+                        <Image
+                            src="/assets/banners/banner-6.jpg"
+                            alt="Sales Tax Services"
+                            width={800}
+                            height={600}
+                            className="h-full w-full object-cover object-bottom"
+                        />
+                    </div>
+
+                    {/* Right Content */}
+                    <div className="w-full max-w-2xl space-y-6">
+                        <h2 className="text-primary text-3xl leading-snug font-bold sm:text-4xl">
+                            Our Sales Tax Reporting Services Include
+                        </h2>
+
+                        <ul className="space-y-4">
+                            {[
+                                {
+                                    title: 'Sales Tax Calculations',
+                                    desc: 'Accurate computations based on applicable regulations.',
+                                },
+                                {
+                                    title: 'Filing & Remittance',
+                                    desc: 'Preparing and filing sales tax returns on your behalf.',
+                                },
+                                {
+                                    title: 'Audit Support',
+                                    desc: 'Assistance in managing and responding to tax audits.',
+                                },
+                                {
+                                    title: 'Nexus Compliance',
+                                    desc: 'Ensuring adherence to tax obligations across different states or regions.',
+                                },
+                                {
+                                    title: 'Record Management',
+                                    desc: 'Organizing and maintaining essential documentation for easy reference.',
+                                },
+                            ].map((item, index) => (
+                                <li
+                                    key={index}
+                                    className="flex items-start gap-3"
+                                >
+                                    <CheckCircle className="text-primary mt-1 h-5 w-5" />
+                                    <span>
+                                        <span className="font-bold">
+                                            {item.title}:
+                                        </span>{' '}
+                                        {item.desc}
+                                    </span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
             </section>
 
