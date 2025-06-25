@@ -72,11 +72,7 @@ export default function Page() {
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {SERVICES.map((service, index) => (
-                        <ServicesCard
-                            key={index}
-                            title={service.title}
-                            description={service.description}
-                        />
+                        <ServicesCard key={index} service={service} />
                     ))}
                 </div>
             </section>

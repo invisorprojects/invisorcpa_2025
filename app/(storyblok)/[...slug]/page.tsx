@@ -1,5 +1,6 @@
 import { StoryblokStory } from '@storyblok/react/rsc';
 import { getStoryblokApi } from '@/lib/storyblok';
+import { notFound } from 'next/navigation';
 
 export default async function Page({
     params,
@@ -7,16 +8,24 @@ export default async function Page({
     params: Promise<{ slug: string[] }>;
 }) {
     const { slug } = await params;
-    const { data } = await fetchData(slug);
+    const response = await fetchData(slug);
+    if (!response || !response.data?.story) {
+        notFound();
+    }
 
-    return <StoryblokStory story={data.story} />;
+    return <StoryblokStory story={response.data.story} />;
 }
 
 async function fetchData(slug: string[]) {
     const fullSlug = slug ? slug.join('/') : 'home';
-
-    const storyblokApi = getStoryblokApi();
-    return await storyblokApi.get(`cdn/stories/${fullSlug}`, {
-        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
-    });
+    try {
+        const storyblokApi = getStoryblokApi();
+        return await storyblokApi.get(`cdn/stories/${fullSlug}`, {
+            version:
+                process.env.NODE_ENV === 'production' ? 'published' : 'draft',
+        });
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
 }

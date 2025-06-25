@@ -1,5 +1,6 @@
 import ContactUs from '@/components/sections/contact-us';
 import { Button } from '@/components/ui/button';
+import { SERVICES } from '@/constants/SERVICES';
 import {
     BarChart3,
     CheckCheck,
@@ -10,6 +11,7 @@ import {
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 export const metadata: Metadata = {
     title: 'Services',
@@ -65,7 +67,16 @@ const benefits = [
             'Insights from professionals who stay ahead of tax law changes.',
     },
 ];
-export default function Page() {
+export default async function Page({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
+    const { slug } = await params;
+    const service = SERVICES.find((service) => service.slug === slug);
+    if (!service) {
+        notFound();
+    }
     return (
         <main>
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
@@ -75,18 +86,11 @@ export default function Page() {
                             SERVICES
                         </h3>
                         <h2 className="text-primary mt-4 text-4xl font-bold sm:text-5xl">
-                            Sales Tax Reporting
+                            {service?.title}
                         </h2>
                     </div>
                     <div className="flex max-w-lg flex-col items-start gap-4">
-                        <p className="text-[#686666]">
-                            Managing sales tax requirements can be both complex
-                            and time-consuming, especially when navigating
-                            ever-changing regulations. Our expert sales tax
-                            reporting services are designed to take the burden
-                            off your shoulders, ensuring accurate and timely
-                            filings for your business.
-                        </p>
+                        <p className="text-[#686666]">{service?.description}</p>
                     </div>
                 </div>
                 <Image
@@ -291,7 +295,7 @@ export default function Page() {
                             plans, clear pricing, and expert support, we
                             simplify your finances so you can focus on growth.
                         </p>
-                        <Link href="/industries">
+                        <Link href={`/services/${slug}/industries`}>
                             <Button className="bg-primary flex items-center gap-2 rounded-full px-6 py-4 text-white">
                                 <span className="font-bold">Learn More</span>
                                 <CircleArrowRight className="h-4 w-4" />
