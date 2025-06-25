@@ -145,6 +145,70 @@ export default function Page() {
                 </div>
             </section>
 
+            <section className="px-4 py-12 sm:px-8 lg:px-16 xl:px-24">
+                <div className="flex flex-col items-center justify-between gap-10 lg:flex-row">
+                    {/* Left Content */}
+                    <div className="w-full max-w-2xl">
+                        <h2 className="text-primary mb-8 text-3xl font-bold sm:text-4xl">
+                            Our Process
+                        </h2>
+                        <div className="grid grid-cols-1 gap-8 text-gray-800 sm:grid-cols-2">
+                            {/* Item 1 */}
+                            <div>
+                                <h3 className="text-lg font-bold text-black">
+                                    Assessment & Analysis
+                                </h3>
+                                <p className="text-primary mt-2">
+                                    Review your business transactions to
+                                    determine tax obligations.
+                                </p>
+                            </div>
+                            {/* Item 2 */}
+                            <div>
+                                <h3 className="text-lg font-bold text-black">
+                                    System Setup
+                                </h3>
+                                <p className="text-primary mt-2">
+                                    Implement tools and processes for efficient
+                                    sales tax management.
+                                </p>
+                            </div>
+                            {/* Item 3 */}
+                            <div>
+                                <h3 className="text-lg font-bold text-black">
+                                    Filing & Reporting
+                                </h3>
+                                <p className="text-primary mt-2">
+                                    Prepare, file, and remit sales tax returns
+                                    in compliance with regulations.
+                                </p>
+                            </div>
+                            {/* Item 4 */}
+                            <div>
+                                <h3 className="text-lg font-bold text-black">
+                                    Ongoing Monitoring
+                                </h3>
+                                <p className="text-primary mt-2">
+                                    Provide regular updates and ensure adherence
+                                    to any changes in tax laws.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right Image */}
+                    <div className="w-full max-w-xl overflow-hidden rounded-xl shadow">
+                        <Image
+                            src="https://placehold.co/800x600.png"
+                            alt="Our Process"
+                            width={800}
+                            height={600}
+                            className="h-auto w-full object-cover"
+                        />
+                    </div>
+                </div>
+            </section>
+
             <ContactUs />
         </main>
     );
