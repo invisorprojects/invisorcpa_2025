@@ -48,8 +48,13 @@ export async function generateStaticParams() {
     return SERVICES.map((service) => ({ slug: service.slug }));
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
-    const service = SERVICES.find((service) => service.slug === params.slug);
+export default async function Page({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
+    const { slug } = await params;
+    const service = SERVICES.find((service) => service.slug === slug);
     if (!service) {
         notFound();
     }
@@ -220,7 +225,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                             plans, clear pricing, and expert support, we
                             simplify your finances so you can focus on growth.
                         </p>
-                        <Link href={`/services/${params.slug}/industries`}>
+                        <Link href={`/services/${slug}/industries`}>
                             <Button className="bg-primary flex items-center gap-2 rounded-full px-6 py-4 text-white">
                                 <span className="font-bold">Learn More</span>
                                 <CircleArrowRight className="h-4 w-4" />
