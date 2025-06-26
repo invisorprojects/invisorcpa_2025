@@ -97,7 +97,7 @@ export default async function Page({
                     alt="Services"
                     width={4096}
                     height={1632}
-                    className="rounded-4xl shadow-md"
+                    className="h-[500px] w-full rounded-4xl object-cover shadow-md"
                 />
             </section>
 
@@ -239,7 +239,7 @@ export default async function Page({
                     {/* Right Image */}
                     <div className="w-full max-w-xl overflow-hidden rounded-xl shadow">
                         <Image
-                            src="https://placehold.co/800x600.png"
+                            src="/assets/our-process.jpg"
                             alt="Our Process"
                             width={800}
                             height={600}
@@ -305,19 +305,21 @@ export default async function Page({
 
                 <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
                     {[
-                        'https://placehold.co/400x500?text=Image+1',
-                        'https://placehold.co/400x500?text=Image+2',
-                        'https://placehold.co/400x500?text=Image+3',
-                        'https://placehold.co/400x500?text=Image+4',
+                        '/assets/industries/industries-1.jpg',
+                        '/assets/industries/industries-2.jpg',
+                        '/assets/industries/industries-3.jpg',
+                        '/assets/industries/industries-4.jpg',
                     ].map((src, index) => (
                         <div
                             key={index}
-                            className="overflow-hidden rounded-xl shadow-sm"
+                            className="h-96 w-full max-w-xs overflow-hidden rounded-xl shadow-sm"
                         >
-                            <img
+                            <Image
                                 src={src}
                                 alt={`Image ${index + 1}`}
-                                className="h-auto w-full rounded-xl object-cover"
+                                width={320}
+                                height={384}
+                                className="h-full w-full rounded-xl object-cover object-center"
                             />
                         </div>
                     ))}
