@@ -9,7 +9,7 @@ export function CaseStudyCard({
     content: any;
     slug: string;
 }) {
-    console.log(slug);
+    // console.log(slug);
     return (
         <div className="flex max-w-sm flex-1 flex-col overflow-hidden rounded-xl bg-gray-100 hover:bg-sky-50">
             <Image

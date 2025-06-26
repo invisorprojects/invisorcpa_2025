@@ -18,7 +18,7 @@ export default async function Blogs() {
         starts_with: 'blogs',
         content_type: 'blog',
     });
-    console.log('blogs:', blogs);
+    // console.log('blogs:', blogs);
     return (
         <main>
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
