@@ -83,3 +83,42 @@ export function WorldMapDemo() {
         </div>
     );
 }
+
+// dots={[
+//     {
+//         start: {
+//             lat: 43.70183,
+//             lng: -80.3745,
+//             label: '645 St David St N, Fergus',
+//         },
+//         end: {
+//             lat: 43.70183,
+//             lng: -80.3745,
+//             label: '645 St David St N, Fergus',
+//         },
+//     },
+//     {
+//         start: {
+//             lat: 42.9976,
+//             lng: -81.2401,
+//             label: '300 Thorn Dr, Strathroy',
+//         },
+//         end: {
+//             lat: 42.9976,
+//             lng: -81.2401,
+//             label: '300 Thorn Dr, Strathroy',
+//         },
+//     },
+//     {
+//         start: {
+//             lat: 42.98115,
+//             lng: -81.2512,
+//             label: '341 Talbot St, London',
+//         },
+//         end: {
+//             lat: 42.98115,
+//             lng: -81.2512,
+//             label: '341 Talbot St, London',
+//         },
+//     },
+// ]}
