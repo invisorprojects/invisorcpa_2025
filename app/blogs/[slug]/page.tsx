@@ -9,6 +9,7 @@ import { notFound } from 'next/navigation';
 import { getStoryblokApi } from '@/lib/storyblok';
 
 import { StoryblokRichText } from '@storyblok/react';
+import ContactUsForm from '@/components/ContactUsForm';
 // We have identified issues with richtext and Types on React 19 and Next.js 15. As a temporary measure, we advise you to continue using React 18 and Next.js 14 until we have fully resolved the issues.
 // Refer this link
 // https://www.storyblok.com/docs/packages/storyblok-react#storyblokrichtext
@@ -114,39 +115,7 @@ function BlogDetails({ content }: { content: any }) {
                             </li>
                         </ul>
                     </div>
-
-                    <div className="rounded-md border bg-white p-6 shadow-sm">
-                        <h4 className="mb-4 text-center text-lg font-semibold">
-                            Contact Us
-                        </h4>
-                        <form className="space-y-4">
-                            <input
-                                type="text"
-                                placeholder="Name"
-                                className="w-full rounded-md border px-4 py-2 text-sm"
-                            />
-                            <input
-                                type="email"
-                                placeholder="Email"
-                                className="w-full rounded-md border px-4 py-2 text-sm"
-                            />
-                            <input
-                                type="tel"
-                                placeholder="Phone Number"
-                                className="w-full rounded-md border px-4 py-2 text-sm"
-                            />
-                            <textarea
-                                placeholder="What services interest you?"
-                                className="w-full rounded-md border px-4 py-2 text-sm"
-                            />
-                            <button
-                                type="submit"
-                                className="w-full rounded-md bg-sky-600 py-2 text-sm font-semibold text-white hover:bg-sky-700"
-                            >
-                                SEND
-                            </button>
-                        </form>
-                    </div>
+                    <ContactUsForm />
                 </aside>
             </div>
         </section>

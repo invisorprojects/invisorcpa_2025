@@ -1,6 +1,7 @@
 import ContactUs from '@/components/sections/contact-us';
 import { Metadata } from 'next';
 import { WorldMapDemo } from './WorldMapDemo';
+import ContactUsForm from '@/components/ContactUsForm';
 
 export const metadata: Metadata = {
     title: 'Contact Us',
@@ -75,59 +76,7 @@ function GetInTouchSection() {
                 </div>
 
                 {/* Contact Form */}
-                <div className="w-full max-w-xl rounded-md border bg-white p-6 shadow-md md:w-1/2">
-                    <form className="space-y-6">
-                        <div>
-                            <label className="mb-1 block font-medium">
-                                Name
-                            </label>
-                            <input
-                                type="text"
-                                placeholder="Enter your name"
-                                className="w-full rounded-md border px-4 py-2 shadow-sm focus:ring focus:ring-blue-100 focus:outline-none"
-                            />
-                        </div>
-
-                        <div>
-                            <label className="mb-1 block font-medium">
-                                Phone Number
-                            </label>
-                            <input
-                                type="tel"
-                                placeholder="Enter phone number"
-                                className="w-full rounded-md border px-4 py-2 shadow-sm focus:ring focus:ring-blue-100 focus:outline-none"
-                            />
-                        </div>
-
-                        <div>
-                            <label className="mb-1 block font-medium">
-                                Email
-                            </label>
-                            <input
-                                type="email"
-                                placeholder="Enter email"
-                                className="w-full rounded-md border px-4 py-2 shadow-sm focus:ring focus:ring-blue-100 focus:outline-none"
-                            />
-                        </div>
-
-                        <div>
-                            <label className="mb-1 block font-medium">
-                                Message
-                            </label>
-                            <textarea
-                                placeholder="Enter message"
-                                className="min-h-[120px] w-full rounded-md border px-4 py-2 shadow-sm focus:ring focus:ring-blue-100 focus:outline-none"
-                            />
-                        </div>
-
-                        <button
-                            type="submit"
-                            className="bg-secondary w-48 rounded-md py-2 font-semibold text-white transition hover:bg-[#007fd1]"
-                        >
-                            SUBMIT
-                        </button>
-                    </form>
-                </div>
+                <ContactUsForm />
             </div>
         </section>
     );
