@@ -7,17 +7,11 @@ export function TeamCard({
 }: {
     name: string;
     qualification: string;
-    path: number;
+    path: string;
 }) {
     return (
-        <div className="group relative w-[300px] overflow-hidden rounded-lg bg-[#E5F2F8] shadow-md">
-            <Image
-                src={`/assets/team/team-member-1.png`}
-                alt={path.toString()}
-                width={300}
-                height={400}
-                className="object-cover"
-            />
+        <div className="group relative h-[400px] w-[300px] overflow-hidden rounded-lg bg-[#E5F2F8] shadow-md">
+            <Image src={path} alt={name} fill className="object-cover" />
 
             {/* Overlay Card */}
             <div className="absolute inset-0 flex items-end justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">

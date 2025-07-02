@@ -32,7 +32,7 @@ export function BehindTheTeam() {
                                 key={index}
                                 name={team.name}
                                 qualification={team.qualification}
-                                path={index}
+                                path={team.path}
                             />
                         ))}
                     </div>
