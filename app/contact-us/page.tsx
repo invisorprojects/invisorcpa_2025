@@ -8,7 +8,6 @@ const LeafletMap = dynamic(() => import('./_components/LeafletMap'), {
 
 import ContactUs from '@/components/sections/contact-us';
 import { Metadata } from 'next';
-import { WorldMapDemo } from './WorldMapDemo';
 import ContactUsForm from '@/components/ContactUsForm';
 
 // export const metadata: Metadata = {
@@ -41,9 +40,6 @@ export default function ContactUsPage() {
             </section>
             <ContactUs />
             <GetInTouchSection />
-            {/* <section className="flex flex-col items-center justify-between px-4 py-4 sm:px-8 md:px-12 lg:px-16 xl:px-24">
-                <WorldMapDemo />
-            </section> */}
             <section className="flex flex-col items-center justify-between px-4 py-4 sm:px-8 md:px-12 lg:px-16 xl:px-24">
                 <LeafletMap />
             </section>

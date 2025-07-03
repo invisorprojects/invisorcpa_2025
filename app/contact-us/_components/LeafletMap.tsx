@@ -36,6 +36,7 @@ const CanadaMap = () => {
 
     return (
         <MapContainer
+            scrollWheelZoom={false}
             center={[43.5, -81.0]}
             zoom={7}
             style={{ height: '500px', width: '100%' }}
