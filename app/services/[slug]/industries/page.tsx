@@ -1,3 +1,5 @@
+export const dynamic = 'force-static';
+export const revalidate = false;
 import ContactUs from '@/components/sections/contact-us';
 import { Metadata } from 'next';
 import Image from 'next/image';
