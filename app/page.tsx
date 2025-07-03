@@ -17,6 +17,7 @@ import { ServicesCard } from '@/components/service-card';
 import { CaseStudyCard } from '@/components/case-study-card';
 import { getStoryblokApi } from '@/lib/storyblok';
 import { NumberTicker } from '@/components/magicui/number-ticker';
+import CountUp from '@/components/react-bits/count-up';
 
 export default async function Home() {
     const storyblokApi = getStoryblokApi();
@@ -445,11 +446,31 @@ function StatsGrid() {
         <div className="flex h-80 max-w-xl gap-4">
             <div className="flex h-full w-1/2 flex-col gap-4">
                 <div className="flex h-1/2 w-full flex-col justify-center rounded-lg bg-gradient-to-br from-green-100 to-blue-100 p-6 text-[#11135f]">
-                    <h2 className="text-3xl font-bold sm:text-4xl">20+</h2>
+                    <div className="flex items-center">
+                        <CountUp
+                            from={0}
+                            to={20}
+                            separator=","
+                            direction="up"
+                            duration={1}
+                            className="count-up-text text-3xl font-[900] sm:text-4xl"
+                        />
+                        <span className="text-3xl font-[900]">+</span>
+                    </div>
                     <p className="mt-1 text-gray-700">Professional Experts</p>
                 </div>
                 <div className="flex h-1/2 w-full flex-col justify-center rounded-lg bg-gray-100 p-6 text-[#11135f]">
-                    <h2 className="text-3xl font-bold sm:text-4xl">20+</h2>
+                    <div className="flex items-center">
+                        <CountUp
+                            from={0}
+                            to={20}
+                            separator=","
+                            direction="up"
+                            duration={1}
+                            className="count-up-text text-3xl font-[900] sm:text-4xl"
+                        />
+                        <span className="text-3xl font-[900]">+</span>
+                    </div>
                     <p className="mt-1 text-gray-700">
                         Year of Affiliate Experience
                     </p>
@@ -458,12 +479,37 @@ function StatsGrid() {
 
             <div className="flex h-full w-1/2 flex-col gap-4">
                 <div className="flex h-1/3 flex-col justify-center rounded-lg border border-gray-200 p-6 text-[#11135f]">
-                    <h2 className="text-3xl font-bold sm:text-4xl">15+</h2>
+                    <div className="flex items-center">
+                        <CountUp
+                            from={0}
+                            to={15}
+                            separator=","
+                            direction="up"
+                            duration={1}
+                            className="count-up-text text-3xl font-[900] sm:text-4xl"
+                        />
+                        <span className="text-3xl font-[900]">+</span>
+                    </div>
                     <p className="mt-1 text-gray-700">Years Experience</p>
                 </div>
 
                 <div className="flex h-2/3 flex-col justify-center rounded-lg bg-blue-100 p-6 text-[#11135f]">
-                    <h2 className="text-3xl font-bold sm:text-4xl">1k+</h2>
+                    <div className="flex items-center">
+                        <CountUp
+                            from={0}
+                            to={1}
+                            separator=","
+                            direction="up"
+                            duration={1}
+                            className="count-up-text text-3xl font-[900] sm:text-4xl"
+                        />
+                        <span className="text-3xl font-[900] sm:text-4xl">
+                            K
+                        </span>
+                        <span className="text-3xl font-[900] sm:text-4xl">
+                            +
+                        </span>
+                    </div>
                     <p className="mt-1 text-gray-700">
                         Canada&#39;s trusted accounting experts, proudly serving
                         1000+ clients nationwide
