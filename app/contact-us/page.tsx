@@ -7,7 +7,6 @@ const LeafletMap = dynamic(() => import('./_components/LeafletMap'), {
 });
 
 import ContactUs from '@/components/sections/contact-us';
-import { Metadata } from 'next';
 import ContactUsForm from '@/components/ContactUsForm';
 
 // export const metadata: Metadata = {
