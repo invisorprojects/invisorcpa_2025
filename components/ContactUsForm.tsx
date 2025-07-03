@@ -13,7 +13,6 @@ export default function ContactUsForm() {
         sendContact,
         initialState
     );
-    console.log('state:', state);
     return (
         <div className="w-full max-w-xl rounded-md border bg-white p-6 shadow-md">
             <form className="space-y-6" action={formAction}>
