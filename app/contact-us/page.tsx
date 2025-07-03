@@ -1,11 +1,19 @@
+'use client';
+
+import dynamic from 'next/dynamic';
+
+const LeafletMap = dynamic(() => import('./_components/LeafletMap'), {
+    ssr: false,
+});
+
 import ContactUs from '@/components/sections/contact-us';
 import { Metadata } from 'next';
 import { WorldMapDemo } from './WorldMapDemo';
 import ContactUsForm from '@/components/ContactUsForm';
 
-export const metadata: Metadata = {
-    title: 'Contact Us',
-};
+// export const metadata: Metadata = {
+//     title: 'Contact Us',
+// };
 
 export default function ContactUsPage() {
     return (
@@ -33,8 +41,11 @@ export default function ContactUsPage() {
             </section>
             <ContactUs />
             <GetInTouchSection />
-            <section className="flex flex-col items-center justify-between px-4 py-4 sm:px-8 md:px-12 lg:px-16 xl:px-24">
+            {/* <section className="flex flex-col items-center justify-between px-4 py-4 sm:px-8 md:px-12 lg:px-16 xl:px-24">
                 <WorldMapDemo />
+            </section> */}
+            <section className="flex flex-col items-center justify-between px-4 py-4 sm:px-8 md:px-12 lg:px-16 xl:px-24">
+                <LeafletMap />
             </section>
         </main>
     );
