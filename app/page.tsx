@@ -16,6 +16,7 @@ import { SERVICES } from '@/constants/SERVICES';
 import { ServicesCard } from '@/components/service-card';
 import { CaseStudyCard } from '@/components/case-study-card';
 import { getStoryblokApi } from '@/lib/storyblok';
+import { NumberTicker } from '@/components/magicui/number-ticker';
 
 export default async function Home() {
     const storyblokApi = getStoryblokApi();
@@ -189,23 +190,39 @@ export default async function Home() {
                         {/* Stats Row */}
                         <div className="grid grid-cols-3 gap-4 pt-4 text-start">
                             <div>
-                                <h4 className="text-primary text-3xl font-bold md:text-4xl">
-                                    20+
-                                </h4>
+                                <NumberTicker
+                                    value={20}
+                                    className="text-primary text-3xl font-extrabold md:text-4xl"
+                                />
+                                <span className="text-primary text-3xl font-extrabold md:text-4xl">
+                                    +
+                                </span>
+
                                 <p className="mt-2 text-lg">
                                     Professional Experts
                                 </p>
                             </div>
                             <div>
-                                <h4 className="text-primary text-3xl font-bold md:text-4xl">
-                                    15+
-                                </h4>
+                                <NumberTicker
+                                    value={15}
+                                    className="text-primary text-3xl font-extrabold md:text-4xl"
+                                />
+                                <span className="text-primary text-3xl font-extrabold md:text-4xl">
+                                    +
+                                </span>
                                 <p className="mt-2 text-lg">Years Experience</p>
                             </div>
                             <div>
-                                <h4 className="text-primary text-3xl font-bold md:text-4xl">
-                                    1K+
-                                </h4>
+                                <NumberTicker
+                                    value={1}
+                                    className="text-primary text-3xl font-extrabold md:text-4xl"
+                                />
+                                <span className="text-primary text-3xl font-extrabold md:text-4xl">
+                                    K
+                                </span>
+                                <span className="text-primary text-3xl font-extrabold md:text-4xl">
+                                    +
+                                </span>
                                 <p className="mt-2 text-lg">
                                     Satisfied Clients
                                 </p>

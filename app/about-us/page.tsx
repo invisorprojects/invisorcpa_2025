@@ -9,15 +9,16 @@ import { WhyChooseUs } from '@/components/sections/why-choose-us-section';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { UserSearch, ChartLine, HandCoins } from 'lucide-react';
+import { NumberTicker } from '@/components/magicui/number-ticker';
 
 export const metadata: Metadata = {
     title: 'About Us',
 };
 const stats = [
-    { value: '20+', label: 'Professional Experts' },
-    { value: '15+', label: 'Years Experience' },
-    { value: '1K+', label: 'Satisfied Clients' },
-    { value: '20+', label: 'Year of Affiliate Experience' },
+    { value: 20, label: 'Professional Experts' },
+    { value: 15, label: 'Years Experience' },
+    { value: 1, label: 'Satisfied Clients' },
+    { value: 20, label: 'Year of Affiliate Experience' },
 ];
 
 const timeline = [
@@ -82,9 +83,16 @@ export default function Page() {
                     <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 text-center md:grid-cols-4">
                         {stats.map((item, index) => (
                             <div key={index}>
-                                <h3 className="text-4xl font-bold text-[#1B1E65] sm:text-5xl">
-                                    {item.value}
-                                </h3>
+                                <NumberTicker
+                                    value={item.value}
+                                    className="text-4xl font-extrabold text-[#1B1E65] sm:text-5xl"
+                                />
+                                <span className="text-4xl font-extrabold text-[#1B1E65] sm:text-5xl">
+                                    {item.label === 'Satisfied Clients'
+                                        ? 'K'
+                                        : ''}
+                                    +
+                                </span>
                                 <p className="mt-2 text-base text-black">
                                     {item.label}
                                 </p>
