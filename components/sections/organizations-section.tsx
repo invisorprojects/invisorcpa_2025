@@ -4,11 +4,11 @@ import Link from 'next/link';
 
 export function OrganizationsSection() {
     const logos = Array.from(
-        { length: 39 },
-        (_, i) => `/assets/customer-logos/logo-${i + 1}.png`
+        { length: 24 },
+        (_, i) => `/assets/customer-logos/logo-${i + 1}_PhotoGrid.png`
     );
     return (
-        <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
+        <section className="flex flex-col items-center justify-between bg-[#EFF0F4] p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
             <div className="mb-20 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:justify-between">
                 <div className="max-w-sm">
                     <h2 className="text-primary text-4xl font-bold">
@@ -31,7 +31,7 @@ export function OrganizationsSection() {
                     </Link>
                 </div>
             </div>
-            <div className="grid grid-cols-2 items-center justify-center gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+            <div className="grid grid-cols-2 items-center justify-center gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8">
                 {logos.map((src, index) => (
                     <div
                         key={index}
