@@ -1,4 +1,4 @@
-import { ArrowRight, MailIcon } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -9,8 +9,8 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
 import Image from 'next/image';
+import NewLetterForm from './NewLetterForm';
 
 export default function NewsLetterModal() {
     return (
@@ -55,25 +55,7 @@ export default function NewsLetterModal() {
                     </DialogHeader>
                 </div>
 
-                <form className="space-y-5">
-                    <div className="*:not-first:mt-2">
-                        <div className="relative">
-                            <Input
-                                id="dialog-subscribe"
-                                className="peer ps-9"
-                                placeholder="hi@yourcompany.com"
-                                type="email"
-                                aria-label="Email"
-                            />
-                            <div className="text-muted-foreground/80 pointer-events-none absolute inset-y-0 start-0 flex items-center justify-center ps-3 peer-disabled:opacity-50">
-                                <MailIcon size={16} aria-hidden="true" />
-                            </div>
-                        </div>
-                    </div>
-                    <Button type="button" className="w-full">
-                        Subscribe
-                    </Button>
-                </form>
+                <NewLetterForm />
 
                 <p className="text-muted-foreground text-center text-xs">
                     By subscribing you agree to our{' '}
