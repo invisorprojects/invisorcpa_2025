@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { Metadata } from 'next';
 import TrustedPartners from '@/components/sections/trusted-partners';
 import { Button } from '@/components/ui/button';
 import { ScheduleMeeting } from '@/components/sections/ScheduleMeeting';
@@ -18,6 +19,61 @@ import { CaseStudyCard } from '@/components/case-study-card';
 import { getStoryblokApi } from '@/lib/storyblok';
 import { NumberTicker } from '@/components/magicui/number-ticker';
 import CountUp from '@/components/react-bits/count-up';
+
+export const metadata: Metadata = {
+    title: 'Expert Tax Filing Services Canada | Personal Tax Accountant | CRA Tax Help',
+    description:
+        'Professional tax filing services in Canada. Expert personal tax accountant, CRA tax help, and comprehensive tax preparation services. Trusted by 1000+ clients nationwide. Get your tax returns done right.',
+    keywords: [
+        'Tax filing Canada',
+        'Tax services Canada',
+        'Tax preparation services Canada',
+        'Personal tax accountant Canada',
+        'CRA tax help',
+        'Best tax service Canada',
+        'Canadian tax accountant',
+        'Tax preparation Canada',
+        'Personal tax returns Canada',
+        'Business tax services Canada',
+        'CRA tax filing',
+        'Tax consultant Canada',
+        'Tax planning Canada',
+        'Tax compliance Canada',
+        'Canadian tax expert',
+        'Tax preparation services',
+        'Personal tax filing',
+        'Business tax preparation',
+        'Tax return services',
+        'Tax accountant near me',
+    ],
+    openGraph: {
+        title: 'Expert Tax Filing Services Canada | Personal Tax Accountant | CRA Tax Help',
+        description:
+            'Professional tax filing services in Canada. Expert personal tax accountant, CRA tax help, and comprehensive tax preparation services. Trusted by 1000+ clients nationwide.',
+        url: 'https://invisorcpa.ca',
+        siteName: 'Invisor CPA',
+        images: [
+            {
+                url: '/invisor-logo.webp',
+                width: 1200,
+                height: 630,
+                alt: 'Invisor CPA - Tax Services Canada',
+            },
+        ],
+        locale: 'en_CA',
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Expert Tax Filing Services Canada | Personal Tax Accountant | CRA Tax Help',
+        description:
+            'Professional tax filing services in Canada. Expert personal tax accountant, CRA tax help, and comprehensive tax preparation services.',
+        images: ['/invisor-logo.webp'],
+    },
+    alternates: {
+        canonical: 'https://invisorcpa.ca',
+    },
+};
 
 export default async function Home() {
     const storyblokApi = getStoryblokApi();
@@ -67,7 +123,7 @@ export default async function Home() {
                             <Image
                                 className="relative"
                                 src="/assets/laptop-lady.webp"
-                                alt="Hero"
+                                alt="Professional tax accountant working on tax returns in Canada"
                                 width={500}
                                 height={500}
                             />
@@ -84,7 +140,7 @@ export default async function Home() {
                     <Image
                         className="h-auto w-full rounded-3xl"
                         src="/assets/section-2-1.webp"
-                        alt="Hero"
+                        alt="Professional tax preparation services in Canada"
                         width={1199}
                         height={899}
                     />
@@ -112,7 +168,7 @@ export default async function Home() {
                         <Image
                             className="rounded-3xl"
                             src="/assets/section-2-2.webp"
-                            alt="Hero"
+                            alt="Canadian tax preparation services and CRA tax filing support"
                             width={300}
                             height={300}
                         />
@@ -166,8 +222,8 @@ export default async function Home() {
                     {/* Image */}
                     <div className="md:w-1/2">
                         <Image
-                            src="/assets/about-us.jpg" // Replace with your image path
-                            alt="Accounting Team"
+                            src="/assets/about-us.jpg"
+                            alt="Professional Canadian tax accountants providing tax filing services"
                             width={2048}
                             height={1169}
                             className="h-auto w-full rounded-xl object-cover"
@@ -177,7 +233,7 @@ export default async function Home() {
                     {/* Text Content */}
                     <div className="space-y-6 md:w-1/2">
                         <h3 className="text-primary text-3xl font-bold md:text-3xl">
-                            Our Journey in Accounting Services
+                            Our Journey in Tax Preparation Services Canada
                         </h3>
                         <p className="max-w-xl leading-relaxed">
                             We are a team of dedicated professionals committed

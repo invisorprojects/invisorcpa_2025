@@ -13,7 +13,7 @@ export default function BlogCard({
         <div className="group relative max-w-sm overflow-hidden rounded-xl shadow-sm">
             <Image
                 src={content.image.filename}
-                alt="QuickBooks"
+                alt={`${content.title} - Tax services blog post by Invisor CPA, Canadian tax accountants`}
                 width={600}
                 height={400}
                 className="h-[436px] w-full object-cover transition duration-300 group-hover:scale-105 group-hover:brightness-75"

@@ -12,7 +12,52 @@ import { UserSearch, ChartLine, HandCoins } from 'lucide-react';
 import { NumberTicker } from '@/components/magicui/number-ticker';
 
 export const metadata: Metadata = {
-    title: 'About Us',
+    title: 'About Invisor CPA | Canadian Tax Accountants | Tax Services Canada',
+    description:
+        'Learn about Invisor CPA, your trusted Canadian tax accountants. Professional tax services Canada with 20+ years experience. Expert personal tax accountant and business tax preparation services.',
+    keywords: [
+        'About Invisor CPA',
+        'Canadian tax accountants',
+        'Tax services Canada',
+        'Professional tax accountant',
+        'Tax preparation services Canada',
+        'Personal tax accountant Canada',
+        'Business tax preparation',
+        'CRA tax help',
+        'Canadian tax expert',
+        'Tax filing services Canada',
+        'Tax consultant Canada',
+        'Tax planning Canada',
+        'Tax compliance Canada',
+        'Best tax service Canada',
+    ],
+    openGraph: {
+        title: 'About Invisor CPA | Canadian Tax Accountants | Tax Services Canada',
+        description:
+            'Learn about Invisor CPA, your trusted Canadian tax accountants. Professional tax services Canada with 20+ years experience.',
+        url: 'https://invisorcpa.ca/about-us',
+        siteName: 'Invisor CPA',
+        images: [
+            {
+                url: '/assets/banners/banner-2.jpg',
+                width: 1200,
+                height: 630,
+                alt: 'About Invisor CPA - Canadian Tax Accountants',
+            },
+        ],
+        locale: 'en_CA',
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'About Invisor CPA | Canadian Tax Accountants | Tax Services Canada',
+        description:
+            'Learn about Invisor CPA, your trusted Canadian tax accountants. Professional tax services Canada with 20+ years experience.',
+        images: ['/assets/banners/banner-2.jpg'],
+    },
+    alternates: {
+        canonical: 'https://invisorcpa.ca/about-us',
+    },
 };
 const stats = [
     { value: 20, label: 'Professional Experts' },

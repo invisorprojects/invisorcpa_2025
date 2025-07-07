@@ -2,7 +2,56 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-    title: 'Services',
+    title: 'Tax Services Canada | Personal Tax Accountant | Business Tax Preparation',
+    description:
+        'Comprehensive tax services in Canada. Expert personal tax accountant, business tax preparation, and CRA tax filing services. Professional tax preparation services for individuals and businesses.',
+    keywords: [
+        'Tax services Canada',
+        'Personal tax accountant Canada',
+        'Business tax preparation',
+        'Tax preparation services Canada',
+        'CRA tax filing',
+        'Tax consultant Canada',
+        'Personal tax returns Canada',
+        'Business tax services Canada',
+        'Tax preparation Canada',
+        'Canadian tax accountant',
+        'Tax filing services',
+        'Tax planning Canada',
+        'Tax compliance Canada',
+        'Professional tax services',
+        'Tax accountant near me',
+        'Business tax filing',
+        'Personal tax preparation',
+        'Tax return services Canada',
+    ],
+    openGraph: {
+        title: 'Tax Services Canada | Personal Tax Accountant | Business Tax Preparation',
+        description:
+            'Comprehensive tax services in Canada. Expert personal tax accountant, business tax preparation, and CRA tax filing services.',
+        url: 'https://invisorcpa.ca/services',
+        siteName: 'Invisor CPA',
+        images: [
+            {
+                url: '/assets/banners/banner-7.jpg',
+                width: 1200,
+                height: 630,
+                alt: 'Tax Services Canada - Professional Tax Preparation',
+            },
+        ],
+        locale: 'en_CA',
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Tax Services Canada | Personal Tax Accountant | Business Tax Preparation',
+        description:
+            'Comprehensive tax services in Canada. Expert personal tax accountant, business tax preparation, and CRA tax filing services.',
+        images: ['/assets/banners/banner-7.jpg'],
+    },
+    alternates: {
+        canonical: 'https://invisorcpa.ca/services',
+    },
 };
 
 export default function Page() {
@@ -30,7 +79,7 @@ export default function Page() {
                 </div>
                 <Image
                     src="/assets/banners/banner-7.jpg"
-                    alt="Services"
+                    alt="Professional tax services Canada - Personal tax accountant and business tax preparation"
                     width={4096}
                     height={1632}
                     className="rounded-4xl shadow-md"
@@ -51,7 +100,7 @@ export default function Page() {
                     <div>
                         <Image
                             src="/assets/features-section.jpg"
-                            alt="Services"
+                            alt="Professional tax preparation services in Canada"
                             width={1280}
                             height={800}
                             className="w-auto rounded-2xl shadow-md"
@@ -102,7 +151,7 @@ const iconMap = {
 
 const features = [
     {
-        title: 'Expertise You Can Count On',
+        title: 'Expert Canadian Tax Accountants',
         description:
             'Our experienced professionals bring deep knowledge in accounting, tax, and financial management to ensure your business stays compliant and financially healthy.',
         icon: 'BrainCircuit',
@@ -116,7 +165,7 @@ const features = [
     {
         title: 'Tech-Driven Efficiency',
         description:
-            'We leverage powerful tools like QuickBooks, Zoho, and cloud-based platforms to automate, streamline, and optimize your financial operations.',
+            'We leverage powerful tax preparation tools and cloud-based platforms to automate, streamline, and optimize your tax filing process for maximum accuracy and efficiency.',
         icon: 'Cog',
     },
     {
@@ -126,7 +175,7 @@ const features = [
         icon: 'MessagesSquare',
     },
     {
-        title: 'Scalable Support',
+        title: 'Scalable Tax Services Canada',
         description:
             "Whether you're a solo entrepreneur or a growing enterprise, our services scale with you—offering the flexibility and expertise you need at every stage.",
         icon: 'ChartNoAxesCombined',
