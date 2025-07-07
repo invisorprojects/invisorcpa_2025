@@ -77,6 +77,11 @@ export default function Footer() {
                             <li>
                                 <Link href="/services">Services</Link>
                             </li>
+                            <li>
+                                <Link href="/tax-calculator">
+                                    Tax Calculator
+                                </Link>
+                            </li>
                             {/* <li>
                                 <Link href="/industries">Industries</Link>
                             </li> */}
