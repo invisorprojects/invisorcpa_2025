@@ -8,6 +8,7 @@ const LeafletMap = dynamic(() => import('./_components/LeafletMap'), {
 
 import ContactUs from '@/components/sections/contact-us';
 import ContactUsForm from '@/components/ContactUsForm';
+import { Phone, Mail, MapPin } from 'lucide-react';
 
 // export const metadata: Metadata = {
 //     title: 'Contact Us',
@@ -39,7 +40,7 @@ export default function ContactUsPage() {
             </section>
             <ContactUs />
             <GetInTouchSection />
-            <section className="flex flex-col items-center justify-between px-4 py-4 sm:px-8 md:px-12 lg:px-16 xl:px-24">
+            <section className="mt-20 flex flex-col items-center justify-between px-4 py-4 sm:px-8 md:px-12 lg:px-16 xl:px-24">
                 <LeafletMap />
             </section>
         </main>
@@ -52,32 +53,60 @@ function GetInTouchSection() {
             <div className="flex flex-col items-center justify-between gap-10 md:flex-row">
                 {/* Contact Details */}
                 <div className="w-full space-y-8 md:w-1/2">
-                    <h2 className="text-2xl font-semibold">Get In Touch</h2>
+                    <h2 className="text-3xl font-semibold sm:text-4xl">
+                        Get In Touch
+                    </h2>
 
-                    <div>
-                        <h4 className="font-bold">Phone</h4>
-                        <p>(+1) 226 577 9183</p>
+                    <div className="flex items-start gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-all hover:shadow-md">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100">
+                            <Phone className="h-5 w-5 text-blue-600" />
+                        </div>
+                        <div>
+                            <h4 className="font-bold text-gray-900">Phone</h4>
+                            <p className="text-gray-600">(+1) 226 577 9183</p>
+                        </div>
                     </div>
 
-                    <div>
-                        <h4 className="font-bold">Email</h4>
-                        <p>geevar.c@invisorglobal.com</p>
+                    <div className="flex items-start gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-all hover:shadow-md">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100">
+                            <Mail className="h-5 w-5 text-green-600" />
+                        </div>
+                        <div>
+                            <h4 className="font-bold text-gray-900">Email</h4>
+                            <p className="text-gray-600">
+                                geevar.c@invisorglobal.com
+                            </p>
+                        </div>
                     </div>
 
-                    <div>
-                        <h4 className="font-bold">Fergus Office</h4>
-                        <p>
-                            Unit B, 645 St David St. N, Fergus, N1M2K6, ON,{' '}
-                            <br /> Canada
-                        </p>
+                    <div className="flex items-start gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-all hover:shadow-md">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-100">
+                            <MapPin className="h-5 w-5 text-purple-600" />
+                        </div>
+                        <div>
+                            <h4 className="font-bold text-gray-900">
+                                Fergus Office
+                            </h4>
+                            <p className="text-gray-600">
+                                Unit B, 645 St David St. N, Fergus, N1M2K6, ON,{' '}
+                                <br /> Canada
+                            </p>
+                        </div>
                     </div>
 
-                    <div>
-                        <h4 className="font-bold">London Office</h4>
-                        <p>
-                            Unit 120, 341 Talbot Street, London, Ontario,
-                            N6A2R5, <br /> Canada.
-                        </p>
+                    <div className="flex items-start gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-all hover:shadow-md">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-100">
+                            <MapPin className="h-5 w-5 text-orange-600" />
+                        </div>
+                        <div>
+                            <h4 className="font-bold text-gray-900">
+                                London Office
+                            </h4>
+                            <p className="text-gray-600">
+                                Unit 120, 341 Talbot Street, London, Ontario,
+                                N6A2R5, <br /> Canada.
+                            </p>
+                        </div>
                     </div>
                 </div>
 
