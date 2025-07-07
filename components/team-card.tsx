@@ -13,7 +13,7 @@ export function TeamCard({
         <div className="group relative h-[300px] w-[250px] overflow-hidden rounded-lg bg-[#E5F2F8] shadow-md">
             <Image
                 src={path}
-                alt={name}
+                alt={`${name} - ${qualification} at Invisor CPA, Canadian tax accountant and tax services expert`}
                 fill
                 className="object-cover transition-all duration-300 group-hover:grayscale"
             />

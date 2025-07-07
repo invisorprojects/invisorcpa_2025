@@ -12,9 +12,150 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-export const metadata: Metadata = {
-    title: 'Services',
-};
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+    const { slug } = await params;
+    const service = SERVICES.find((service) => service.slug === slug);
+
+    if (!service) {
+        return {
+            title: 'Service Not Found',
+        };
+    }
+
+    const serviceKeywords = {
+        'personal-tax-returns': [
+            'Personal tax returns Canada',
+            'Personal tax accountant Canada',
+            'Personal tax filing',
+            'Personal tax preparation',
+            'Individual tax returns Canada',
+            'Personal tax services Canada',
+            'CRA personal tax filing',
+            'Personal tax consultant Canada',
+        ],
+        'business-tax-returns': [
+            'Business tax returns Canada',
+            'Business tax preparation',
+            'Business tax filing',
+            'Corporate tax services Canada',
+            'Business tax accountant Canada',
+            'Corporate tax preparation',
+            'Business tax consultant Canada',
+            'CRA business tax filing',
+        ],
+        'bookkeeping-services': [
+            'Bookkeeping services Canada',
+            'Professional bookkeeping',
+            'Business bookkeeping',
+            'Accounting bookkeeping services',
+            'Bookkeeping consultant Canada',
+            'Small business bookkeeping',
+            'Online bookkeeping services',
+            'Bookkeeping for businesses',
+        ],
+        'payroll-management-services': [
+            'Payroll management services Canada',
+            'Payroll processing Canada',
+            'Payroll services',
+            'Payroll management',
+            'Payroll processing services',
+            'Business payroll services',
+            'Payroll consultant Canada',
+            'Payroll management Canada',
+        ],
+        'catch-up-bookkeeping-services': [
+            'Catch up bookkeeping services',
+            'Backlog bookkeeping',
+            'Catch up accounting',
+            'Bookkeeping catch up services',
+            'Backlog accounting services',
+            'Catch up financial records',
+            'Bookkeeping cleanup services',
+            'Catch up bookkeeping Canada',
+        ],
+        'accounting-services': [
+            'Accounting services Canada',
+            'Professional accounting services',
+            'Business accounting',
+            'Corporate accounting services',
+            'Accounting consultant Canada',
+            'Small business accounting',
+            'Professional accounting',
+            'Accounting services for businesses',
+        ],
+        'tax-planning-services': [
+            'Tax planning services Canada',
+            'Tax planning consultant',
+            'Tax planning Canada',
+            'Tax strategy services',
+            'Tax planning consultant Canada',
+            'Business tax planning',
+            'Personal tax planning',
+            'Tax planning expert Canada',
+        ],
+        'consulting-services': [
+            'Business consulting services Canada',
+            'Financial consulting',
+            'Business consulting Canada',
+            'Financial advisory services',
+            'Business consultant Canada',
+            'Financial consulting Canada',
+            'Business advisory services',
+            'Consulting services Canada',
+        ],
+    };
+
+    const keywords = serviceKeywords[slug as keyof typeof serviceKeywords] || [
+        'Tax services Canada',
+        'Professional tax services',
+        'Tax preparation services Canada',
+        'Canadian tax expert',
+        'Tax filing services',
+        'Tax consultant Canada',
+    ];
+
+    return {
+        title: `${service.title} | Tax Services Canada | Invisor CPA`,
+        description: `${service.description} Professional ${service.title.toLowerCase()} services in Canada. Expert tax preparation and filing services.`,
+        keywords: [
+            ...keywords,
+            'Tax services Canada',
+            'Tax preparation services Canada',
+            'Canadian tax expert',
+            'CRA tax help',
+            'Best tax service Canada',
+        ],
+        openGraph: {
+            title: `${service.title} | Tax Services Canada | Invisor CPA`,
+            description: `${service.description} Professional ${service.title.toLowerCase()} services in Canada.`,
+            url: `https://invisorcpa.ca/services/${slug}`,
+            siteName: 'Invisor CPA',
+            images: [
+                {
+                    url: '/assets/banners/banner-4.jpg',
+                    width: 1200,
+                    height: 630,
+                    alt: `${service.title} - Tax Services Canada`,
+                },
+            ],
+            locale: 'en_CA',
+            type: 'website',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: `${service.title} | Tax Services Canada | Invisor CPA`,
+            description: `${service.description} Professional ${service.title.toLowerCase()} services in Canada.`,
+            images: ['/assets/banners/banner-4.jpg'],
+        },
+        alternates: {
+            canonical: `https://invisorcpa.ca/services/${slug}`,
+        },
+    };
+}
 
 const benefits = [
     {
