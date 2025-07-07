@@ -19,6 +19,7 @@ import { CaseStudyCard } from '@/components/case-study-card';
 import { getStoryblokApi } from '@/lib/storyblok';
 import { NumberTicker } from '@/components/magicui/number-ticker';
 import CountUp from '@/components/react-bits/count-up';
+import PricingSection from '@/components/PricingSection';
 
 export const metadata: Metadata = {
     title: 'Expert Tax Filing Services Canada | Personal Tax Accountant | CRA Tax Help',
@@ -376,6 +377,27 @@ export default async function Home() {
                         </Link>
                     </div>
                 </div>
+            </section>
+
+            <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
+                <div className="mb-10 flex w-full flex-col items-start justify-center gap-4 md:flex-row md:items-center md:justify-between">
+                    <div className="max-w-2xl space-y-2">
+                        <h3 className="text-secondary text-xl font-medium uppercase">
+                            PRICING PLANS{' '}
+                        </h3>
+                        <h2 className="text-primary text-4xl font-bold md:text-5xl">
+                            Tailored Solutions to Fit Financial Needs.{' '}
+                        </h2>
+                    </div>
+                    <div className="flex max-w-lg flex-col items-start gap-4">
+                        <p className="text-[#686666]">
+                            Pricing options are designed with flexibility in
+                            mind, allowing you to choose the plan that best fits
+                            your needs.
+                        </p>
+                    </div>
+                </div>
+                <PricingSection />
             </section>
 
             <BehindTheTeam />

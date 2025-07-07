@@ -2,6 +2,7 @@ import ContactUs from '@/components/sections/contact-us';
 import Faq from '@/components/sections/faq-section';
 import { Metadata } from 'next';
 import Image from 'next/image';
+import PricingSection from '../../components/PricingSection';
 
 export const metadata: Metadata = {
     title: 'Pricing',
@@ -35,6 +36,9 @@ export default function Page() {
                     height={1333}
                     className="rounded-4xl shadow-md"
                 />
+            </section>
+            <section className="px-4 py-12 sm:p-8 md:p-12 lg:p-16 xl:p-24">
+                <PricingSection />
             </section>
 
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
