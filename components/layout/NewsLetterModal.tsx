@@ -11,24 +11,28 @@ import {
 } from '@/components/ui/dialog';
 import Image from 'next/image';
 import NewLetterForm from './NewLetterForm';
+import { Badge } from '../ui/badge';
 
 export default function NewsLetterModal() {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button
-                    className="group relative"
-                    variant="default"
-                    size={'sm'}
-                >
-                    <span className="inline-flex items-center text-xs sm:text-sm">
-                        Subscribe
-                        <ArrowRight
-                            className="ms-2 -me-1 h-4 w-4 opacity-60 transition-transform group-hover:translate-x-0.5"
-                            aria-hidden="true"
-                        />
-                    </span>
-                </Button>
+                <div>
+                    <Badge className="sm:hidden">Subscribe</Badge>
+                    <Button
+                        className="group relative hidden sm:block"
+                        variant="default"
+                        size={'sm'}
+                    >
+                        <span className="inline-flex items-center text-xs sm:text-sm">
+                            Subscribe
+                            <ArrowRight
+                                className="ms-2 -me-1 h-4 w-4 opacity-60 transition-transform group-hover:translate-x-0.5"
+                                aria-hidden="true"
+                            />
+                        </span>
+                    </Button>
+                </div>
             </DialogTrigger>
             <DialogContent className="w-md">
                 <div className="mb-2 flex flex-col items-center gap-2">
