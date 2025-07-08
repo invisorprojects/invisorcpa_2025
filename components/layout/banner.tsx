@@ -27,13 +27,10 @@ export default function Banner() {
                         size={16}
                         aria-hidden="true"
                     />
-                    <div className="flex grow justify-between gap-3 sm:flex-col md:flex-row md:items-center">
-                        <p className="hidden sm:block">
+                    <div className="flex grow flex-col justify-between gap-3 md:flex-row md:items-center">
+                        <p className="text-xs sm:text-sm">
                             Subscribe to receive news and canadian tax law
                             updates.
-                        </p>
-                        <p className="text-sm sm:hidden">
-                            Subscribe to our newsletter.
                         </p>
                         <div className="flex gap-2 max-md:flex-wrap">
                             <NewsLetterModal />
@@ -42,7 +39,6 @@ export default function Banner() {
                                 href="tel:+12265779183"
                                 rel="noopener noreferrer"
                                 aria-label="Contact us on Phone"
-                                className="hidden sm:block"
                             >
                                 <Button
                                     // variant="outline"
