@@ -11,7 +11,7 @@ const items = [
         id: '1',
         title: 'What services do you offer?',
         content:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.',
+            'We offer comprehensive accounting, bookkeeping, tax preparation, payroll management, business advisory, and financial reporting services to help you manage your financial needs effectively.',
     },
     {
         id: '2',
@@ -23,19 +23,19 @@ const items = [
         id: '3',
         title: 'How will I be updated on my financial status?',
         content:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.',
+            ' We ensure transparent communication, keeping you informed with regular reports, updates, and strategic advice to help you make informed decisions.',
     },
     {
         id: '4',
         title: 'What makes your team different from others?',
         content:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.',
+            ' Our team combines deep industry knowledge, cutting-edge technology, and a client-focused approach to deliver personalized, effective solutions.',
     },
     {
         id: '5',
         title: 'Can you assist with future planning and growth strategies?',
         content:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.',
+            'Yes, we offer proactive business and financial planning services to help you navigate growth opportunities and secure long-term success.',
     },
 ];
 
@@ -46,7 +46,7 @@ function FaqAccordion() {
                 type="single"
                 collapsible
                 className="w-full"
-                defaultValue="3"
+                defaultValue="1"
             >
                 {items.map((item) => (
                     <AccordionItem
