@@ -85,6 +85,7 @@ export const STANDARD_PRICING_CARDS = [
         ],
     },
 ];
+
 export const ADVANCED_PRICING_CARDS = [
     {
         title: 'Personal Taxes',
@@ -154,59 +155,44 @@ export const ADVANCED_PRICING_CARDS = [
 
 export default function PricingSection() {
     return (
-        <Tabs
-            defaultValue="standard"
-            className="flex w-full items-center justify-center"
-        >
-            <TabsList className="mb-10 h-10 w-fit gap-1 rounded-full bg-[#E5F2F8]">
+        <Tabs defaultValue="standard" className="w-full text-center">
+            <TabsList className="mx-auto mb-10 h-10 w-fit gap-1 rounded-full bg-[#E5F2F8]">
                 <TabsTrigger
                     value="standard"
-                    className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground max-w-30 rounded-full px-20 data-[state=active]:shadow-none"
+                    className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground max-w-30 rounded-full px-20"
                 >
                     Standard
                 </TabsTrigger>
                 <TabsTrigger
                     value="advanced"
-                    className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground max-w-30 rounded-full px-20 data-[state=active]:shadow-none"
+                    className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground max-w-30 rounded-full px-20"
                 >
                     Advanced
                 </TabsTrigger>
             </TabsList>
             <TabsContent value="standard">
-                <StandardPricingSection />
+                <PricingGrid cards={STANDARD_PRICING_CARDS} />
             </TabsContent>
             <TabsContent value="advanced">
-                <AdvancedPricingSection />
+                <PricingGrid cards={ADVANCED_PRICING_CARDS} />
             </TabsContent>
         </Tabs>
     );
 }
 
-export function AdvancedPricingSection() {
+function PricingGrid({ cards }: { cards: typeof STANDARD_PRICING_CARDS }) {
     return (
-        <div className="relative z-0 flex items-end justify-center gap-0">
-            {ADVANCED_PRICING_CARDS.map((card, idx) => {
-                return <PricingCard key={idx} {...card} />;
-            })}
-        </div>
-    );
-}
-export function StandardPricingSection() {
-    return (
-        <div className="relative z-0 flex items-end justify-center gap-0">
-            {STANDARD_PRICING_CARDS.map((card, idx) => {
-                let zIndex = 'z-10'; // Default
+        <div className="relative z-0 flex flex-col items-center gap-4 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4 lg:flex-nowrap lg:items-end lg:gap-0">
+            {cards.map((card, idx) => {
+                let zIndex = 'z-10';
 
-                if (idx === 2)
-                    zIndex = 'z-30'; // 3rd card highest
-                else if (idx === 3)
-                    zIndex = 'z-20'; // 4th card above last
-                else if (idx === 4) zIndex = 'z-10'; // Last card lowest (unless hovered)
+                if (idx === 2) zIndex = 'z-30';
+                else if (idx === 3) zIndex = 'z-20';
 
                 return (
                     <div
                         key={idx}
-                        className={`relative -ml-12 transition-all duration-300 first:ml-0 hover:z-50 ${zIndex}`}
+                        className={`relative w-full max-w-sm transition-transform duration-300 first:ml-0 hover:z-50 lg:-ml-12 ${zIndex}`}
                     >
                         <PricingCard {...card} />
                     </div>
@@ -226,13 +212,13 @@ export function PricingCard({
 }: (typeof STANDARD_PRICING_CARDS)[number] & { height: string }) {
     return (
         <div
-            className="group relative z-10 w-full max-w-sm rounded-xl border border-gray-200 bg-[#EFF0F4] p-6 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+            className="group relative z-10 w-full max-w-sm rounded-xl border border-gray-200 bg-[#EFF0F4] p-4 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl"
             style={{ minHeight: height }}
         >
             <h2 className="text-primary text-xl font-semibold">{title}</h2>
             <p className="mt-1 text-xs text-gray-600">{subtitle}</p>
 
-            <div className="mt-4 text-lg">
+            <div className="mt-4 text-left text-lg">
                 <span>Starting at</span>
                 <div className="mt-1 text-4xl font-bold text-black">
                     {price}{' '}
@@ -242,7 +228,7 @@ export function PricingCard({
 
             <GetStartedModal />
 
-            <ul className="mt-6 space-y-2 text-xs">
+            <ul className="mt-6 space-y-2 text-left text-xs">
                 {features.map((feature, idx) => (
                     <li
                         key={`${title}-${feature}-${idx}`}

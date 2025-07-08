@@ -37,7 +37,7 @@ export default function Page() {
                     className="rounded-4xl shadow-md"
                 />
             </section>
-            <section className="px-4 py-12 sm:p-8 md:p-12 lg:p-16 xl:p-24">
+            <section className="px-4 py-8 sm:p-4 md:p-8 lg:p-12 xl:p-16">
                 <PricingSection />
             </section>
 

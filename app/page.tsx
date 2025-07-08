@@ -379,7 +379,7 @@ export default async function Home() {
                 </div>
             </section>
 
-            <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
+            <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-8 lg:p-12 xl:p-16">
                 <div className="mb-10 flex w-full flex-col items-start justify-center gap-4 md:flex-row md:items-center md:justify-between">
                     <div className="max-w-2xl space-y-2">
                         <h3 className="text-secondary text-xl font-medium uppercase">
