@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import GetStartedModal from './GetStratedModal';
 
 export const STANDARD_PRICING_CARDS = [
     {
@@ -227,9 +228,7 @@ export function PricingCard({
                 </div>
             </div>
 
-            <Button className="mt-5 w-full rounded-md py-2 font-semibold transition">
-                Get Started
-            </Button>
+            <GetStartedModal />
 
             <ul className="mt-6 space-y-2 text-xs">
                 {features.map((feature, idx) => (
