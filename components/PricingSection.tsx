@@ -1,6 +1,5 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import GetStartedModal from './GetStratedModal';
@@ -11,6 +10,7 @@ export const STANDARD_PRICING_CARDS = [
         subtitle: 'Individuals with a single income source',
         price: '$70',
         duration: 'Per Person',
+        height: '30rem',
         features: [
             'T1 - Income Tax Return Filing',
             'GST/HST Credit, CCB & CCR Filing',
@@ -23,6 +23,7 @@ export const STANDARD_PRICING_CARDS = [
         subtitle: 'Ideal for self employed professionals',
         price: '$595',
         duration: 'Annually',
+        height: '32rem',
         features: [
             'Quickbooks Online Subscription (Ledgers)',
             'Track Income & Expenses',
@@ -38,6 +39,7 @@ export const STANDARD_PRICING_CARDS = [
         subtitle: 'Perfect for small incorporated business',
         price: '$495',
         duration: 'Per Month',
+        height: '34rem',
         features: [
             'Quickbooks Online Subscription (Essentials Plan)',
             'T2 - Annual Income Tax Filing',
@@ -54,6 +56,7 @@ export const STANDARD_PRICING_CARDS = [
         subtitle: 'Perfect for small incorporated business',
         price: '$745',
         duration: 'Per Quarter',
+        height: '32rem',
         features: [
             'Quickbooks Online Subscription (Essentials Plan)',
             'T2 - Annual Income Tax Filing',
@@ -69,6 +72,7 @@ export const STANDARD_PRICING_CARDS = [
         subtitle: 'Perfect for small incorporated business',
         price: '$1,495',
         duration: 'Annually',
+        height: '30rem',
         features: [
             'Quickbooks Online Subscription (Ledgers)',
             'T2 - Annual Income Tax Filing',
@@ -87,6 +91,7 @@ export const ADVANCED_PRICING_CARDS = [
         subtitle: 'Individuals with multiple income sources',
         price: '$115',
         duration: 'Per Person',
+        height: '30rem',
         features: [
             'T1 - Income Tax Return Filing',
             'Ontario Trillium Benefits & Other Provincial Filings',
@@ -101,6 +106,7 @@ export const ADVANCED_PRICING_CARDS = [
         subtitle: 'Ideal for high volume transaction clients',
         price: '$1,495',
         duration: 'Per Month',
+        height: '32rem',
         features: [
             'Quickbooks Online Subscription (QB Plus Plan)',
             'T2 - Annual Income Tax Filing',
@@ -117,6 +123,7 @@ export const ADVANCED_PRICING_CARDS = [
         subtitle: 'Ideal for high volume transaction clients',
         price: '$3,600',
         duration: '',
+        height: '32rem',
         features: [
             'Cleanup books for previous periods',
             'Books Migration & Setup',
@@ -131,6 +138,7 @@ export const ADVANCED_PRICING_CARDS = [
         subtitle: 'Client who have requirements',
         price: '$58',
         duration: 'Per Hour',
+        height: '30rem',
         features: [
             'CFO Advisory',
             'Project Accounting',
@@ -214,9 +222,13 @@ export function PricingCard({
     price,
     duration,
     features,
-}: (typeof STANDARD_PRICING_CARDS)[number]) {
+    height,
+}: (typeof STANDARD_PRICING_CARDS)[number] & { height: string }) {
     return (
-        <div className="group relative z-10 min-h-[32rem] w-full max-w-sm rounded-xl border border-gray-200 bg-[#EFF0F4] p-6 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+        <div
+            className="group relative z-10 w-full max-w-sm rounded-xl border border-gray-200 bg-[#EFF0F4] p-6 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+            style={{ minHeight: height }}
+        >
             <h2 className="text-primary text-xl font-semibold">{title}</h2>
             <p className="mt-1 text-xs text-gray-600">{subtitle}</p>
 
