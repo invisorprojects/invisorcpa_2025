@@ -43,7 +43,7 @@ export function BehindTheTeam() {
                             variant={'outline'}
                             className="border-primary flex items-center gap-2 rounded-full hover:bg-sky-50 hover:underline"
                         >
-                            <span className="text-primary">Expolre Team</span>
+                            <span className="text-primary">Explore Team</span>
                             <CircleArrowRight className="h-4 w-4" />
                         </Button>
                     </Link>

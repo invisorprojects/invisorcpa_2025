@@ -21,7 +21,7 @@ export default function NewsLetterModal() {
                     variant="default"
                     size={'sm'}
                 >
-                    <span className="inline-flex items-center">
+                    <span className="inline-flex items-center text-xs sm:text-sm">
                         Subscribe
                         <ArrowRight
                             className="ms-2 -me-1 h-4 w-4 opacity-60 transition-transform group-hover:translate-x-0.5"

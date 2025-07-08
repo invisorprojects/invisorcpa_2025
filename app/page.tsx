@@ -115,7 +115,7 @@ export default async function Home() {
                     <div className="w-full sm:w-1/3">
                         <div className="relative h-fit w-fit bg-blue-50">
                             <div className="absolute top-0 left-0 h-1/4 w-full bg-white"></div>
-                            <div className="absolute top-36 -left-24 max-w-52 rounded-2xl border bg-white p-4 shadow-md drop-shadow-lg">
+                            <div className="absolute top-36 -left-24 hidden max-w-52 rounded-2xl border bg-white p-4 shadow-md drop-shadow-lg sm:block">
                                 <h6 className="text-base font-bold">
                                     Canada&#39;s Trusted Bookkeeping &
                                     Accounting Experts
@@ -146,7 +146,7 @@ export default async function Home() {
                         height={899}
                     />
                 </div>
-                <div className="flex flex-col items-center justify-between p-4 sm:w-1/2">
+                <div className="flex flex-col items-center justify-between gap-4 p-4 sm:w-1/2">
                     <div className="flex flex-col gap-4">
                         <h3 className="text-4xl font-bold">
                             Simplify Your Accounts, Maximize Your Success!
@@ -535,7 +535,9 @@ function StatsGrid() {
                         />
                         <span className="text-3xl font-[900]">+</span>
                     </div>
-                    <p className="mt-1 text-gray-700">Professional Experts</p>
+                    <p className="mt-1 text-sm text-gray-700 sm:text-base">
+                        Professional Experts
+                    </p>
                 </div>
                 <div className="flex h-1/2 w-full flex-col justify-center rounded-lg bg-gray-100 p-6 text-[#11135f]">
                     <div className="flex items-center">
@@ -549,7 +551,7 @@ function StatsGrid() {
                         />
                         <span className="text-3xl font-[900]">+</span>
                     </div>
-                    <p className="mt-1 text-gray-700">
+                    <p className="mt-1 text-sm text-gray-700 sm:text-base">
                         Year of Affiliate Experience
                     </p>
                 </div>
@@ -568,7 +570,9 @@ function StatsGrid() {
                         />
                         <span className="text-3xl font-[900]">+</span>
                     </div>
-                    <p className="mt-1 text-gray-700">Years Experience</p>
+                    <p className="mt-1 text-sm text-gray-700 sm:text-base">
+                        Years Experience
+                    </p>
                 </div>
 
                 <div className="flex h-2/3 flex-col justify-center rounded-lg bg-blue-100 p-6 text-[#11135f]">
@@ -588,7 +592,7 @@ function StatsGrid() {
                             +
                         </span>
                     </div>
-                    <p className="mt-1 text-gray-700">
+                    <p className="mt-1 text-sm text-gray-700 sm:text-base">
                         Canada&#39;s trusted accounting experts, proudly serving
                         1000+ clients nationwide
                     </p>

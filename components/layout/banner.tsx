@@ -28,7 +28,7 @@ export default function Banner() {
                         aria-hidden="true"
                     />
                     <div className="flex grow flex-col justify-between gap-3 md:flex-row md:items-center">
-                        <p className="text-sm">
+                        <p className="text-xs sm:text-sm">
                             Subscribe to receive news and canadian tax law
                             updates.
                         </p>
@@ -45,7 +45,7 @@ export default function Banner() {
                                     size={'sm'}
                                     className="group border-primary hover:bg-primary hover:text-primary-foreground relative border-2 transition-all"
                                 >
-                                    <span className="inline-flex items-center">
+                                    <span className="inline-flex items-center text-xs sm:text-sm">
                                         Call Now
                                         <PhoneOutgoing
                                             color="#ffffff"
