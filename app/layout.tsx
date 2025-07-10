@@ -9,6 +9,7 @@ import LiveChat from '@/components/layout/LiveChat';
 import Banner from '@/components/layout/banner';
 import SEOStructuredData from '@/components/SEOStructuredData';
 import { PerformanceOptimizer } from '@/components/PerformanceOptimizer';
+import { Toaster } from '@/components/ui/sonner';
 
 export const metadata: Metadata = {
     title: {
@@ -179,6 +180,7 @@ export default function RootLayout({
                     <Footer />
                     <FloatingButtons />
                     <LiveChat />
+                    <Toaster richColors />
                 </body>
             </html>
         </StoryblokProvider>

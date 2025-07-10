@@ -32,6 +32,7 @@ import {
     TrendingDown,
     TrendingUp,
 } from 'lucide-react';
+import { toast } from 'sonner';
 
 interface PayrollResult {
     grossPay: number;
@@ -52,6 +53,7 @@ export default function PayrollCalculator() {
     const [grossWage, setGrossWage] = useState('');
     const [result, setResult] = useState<PayrollResult | null>(null);
     const [isCalculating, setIsCalculating] = useState(false);
+    const [calendarOpen, setCalendarOpen] = useState(false);
 
     // Tax rates and constants (2024 rates)
     const FEDERAL_TAX_RATES = [
@@ -218,7 +220,7 @@ export default function PayrollCalculator() {
             !payPeriod ||
             !grossWage
         ) {
-            alert('Please fill in all required fields');
+            toast.error('Please fill in all required fields');
             return;
         }
 
@@ -314,7 +316,7 @@ export default function PayrollCalculator() {
     };
 
     return (
-        <div className="mx-auto max-w-4xl px-4 py-8">
+        <div className="mx-auto w-full max-w-2xl px-4 py-8">
             <Card className="shadow-lg">
                 <CardHeader className="pb-6 text-center">
                     <div className="bg-primary/10 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full">
@@ -338,11 +340,17 @@ export default function PayrollCalculator() {
                                 <span className="text-destructive">*</span>
                             </Label>
                             <div className="flex items-center gap-2">
-                                <Popover>
+                                <Popover
+                                    open={calendarOpen}
+                                    onOpenChange={setCalendarOpen}
+                                >
                                     <PopoverTrigger asChild>
                                         <Button
                                             variant="outline"
-                                            className="w-[calc(100%-1rem)] justify-start text-left font-normal"
+                                            className="w-[calc(100%-1.5rem)] justify-start text-left font-normal"
+                                            onClick={() =>
+                                                setCalendarOpen(true)
+                                            }
                                         >
                                             {payrollDate
                                                 ? format(
@@ -359,7 +367,10 @@ export default function PayrollCalculator() {
                                         <Calendar
                                             mode="single"
                                             selected={payrollDate}
-                                            onSelect={setPayrollDate}
+                                            onSelect={(date) => {
+                                                setPayrollDate(date);
+                                                setCalendarOpen(false);
+                                            }}
                                         />
                                     </PopoverContent>
                                 </Popover>
