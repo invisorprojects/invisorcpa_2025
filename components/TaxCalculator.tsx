@@ -1,7 +1,10 @@
 'use client';
 import { useState } from 'react';
+import GetStartedModal from './GetStratedModal';
+import SubmitDetailsModal from './SubmitDetailsModal';
 
 export default function TaxCalculator() {
+    const [open, setOpen] = useState(false);
     const [income, setIncome] = useState('');
     const [province, setProvince] = useState('ON');
     const [result, setResult] = useState<number | null>(null);
@@ -184,15 +187,18 @@ export default function TaxCalculator() {
         }
 
         setResult(incomeNum - (federalTax + provincialTax));
+        setOpen(true);
     };
 
     return (
-        <div className="mx-auto w-full max-w-xl rounded bg-white p-6 shadow">
+        <div className="mx-auto w-full max-w-md rounded bg-white p-6 shadow">
+            <SubmitDetailsModal open={open} setOpen={setOpen} />
             <h2 className="mb-4 text-2xl font-bold">Canada Tax Calculator</h2>
             <div className="mb-4">
                 <label className="mb-1 block">Annual Income (CAD)</label>
                 <input
                     type="number"
+                    placeholder="Enter your annual income"
                     className="w-full border p-2"
                     value={income}
                     onChange={(e) => setIncome(e.target.value)}
