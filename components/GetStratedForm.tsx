@@ -3,7 +3,7 @@
 import { sendContact } from '@/actions';
 import { useActionState } from 'react';
 import { Button } from '@/components/ui/button';
-import { LoaderCircle, MailIcon } from 'lucide-react';
+import { LoaderCircle } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from './ui/textarea';
 const initialState = {
@@ -71,7 +71,8 @@ export default function GetStartedForm() {
 
             {state.status === 'SUCCESS' && (
                 <p className="text-green-500">
-                    Thank you for getting started! We'll get back to you soon.
+                    Thank you for getting started! We&apos;ll get back to you
+                    soon.
                 </p>
             )}
             {state.status === 'ERROR' && (

@@ -58,8 +58,8 @@ export default function NewLetterForm() {
             </div>
             {state.status === 'SUCCESS' && (
                 <p className="text-green-500">
-                    Thank you for subscribing! We'll keep you updated with the
-                    latest news and offers.
+                    Thank you for subscribing! We&apos;ll keep you updated with
+                    the latest news and offers.
                 </p>
             )}
             {state.status === 'ERROR' && (
