@@ -1,19 +1,20 @@
 'use client';
 
 import { useState } from 'react';
-import {
-    ArrowRight,
-    EclipseIcon,
-    Mail,
-    PhoneOutgoing,
-    XIcon,
-} from 'lucide-react';
+import { Mail, PhoneOutgoing, XIcon } from 'lucide-react';
 
+import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import NewsLetterModal from './NewsLetterModal';
 
 export default function Banner() {
     const [isVisible, setIsVisible] = useState(true);
+    const pathname = usePathname();
+
+    // Hide banner on /payroll-calculator and /tax-calculator routes
+    if (pathname === '/payroll-calculator' || pathname === '/tax-calculator') {
+        return null;
+    }
 
     if (!isVisible) return null;
 

@@ -11,8 +11,11 @@ import {
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
+import SubmitDetailsModal from './SubmitDetailsModal';
 
 export default function PayrollCalculator() {
+    const [open, setOpen] = useState(false);
+
     const [grossIncome, setGrossIncome] = useState('');
     const [taxRate, setTaxRate] = useState('');
     const [otherDeductions, setOtherDeductions] = useState('');
@@ -25,6 +28,7 @@ export default function PayrollCalculator() {
 
         const net = gross - gross * tax - deductions;
         setNetPay(net > 0 ? parseFloat(net.toFixed(2)) : 0);
+        setOpen(true);
     };
 
     return (
@@ -90,6 +94,7 @@ export default function PayrollCalculator() {
                     </div>
                 )}
             </CardFooter>
+            <SubmitDetailsModal open={open} setOpen={setOpen} />
         </Card>
     );
 }
