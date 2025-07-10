@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
@@ -33,6 +33,7 @@ import {
     TrendingUp,
 } from 'lucide-react';
 import { toast } from 'sonner';
+import SubmitDetailsModal from './SubmitDetailsModal';
 
 interface PayrollResult {
     grossPay: number;
@@ -54,6 +55,14 @@ export default function PayrollCalculator() {
     const [result, setResult] = useState<PayrollResult | null>(null);
     const [isCalculating, setIsCalculating] = useState(false);
     const [calendarOpen, setCalendarOpen] = useState(false);
+    const [open, setOpen] = useState(false);
+    const [isLeadCollected, setIsLeadCollected] = useState(false);
+
+    useEffect(() => {
+        const collected = localStorage.getItem('is_lead_collected');
+        setIsLeadCollected(collected === 'true');
+        console.log('useEffect working :', collected);
+    }, [open]);
 
     // Tax rates and constants (2024 rates)
     const FEDERAL_TAX_RATES = [
@@ -224,6 +233,10 @@ export default function PayrollCalculator() {
             return;
         }
 
+        if (!isLeadCollected) {
+            setOpen(true);
+        }
+
         setIsCalculating(true);
 
         // Simulate calculation delay
@@ -317,6 +330,8 @@ export default function PayrollCalculator() {
 
     return (
         <div className="mx-auto w-full max-w-2xl px-4 py-8">
+            <SubmitDetailsModal open={open} setOpen={setOpen} />
+
             <Card className="shadow-lg">
                 <CardHeader className="pb-6 text-center">
                     <div className="bg-primary/10 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full">
@@ -619,7 +634,7 @@ export default function PayrollCalculator() {
                     </div>
 
                     {/* Results Section */}
-                    {result && (
+                    {result && isLeadCollected && (
                         <div className="mt-8 space-y-6">
                             <div className="border-t pt-6">
                                 <h3 className="mb-4 text-center text-lg font-semibold">

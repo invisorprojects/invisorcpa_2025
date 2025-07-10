@@ -3,7 +3,7 @@
 import { sendContact } from '@/actions';
 import { useActionState } from 'react';
 import { Button } from '@/components/ui/button';
-import { LoaderCircle } from 'lucide-react';
+import { Check, CheckCircle, LoaderCircle } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from './ui/textarea';
 const initialState = {
@@ -15,6 +15,30 @@ export default function GetStartedForm() {
         sendContact,
         initialState
     );
+
+    const isLeadCollected = localStorage.getItem('is_lead_collected');
+    console.log(isLeadCollected);
+    if (isLeadCollected) {
+        return (
+            <div className="flex flex-col items-center justify-center py-8">
+                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
+                    <Check className="h-7 w-7 text-green-600" />
+                </div>
+                <h3 className="mb-1 text-lg font-semibold text-green-700">
+                    Thank you!
+                </h3>
+                <p className="text-muted-foreground text-sm">
+                    We received your request.
+                    <br />
+                    We&apos;ll get back to you soon.
+                </p>
+            </div>
+        );
+    }
+
+    if (typeof window !== 'undefined' && state?.status === 'SUCCESS') {
+        localStorage.setItem('is_lead_collected', 'true');
+    }
     return (
         <form className="space-y-5" action={formAction}>
             <div>
@@ -22,7 +46,7 @@ export default function GetStartedForm() {
                 <Input
                     type="text"
                     name="name"
-                    // defaultValue={'Test User'}
+                    defaultValue={'Test User'}
                     required
                     minLength={3}
                     maxLength={50}
@@ -35,7 +59,7 @@ export default function GetStartedForm() {
                 <Input
                     type="tel"
                     name="subject"
-                    // defaultValue={'1234567890'}
+                    defaultValue={'1234567890'}
                     required
                     minLength={10}
                     maxLength={10}
@@ -49,7 +73,7 @@ export default function GetStartedForm() {
                 <Input
                     type="email"
                     name="email"
-                    // defaultValue={'test@test.com'}
+                    defaultValue={'test@test.com'}
                     pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
                     required
                     title="Please enter a valid email address"
@@ -60,7 +84,7 @@ export default function GetStartedForm() {
                 <label className="mb-1 block font-medium">Message</label>
                 <Textarea
                     name="message"
-                    // defaultValue={'I am a test message. Kindly ignore me.'}
+                    defaultValue={'I am a test message. Kindly ignore me.'}
                     required
                     minLength={10}
                     maxLength={500}
@@ -69,12 +93,6 @@ export default function GetStartedForm() {
                 />
             </div>
 
-            {state.status === 'SUCCESS' && (
-                <p className="text-green-500">
-                    Thank you for getting started! We&apos;ll get back to you
-                    soon.
-                </p>
-            )}
             {state.status === 'ERROR' && (
                 <p className="text-red-500">{state.message}</p>
             )}

@@ -3,7 +3,7 @@
 import { sendContact } from '@/actions';
 import { useActionState } from 'react';
 import { Button } from '../ui/button';
-import { LoaderCircle, MailIcon } from 'lucide-react';
+import { Check, LoaderCircle, MailIcon } from 'lucide-react';
 import { Input } from '../ui/input';
 const initialState = {
     status: '',
@@ -14,6 +14,30 @@ export default function NewLetterForm() {
         sendContact,
         initialState
     );
+
+    const isLeadCollected = localStorage.getItem('is_lead_collected');
+
+    if (isLeadCollected) {
+        return (
+            <div className="flex flex-col items-center justify-center py-8">
+                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
+                    <Check className="h-7 w-7 text-green-600" />
+                </div>
+                <h3 className="mb-1 text-lg font-semibold text-green-700">
+                    Thank you!
+                </h3>
+                <p className="text-muted-foreground text-sm">
+                    We received your request.
+                    <br />
+                    We&apos;ll get back to you soon.
+                </p>
+            </div>
+        );
+    }
+
+    if (typeof window !== 'undefined' && state?.status === 'SUCCESS') {
+        localStorage.setItem('is_lead_collected', 'true');
+    }
     return (
         <form className="space-y-5" action={formAction}>
             <input

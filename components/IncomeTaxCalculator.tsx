@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     Card,
     CardHeader,
@@ -19,6 +19,7 @@ import {
 import { Label } from './ui/label';
 import { Button } from './ui/button';
 import { HandCoins } from 'lucide-react';
+import SubmitDetailsModal from './SubmitDetailsModal';
 
 const PROVINCES = [
     { value: 'ON', label: 'Ontario' },
@@ -41,7 +42,8 @@ const RATES = [
     { value: 'weekly', label: 'Weekly' },
 ];
 
-export default function CanadaTaxCalculator() {
+export default function IncomeTaxCalculator() {
+    const [open, setOpen] = useState(false);
     const [province, setProvince] = useState('ON');
     const [year, setYear] = useState('2025');
     const [salary, setSalary] = useState('');
@@ -53,9 +55,18 @@ export default function CanadaTaxCalculator() {
     const [taxableBenefit, setTaxableBenefit] = useState('0');
     const [rrsp, setRrsp] = useState('0');
     const [result, setResult] = useState<number | null>(null);
-
     // Placeholder calculation logic (to be replaced with real logic)
+    const [isLeadCollected, setIsLeadCollected] = useState(false);
+
+    useEffect(() => {
+        const collected = localStorage.getItem('is_lead_collected');
+        setIsLeadCollected(collected === 'true');
+        console.log('useEffect working :', collected);
+    }, [open]);
     const calculate = () => {
+        if (!isLeadCollected) {
+            setOpen(true);
+        }
         const totalIncome =
             parseFloat(salary || '0') +
             parseFloat(bonus || '0') +
@@ -69,6 +80,7 @@ export default function CanadaTaxCalculator() {
 
     return (
         <Card className="mx-auto mt-10 max-w-2xl">
+            <SubmitDetailsModal open={open} setOpen={setOpen} />
             <CardHeader className="pb-6 text-center">
                 <div className="bg-primary/10 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full">
                     <HandCoins className="text-primary h-6 w-6" />
@@ -198,7 +210,8 @@ export default function CanadaTaxCalculator() {
             </CardContent>
             <CardFooter className="flex flex-col items-start gap-4">
                 <Button onClick={calculate}>Calculate</Button>
-                {result !== null && (
+
+                {result !== null && isLeadCollected && (
                     <div>
                         <div className="font-semibold">
                             Estimated Net Income:

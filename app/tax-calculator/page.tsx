@@ -1,9 +1,9 @@
-import CanadaTaxCalculator from '@/components/CanadaTaxCalculator';
+import IncomeTaxCalculator from '@/components/IncomeTaxCalculator';
 
 export default function TaxCalculatorPage() {
     return (
         <div className="flex h-screen flex-col items-center justify-center">
-            <CanadaTaxCalculator />
+            <IncomeTaxCalculator />
         </div>
     );
 }
