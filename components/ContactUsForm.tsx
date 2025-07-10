@@ -3,96 +3,144 @@
 import { sendContact } from '@/actions';
 import { useActionState } from 'react';
 import { Button } from './ui/button';
-import { LoaderCircle } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Input } from './ui/input';
+import { Textarea } from './ui/textarea';
+import {
+    LoaderCircle,
+    Send,
+    User,
+    Phone,
+    Mail,
+    MessageSquare,
+} from 'lucide-react';
+
 const initialState = {
     status: '',
     message: '',
 };
+
 export default function ContactUsForm() {
     const [state, formAction, isPending] = useActionState(
         sendContact,
         initialState
     );
-    return (
-        <div className="w-full max-w-xl rounded-md border bg-white p-6 shadow-md">
-            <form className="space-y-6" action={formAction}>
-                <div>
-                    <label className="mb-1 block font-medium">Name</label>
-                    <input
-                        type="text"
-                        name="name"
-                        // defaultValue={'Test User'}
-                        required
-                        minLength={3}
-                        maxLength={50}
-                        title="Please enter a valid name"
-                        placeholder="Enter your name"
-                        className="w-full rounded-md border px-4 py-2 shadow-sm focus:ring focus:ring-blue-100 focus:outline-none"
-                    />
-                </div>
-                <div>
-                    <label className="mb-1 block font-medium">
-                        Phone Number
-                    </label>
-                    <input
-                        type="tel"
-                        name="subject"
-                        // defaultValue={'1234567890'}
-                        required
-                        minLength={10}
-                        maxLength={10}
-                        pattern="^[0-9]+$"
-                        title="Please enter a valid 10-digit phone number"
-                        placeholder="Enter phone number"
-                        className="w-full rounded-md border px-4 py-2 shadow-sm focus:ring focus:ring-blue-100 focus:outline-none"
-                    />
-                </div>
-                <div>
-                    <label className="mb-1 block font-medium">Email</label>
-                    <input
-                        type="email"
-                        name="email"
-                        // defaultValue={'test@test.com'}
-                        pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
-                        required
-                        title="Please enter a valid email address"
-                        placeholder="Enter email"
-                        className="w-full rounded-md border px-4 py-2 shadow-sm focus:ring focus:ring-blue-100 focus:outline-none"
-                    />
-                </div>
-                <div>
-                    <label className="mb-1 block font-medium">Message</label>
-                    <textarea
-                        name="message"
-                        // defaultValue={'I am a test message. Kindly ignore me.'}
-                        required
-                        minLength={10}
-                        maxLength={500}
-                        title="Please enter a valid message"
-                        placeholder="Enter message"
-                        className="min-h-[120px] w-full rounded-md border px-4 py-2 shadow-sm focus:ring focus:ring-blue-100 focus:outline-none"
-                    />
-                </div>
-                {state.status === 'SUCCESS' && (
-                    <p className="text-green-500">{state.message}</p>
-                )}
-                {state.status === 'ERROR' && (
-                    <p className="text-red-500">{state.message}</p>
-                )}
 
-                <Button
-                    variant={'outline'}
-                    className="bg-secondary h-10 w-48 rounded-md py-2 font-semibold text-white hover:bg-[#007fd1] hover:text-white"
-                    disabled={isPending}
-                    type="submit"
-                >
-                    {isPending ? (
-                        <LoaderCircle className="animate-spin" />
-                    ) : (
-                        'Submit'
+    return (
+        <Card className="w-full max-w-xl border-0 shadow-lg">
+            <CardHeader className="pb-4">
+                <CardTitle className="text-primary text-2xl font-bold">
+                    Contact Us
+                </CardTitle>
+                <p className="text-muted-foreground text-sm">
+                    Fill out the form below and we'll get back to you as soon as
+                    possible.
+                </p>
+            </CardHeader>
+            <CardContent>
+                <form className="space-y-6" action={formAction}>
+                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                        <div className="space-y-2">
+                            <label className="text-foreground flex items-center gap-2 text-sm font-medium">
+                                <User className="text-primary h-4 w-4" />
+                                Name
+                            </label>
+                            <Input
+                                type="text"
+                                name="name"
+                                required
+                                minLength={3}
+                                maxLength={50}
+                                title="Please enter a valid name"
+                                placeholder="Enter your name"
+                                className="h-11"
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <label className="text-foreground flex items-center gap-2 text-sm font-medium">
+                                <Phone className="text-primary h-4 w-4" />
+                                Phone Number
+                            </label>
+                            <Input
+                                type="tel"
+                                name="subject"
+                                required
+                                minLength={10}
+                                maxLength={10}
+                                pattern="^[0-9]+$"
+                                title="Please enter a valid 10-digit phone number"
+                                placeholder="Enter phone number"
+                                className="h-11"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="space-y-2">
+                        <label className="text-foreground flex items-center gap-2 text-sm font-medium">
+                            <Mail className="text-primary h-4 w-4" />
+                            Email
+                        </label>
+                        <Input
+                            type="email"
+                            name="email"
+                            pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+                            required
+                            title="Please enter a valid email address"
+                            placeholder="Enter your email"
+                            className="h-11"
+                        />
+                    </div>
+
+                    <div className="space-y-2">
+                        <label className="text-foreground flex items-center gap-2 text-sm font-medium">
+                            <MessageSquare className="text-primary h-4 w-4" />
+                            Message
+                        </label>
+                        <Textarea
+                            name="message"
+                            required
+                            minLength={10}
+                            maxLength={500}
+                            title="Please enter a valid message"
+                            placeholder="Tell us about your inquiry..."
+                            className="min-h-[120px] resize-none"
+                        />
+                    </div>
+
+                    {state.status === 'SUCCESS' && (
+                        <div className="rounded-md border border-green-200 bg-green-50 p-4">
+                            <p className="text-sm font-medium text-green-700">
+                                {state.message}
+                            </p>
+                        </div>
                     )}
-                </Button>
-            </form>
-        </div>
+                    {state.status === 'ERROR' && (
+                        <div className="rounded-md border border-red-200 bg-red-50 p-4">
+                            <p className="text-sm font-medium text-red-700">
+                                {state.message}
+                            </p>
+                        </div>
+                    )}
+
+                    <Button
+                        type="submit"
+                        disabled={isPending}
+                        className="bg-primary hover:bg-primary/90 text-primary-foreground h-11 w-full font-semibold"
+                    >
+                        {isPending ? (
+                            <>
+                                <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
+                                Sending...
+                            </>
+                        ) : (
+                            <>
+                                <Send className="mr-2 h-4 w-4" />
+                                Send Message
+                            </>
+                        )}
+                    </Button>
+                </form>
+            </CardContent>
+        </Card>
     );
 }
