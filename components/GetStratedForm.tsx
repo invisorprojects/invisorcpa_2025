@@ -46,7 +46,7 @@ export default function GetStartedForm() {
                 <Input
                     type="text"
                     name="name"
-                    defaultValue={'Test User'}
+                    // defaultValue={'Test User'}
                     required
                     minLength={3}
                     maxLength={50}
@@ -59,7 +59,7 @@ export default function GetStartedForm() {
                 <Input
                     type="tel"
                     name="subject"
-                    defaultValue={'1234567890'}
+                    // defaultValue={'1234567890'}
                     required
                     minLength={10}
                     maxLength={10}
@@ -73,7 +73,7 @@ export default function GetStartedForm() {
                 <Input
                     type="email"
                     name="email"
-                    defaultValue={'test@test.com'}
+                    // defaultValue={'test@test.com'}
                     pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
                     required
                     title="Please enter a valid email address"
@@ -84,7 +84,7 @@ export default function GetStartedForm() {
                 <label className="mb-1 block font-medium">Message</label>
                 <Textarea
                     name="message"
-                    defaultValue={'I am a test message. Kindly ignore me.'}
+                    // defaultValue={'I am a test message. Kindly ignore me.'}
                     required
                     minLength={10}
                     maxLength={500}

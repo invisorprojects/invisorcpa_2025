@@ -27,7 +27,7 @@ export default function OurTools() {
 
 function Tools() {
     return (
-        <div className="my-4">
+        <div className="my-4 lg:mr-20">
             <div className="grid grid-cols-2 gap-8 px-8 md:grid-cols-3 lg:grid-cols-3">
                 {[1, 2, 3, 4, 5, 6].map((num) => (
                     <div

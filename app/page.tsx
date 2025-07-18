@@ -225,8 +225,8 @@ export default async function Home() {
                         <Image
                             src="/assets/about-us.jpg"
                             alt="Professional Canadian tax accountants providing tax filing services"
-                            width={2048}
-                            height={1169}
+                            width={2049}
+                            height={1170}
                             className="h-auto w-full rounded-xl object-cover"
                         />
                     </div>
