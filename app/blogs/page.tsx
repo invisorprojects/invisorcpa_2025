@@ -1,5 +1,5 @@
 export const dynamic = 'force-static';
-export const revalidate = false;
+export const revalidate = 1;
 
 import BlogCard from '@/components/blog-card';
 import ContactUs from '@/components/sections/contact-us';
