@@ -38,6 +38,32 @@ async function fetchData(slug: string) {
     }
 }
 
+async function fetchRecentCaseStudies(currentSlug: string) {
+    const storyblokApi = getStoryblokApi();
+    try {
+        const { data } = await storyblokApi.get('cdn/stories', {
+            starts_with: 'case-studies/',
+            sort_by: 'first_published_at:desc',
+            per_page: 3, // Fetch 3 to ensure we can exclude the current one and still have 2
+            version:
+                process.env.NODE_ENV === 'production' ? 'published' : 'draft',
+        });
+        return data.stories
+            .filter(
+                (story: any) =>
+                    story.slug.replace('case-studies/', '') !== currentSlug
+            )
+            .slice(0, 2)
+            .map((story: any) => ({
+                name: story.content.title,
+                slug: story.slug.replace('case-studies/', ''),
+            }));
+    } catch (error) {
+        console.log('Error fetching recent case studies:', error);
+        return [];
+    }
+}
+
 export default async function Page({
     params,
 }: {
@@ -51,6 +77,7 @@ export default async function Page({
     // console.log('data::', data);
     const content = data.story.content;
     // console.log('content::', content);
+    const recentCaseStudies = await fetchRecentCaseStudies(slug);
     return (
         <main>
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
@@ -78,13 +105,22 @@ export default async function Page({
                 </div>
             </section>
 
-            <CaseStudyDetails content={content} />
+            <CaseStudyDetails
+                content={content}
+                recentCaseStudies={recentCaseStudies}
+            />
             <ContactUs />
         </main>
     );
 }
 
-function CaseStudyDetails({ content }: { content: any }) {
+function CaseStudyDetails({
+    content,
+    recentCaseStudies,
+}: {
+    content: any;
+    recentCaseStudies: { name: string; slug: string }[];
+}) {
     return (
         <section className="w-full px-4 py-12">
             <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 lg:grid-cols-3">
@@ -100,24 +136,16 @@ function CaseStudyDetails({ content }: { content: any }) {
                             Recent Case Studies
                         </h4>
                         <ul className="list-disc space-y-2 pl-5 text-sm text-gray-700">
-                            <li>
-                                <Link
-                                    href="/case-studies/3"
-                                    className="underline hover:text-sky-600"
-                                >
-                                    Optimizing Financial Management for IT
-                                    Solutions Provider
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/case-studies/1"
-                                    className="underline hover:text-sky-600"
-                                >
-                                    Optimizing Financial Management for
-                                    E-Commerce Growth and Efficiency
-                                </Link>
-                            </li>
+                            {recentCaseStudies.map((cs) => (
+                                <li key={cs.slug}>
+                                    <Link
+                                        href={`/case-studies/${cs.slug}`}
+                                        className="underline hover:text-sky-600"
+                                    >
+                                        {cs.name}
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                     <ContactUsForm />

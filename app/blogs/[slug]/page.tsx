@@ -43,9 +43,27 @@ export default async function Page({
     if (!data) {
         return notFound();
     }
-    // console.log('data::', data);
     const content = data.story.content;
-    // console.log('content::', content);
+
+    // Fetch 2 most recent blogs (excluding the current one)
+    const storyblokApi = getStoryblokApi();
+    const { data: recentData } = await storyblokApi.get('cdn/stories', {
+        starts_with: 'blogs/',
+        sort_by: 'first_published_at:desc',
+        per_page: 3, // Fetch 3 in case current is included, we'll filter below
+        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
+    });
+    console.log('recentData', recentData);
+
+    // Filter out the current blog and take 2
+    const recentBlogs = recentData.stories
+        .filter((story: any) => story.slug !== slug)
+        .slice(0, 2)
+        .map((story: any) => ({
+            name: story.content.title,
+            slug: story.slug.replace('blogs/', ''),
+        }));
+
     return (
         <main>
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
@@ -73,13 +91,19 @@ export default async function Page({
                 </div>
             </section>
 
-            <BlogDetails content={content} />
+            <BlogDetails content={content} recentBlogs={recentBlogs} />
             <ContactUs />
         </main>
     );
 }
 
-function BlogDetails({ content }: { content: any }) {
+function BlogDetails({
+    content,
+    recentBlogs,
+}: {
+    content: any;
+    recentBlogs: { name: string; slug: string }[];
+}) {
     return (
         <section className="w-full px-4 py-12">
             <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 lg:grid-cols-3">
@@ -95,24 +119,16 @@ function BlogDetails({ content }: { content: any }) {
                             Recent Blogs
                         </h4>
                         <ul className="list-disc space-y-2 pl-5 text-sm text-gray-700">
-                            <li>
-                                <Link
-                                    href="/blogs/3"
-                                    className="underline hover:text-sky-600"
-                                >
-                                    Optimizing Financial Management for IT
-                                    Solutions Provider
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/blogs/1"
-                                    className="underline hover:text-sky-600"
-                                >
-                                    Optimizing Financial Management for
-                                    E-Commerce Growth and Efficiency
-                                </Link>
-                            </li>
+                            {recentBlogs.map((blog) => (
+                                <li key={blog.slug}>
+                                    <Link
+                                        href={`/blogs/${blog.slug}`}
+                                        className="underline hover:text-sky-600"
+                                    >
+                                        {blog.name}
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                     <ContactUsForm />
