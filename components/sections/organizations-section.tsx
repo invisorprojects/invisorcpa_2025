@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export function OrganizationsSection() {
     const logos = Array.from(
-        { length: 24 },
+        { length: 28 },
         (_, i) => `/assets/customer-logos/logo-${i + 1}_PhotoGrid.png`
     );
     return (
