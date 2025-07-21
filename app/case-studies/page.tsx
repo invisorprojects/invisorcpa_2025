@@ -1,5 +1,4 @@
 export const dynamic = 'force-static';
-export const revalidate = 1;
 
 import ContactUs from '@/components/sections/contact-us';
 import { getStoryblokApi } from '@/lib/storyblok';
