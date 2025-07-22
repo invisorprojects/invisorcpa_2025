@@ -4,8 +4,8 @@ import Link from 'next/link';
 
 export function OrganizationsSection() {
     const logos = Array.from(
-        { length: 28 },
-        (_, i) => `/assets/customer-logos/logo-${i + 1}_PhotoGrid.png`
+        { length: 44 },
+        (_, i) => `/assets/customer-logos/${i + 1}.png`
     );
     return (
         <section className="flex flex-col items-center justify-between bg-[#EFF0F4] p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
