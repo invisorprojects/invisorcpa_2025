@@ -146,11 +146,11 @@ function SamplePricingCard({
     tools: string[];
 }) {
     return (
-        <div className="h-48 w-full rounded-xl border bg-white p-6 shadow-lg">
-            <div className="grid grid-cols-1 items-start gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="w-full rounded-xl border bg-white p-4 shadow-lg sm:p-6">
+            <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 lg:grid-cols-4">
                 {/* Column 1: Basic Info */}
-                <div>
-                    <h4 className="text-xl font-bold">{title}</h4>
+                <div className="mb-2 flex flex-col">
+                    <h4 className="text-lg font-bold sm:text-xl">{title}</h4>
                     <p className="mt-2 text-sm">{location}</p>
                     {employees && (
                         <p className="mt-2 text-sm font-medium">
@@ -165,14 +165,14 @@ function SamplePricingCard({
                 </div>
 
                 {/* Column 2: Services */}
-                <div>
-                    <h4 className="text-xl font-bold">Services</h4>
+                <div className="mb-2 flex flex-col">
+                    <h4 className="text-lg font-bold sm:text-xl">Services</h4>
                     <p className="mt-1 text-sm">{services}</p>
                 </div>
 
                 {/* Column 3: Price */}
-                <div>
-                    <h4 className="text-xl font-bold">Price</h4>
+                <div className="mb-2 flex flex-col">
+                    <h4 className="text-lg font-bold sm:text-xl">Price</h4>
                     <p className="mt-2 text-sm">
                         <span className="text-lg font-bold">
                             {price.amount}
@@ -183,8 +183,8 @@ function SamplePricingCard({
                 </div>
 
                 {/* Column 4: Tools */}
-                <div>
-                    <h4 className="text-xl font-bold">Tools</h4>
+                <div className="flex flex-col">
+                    <h4 className="text-lg font-bold sm:text-xl">Tools</h4>
                     <div className="mt-2 flex flex-wrap items-center gap-4">
                         {tools.map((tool, i) => (
                             <Image
