@@ -1,3 +1,6 @@
+export const dynamic = 'force-static';
+export const revalidate = 1;
+
 import Image from 'next/image';
 import { Metadata } from 'next';
 import TrustedPartners from '@/components/sections/trusted-partners';
@@ -85,14 +88,17 @@ export default async function Home() {
         sort_by: 'first_published_at:desc',
         per_page: 3,
     });
-    const blogs = await storyblokApi.getAll('cdn/stories', {
+
+    const { data } = await storyblokApi.get('cdn/stories', {
         version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
-        starts_with: 'blogs',
+        starts_with: 'blogs/',
         content_type: 'blog',
         sort_by: 'first_published_at:desc',
-        per_page: 4,
+        per_page: 3,
+        page: 1,
     });
-    // console.log('blogs::', blogs);
+    const blogs = data.stories;
+    console.log('blogs::', blogs);
     return (
         <main className="">
             <section className="flex flex-col gap-4 p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
@@ -471,7 +477,7 @@ export default async function Home() {
 
                     {/* Text Content */}
                     <div className="space-y-6 md:w-1/2">
-                        {blogs.slice(1).map((blog, index) => (
+                        {blogs.slice(1).map((blog: any, index: number) => (
                             <div
                                 key={index}
                                 className="flex flex-col items-center gap-4 p-1 md:flex-row"
