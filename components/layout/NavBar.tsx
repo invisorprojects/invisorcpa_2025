@@ -40,30 +40,41 @@ export function NavBar() {
                     <SheetTrigger>
                         <Menu className="size-8" />
                     </SheetTrigger>
-                    <SheetContent className="flex flex-col gap-4 p-4">
+                    <SheetContent className="">
                         <SheetTitle></SheetTitle>
-
-                        {NAV_ITEMS.map((item, index) => (
-                            <Link
-                                key={index}
-                                href={item.disabled ? `${path}` : item.href}
-                            >
-                                <span
-                                    className={`flex ${
-                                        path === item.href
-                                            ? 'text-blue-500'
-                                            : 'hover:text-blue-500'
-                                    }`}
-                                >
-                                    {item.title}
-                                </span>
-                            </Link>
-                        ))}
-                        <Link href="/contact-us">
-                            <Button className="hidden rounded-sm px-4 py-5 hover:cursor-pointer sm:flex">
-                                <span className="font-medium">Contact Us</span>
-                            </Button>
-                        </Link>
+                        <div className="flex h-full flex-col justify-between gap-4 p-4">
+                            <div className="flex flex-col gap-4">
+                                {NAV_ITEMS.map((item, index) => (
+                                    <Link
+                                        key={index}
+                                        href={
+                                            item.disabled
+                                                ? `${path}`
+                                                : item.href
+                                        }
+                                    >
+                                        <span
+                                            className={`flex ${
+                                                path === item.href
+                                                    ? 'text-blue-500'
+                                                    : 'hover:text-blue-500'
+                                            }`}
+                                        >
+                                            {item.title}
+                                        </span>
+                                    </Link>
+                                ))}
+                            </div>
+                            <div className="flex w-full justify-center">
+                                <Link href="/contact-us" className="">
+                                    <Button className="rounded-sm px-4 py-5 hover:cursor-pointer md:hidden">
+                                        <span className="font-medium">
+                                            Contact Us
+                                        </span>
+                                    </Button>
+                                </Link>
+                            </div>
+                        </div>
                     </SheetContent>
                 </Sheet>
             </nav>
