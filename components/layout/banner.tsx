@@ -2,7 +2,11 @@
 
 import { useState } from 'react';
 import { Mail, PhoneOutgoing, XIcon } from 'lucide-react';
-
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import NewsLetterModal from './NewsLetterModal';
@@ -41,20 +45,28 @@ export default function Banner() {
                                 rel="noopener noreferrer"
                                 aria-label="Contact us on Phone"
                             >
-                                <Button
-                                    // variant="outline"
-                                    size={'sm'}
-                                    className="group border-primary hover:bg-primary hover:text-primary-foreground relative border-2 transition-all"
-                                >
-                                    <span className="inline-flex items-center text-xs sm:text-sm">
-                                        Call Now
-                                        <PhoneOutgoing
-                                            color="#ffffff"
-                                            className="text-primary ms-2 -me-1 h-4 w-4 opacity-60 transition-all group-hover:translate-x-0.5"
-                                            aria-hidden="true"
-                                        />
-                                    </span>
-                                </Button>
+                                <Tooltip>
+                                    <TooltipTrigger>
+                                        <Button
+                                            asChild
+                                            // variant="outline"
+                                            size={'sm'}
+                                            className="group border-primary hover:bg-primary hover:text-primary-foreground relative border-2 transition-all"
+                                        >
+                                            <span className="inline-flex items-center text-xs sm:text-sm">
+                                                Call Now
+                                                <PhoneOutgoing
+                                                    color="#ffffff"
+                                                    className="text-primary ms-2 -me-1 h-4 w-4 opacity-60 transition-all group-hover:translate-x-0.5"
+                                                    aria-hidden="true"
+                                                />
+                                            </span>
+                                        </Button>
+                                    </TooltipTrigger>
+                                    <TooltipContent className="text-primary border-primary border bg-white">
+                                        <p>+1 (226) 577-9183</p>
+                                    </TooltipContent>
+                                </Tooltip>
                             </a>
                         </div>
                     </div>

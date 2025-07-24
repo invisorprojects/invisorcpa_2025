@@ -9,7 +9,7 @@ export default function FloatingButtons() {
                 rel="noopener noreferrer"
                 aria-label="Contact us on WhatsApp"
             >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white p-3 shadow-lg transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl">
+                <div className="hidden h-12 w-12 items-center justify-center rounded-full bg-white p-3 shadow-lg transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl sm:flex">
                     <svg
                         role="img"
                         viewBox="0 0 24 24"
