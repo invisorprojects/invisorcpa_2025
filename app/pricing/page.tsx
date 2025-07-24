@@ -57,10 +57,9 @@ export default function Page() {
                     </div>
                 </div>{' '}
                 <div className="flex flex-col items-center justify-center gap-4">
-                    <SamplePricingCard />
-                    <SamplePricingCard />
-                    <SamplePricingCard />
-                    <SamplePricingCard />
+                    {pricingData.map((item, index) => (
+                        <SamplePricingCard key={index} {...item} />
+                    ))}
                 </div>
             </section>
 
@@ -69,31 +68,116 @@ export default function Page() {
         </main>
     );
 }
+const pricingData = [
+    {
+        title: 'Prof Services',
+        location: 'Vancouver, Canada',
+        employees: 6,
+        revenue: '$1.5M',
+        services: 'Controller + Tax + Bookkeeping',
+        price: {
+            amount: '$940',
+            currency: 'CAD',
+        },
+        tools: ['xero.svg', 'dext.webp', 'plooto.jpeg'],
+    },
+    {
+        title: 'SaaS',
+        location: 'Toronto, Canada',
+        employees: 28,
+        revenue: '$3M',
+        services: 'Controller + Tax + Bookkeeping + Payroll',
+        price: {
+            amount: '$1,470',
+            currency: 'CAD',
+        },
+        tools: [
+            'quickbooks.png',
+            'dext.webp',
+            'plooto.jpeg',
+            'float.webp',
+            'wagepoint.jpeg',
+        ],
+    },
+    {
+        title: 'Medical Devices',
+        location: 'Ottawa, Canada',
+        employees: null,
+        revenue: null,
+        services: 'Controller + Tax + Bookkeeping + Payroll',
+        price: {
+            amount: '$2,100',
+            currency: 'CAD',
+        },
+        tools: ['dext.webp', 'xero.svg', 'plooto.jpeg', 'humi.png', 'venn.png'],
+    },
+    {
+        title: 'US Company',
+        location: 'Delaware, USA',
+        employees: 3,
+        revenue: '$0M',
+        services: 'Tax + Payroll',
+        price: {
+            amount: '$375',
+            currency: 'USD',
+        },
+        tools: ['xero.svg', 'wagepoint.jpeg'],
+    },
+];
 
-function SamplePricingCard() {
+function SamplePricingCard({
+    title,
+    location,
+    employees,
+    revenue,
+    services,
+    price,
+    tools,
+}: {
+    title: string;
+    location: string;
+    employees: number | null;
+    revenue: string | null;
+    services: string;
+    price: {
+        amount: string;
+        currency: string;
+    };
+    tools: string[];
+}) {
     return (
-        <div className="rounded-xl border bg-white p-6 shadow-lg">
+        <div className="h-48 w-full rounded-xl border bg-white p-6 shadow-lg">
             <div className="grid grid-cols-1 items-start gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                {/* Column 1: Prof Services */}
+                {/* Column 1: Basic Info */}
                 <div>
-                    <h4 className="text-xl font-bold">Prof Services</h4>
-                    <p className="mt-2 text-sm">Vancouver, Canada</p>
-                    <p className="mt-2 text-sm font-medium">6 Employees</p>
-                    <p className="mt-2 text-sm font-medium">$1.5M Revenue</p>
+                    <h4 className="text-xl font-bold">{title}</h4>
+                    <p className="mt-2 text-sm">{location}</p>
+                    {employees && (
+                        <p className="mt-2 text-sm font-medium">
+                            {employees} Employees
+                        </p>
+                    )}
+                    {revenue && (
+                        <p className="mt-2 text-sm font-medium">
+                            {revenue} Revenue
+                        </p>
+                    )}
                 </div>
 
                 {/* Column 2: Services */}
                 <div>
                     <h4 className="text-xl font-bold">Services</h4>
-                    <p className="mt-2 text-sm">Controller + Tax</p>
-                    <p className="mt-1 text-sm">+ Bookkeeping</p>
+                    <p className="mt-1 text-sm">{services}</p>
                 </div>
 
                 {/* Column 3: Price */}
                 <div>
                     <h4 className="text-xl font-bold">Price</h4>
                     <p className="mt-2 text-sm">
-                        <span className="text-lg font-bold">$1,880</span> CAD
+                        <span className="text-lg font-bold">
+                            {price.amount}
+                        </span>{' '}
+                        {price.currency}
                     </p>
                     <p className="text-sm">per month</p>
                 </div>
@@ -102,12 +186,16 @@ function SamplePricingCard() {
                 <div>
                     <h4 className="text-xl font-bold">Tools</h4>
                     <div className="mt-2 flex flex-wrap items-center gap-4">
-                        {/* Replace below spans with actual images later */}
-                        <span className="text-sm">[Xero]</span>
-                        <span className="text-sm">[QuickBooks]</span>
-                        <span className="text-sm">[Dext]</span>
-                        <span className="text-sm">[Odoo]</span>
-                        <span className="text-sm">[Asana]</span>
+                        {tools.map((tool, i) => (
+                            <Image
+                                key={i}
+                                src={`/assets/tools/${tool}`}
+                                alt={tool}
+                                width={24}
+                                height={24}
+                                className="h-8 w-auto rounded-full"
+                            />
+                        ))}
                     </div>
                 </div>
             </div>
