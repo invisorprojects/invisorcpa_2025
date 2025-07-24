@@ -191,9 +191,9 @@ function SamplePricingCard({
                                 key={i}
                                 src={`/assets/tools/${tool}`}
                                 alt={tool}
-                                width={24}
-                                height={24}
-                                className="h-8 w-auto rounded-full"
+                                width={40}
+                                height={40}
+                                className="h-10 w-10 rounded-full border shadow duration-300 hover:scale-110 hover:shadow-md"
                             />
                         ))}
                     </div>
