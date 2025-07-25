@@ -43,10 +43,7 @@ export default function Footer() {
                                 Canada
                             </p>
                             <p className="mt-2 font-semibold">London Office</p>
-                            <p>
-                                Unit 120, 341 Talbot Street, London, Ontario,
-                                N6A2R5, Canada.
-                            </p>
+                            <p>375V- 341 Talbot St , London, ON N6A 2R5.</p>
                         </div>
                     </div>
                 </div>

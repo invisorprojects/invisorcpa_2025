@@ -103,8 +103,7 @@ function GetInTouchSection() {
                                 London Office
                             </h4>
                             <p className="text-gray-600">
-                                Unit 120, 341 Talbot Street, London, Ontario,
-                                N6A2R5, <br /> Canada.
+                                375V- 341 Talbot St , London, ON N6A 2R5.
                             </p>
                         </div>
                     </div>
