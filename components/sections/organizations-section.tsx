@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export function OrganizationsSection() {
     const logos = Array.from(
-        { length: 44 },
+        { length: 70 },
         (_, i) => `/assets/customer-logos/${i + 1}.png`
     );
     return (
@@ -40,7 +40,7 @@ export function OrganizationsSection() {
                         <img
                             src={src}
                             alt={`Company Logo ${index + 1}`}
-                            className="max-h-12 w-auto object-contain transition-all duration-300 hover:scale-110"
+                            className="max-h-14 w-auto object-contain transition-all duration-300 hover:scale-110"
                         />
                     </div>
                 ))}
