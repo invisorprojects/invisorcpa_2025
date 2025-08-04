@@ -53,7 +53,7 @@ export default async function Page({
         per_page: 3, // Fetch 3 in case current is included, we'll filter below
         version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
     });
-    console.log('recentData', recentData);
+    // console.log('recentData', recentData);
 
     // Filter out the current blog and take 2
     const recentBlogs = recentData.stories

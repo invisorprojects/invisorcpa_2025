@@ -95,7 +95,7 @@ export default async function Home() {
         page: 1,
     });
     const blogs = data.stories;
-    console.log('blogs::', blogs);
+    // console.log('blogs::', blogs);
     return (
         <main className="">
             <section className="flex flex-col gap-4 p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">

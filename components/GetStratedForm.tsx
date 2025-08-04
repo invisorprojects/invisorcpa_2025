@@ -3,7 +3,7 @@
 import { sendContact } from '@/actions';
 import { useActionState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Check, CheckCircle, LoaderCircle } from 'lucide-react';
+import { Check, LoaderCircle } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from './ui/textarea';
 const initialState = {
@@ -17,7 +17,7 @@ export default function GetStartedForm() {
     );
 
     const isLeadCollected = localStorage.getItem('is_lead_collected');
-    console.log(isLeadCollected);
+    // console.log(isLeadCollected);
     if (isLeadCollected) {
         return (
             <div className="flex flex-col items-center justify-center py-8">
