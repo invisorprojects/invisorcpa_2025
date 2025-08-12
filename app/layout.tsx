@@ -10,6 +10,9 @@ import Banner from '@/components/layout/banner';
 import SEOStructuredData from '@/components/SEOStructuredData';
 import { PerformanceOptimizer } from '@/components/PerformanceOptimizer';
 import { Toaster } from '@/components/ui/sonner';
+import Script from 'next/script';
+import GA from './GA';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
     title: {
@@ -48,7 +51,7 @@ export const metadata: Metadata = {
         address: false,
         telephone: false,
     },
-    metadataBase: new URL('htps://invisorcpa.ca'),
+    metadataBase: new URL('https://invisorcpa.ca'),
     alternates: {
         canonical: '/',
     },
@@ -100,6 +103,7 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const gaId = process.env.NEXT_PUBLIC_GA_ID;
     return (
         <StoryblokProvider>
             <html
@@ -181,6 +185,28 @@ export default function RootLayout({
                     <FloatingButtons />
                     <LiveChat />
                     <Toaster richColors />
+                    {/* GA4: load and init */}
+                    {gaId && (
+                        <>
+                            <Script
+                                src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+                                strategy="afterInteractive"
+                            />
+                            <Script id="ga-init" strategy="afterInteractive">
+                                {`
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${gaId}', { send_page_view: false });
+                `}
+                            </Script>
+                        </>
+                    )}
+
+                    {/* Pageview tracker */}
+                    <Suspense fallback={null}>
+                        <GA />
+                    </Suspense>
                 </body>
             </html>
         </StoryblokProvider>
