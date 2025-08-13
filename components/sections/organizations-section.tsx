@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export function OrganizationsSection() {
     const logos = Array.from(
-        { length: 73 },
+        { length: 77 },
         (_, i) => `/assets/customer-logos/${i + 1}.png`
     );
     return (
