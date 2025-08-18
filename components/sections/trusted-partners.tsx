@@ -8,7 +8,7 @@ export default function TrustedPartners() {
                 TRUSTED BY
             </h4>
             <Marquee pauseOnHover className="[--duration:10s]">
-                {[1, 2, 3, 4, 5].map((num) => (
+                {[1, 2, 3, 4, 5, 6, 7].map((num) => (
                     <Image
                         className="mr-16 h-16 w-auto"
                         key={num}
