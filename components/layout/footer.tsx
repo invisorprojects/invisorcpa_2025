@@ -84,15 +84,21 @@ export default function Footer() {
                                     Payroll Calculator
                                 </Link>
                             </li>
+                            <li>
+                                <Link href="/case-studies">Case Study</Link>
+                            </li>
+                            <li>
+                                <Link href="/cross-border-taxes">
+                                    Cross-border Taxes
+                                </Link>
+                            </li>
+
                             {/* <li>
                                 <Link href="/industries">Industries</Link>
                             </li> */}
                             {/* <li>
                                 <Link href="/tax-season">Tax Season</Link>
                             </li> */}
-                            <li>
-                                <Link href="/case-studies">Case Study</Link>
-                            </li>
                         </ul>
                     </div>
 

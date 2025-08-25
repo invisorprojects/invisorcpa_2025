@@ -58,6 +58,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'monthly',
             priority: 0.6,
         },
+        {
+            url: `${baseUrl}/cross-border-taxes`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.7,
+        },
         // Service pages
         {
             url: `${baseUrl}/services/personal-tax-returns`,
