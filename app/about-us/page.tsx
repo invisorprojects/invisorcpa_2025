@@ -39,7 +39,7 @@ export const metadata: Metadata = {
         siteName: 'Invisor CPA',
         images: [
             {
-                url: '/assets/banners/banner-2.jpg',
+                url: '/assets/banners/banner-2.webp',
                 width: 1200,
                 height: 630,
                 alt: 'About Invisor CPA - Canadian Tax Accountants',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
         title: 'About Invisor CPA | Canadian Tax Accountants | Tax Services Canada',
         description:
             'Learn about Invisor CPA, your trusted Canadian tax accountants. Professional tax services Canada with 20+ years experience.',
-        images: ['/assets/banners/banner-2.jpg'],
+        images: ['/assets/banners/banner-2.webp'],
     },
     alternates: {
         canonical: 'https://www.invisorcpa.ca/about-us',
@@ -118,7 +118,7 @@ export default function Page() {
                     </div>
                 </div>
                 <Image
-                    src="/assets/banners/banner-2.jpg"
+                    src="/assets/banners/banner-2.webp"
                     alt="Services"
                     width={4096}
                     height={1800}

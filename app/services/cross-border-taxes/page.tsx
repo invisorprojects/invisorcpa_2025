@@ -31,7 +31,7 @@ export const metadata: Metadata = {
         siteName: 'Invisor CPA',
         images: [
             {
-                url: '/assets/banners/banner-11.jpg',
+                url: '/assets/banners/banner-11.webp',
                 width: 1200,
                 height: 630,
                 alt: 'Cross-Border Tax Services by Invisor',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
         title: 'Cross-Border Tax Services Canada-US | Invisor CPA',
         description:
             'Navigate Canada-US taxes with confidence: Streamlined Filing, FBAR/FATCA, estate & gift, and ongoing compliance.',
-        images: ['/assets/banners/banner-11.jpg'],
+        images: ['/assets/banners/banner-11.webp'],
     },
     alternates: {
         canonical: 'https://www.invisorcpa.ca/cross-border-taxes',
@@ -80,7 +80,7 @@ export default function Page() {
                     </div>
                 </div>
                 <Image
-                    src="/assets/banners/banner-11.jpg"
+                    src="/assets/banners/banner-11.webp"
                     alt="Cross-Border Tax Services by Invisor"
                     width={4096}
                     height={1632}

@@ -33,7 +33,7 @@ export default function Team() {
                     </div>
                 </div>
                 <Image
-                    src="/assets/banners/banner-5.jpg"
+                    src="/assets/banners/banner-5.webp"
                     alt="Services"
                     width={4096}
                     height={1632}

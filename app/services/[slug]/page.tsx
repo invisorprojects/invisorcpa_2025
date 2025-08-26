@@ -136,7 +136,7 @@ export async function generateMetadata({
             siteName: 'Invisor CPA',
             images: [
                 {
-                    url: '/assets/banners/banner-4.jpg',
+                    url: '/assets/banners/banner-4.webp',
                     width: 1200,
                     height: 630,
                     alt: `${service.title} - Tax Services Canada`,
@@ -149,7 +149,7 @@ export async function generateMetadata({
             card: 'summary_large_image',
             title: `${service.title} | Tax Services Canada | Invisor CPA`,
             description: `${service.description} Professional ${service.title.toLowerCase()} services in Canada.`,
-            images: ['/assets/banners/banner-4.jpg'],
+            images: ['/assets/banners/banner-4.webp'],
         },
         alternates: {
             canonical: `https://www.invisorcpa.ca/services/${slug}`,
@@ -216,7 +216,7 @@ export default async function Page({
                     </div>
                 </div>
                 <Image
-                    src="/assets/banners/banner-4.jpg"
+                    src="/assets/banners/banner-4.webp"
                     alt="Services"
                     width={4096}
                     height={1632}
@@ -253,7 +253,7 @@ export default async function Page({
                     {/* Left Image */}
                     <div className="h-[400px] w-full max-w-xl overflow-hidden rounded-xl shadow">
                         <Image
-                            src="/assets/banners/banner-6.jpg"
+                            src="/assets/banners/banner-6.webp"
                             alt="Sales Tax Services"
                             width={800}
                             height={600}

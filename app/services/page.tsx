@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         siteName: 'Invisor CPA',
         images: [
             {
-                url: '/assets/banners/banner-7.jpg',
+                url: '/assets/banners/banner-7.webp',
                 width: 1200,
                 height: 630,
                 alt: 'Tax Services Canada - Professional Tax Preparation',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
         title: 'Tax Services Canada | Personal Tax Accountant | Business Tax Preparation',
         description:
             'Comprehensive tax services in Canada. Expert personal tax accountant, business tax preparation, and CRA tax filing services.',
-        images: ['/assets/banners/banner-7.jpg'],
+        images: ['/assets/banners/banner-7.webp'],
     },
     alternates: {
         canonical: 'https://www.invisorcpa.ca/services',
@@ -78,7 +78,7 @@ export default function Page() {
                     </div>
                 </div>
                 <Image
-                    src="/assets/banners/banner-7.jpg"
+                    src="/assets/banners/banner-7.webp"
                     alt="Professional tax services Canada - Personal tax accountant and business tax preparation"
                     width={4096}
                     height={1632}

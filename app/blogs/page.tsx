@@ -42,7 +42,7 @@ export default async function Blogs() {
                     </div>
                 </div>
                 <Image
-                    src="/assets/banners/banner-3.jpg"
+                    src="/assets/banners/banner-3.webp"
                     alt="Blogs"
                     width={4096}
                     height={1632}

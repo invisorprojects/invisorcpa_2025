@@ -43,7 +43,7 @@ export default function Page() {
                     </div>
                 </div>
                 <Image
-                    src="/assets/banners/banner-8.jpg"
+                    src="/assets/banners/banner-8.webp"
                     alt="Case Studies"
                     width={4096}
                     height={1638}
