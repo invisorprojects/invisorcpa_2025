@@ -19,9 +19,9 @@ export default function SEOStructuredData({
                     name: 'Invisor CPA',
                     description:
                         'Professional tax filing and accounting services in Canada. Expert personal tax accountant, CRA tax help, and comprehensive tax preparation services.',
-                    url: 'https://invisorcpa.ca',
-                    logo: 'https://invisorcpa.ca/invisor-logo.webp',
-                    image: 'https://invisorcpa.ca/invisor-logo.webp',
+                    url: 'https://www.invisorcpa.ca',
+                    logo: 'https://www.invisorcpa.ca/invisor-logo.webp',
+                    image: 'https://www.invisorcpa.ca/invisor-logo.webp',
                     telephone: '+1-226-577-9183',
                     email: 'geevar.c@invisorglobal.com',
                     address: {
@@ -115,7 +115,7 @@ export default function SEOStructuredData({
                     provider: {
                         '@type': 'Organization',
                         name: 'Invisor CPA',
-                        url: 'https://invisorcpa.ca',
+                        url: 'https://www.invisorcpa.ca',
                     },
                     serviceType: data.serviceType,
                     areaServed: {
@@ -144,9 +144,9 @@ export default function SEOStructuredData({
                     name: 'Invisor CPA',
                     description:
                         'Professional tax filing and accounting services in Canada. Expert personal tax accountant, CRA tax help, and comprehensive tax preparation services.',
-                    url: 'https://invisorcpa.ca',
-                    logo: 'https://invisorcpa.ca/invisor-logo.webp',
-                    image: 'https://invisorcpa.ca/invisor-logo.webp',
+                    url: 'https://www.invisorcpa.ca',
+                    logo: 'https://www.invisorcpa.ca/invisor-logo.webp',
+                    image: 'https://www.invisorcpa.ca/invisor-logo.webp',
                     telephone: '+1-226-577-9183',
                     email: 'geevar.c@invisorglobal.com',
                     address: {

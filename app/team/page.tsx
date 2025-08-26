@@ -7,7 +7,7 @@ import Image from 'next/image';
 export const metadata: Metadata = {
     title: 'Team',
     alternates: {
-        canonical: 'https://invisorcpa.ca/team',
+        canonical: 'https://www.invisorcpa.ca/team',
     },
 };
 

@@ -51,14 +51,14 @@ export const metadata: Metadata = {
         address: false,
         telephone: false,
     },
-    metadataBase: new URL('https://invisorcpa.ca'),
+    metadataBase: new URL('https://www.invisorcpa.ca'),
     alternates: {
         canonical: '/',
     },
     openGraph: {
         type: 'website',
         locale: 'en_CA',
-        url: 'https://invisorcpa.ca',
+        url: 'https://www.invisorcpa.ca',
         siteName: 'Invisor CPA',
         title: 'Invisor CPA - Expert Tax Filing & Accounting Services Canada',
         description:
@@ -123,9 +123,9 @@ export default function RootLayout({
                                 name: 'Invisor CPA',
                                 description:
                                     'Professional tax filing and accounting services in Canada. Expert personal tax accountant, CRA tax help, and comprehensive tax preparation services.',
-                                url: 'https://invisorcpa.ca',
-                                logo: 'https://invisorcpa.ca/invisor-logo.webp',
-                                image: 'https://invisorcpa.ca/invisor-logo.webp',
+                                url: 'https://www.invisorcpa.ca',
+                                logo: 'https://www.invisorcpa.ca/invisor-logo.webp',
+                                image: 'https://www.invisorcpa.ca/invisor-logo.webp',
                                 telephone: '+1-XXX-XXX-XXXX',
                                 email: 'info@invisorcpa.ca',
                                 address: {

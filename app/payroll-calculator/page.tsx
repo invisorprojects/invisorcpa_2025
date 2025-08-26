@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
     title: 'Payroll Calculator Canada | Invisor CPA',
     alternates: {
-        canonical: 'https://invisorcpa.ca/payroll-calculator',
+        canonical: 'https://www.invisorcpa.ca/payroll-calculator',
     },
 };
 

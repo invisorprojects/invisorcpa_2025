@@ -4,7 +4,8 @@ import { getStoryblokApi } from '@/lib/storyblok';
 import { SERVICES } from '@/constants/SERVICES';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://invisorcpa.ca';
+    const baseUrl =
+        process.env.NEXT_PUBLIC_SITE_URL || 'https://www.invisorcpa.ca';
     const currentDate = new Date();
 
     const staticEntries: MetadataRoute.Sitemap = [

@@ -132,7 +132,7 @@ export async function generateMetadata({
         openGraph: {
             title: `${service.title} | Tax Services Canada | Invisor CPA`,
             description: `${service.description} Professional ${service.title.toLowerCase()} services in Canada.`,
-            url: `https://invisorcpa.ca/services/${slug}`,
+            url: `https://www.invisorcpa.ca/services/${slug}`,
             siteName: 'Invisor CPA',
             images: [
                 {
@@ -152,7 +152,7 @@ export async function generateMetadata({
             images: ['/assets/banners/banner-4.jpg'],
         },
         alternates: {
-            canonical: `https://invisorcpa.ca/services/${slug}`,
+            canonical: `https://www.invisorcpa.ca/services/${slug}`,
         },
     };
 }

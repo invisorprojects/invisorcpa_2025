@@ -7,7 +7,7 @@ import PricingSection from '../../components/PricingSection';
 export const metadata: Metadata = {
     title: 'Pricing',
     alternates: {
-        canonical: 'https://invisorcpa.ca/pricing',
+        canonical: 'https://www.invisorcpa.ca/pricing',
     },
 };
 

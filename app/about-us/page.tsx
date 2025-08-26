@@ -35,7 +35,7 @@ export const metadata: Metadata = {
         title: 'About Invisor CPA | Canadian Tax Accountants | Tax Services Canada',
         description:
             'Learn about Invisor CPA, your trusted Canadian tax accountants. Professional tax services Canada with 20+ years experience.',
-        url: 'https://invisorcpa.ca/about-us',
+        url: 'https://www.invisorcpa.ca/about-us',
         siteName: 'Invisor CPA',
         images: [
             {
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
         images: ['/assets/banners/banner-2.jpg'],
     },
     alternates: {
-        canonical: 'https://invisorcpa.ca/about-us',
+        canonical: 'https://www.invisorcpa.ca/about-us',
     },
 };
 const stats = [

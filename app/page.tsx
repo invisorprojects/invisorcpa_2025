@@ -51,7 +51,7 @@ export const metadata: Metadata = {
         title: 'Expert Tax Filing Services Canada | Personal Tax Accountant | CRA Tax Help',
         description:
             'Professional tax filing services in Canada. Expert personal tax accountant, CRA tax help, and comprehensive tax preparation services. Trusted by 1000+ clients nationwide.',
-        url: 'https://invisorcpa.ca',
+        url: 'https://www.invisorcpa.ca',
         siteName: 'Invisor CPA',
         images: [
             {
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
         images: ['/invisor-logo.webp'],
     },
     alternates: {
-        canonical: 'https://invisorcpa.ca',
+        canonical: 'https://www.invisorcpa.ca',
     },
 
     other: {
