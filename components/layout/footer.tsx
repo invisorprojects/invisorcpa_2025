@@ -64,6 +64,9 @@ export default function Footer() {
                             <li>
                                 <Link href="/blogs">Blog</Link>
                             </li>
+                            <li>
+                                <Link href="/site-map">Sitemap</Link>
+                            </li>
                         </ul>
                     </div>
 
