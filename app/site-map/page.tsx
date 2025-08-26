@@ -8,6 +8,9 @@ import { getStoryblokApi } from '@/lib/storyblok';
 export const metadata = {
     title: 'HTML Sitemap',
     description: 'Browse all important pages on Invisor CPA',
+    alternates: {
+        canonical: 'https://invisorcpa.ca/site-map',
+    },
 };
 
 export default async function HtmlSitemap() {

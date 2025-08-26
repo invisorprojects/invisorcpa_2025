@@ -8,6 +8,9 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
     title: 'Blogs',
+    alternates: {
+        canonical: 'https://invisorcpa.ca/blogs',
+    },
 };
 
 export default async function Blogs() {

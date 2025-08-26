@@ -15,9 +15,19 @@ import ContactUsForm from '@/components/ContactUsForm';
 // Refer this link
 // https://www.storyblok.com/docs/packages/storyblok-react#storyblokrichtext
 
-export const metadata: Metadata = {
-    title: 'Blog Post',
-};
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+    const { slug } = await params;
+    return {
+        title: 'Blog Post',
+        alternates: {
+            canonical: `https://invisorcpa.ca/blogs/${slug}`,
+        },
+    };
+}
 
 async function fetchData(slug: string) {
     const storyblokApi = getStoryblokApi();
