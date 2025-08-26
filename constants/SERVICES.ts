@@ -1073,4 +1073,68 @@ export const SERVICES = [
             },
         ],
     },
+    {
+        slug: 'cross-border-taxes',
+        title: 'Cross-Border Tax Services',
+        description:
+            'Invisor is a trusted leader in international tax solutions, offering expert cross-border tax services for individuals and businesses navigating the complexities of the Canada-US tax landscape. With a team of highly qualified professionals, Invisor helps clients ensure compliance, minimize liabilities, and confidently handle all aspects of cross-border taxation.',
+        why: [
+            {
+                caption: 'Secure & Accessible',
+                content: 'Encrypted storage accessible 24/7 from any device.',
+            },
+            {
+                caption: 'Time-Efficient',
+                content: 'Instant search beats rummaging through paper.',
+            },
+            {
+                caption: 'Seamless Integration',
+                content: 'Connects with accounting and expense tools.',
+            },
+            {
+                caption: 'Cost-Effective',
+                content: 'Slash physical storage and admin costs.',
+            },
+        ],
+        includes: [
+            {
+                caption: 'Digital Storage',
+                content: 'Receipts and invoices in secure cloud folders.',
+            },
+            {
+                caption: 'Automatic Organisation',
+                content: 'AI-based categorisation and tagging.',
+            },
+            {
+                caption: 'Real-Time Collaboration',
+                content: 'Share documents with teams or auditors instantly.',
+            },
+            {
+                caption: 'Compliance Support',
+                content: 'Audit-ready trails and retention policies.',
+            },
+            {
+                caption: 'Encryption & Backups',
+                content: 'High-level encryption and rolling backups.',
+            },
+        ],
+        our_process: [
+            {
+                caption: 'Onboarding',
+                content: 'Assess needs and set up folder structures.',
+            },
+            {
+                caption: 'Digitisation',
+                content: 'Scan and upload paper records.',
+            },
+            {
+                caption: 'Organisation',
+                content: 'Apply tags and retention labels.',
+            },
+            {
+                caption: 'Ongoing Support',
+                content: 'Monitor, train, and optimise for efficiency.',
+            },
+        ],
+    },
 ];

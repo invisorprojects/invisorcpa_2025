@@ -88,7 +88,7 @@ export default function Footer() {
                                 <Link href="/case-studies">Case Study</Link>
                             </li>
                             <li>
-                                <Link href="/cross-border-taxes">
+                                <Link href="/services/cross-border-taxes">
                                     Cross-border Taxes
                                 </Link>
                             </li>
