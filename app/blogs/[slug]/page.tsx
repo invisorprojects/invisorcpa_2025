@@ -24,7 +24,7 @@ export async function generateMetadata({
     return {
         title: 'Blog Post',
         alternates: {
-            canonical: `https://invisorcpa.ca/blogs/${slug}`,
+            canonical: `https://www.invisorcpa.ca/blogs/${slug}`,
         },
     };
 }

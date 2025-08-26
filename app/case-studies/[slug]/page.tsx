@@ -24,7 +24,7 @@ export async function generateMetadata({
     return {
         title: 'Case Studies',
         alternates: {
-            canonical: `https://invisorcpa.ca/case-studies/${slug}`,
+            canonical: `https://www.invisorcpa.ca/case-studies/${slug}`,
         },
     };
 }

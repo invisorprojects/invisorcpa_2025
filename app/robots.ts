@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: ['/private/', '/admin/', '/api/'],
         },
-        sitemap: 'https://invisorcpa.ca/sitemap.xml',
-        host: 'https://invisorcpa.ca',
+        sitemap: 'https://www.invisorcpa.ca/sitemap.xml',
+        host: 'https://www.invisorcpa.ca',
     };
 }

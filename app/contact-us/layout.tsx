@@ -22,7 +22,7 @@ export const metadata: Metadata = {
         title: 'Contact Invisor CPA | Tax Services Canada | Get CRA Tax Help',
         description:
             'Contact Invisor CPA for expert tax services Canada. Get professional tax accountant help, CRA tax filing support, and personal tax preparation services.',
-        url: 'https://invisorcpa.ca/contact-us',
+        url: 'https://www.invisorcpa.ca/contact-us',
         siteName: 'Invisor CPA',
         images: [
             {
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
         images: ['/assets/contact-us.png'],
     },
     alternates: {
-        canonical: 'https://invisorcpa.ca/contact-us',
+        canonical: 'https://www.invisorcpa.ca/contact-us',
     },
 };
 

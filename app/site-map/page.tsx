@@ -9,7 +9,7 @@ export const metadata = {
     title: 'HTML Sitemap',
     description: 'Browse all important pages on Invisor CPA',
     alternates: {
-        canonical: 'https://invisorcpa.ca/site-map',
+        canonical: 'https://www.invisorcpa.ca/site-map',
     },
 };
 

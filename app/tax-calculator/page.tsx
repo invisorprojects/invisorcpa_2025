@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
     title: 'Income Tax Calculator Canada | Invisor CPA',
     alternates: {
-        canonical: 'https://invisorcpa.ca/tax-calculator',
+        canonical: 'https://www.invisorcpa.ca/tax-calculator',
     },
 };
 

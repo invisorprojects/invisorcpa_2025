@@ -10,7 +10,7 @@ import { CaseStudyCard } from '@/components/case-study-card';
 export const metadata: Metadata = {
     title: 'Case Studies',
     alternates: {
-        canonical: 'https://invisorcpa.ca/case-studies',
+        canonical: 'https://www.invisorcpa.ca/case-studies',
     },
 };
 
