@@ -74,6 +74,10 @@ export const metadata: Metadata = {
     alternates: {
         canonical: 'https://invisorcpa.ca',
     },
+
+    other: {
+        'msvalidate.01': '38DA8FFFF9D52A1C9236A51CEFEE7542',
+    },
 };
 
 export default async function Home() {

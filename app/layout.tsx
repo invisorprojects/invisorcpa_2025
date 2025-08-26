@@ -95,6 +95,9 @@ export const metadata: Metadata = {
         google: 'your-google-verification-code',
         yandex: 'your-yandex-verification-code',
         yahoo: 'your-yahoo-verification-code',
+        other: {
+            'msvalidate.01': '38DA8FFFF9D52A1C9236A51CEFEE7542',
+        },
     },
 };
 
