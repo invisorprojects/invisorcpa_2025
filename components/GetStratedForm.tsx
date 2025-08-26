@@ -24,9 +24,9 @@ export default function GetStartedForm() {
                 <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
                     <Check className="h-7 w-7 text-green-600" />
                 </div>
-                <h3 className="mb-1 text-lg font-semibold text-green-700">
+                <h2 className="mb-1 text-lg font-semibold text-green-700">
                     Thank you!
-                </h3>
+                </h2>
                 <p className="text-muted-foreground text-sm">
                     We received your request.
                     <br />

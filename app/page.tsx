@@ -123,10 +123,10 @@ export default async function Home() {
                         <div className="relative h-fit w-fit bg-blue-50">
                             <div className="absolute top-0 left-0 h-1/4 w-full bg-white"></div>
                             <div className="absolute top-36 -left-24 hidden max-w-52 rounded-2xl border bg-white p-4 shadow-md drop-shadow-lg sm:block">
-                                <h6 className="text-base font-bold">
+                                <p className="text-base font-bold">
                                     Canada&#39;s Trusted Bookkeeping &
                                     Accounting Experts
-                                </h6>
+                                </p>
                             </div>
                             <Image
                                 className="relative"
@@ -155,9 +155,9 @@ export default async function Home() {
                 </div>
                 <div className="flex flex-col items-center justify-between gap-4 p-4 sm:w-1/2">
                     <div className="flex flex-col gap-4">
-                        <h3 className="text-4xl font-bold">
+                        <h2 className="text-4xl font-bold">
                             Simplify Your Accounts, Maximize Your Success!
-                        </h3>
+                        </h2>
                         <p>
                             Whether you&#39;re managing accounting or navigating
                             taxes, our dedicated team is here to support you. We
@@ -181,11 +181,11 @@ export default async function Home() {
                             height={300}
                         />
                         <div className="flex flex-col items-start justify-between gap-4 py-4">
-                            <h4 className="text-primary text-xl font-bold">
+                            <h3 className="text-primary text-xl font-bold">
                                 Canada&#39;s Leading Bookkeeping Service
                                 providers - Trusted by Over 1,000 Clients
                                 Nationwide
-                            </h4>
+                            </h3>
                             <p>
                                 At Invisor, we handle your bookkeeping with
                                 precision, so you can focus on growing your
@@ -301,9 +301,9 @@ export default async function Home() {
 
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
                 <div className="mb-8 text-center">
-                    <h6 className="text-secondary mb-4 text-xl font-semibold tracking-widest uppercase">
+                    <h3 className="text-secondary mb-4 text-xl font-semibold tracking-widest uppercase">
                         Our Services
-                    </h6>
+                    </h3>
 
                     <h2 className="text-primary mb-4 text-3xl font-extrabold sm:text-4xl">
                         Innovative Accounting <br className="hidden sm:block" />
@@ -342,9 +342,9 @@ export default async function Home() {
 
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
                 <div className="mb-8 text-center">
-                    <h6 className="text-secondary mb-4 text-xl font-semibold tracking-widest uppercase">
+                    <h3 className="text-secondary mb-4 text-xl font-semibold tracking-widest uppercase">
                         CASE STUDIES
-                    </h6>
+                    </h3>
 
                     <h2 className="text-primary mb-4 text-3xl font-extrabold sm:text-4xl">
                         Client Success Stories: Real
@@ -456,9 +456,9 @@ export default async function Home() {
 
                             {/* Right: Content */}
                             <div className="flex w-full flex-col gap-2 p-2">
-                                <h6 className="text-primary text-base font-medium">
+                                <h3 className="text-primary text-base font-medium">
                                     {blogs[0].content.title}
-                                </h6>
+                                </h3>
                                 <p className="text-xs leading-relaxed text-gray-500">
                                     {blogs[0].content.description}
                                 </p>
@@ -497,9 +497,9 @@ export default async function Home() {
 
                                 {/* Right: Content */}
                                 <div className="flex w-full flex-col gap-2 p-2 md:w-2/3">
-                                    <h6 className="text-primary text-base font-medium">
+                                    <h3 className="text-primary text-base font-medium">
                                         {blog.content.title}
-                                    </h6>
+                                    </h3>
                                     <p className="text-xs leading-relaxed text-gray-500">
                                         {blog.content.description}
                                     </p>

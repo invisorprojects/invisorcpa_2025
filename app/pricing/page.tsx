@@ -153,7 +153,7 @@ function SamplePricingCard({
             <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 lg:grid-cols-4">
                 {/* Column 1: Basic Info */}
                 <div className="mb-2 flex flex-col">
-                    <h4 className="text-lg font-bold sm:text-xl">{title}</h4>
+                    <h3 className="text-lg font-bold sm:text-xl">{title}</h3>
                     <p className="mt-2 text-sm">{location}</p>
                     {employees && (
                         <p className="mt-2 text-sm font-medium">
@@ -169,13 +169,13 @@ function SamplePricingCard({
 
                 {/* Column 2: Services */}
                 <div className="mb-2 flex flex-col">
-                    <h4 className="text-lg font-bold sm:text-xl">Services</h4>
+                    <h3 className="text-lg font-bold sm:text-xl">Services</h3>
                     <p className="mt-1 text-sm">{services}</p>
                 </div>
 
                 {/* Column 3: Price */}
                 <div className="mb-2 flex flex-col">
-                    <h4 className="text-lg font-bold sm:text-xl">Price</h4>
+                    <h3 className="text-lg font-bold sm:text-xl">Price</h3>
                     <p className="mt-2 text-sm">
                         <span className="text-lg font-bold">
                             {price.amount}
@@ -187,7 +187,7 @@ function SamplePricingCard({
 
                 {/* Column 4: Tools */}
                 <div className="flex flex-col">
-                    <h4 className="text-lg font-bold sm:text-xl">Tools</h4>
+                    <h3 className="text-lg font-bold sm:text-xl">Tools</h3>
                     <div className="mt-2 flex flex-wrap items-center gap-4">
                         {tools.map((tool, i) => (
                             <Image

@@ -17,7 +17,7 @@ export function ServicesCard({
 
             {/* Text Content */}
             <div className="flex flex-col gap-2 transition-colors group-hover:text-white">
-                <h4 className="text-lg font-semibold">{service.title}</h4>
+                <h3 className="text-lg font-semibold">{service.title}</h3>
                 <p className="text-sm font-light text-[#5F5F5F] transition-colors group-hover:text-white">
                     {service.description}
                 </p>

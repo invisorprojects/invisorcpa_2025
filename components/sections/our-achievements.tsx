@@ -4,9 +4,9 @@ import Image from 'next/image';
 export default function OurAchievements() {
     return (
         <div className="my-8 flex items-center justify-between">
-            <h4 className="mx-8 text-lg font-semibold text-nowrap uppercase">
+            <h3 className="mx-8 text-lg font-semibold text-nowrap uppercase">
                 Our Achievements
-            </h4>
+            </h3>
             <Marquee pauseOnHover className="[--duration:10s]">
                 {[1, 2, 3, 4, 5].map((num) => (
                     <div

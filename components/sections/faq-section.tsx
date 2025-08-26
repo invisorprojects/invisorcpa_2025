@@ -79,9 +79,9 @@ export default function Faq() {
     return (
         <section className="mx-auto flex flex-col items-start justify-between gap-4 p-4 sm:flex-row sm:items-center sm:p-8 md:p-12 lg:p-16 xl:p-24">
             <div className="max-w-lg px-4 py-12 sm:w-1/2">
-                <h6 className="text-secondary mb-2 text-lg font-semibold tracking-wide uppercase">
+                <h3 className="text-secondary mb-2 text-lg font-semibold tracking-wide uppercase">
                     Frequently Asked Questions
-                </h6>
+                </h3>
 
                 <h2 className="text-primary mb-4 text-4xl leading-snug font-bold sm:text-5xl">
                     Your Questions,

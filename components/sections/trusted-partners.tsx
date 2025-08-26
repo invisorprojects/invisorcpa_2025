@@ -4,9 +4,9 @@ import Image from 'next/image';
 export default function TrustedPartners() {
     return (
         <div className="my-8 flex items-center justify-between">
-            <h4 className="uppercase` mx-8 text-lg font-semibold text-nowrap">
+            <h3 className="mx-8 text-lg font-semibold text-nowrap uppercase">
                 TRUSTED BY
-            </h4>
+            </h3>
             <Marquee pauseOnHover className="[--duration:10s]">
                 {[1, 2, 3, 4, 5, 6, 7].map((num) => (
                     <Image

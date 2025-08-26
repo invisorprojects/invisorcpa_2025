@@ -185,9 +185,9 @@ function CaseStudyDetails() {
                     </div>
 
                     <div className="rounded-md border bg-white p-6 shadow-sm">
-                        <h4 className="mb-4 text-center text-lg font-semibold">
+                        <h3 className="mb-4 text-center text-lg font-semibold">
                             Contact Us
-                        </h4>
+                        </h3>
                         <form className="space-y-4">
                             <input
                                 type="text"

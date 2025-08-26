@@ -215,7 +215,7 @@ export function PricingCard({
             className="group relative z-10 w-full max-w-sm rounded-xl border border-gray-200 bg-[#EFF0F4] p-4 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl"
             style={{ minHeight: height }}
         >
-            <h2 className="text-primary text-xl font-semibold">{title}</h2>
+            <h3 className="text-primary text-xl font-semibold">{title}</h3>
             <p className="mt-1 text-xs text-gray-600">{subtitle}</p>
 
             <div className="mt-4 text-left text-lg">

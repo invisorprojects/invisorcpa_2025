@@ -637,9 +637,9 @@ export default function PayrollCalculator() {
                     {result && isLeadCollected && (
                         <div className="mt-8 space-y-6">
                             <div className="border-t pt-6">
-                                <h3 className="mb-4 text-center text-lg font-semibold">
+                                <h2 className="mb-4 text-center text-lg font-semibold">
                                     Payroll Calculation Results
-                                </h3>
+                                </h2>
 
                                 <div className="grid gap-4 md:grid-cols-2">
                                     {/* Gross Pay */}

@@ -207,9 +207,9 @@ export default async function Page({
                         <h3 className="text-secondary text-xl font-medium">
                             SERVICES
                         </h3>
-                        <h2 className="text-primary mt-4 text-4xl font-bold sm:text-5xl">
+                        <h1 className="text-primary mt-4 text-4xl font-bold sm:text-5xl">
                             {service?.title}
-                        </h2>
+                        </h1>
                     </div>
                     <div className="flex max-w-lg flex-col items-start gap-4">
                         <p className="text-[#686666]">{service?.description}</p>
