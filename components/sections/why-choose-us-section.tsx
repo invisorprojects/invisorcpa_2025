@@ -100,7 +100,7 @@ function WhyChooseUsCard({
                 <IconComponent className="h-6 w-6 text-[#1E1E5A]" />
             </div>
             <div>
-                <h4 className="text-lg font-bold text-black">{title}</h4>
+                <h3 className="text-lg font-bold text-black">{title}</h3>
                 <p className="mt-1 max-w-lg">{description}</p>
             </div>
         </div>

@@ -151,9 +151,9 @@ export default function Page() {
 
             <section className="mb-16 flex flex-col items-center justify-between px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24">
                 <div className="mb-8 text-center">
-                    <h6 className="text-secondary mb-4 text-xl font-semibold tracking-widest uppercase">
+                    <h3 className="text-secondary mb-4 text-xl font-semibold tracking-widest uppercase">
                         Business Facts{' '}
-                    </h6>
+                    </h3>
 
                     <h2 className="text-primary mb-4 text-3xl font-extrabold sm:text-4xl">
                         A New Chapter in Our Story
@@ -178,9 +178,9 @@ export default function Page() {
                             <div
                                 className={`w-full max-w-md text-justify ${index % 2 !== 0 ? 'md:order-2' : ''}`}
                             >
-                                <h4 className="text-secondary text-lg font-semibold md:text-2xl">
+                                <h3 className="text-secondary text-lg font-semibold md:text-2xl">
                                     {item.year}
-                                </h4>
+                                </h3>
                                 <h3 className="text-primary mt-1 text-xl font-bold md:text-xl">
                                     {item.title}
                                 </h3>
@@ -324,9 +324,9 @@ export default function Page() {
                         {/* Step 1 */}
                         <div className="text-primary flex flex-col items-start gap-3">
                             <UserSearch className="h-12 w-12" />
-                            <h4 className="text-lg font-semibold md:text-xl">
+                            <h3 className="text-lg font-semibold md:text-xl">
                                 Discovery and Consultation
-                            </h4>
+                            </h3>
                             <p className="text-sm text-gray-600">
                                 We start by understanding your unique accounting
                                 situation, needs, and goals.
@@ -336,9 +336,9 @@ export default function Page() {
                         {/* Step 2 */}
                         <div className="text-primary flex flex-col items-start gap-3">
                             <ChartLine className="h-12 w-12" />
-                            <h4 className="text-lg font-semibold md:text-xl">
+                            <h3 className="text-lg font-semibold md:text-xl">
                                 Strategy Development
-                            </h4>
+                            </h3>
                             <p className="text-sm text-gray-600">
                                 We craft a personalized plan with clear steps to
                                 achieve your accounting objectives.
@@ -348,9 +348,9 @@ export default function Page() {
                         {/* Step 3 */}
                         <div className="text-primary flex flex-col items-start gap-3">
                             <HandCoins className="h-12 w-12" />
-                            <h4 className="text-lg font-semibold md:text-xl">
+                            <h3 className="text-lg font-semibold md:text-xl">
                                 Execution and Support
-                            </h4>
+                            </h3>
                             <p className="text-sm text-gray-600">
                                 We implement the strategy and provide continuous
                                 support, making adjustments as needed to ensure

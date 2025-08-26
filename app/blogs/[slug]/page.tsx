@@ -83,9 +83,9 @@ export default async function Page({
                         <h3 className="text-secondary text-xl font-medium">
                             BLOGS
                         </h3>
-                        <h2 className="text-primary mt-4 text-4xl font-bold 2xl:text-5xl">
+                        <h1 className="text-primary mt-4 text-4xl font-bold 2xl:text-5xl">
                             {content.title}
-                        </h2>
+                        </h1>
                     </div>
                     <div className="flex max-w-lg flex-col items-start gap-4">
                         <p className="text-[#686666]">{content.description}</p>
@@ -126,9 +126,9 @@ function BlogDetails({
                 {/* Sidebar */}
                 <aside className="space-y-10">
                     <div className="rounded-md bg-sky-50 p-6 shadow-sm">
-                        <h4 className="mb-4 text-lg font-semibold text-sky-800">
+                        <h3 className="mb-4 text-lg font-semibold text-sky-800">
                             Recent Blogs
-                        </h4>
+                        </h3>
                         <ul className="list-disc space-y-2 pl-5 text-sm text-gray-700">
                             {recentBlogs.map((blog) => (
                                 <li key={blog.slug}>

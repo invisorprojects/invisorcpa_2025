@@ -84,9 +84,9 @@ function TestmonialCard({
     return (
         <div className="flex max-w-96 flex-col gap-4 rounded-md bg-[#E5F2F8] px-8 py-6">
             <Quote fill="#1B1E65" />
-            <h4 className="text-lg font-semibold">{title}</h4>
+            <h3 className="text-lg font-semibold">{title}</h3>
             <p className="text-sm text-[#5F5F5F]">{message}</p>
-            <h6 className="font-medium">{name}</h6>
+            <p className="font-medium">{name}</p>
         </div>
     );
 }

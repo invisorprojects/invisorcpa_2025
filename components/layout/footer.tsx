@@ -50,7 +50,7 @@ export default function Footer() {
                 <div className="flex w-full flex-row items-start justify-between gap-4 md:w-1/2">
                     {/* Explore */}
                     <div>
-                        <h4 className="mb-2 font-semibold">Explore</h4>
+                        <h3 className="mb-2 font-semibold">Explore</h3>
                         <ul className="space-y-1">
                             <li>
                                 <Link href="/">Home</Link>
@@ -72,7 +72,7 @@ export default function Footer() {
 
                     {/* Solutions */}
                     <div>
-                        <h4 className="mb-2 font-semibold">Solutions</h4>
+                        <h3 className="mb-2 font-semibold">Solutions</h3>
                         <ul className="space-y-1">
                             <li>
                                 <Link href="/services">Services</Link>
@@ -107,7 +107,7 @@ export default function Footer() {
 
                     {/* Get in Touch */}
                     <div>
-                        <h4 className="mb-2 font-semibold">Get in Touch</h4>
+                        <h3 className="mb-2 font-semibold">Get in Touch</h3>
                         <ul className="space-y-1">
                             <li>
                                 <Link href="/contact-us">Contact Us</Link>

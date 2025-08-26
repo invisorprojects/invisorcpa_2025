@@ -8,9 +8,9 @@ export function BehindTheTeam() {
     return (
         <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
             <div className="mb-8 text-center">
-                <h6 className="text-secondary mb-4 text-xl font-semibold tracking-widest uppercase">
+                <h3 className="text-secondary mb-4 text-xl font-semibold tracking-widest uppercase">
                     BEHIND THE TEAM{' '}
-                </h6>
+                </h3>
 
                 <h2 className="text-primary mb-4 text-3xl font-extrabold sm:text-4xl">
                     Dynamic Team of Accounting

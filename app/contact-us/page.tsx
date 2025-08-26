@@ -62,7 +62,7 @@ function GetInTouchSection() {
                             <Phone className="h-5 w-5 text-blue-600" />
                         </div>
                         <div>
-                            <h4 className="font-bold text-gray-900">Phone</h4>
+                            <h3 className="font-bold text-gray-900">Phone</h3>
                             <p className="text-gray-600">(+1) 226 577 9183</p>
                         </div>
                     </div>
@@ -72,7 +72,7 @@ function GetInTouchSection() {
                             <Mail className="h-5 w-5 text-green-600" />
                         </div>
                         <div>
-                            <h4 className="font-bold text-gray-900">Email</h4>
+                            <h3 className="font-bold text-gray-900">Email</h3>
                             <p className="text-gray-600">
                                 geevar.c@invisorglobal.com
                             </p>
@@ -84,9 +84,9 @@ function GetInTouchSection() {
                             <MapPin className="h-5 w-5 text-purple-600" />
                         </div>
                         <div>
-                            <h4 className="font-bold text-gray-900">
+                            <h3 className="font-bold text-gray-900">
                                 Fergus Office
-                            </h4>
+                            </h3>
                             <p className="text-gray-600">
                                 Unit B, 645 St David St. N, Fergus, N1M2K6, ON,{' '}
                                 <br /> Canada
@@ -99,9 +99,9 @@ function GetInTouchSection() {
                             <MapPin className="h-5 w-5 text-orange-600" />
                         </div>
                         <div>
-                            <h4 className="font-bold text-gray-900">
+                            <h3 className="font-bold text-gray-900">
                                 London Office
-                            </h4>
+                            </h3>
                             <p className="text-gray-600">
                                 375V- 341 Talbot St , London, ON N6A 2R5.
                             </p>

@@ -21,7 +21,7 @@ export function TeamCard({
             {/* Overlay Card */}
             <div className="absolute inset-0 flex items-end justify-center opacity-0 transition-all duration-300 group-hover:opacity-100">
                 <div className="w-full bg-white p-4 text-center shadow-md">
-                    <h4 className="font-bold text-black">{name}</h4>
+                    <h3 className="font-bold text-black">{name}</h3>
                     <p className="text-sm text-gray-700">{qualification}</p>
                 </div>
             </div>
