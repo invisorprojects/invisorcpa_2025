@@ -80,6 +80,7 @@ export default function WorldMap({
     return (
         <div className="relative aspect-[2/1] w-full rounded-lg bg-white">
             {/* map background only renders once */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
                 src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
                 className="pointer-events-none absolute inset-0 h-full w-full select-none"

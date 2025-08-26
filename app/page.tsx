@@ -474,6 +474,7 @@ export default async function Home() {
 
                     {/* Text Content */}
                     <div className="space-y-6 md:w-1/2">
+                        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                         {blogs.slice(1).map((blog: any, index: number) => (
                             <div
                                 key={index}

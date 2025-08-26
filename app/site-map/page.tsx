@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const dynamic = 'force-static';
 
 import Link from 'next/link';
@@ -45,6 +46,7 @@ export default async function HtmlSitemap() {
             slug: s.slug.replace('case-studies/', ''),
         }));
     } catch (e) {
+        console.log(e);
         // ignore storyblok fetch failures; show static sections
     }
 

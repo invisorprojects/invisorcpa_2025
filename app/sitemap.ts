@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { MetadataRoute } from 'next';
 import { getStoryblokApi } from '@/lib/storyblok';
 import { SERVICES } from '@/constants/SERVICES';
@@ -119,6 +120,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             priority: 0.5,
         }));
     } catch (error) {
+        console.error(error);
         // If Storyblok fails, fall back to static entries only
     }
 

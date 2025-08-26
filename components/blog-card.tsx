@@ -6,7 +6,9 @@ export default function BlogCard({
     content,
     slug,
 }: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     content: any;
+
     slug: string;
 }) {
     return (

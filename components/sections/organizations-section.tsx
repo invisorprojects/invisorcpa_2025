@@ -37,6 +37,7 @@ export function OrganizationsSection() {
                         key={index}
                         className="flex items-center justify-center p-4"
                     >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                             src={src}
                             alt={`Company Logo ${index + 1}`}
