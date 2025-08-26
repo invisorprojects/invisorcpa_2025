@@ -92,9 +92,12 @@ export const metadata: Metadata = {
         },
     },
     verification: {
-        google: 'your-google-verification-code',
+        google: 'aJSoqSWoydgirSEhN5oKtA5B8aWFCbDrDVjF_tvXt4',
         yandex: 'your-yandex-verification-code',
         yahoo: 'your-yahoo-verification-code',
+        other: {
+            'msvalidate.01': '38DA8FFFF9D52A1C9236A51CEFEE7542',
+        },
     },
 };
 
@@ -207,6 +210,17 @@ export default function RootLayout({
                     <Suspense fallback={null}>
                         <GA />
                     </Suspense>
+
+                    {/* Microsoft Clarity */}
+                    <Script id="microsoft-clarity" strategy="afterInteractive">
+                        {`
+                            (function(c,l,a,r,i,t,y){
+                                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                            })(window, document, "clarity", "script", "su57cef7ad");
+                        `}
+                    </Script>
                 </body>
             </html>
         </StoryblokProvider>

@@ -4,9 +4,19 @@ import ContactUs from '@/components/sections/contact-us';
 import { Metadata } from 'next';
 import Image from 'next/image';
 
-export const metadata: Metadata = {
-    title: 'Industries',
-};
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+    const { slug } = await params;
+    return {
+        title: 'Industries',
+        alternates: {
+            canonical: `https://invisorcpa.ca/services/${slug}/industries`,
+        },
+    };
+}
 
 export default function Page() {
     return (

@@ -1,117 +1,133 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { MetadataRoute } from 'next';
+import { getStoryblokApi } from '@/lib/storyblok';
+import { SERVICES } from '@/constants/SERVICES';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://invisorcpa.ca';
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://invisorcpa.ca';
+    const currentDate = new Date();
 
-    return [
+    const staticEntries: MetadataRoute.Sitemap = [
         {
             url: baseUrl,
-            lastModified: new Date(),
+            lastModified: currentDate,
             changeFrequency: 'weekly',
             priority: 1,
         },
         {
             url: `${baseUrl}/services`,
-            lastModified: new Date(),
+            lastModified: currentDate,
             changeFrequency: 'monthly',
             priority: 0.9,
         },
         {
             url: `${baseUrl}/about-us`,
-            lastModified: new Date(),
+            lastModified: currentDate,
             changeFrequency: 'monthly',
             priority: 0.8,
         },
         {
             url: `${baseUrl}/contact-us`,
-            lastModified: new Date(),
+            lastModified: currentDate,
             changeFrequency: 'monthly',
             priority: 0.8,
         },
         {
             url: `${baseUrl}/pricing`,
-            lastModified: new Date(),
+            lastModified: currentDate,
             changeFrequency: 'monthly',
             priority: 0.7,
         },
         {
             url: `${baseUrl}/team`,
-            lastModified: new Date(),
+            lastModified: currentDate,
             changeFrequency: 'monthly',
             priority: 0.6,
         },
         {
             url: `${baseUrl}/blogs`,
-            lastModified: new Date(),
+            lastModified: currentDate,
             changeFrequency: 'weekly',
             priority: 0.7,
         },
         {
             url: `${baseUrl}/case-studies`,
-            lastModified: new Date(),
+            lastModified: currentDate,
             changeFrequency: 'monthly',
             priority: 0.6,
         },
         {
             url: `${baseUrl}/tax-calculator`,
-            lastModified: new Date(),
+            lastModified: currentDate,
             changeFrequency: 'monthly',
             priority: 0.6,
         },
         {
-            url: `${baseUrl}/cross-border-taxes`,
-            lastModified: new Date(),
+            url: `${baseUrl}/payroll-calculator`,
+            lastModified: currentDate,
+            changeFrequency: 'monthly',
+            priority: 0.6,
+        },
+        {
+            url: `${baseUrl}/services/cross-border-taxes`,
+            lastModified: currentDate,
             changeFrequency: 'monthly',
             priority: 0.7,
         },
-        // Service pages
-        {
-            url: `${baseUrl}/services/personal-tax-returns`,
-            lastModified: new Date(),
+    ];
+
+    const serviceEntries: MetadataRoute.Sitemap = SERVICES.map((service) => ({
+        url: `${baseUrl}/services/${service.slug}`,
+        lastModified: currentDate,
+        changeFrequency: 'monthly',
+        priority: 0.8,
+    }));
+
+    const storyblokApi = getStoryblokApi();
+    let blogEntries: MetadataRoute.Sitemap = [];
+    let caseStudyEntries: MetadataRoute.Sitemap = [];
+    try {
+        const [blogs, caseStudies] = await Promise.all([
+            storyblokApi.getAll('cdn/stories', {
+                version:
+                    process.env.NODE_ENV === 'production'
+                        ? 'published'
+                        : 'draft',
+                starts_with: 'blogs',
+                content_type: 'blog',
+            }),
+            storyblokApi.getAll('cdn/stories', {
+                version:
+                    process.env.NODE_ENV === 'production'
+                        ? 'published'
+                        : 'draft',
+                starts_with: 'case-studies',
+                content_type: 'case_study',
+            }),
+        ]);
+
+        blogEntries = blogs.map((story: any) => ({
+            url: `${baseUrl}/blogs/${story.slug.replace('blogs/', '')}`,
+            lastModified: currentDate,
+            changeFrequency: 'weekly',
+            priority: 0.6,
+        }));
+
+        caseStudyEntries = caseStudies.map((story: any) => ({
+            url: `${baseUrl}/case-studies/${story.slug.replace('case-studies/', '')}`,
+            lastModified: currentDate,
             changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/services/catch-up-bookkeeping-services`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/services/payroll-management-services`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/services/business-tax-returns`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/services/bookkeeping-services`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/services/accounting-services`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/services/tax-planning-services`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/services/consulting-services`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
+            priority: 0.5,
+        }));
+    } catch (error) {
+        console.error(error);
+        // If Storyblok fails, fall back to static entries only
+    }
+
+    return [
+        ...staticEntries,
+        ...serviceEntries,
+        ...blogEntries,
+        ...caseStudyEntries,
     ];
 }
