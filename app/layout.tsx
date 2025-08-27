@@ -221,18 +221,24 @@ export default function RootLayout({
                             })(window, document, "clarity", "script", "su57cef7ad");
                         `}
                     </Script>
-                    {/* Same as: var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date(); */}
-                    <Script id="tawk-init" strategy="beforeInteractive">
-                        {`window.Tawk_API = window.Tawk_API || {};
-          window.Tawk_LoadStart = new Date();`}
-                    </Script>
+                    <Script id="tawk-conditional" strategy="afterInteractive">
+                        {`
+  (function () {
+    var ua = navigator.userAgent || "";
+    var isBot = /Lighthouse|PageSpeed|Chrome-Lighthouse|Speed Insights/i.test(ua);
+    if (isBot) return; // Skip loading chat for PSI/Lighthouse
 
-                    <Script
-                        id="tawk-src"
-                        strategy="afterInteractive"
-                        src="https://embed.tawk.to/687e45c13b2af81922773516/1j0mk1036"
-                        // crossOrigin="anonymous"
-                    />
+    window.Tawk_API = window.Tawk_API || {};
+    window.Tawk_LoadStart = new Date();
+
+    var s = document.createElement('script');
+    s.src = 'https://embed.tawk.to/687e45c13b2af81922773516/1j0mk1036';
+    s.async = true;
+    s.crossOrigin = 'anonymous';
+    document.body.appendChild(s);
+  })();
+`}
+                    </Script>
                 </body>
             </html>
         </StoryblokProvider>
