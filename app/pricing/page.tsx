@@ -33,7 +33,7 @@ export default function Page() {
                     </div>
                 </div>
                 <Image
-                    src="/assets/banners/banner-10.webp"
+                    src="/assets/banners/banner-9.webp"
                     alt="Services"
                     width={3074}
                     height={1333}
@@ -82,7 +82,7 @@ const pricingData = [
             amount: '$940',
             currency: 'CAD',
         },
-        tools: ['xero.svg', 'dext.webp', 'plooto.jpeg'],
+        tools: ['xero.svg', 'dext.webp', 'plooto.webp'],
     },
     {
         title: 'SaaS',
@@ -95,11 +95,11 @@ const pricingData = [
             currency: 'CAD',
         },
         tools: [
-            'quickbooks.png',
+            'quickbooks.webp',
             'dext.webp',
-            'plooto.jpeg',
+            'plooto.webp',
             'float.webp',
-            'wagepoint.jpeg',
+            'wagepoint.webp',
         ],
     },
     {
@@ -112,7 +112,13 @@ const pricingData = [
             amount: '$2,100',
             currency: 'CAD',
         },
-        tools: ['dext.webp', 'xero.svg', 'plooto.jpeg', 'humi.png', 'venn.png'],
+        tools: [
+            'dext.webp',
+            'xero.svg',
+            'plooto.webp',
+            'humi.webp',
+            'venn.webp',
+        ],
     },
     {
         title: 'US Company',
@@ -124,7 +130,7 @@ const pricingData = [
             amount: '$375',
             currency: 'USD',
         },
-        tools: ['xero.svg', 'wagepoint.jpeg'],
+        tools: ['xero.svg', 'wagepoint.webp'],
     },
 ];
 

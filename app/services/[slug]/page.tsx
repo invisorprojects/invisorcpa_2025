@@ -311,7 +311,7 @@ export default async function Page({
                     {/* Right Image */}
                     <div className="w-full max-w-xl overflow-hidden rounded-xl shadow">
                         <Image
-                            src="/assets/our-process.jpg"
+                            src="/assets/our-process.webp"
                             alt="Our Process"
                             width={800}
                             height={600}
@@ -377,10 +377,10 @@ export default async function Page({
 
                 <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
                     {[
-                        '/assets/industries/industries-1.jpg',
-                        '/assets/industries/industries-2.jpg',
-                        '/assets/industries/industries-3.jpg',
-                        '/assets/industries/industries-4.jpg',
+                        '/assets/industries/industries-1.webp',
+                        '/assets/industries/industries-2.webp',
+                        '/assets/industries/industries-3.webp',
+                        '/assets/industries/industries-4.webp',
                     ].map((src, index) => (
                         <div
                             key={index}
