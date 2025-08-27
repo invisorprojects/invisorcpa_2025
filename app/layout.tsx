@@ -221,53 +221,38 @@ export default function RootLayout({
                             })(window, document, "clarity", "script", "su57cef7ad");
                         `}
                     </Script>
-                    <Script id="tawk-conditional" strategy="afterInteractive">{`
+                    <Script
+                        id="tawk-on-interaction"
+                        strategy="afterInteractive"
+                    >{`
   (function () {
-    function isAutomation() {
-      var ua = navigator.userAgent || "";
-      // Broad bot/automation detection
-      var botUA = /Lighthouse|PageSpeed|Chrome-Lighthouse|Speed\\s?Insights|HeadlessChrome|Google-InspectionTool/i.test(ua);
-      var webdriver = !!navigator.webdriver; // true in many automated runs
-      var hidden = document.visibilityState === 'hidden' || document.visibilityState === 'prerender';
-      return botUA || webdriver || hidden;
-    }
+    if (window.__tawkMounted) return;
 
-    function loadTawk() {
-      if (window.Tawk_API) return; // already loaded
+    function load() {
+      if (window.__tawkMounted) return;
+      window.__tawkMounted = true;
+
       window.Tawk_API = window.Tawk_API || {};
       window.Tawk_LoadStart = new Date();
+
       var s = document.createElement('script');
       s.src = 'https://embed.tawk.to/687e45c13b2af81922773516/1j0mk1036';
       s.async = true;
-      // s.crossOrigin = 'anonymous'; // optional; not required for <script> and won’t fix CORS from their side
       document.body.appendChild(s);
+
+      // cleanup listeners after load
+      window.removeEventListener('pointerdown', load, { passive: true });
+      window.removeEventListener('keydown', load, false);
+      window.removeEventListener('touchstart', load, { passive: true });
+      window.removeEventListener('scroll', load, { passive: true });
     }
 
-    // Skip entirely for bots/hidden tabs (PSI)
-    if (isAutomation()) {
-      // Try to load only if/when the page becomes visible (users), not for PSI
-      document.addEventListener('visibilitychange', function once() {
-        if (document.visibilityState === 'visible') {
-          document.removeEventListener('visibilitychange', once, { capture: false });
-          loadTawk();
-        }
-      }, { once: true });
-      return;
-    }
-
-    // Real users: lazy-load on idle or first interaction
-    var loaded = false;
-    function ensureLoad() { if (!loaded) { loaded = true; loadTawk(); } }
-
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(ensureLoad, { timeout: 8000 });
-    } else {
-      setTimeout(ensureLoad, 4000);
-    }
-
-    window.addEventListener('scroll', ensureLoad, { once: true, passive: true });
-    window.addEventListener('pointerdown', ensureLoad, { once: true });
-    window.addEventListener('keydown', ensureLoad, { once: true });
+    // first real interaction only
+    window.addEventListener('pointerdown', load, { once: true, passive: true });
+    window.addEventListener('keydown', load, { once: true });
+    window.addEventListener('touchstart', load, { once: true, passive: true });
+    // optional: if user scrolls, count as interaction
+    window.addEventListener('scroll', load, { once: true, passive: true });
   })();
 `}</Script>
                 </body>
