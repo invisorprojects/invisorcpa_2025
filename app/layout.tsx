@@ -221,40 +221,25 @@ export default function RootLayout({
                             })(window, document, "clarity", "script", "su57cef7ad");
                         `}
                     </Script>
+
+                    {/* Tawk.to Chat Widget */}
                     <Script
-                        id="tawk-on-interaction"
-                        strategy="afterInteractive"
-                    >{`
-  (function () {
-    if (window.__tawkMounted) return;
-
-    function load() {
-      if (window.__tawkMounted) return;
-      window.__tawkMounted = true;
-
-      window.Tawk_API = window.Tawk_API || {};
-      window.Tawk_LoadStart = new Date();
-
-      var s = document.createElement('script');
-      s.src = 'https://embed.tawk.to/687e45c13b2af81922773516/1j0mk1036';
-      s.async = true;
-      document.body.appendChild(s);
-
-      // cleanup listeners after load
-      window.removeEventListener('pointerdown', load, { passive: true });
-      window.removeEventListener('keydown', load, false);
-      window.removeEventListener('touchstart', load, { passive: true });
-      window.removeEventListener('scroll', load, { passive: true });
-    }
-
-    // first real interaction only
-    window.addEventListener('pointerdown', load, { once: true, passive: true });
-    window.addEventListener('keydown', load, { once: true });
-    window.addEventListener('touchstart', load, { once: true, passive: true });
-    // optional: if user scrolls, count as interaction
-    window.addEventListener('scroll', load, { once: true, passive: true });
-  })();
-`}</Script>
+                        id="tawk-to-script"
+                        strategy="lazyOnload"
+                        dangerouslySetInnerHTML={{
+                            __html: `
+              var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+              (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/687e45c13b2af81922773516/1j0mk1036';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+              })();
+            `,
+                        }}
+                    />
                 </body>
             </html>
         </StoryblokProvider>
