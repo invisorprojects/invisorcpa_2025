@@ -33,7 +33,7 @@ export default function Page() {
                     </div>
                 </div>
                 <Image
-                    src="/assets/banners/banner-10.jpg"
+                    src="/assets/banners/banner-10.webp"
                     alt="Services"
                     width={3074}
                     height={1333}

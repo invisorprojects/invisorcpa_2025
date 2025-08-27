@@ -43,7 +43,7 @@ export default async function CaseStudies() {
                     </div>
                 </div>
                 <Image
-                    src="/assets/banners/banner-1.jpg"
+                    src="/assets/banners/banner-1.webp"
                     alt="Case Studies"
                     width={4096}
                     height={1632}

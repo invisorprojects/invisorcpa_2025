@@ -15,6 +15,7 @@ export function TeamCard({
                 src={path}
                 alt={`${name} - ${qualification} at Invisor CPA, Canadian tax accountant and tax services expert`}
                 fill
+                sizes="250px"
                 className="object-cover transition-all duration-300 group-hover:grayscale"
             />
 

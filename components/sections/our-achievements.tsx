@@ -16,9 +16,10 @@ export default function OurAchievements() {
                         <Image
                             className="absolute object-contain"
                             key={num}
-                            src={`/assets/our-achievements/achievement-${num}.png`}
+                            src={`/assets/our-achievements/achievement-${num}.webp`}
                             alt={`Company Logo ${num}`}
                             fill
+                            sizes="80px"
                         />
                     </div>
                 ))}

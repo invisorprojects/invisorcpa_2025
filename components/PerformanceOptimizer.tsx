@@ -76,7 +76,7 @@ export function PerformanceOptimizer() {
             />
             <link
                 rel="preload"
-                href="/assets/banners/banner-1.jpg"
+                href="/assets/banners/banner-1.webp"
                 as="image"
                 type="image/jpeg"
             />

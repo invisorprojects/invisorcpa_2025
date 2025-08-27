@@ -9,11 +9,10 @@ export default function ContactUs() {
             <div className="relative z-0 flex min-h-96 flex-col items-center justify-center">
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/assets/contact-us.png"
+                        src="/assets/contact-us.webp"
                         alt="Contact Us Background"
                         fill
                         className="rounded-2xl object-cover object-left"
-                        priority
                     />
                 </div>
                 <div className="z-10 flex max-w-2xl flex-col items-center justify-between gap-8">

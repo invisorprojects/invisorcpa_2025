@@ -1,11 +1,12 @@
 import { CircleArrowRight } from 'lucide-react';
 import { Button } from '../ui/button';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export function OrganizationsSection() {
     const logos = Array.from(
         { length: 77 },
-        (_, i) => `/assets/customer-logos/${i + 1}.png`
+        (_, i) => `/assets/customer-logos/${i + 1}.webp`
     );
     return (
         <section className="flex flex-col items-center justify-between bg-[#EFF0F4] p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
@@ -37,12 +38,15 @@ export function OrganizationsSection() {
                         key={index}
                         className="flex items-center justify-center p-4"
                     >
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                            src={src}
-                            alt={`Company Logo ${index + 1}`}
-                            className="max-h-14 w-auto object-contain transition-all duration-300 hover:scale-110"
-                        />
+                        <div className="relative h-14 w-28">
+                            <Image
+                                src={src}
+                                alt={`Company Logo ${index + 1}`}
+                                fill
+                                className="object-contain transition-all duration-300 hover:scale-110"
+                                sizes="112px" // approximate width (w-28 = 7rem = 112px)
+                            />
+                        </div>
                     </div>
                 ))}
             </div>
