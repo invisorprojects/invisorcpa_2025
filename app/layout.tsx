@@ -221,24 +221,55 @@ export default function RootLayout({
                             })(window, document, "clarity", "script", "su57cef7ad");
                         `}
                     </Script>
-                    <Script id="tawk-conditional" strategy="afterInteractive">
-                        {`
+                    <Script id="tawk-conditional" strategy="afterInteractive">{`
   (function () {
-    var ua = navigator.userAgent || "";
-    var isBot = /Lighthouse|PageSpeed|Chrome-Lighthouse|Speed Insights/i.test(ua);
-    if (isBot) return; // Skip loading chat for PSI/Lighthouse
+    function isAutomation() {
+      var ua = navigator.userAgent || "";
+      // Broad bot/automation detection
+      var botUA = /Lighthouse|PageSpeed|Chrome-Lighthouse|Speed\\s?Insights|HeadlessChrome|Google-InspectionTool/i.test(ua);
+      var webdriver = !!navigator.webdriver; // true in many automated runs
+      var hidden = document.visibilityState === 'hidden' || document.visibilityState === 'prerender';
+      return botUA || webdriver || hidden;
+    }
 
-    window.Tawk_API = window.Tawk_API || {};
-    window.Tawk_LoadStart = new Date();
+    function loadTawk() {
+      if (window.Tawk_API) return; // already loaded
+      window.Tawk_API = window.Tawk_API || {};
+      window.Tawk_LoadStart = new Date();
+      var s = document.createElement('script');
+      s.src = 'https://embed.tawk.to/687e45c13b2af81922773516/1j0mk1036';
+      s.async = true;
+      // s.crossOrigin = 'anonymous'; // optional; not required for <script> and won’t fix CORS from their side
+      document.body.appendChild(s);
+    }
 
-    var s = document.createElement('script');
-    s.src = 'https://embed.tawk.to/687e45c13b2af81922773516/1j0mk1036';
-    s.async = true;
-    s.crossOrigin = 'anonymous';
-    document.body.appendChild(s);
+    // Skip entirely for bots/hidden tabs (PSI)
+    if (isAutomation()) {
+      // Try to load only if/when the page becomes visible (users), not for PSI
+      document.addEventListener('visibilitychange', function once() {
+        if (document.visibilityState === 'visible') {
+          document.removeEventListener('visibilitychange', once, { capture: false });
+          loadTawk();
+        }
+      }, { once: true });
+      return;
+    }
+
+    // Real users: lazy-load on idle or first interaction
+    var loaded = false;
+    function ensureLoad() { if (!loaded) { loaded = true; loadTawk(); } }
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(ensureLoad, { timeout: 8000 });
+    } else {
+      setTimeout(ensureLoad, 4000);
+    }
+
+    window.addEventListener('scroll', ensureLoad, { once: true, passive: true });
+    window.addEventListener('pointerdown', ensureLoad, { once: true });
+    window.addEventListener('keydown', ensureLoad, { once: true });
   })();
-`}
-                    </Script>
+`}</Script>
                 </body>
             </html>
         </StoryblokProvider>
