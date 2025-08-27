@@ -36,7 +36,7 @@ export function WhyChooseUs() {
                 {/* Image */}
                 <div className="flex justify-center md:w-1/2 md:justify-end">
                     <Image
-                        src="/assets/why-choose-us.jpg" // Replace with your image path
+                        src="/assets/why-choose-us.webp" // Replace with your image path
                         alt="Accounting Team"
                         width={1777}
                         height={1999}

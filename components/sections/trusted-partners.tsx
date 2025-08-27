@@ -15,6 +15,7 @@ export default function TrustedPartners() {
                         src={`/assets/company-logos/logo-${num}.webp`}
                         alt={`Company Logo ${num}`}
                         width={160}
+                        priority={true}
                         height={100}
                     />
                 ))}

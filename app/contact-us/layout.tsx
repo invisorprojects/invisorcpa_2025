@@ -26,7 +26,7 @@ export const metadata: Metadata = {
         siteName: 'Invisor CPA',
         images: [
             {
-                url: '/assets/contact-us.png',
+                url: '/assets/contact-us.webp',
                 width: 1200,
                 height: 630,
                 alt: 'Contact Invisor CPA - Tax Services Canada',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
         title: 'Contact Invisor CPA | Tax Services Canada | Get CRA Tax Help',
         description:
             'Contact Invisor CPA for expert tax services Canada. Get professional tax accountant help, CRA tax filing support, and personal tax preparation services.',
-        images: ['/assets/contact-us.png'],
+        images: ['/assets/contact-us.webp'],
     },
     alternates: {
         canonical: 'https://www.invisorcpa.ca/contact-us',

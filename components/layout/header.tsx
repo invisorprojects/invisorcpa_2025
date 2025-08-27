@@ -8,12 +8,12 @@ export function Header() {
         <header className="sticky top-0 z-50 flex h-20 flex-row items-center justify-between border-b bg-white px-2 shadow-sm sm:px-4 md:px-8 lg:px-12 xl:px-24">
             <Link className="" href={'/'}>
                 <Image
-                    className=""
+                    className="h-10 w-auto"
                     src="/invisor-logo.webp"
                     alt="Invisor"
-                    width={150}
-                    priority
-                    height={150}
+                    width={805}
+                    height={220}
+                    priority={true}
                 />
             </Link>
             <div className="flex items-center justify-between gap-10 sm:flex-row-reverse md:flex-row">

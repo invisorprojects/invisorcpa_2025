@@ -132,6 +132,7 @@ export default async function Home() {
                                 className="relative"
                                 src="/assets/laptop-lady.webp"
                                 alt="Professional tax accountant working on tax returns in Canada"
+                                priority={true}
                                 width={500}
                                 height={500}
                             />
@@ -174,11 +175,11 @@ export default async function Home() {
 
                     <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                         <Image
-                            className="rounded-3xl"
+                            className="h-60 w-auto rounded-3xl"
                             src="/assets/section-2-2.webp"
                             alt="Canadian tax preparation services and CRA tax filing support"
-                            width={300}
-                            height={300}
+                            width={2417}
+                            height={1811}
                         />
                         <div className="flex flex-col items-start justify-between gap-4 py-4">
                             <h3 className="text-primary text-xl font-bold">
@@ -230,7 +231,7 @@ export default async function Home() {
                     {/* Image */}
                     <div className="md:w-1/2">
                         <Image
-                            src="/assets/about-us.jpg"
+                            src="/assets/about-us.webp"
                             alt="Professional Canadian tax accountants providing tax filing services"
                             width={2049}
                             height={1170}

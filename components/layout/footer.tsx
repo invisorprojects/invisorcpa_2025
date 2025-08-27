@@ -8,12 +8,11 @@ export default function Footer() {
             <div className="mb-8">
                 <Link className="" href={'/'}>
                     <Image
-                        className=""
+                        className="h-10 w-auto"
                         src="/invisor-logo.webp"
                         alt="Invisor"
-                        width={150}
-                        priority
-                        height={150}
+                        width={805}
+                        height={220}
                     />
                 </Link>
             </div>
