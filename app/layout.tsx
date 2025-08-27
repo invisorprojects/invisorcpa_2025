@@ -186,7 +186,7 @@ export default function RootLayout({
                     {children}
                     <Footer />
                     <FloatingButtons />
-                    <LiveChat />
+                    {/* <LiveChat /> */}
                     <Toaster richColors />
                     {/* GA4: load and init */}
                     {gaId && (
@@ -221,6 +221,18 @@ export default function RootLayout({
                             })(window, document, "clarity", "script", "su57cef7ad");
                         `}
                     </Script>
+                    {/* Same as: var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date(); */}
+                    <Script id="tawk-init" strategy="beforeInteractive">
+                        {`window.Tawk_API = window.Tawk_API || {};
+          window.Tawk_LoadStart = new Date();`}
+                    </Script>
+
+                    <Script
+                        id="tawk-src"
+                        strategy="afterInteractive"
+                        src="https://embed.tawk.to/687e45c13b2af81922773516/1j0mk1036"
+                        // crossOrigin="anonymous"
+                    />
                 </body>
             </html>
         </StoryblokProvider>

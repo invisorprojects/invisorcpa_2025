@@ -176,7 +176,7 @@ export default async function Home() {
 
                     <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                         <Image
-                            className="h-60 w-auto rounded-3xl"
+                            className="h-52 w-auto rounded-3xl"
                             src="/assets/section-2-2.webp"
                             alt="Canadian tax preparation services and CRA tax filing support"
                             width={2417}
@@ -193,7 +193,7 @@ export default async function Home() {
                                 precision, so you can focus on growing your
                                 business.
                             </p>
-                            <Button className="rounded-full">Learn More</Button>
+                            {/* <Button className="rounded-full">Learn More</Button> */}
                         </div>
                     </div>
                 </div>
@@ -433,7 +433,9 @@ export default async function Home() {
                         </p>
                         <Link href="/blogs">
                             <Button className="bg-primary flex items-center gap-2 rounded-full px-6 py-4 text-white">
-                                <span className="font-bold">See More</span>
+                                <span className="font-bold">
+                                    See More Blogs
+                                </span>
                                 <CircleArrowRight className="h-4 w-4" />
                             </Button>
                         </Link>
@@ -457,24 +459,25 @@ export default async function Home() {
                             </div>
 
                             {/* Right: Content */}
-                            <div className="flex w-full flex-col gap-2 p-2">
-                                <h3 className="text-primary text-base font-medium">
-                                    {blogs[0].content.title}
-                                </h3>
-                                <p className="text-xs leading-relaxed text-gray-500">
-                                    {blogs[0].content.description}
-                                </p>
-
-                                <Link href={`/blogs/${blogs[0].slug}`}>
-                                    <Button
-                                        variant={'outline'}
-                                        className="text-primary border-primary hover:bg-primary flex items-center gap-4 rounded-full hover:text-white"
-                                    >
-                                        <span className="">Read More</span>
-                                        <CircleArrowRight className="h-4 w-4" />
-                                    </Button>
-                                </Link>
-                            </div>
+                            <Link href={`/blogs/${blogs[0].slug}`}>
+                                <div className="flex w-full flex-col gap-2 p-2">
+                                    <h3 className="text-primary text-base font-medium">
+                                        {blogs[0].content.title}
+                                    </h3>
+                                    <p className="text-xs leading-relaxed text-gray-500">
+                                        {blogs[0].content.description}
+                                    </p>
+                                    <div>
+                                        <Button
+                                            variant={'outline'}
+                                            className="text-primary border-primary hover:bg-primary flex items-center gap-4 rounded-full hover:text-white"
+                                        >
+                                            <span className="">Read More</span>
+                                            <CircleArrowRight className="h-4 w-4" />
+                                        </Button>
+                                    </div>
+                                </div>
+                            </Link>
                         </div>
                     </div>
 
@@ -499,21 +502,24 @@ export default async function Home() {
 
                                 {/* Right: Content */}
                                 <div className="flex w-full flex-col gap-2 p-2 md:w-2/3">
-                                    <h3 className="text-primary text-base font-medium">
-                                        {blog.content.title}
-                                    </h3>
-                                    <p className="text-xs leading-relaxed text-gray-500">
-                                        {blog.content.description}
-                                    </p>
-
                                     <Link href={`/blogs/${blog.slug}`}>
-                                        <Button
-                                            variant={'outline'}
-                                            className="text-primary border-primary hover:bg-primary flex items-center gap-4 rounded-full hover:text-white"
-                                        >
-                                            <span className="">Read More</span>
-                                            <CircleArrowRight className="h-4 w-4" />
-                                        </Button>
+                                        <h3 className="text-primary text-base font-medium">
+                                            {blog.content.title}
+                                        </h3>
+                                        <p className="text-xs leading-relaxed text-gray-500">
+                                            {blog.content.description}
+                                        </p>
+                                        <div>
+                                            <Button
+                                                variant={'outline'}
+                                                className="text-primary border-primary hover:bg-primary flex items-center gap-4 rounded-full hover:text-white"
+                                            >
+                                                <span className="">
+                                                    Read More
+                                                </span>
+                                                <CircleArrowRight className="h-4 w-4" />
+                                            </Button>
+                                        </div>
                                     </Link>
                                 </div>
                             </div>

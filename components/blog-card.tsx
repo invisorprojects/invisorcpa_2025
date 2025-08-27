@@ -20,18 +20,21 @@ export default function BlogCard({
                 height={400}
                 className="h-[436px] w-full object-cover transition duration-300 group-hover:scale-105 group-hover:brightness-75"
             />
-            <div className="absolute right-0 bottom-0 left-0 m-4 rounded-xl bg-white p-6 shadow-md transition-transform duration-300 group-hover:scale-95">
-                <h3 className="text-lg leading-snug font-bold">
-                    {content.title}
-                </h3>
-                <Link
-                    href={`/blogs/${slug}`}
-                    className="text-primary mt-4 inline-flex items-center text-sm font-semibold hover:underline"
-                >
-                    Read Post
-                    <CircleArrowRight className="ml-1 h-4 w-4" />
-                </Link>
-            </div>
+            <Link
+                href={`/blogs/${slug}`}
+                aria-label={`Read blog post: ${content.title}`}
+            >
+                <div className="absolute right-0 bottom-0 left-0 m-4 rounded-xl bg-white p-6 shadow-md transition-transform duration-300 group-hover:scale-95">
+                    <h3 className="text-lg leading-snug font-bold">
+                        {content.title}
+                    </h3>
+                    <div className="text-primary mt-4 inline-flex items-center text-sm font-semibold hover:underline">
+                        Read Post
+                        <span className="sr-only">: {content.title}</span>
+                        <CircleArrowRight className="ml-1 h-4 w-4" />
+                    </div>
+                </div>
+            </Link>
         </div>
     );
 }
