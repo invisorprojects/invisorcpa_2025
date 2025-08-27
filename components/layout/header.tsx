@@ -18,8 +18,8 @@ export function Header() {
             </Link>
             <div className="flex items-center justify-between gap-10 sm:flex-row-reverse md:flex-row">
                 <NavBar />
-                <Link href="/contact-us">
-                    <Button className="hidden rounded-sm px-4 py-5 hover:cursor-pointer sm:flex">
+                <Link className="hidden sm:flex" href="/contact-us">
+                    <Button className="rounded-sm px-4 py-5 hover:cursor-pointer">
                         <span className="text-lg font-extrabold">
                             Contact Us
                         </span>

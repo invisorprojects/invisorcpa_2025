@@ -37,8 +37,12 @@ export function NavBar() {
 
             <nav className="flex flex-row items-center justify-center md:hidden">
                 <Sheet>
-                    <SheetTrigger>
-                        <Menu className="size-8" />
+                    <SheetTrigger aria-label="Open navigation menu">
+                        <Menu
+                            className="size-8"
+                            aria-hidden="true"
+                            focusable="false"
+                        />
                     </SheetTrigger>
                     <SheetContent className="">
                         <SheetTitle></SheetTitle>
