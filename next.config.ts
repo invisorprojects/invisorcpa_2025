@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
             new URL('https://a.storyblok.com/**'),
         ],
     },
+    devIndicators: false,
 };
 
 export default nextConfig;
