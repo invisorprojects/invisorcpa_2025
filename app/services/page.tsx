@@ -99,7 +99,7 @@ export default function Page() {
                 <div className="mt-8 flex flex-col items-center justify-between gap-8 md:flex-row">
                     <div>
                         <Image
-                            src="/assets/features-section.jpg"
+                            src="/assets/features-section.webp"
                             alt="Professional tax preparation services in Canada"
                             width={1280}
                             height={800}

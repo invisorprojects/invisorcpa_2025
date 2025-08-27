@@ -230,7 +230,7 @@ export default function Page() {
                     {/* Image */}
                     <div className="flex justify-center md:w-1/2">
                         <Image
-                            src="/assets/our-mission.png" // Replace with your image path
+                            src="/assets/our-mission.webp" // Replace with your image path
                             alt="Our Mission"
                             width={600}
                             height={600}

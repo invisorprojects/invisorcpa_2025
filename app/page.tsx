@@ -135,6 +135,7 @@ export default async function Home() {
                                 priority={true}
                                 width={500}
                                 height={500}
+                                fetchPriority="high"
                             />
                         </div>
                     </div>
@@ -198,7 +199,7 @@ export default async function Home() {
                 </div>
             </section>
 
-            <ScheduleMeeting />
+            {/* <ScheduleMeeting /> */}
 
             <OrganizationsSection />
             <section className="flex flex-col items-center justify-between bg-[#E5F2F8] p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">

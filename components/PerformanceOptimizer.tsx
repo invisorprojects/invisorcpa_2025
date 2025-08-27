@@ -1,73 +1,55 @@
 export function PerformanceOptimizer() {
     return (
         <>
-            {/* Critical CSS inline */}
+            {/* Critical CSS inline for above-the-fold content */}
             <style
                 dangerouslySetInnerHTML={{
                     __html: `
-                        /* Critical CSS for above-the-fold content */
-                        .hero-section {
-                            display: flex;
-                            flex-direction: column;
-                            gap: 1rem;
-                            padding: 1rem;
-                        }
-                        
-                        @media (min-width: 640px) {
-                            .hero-section {
-                                padding: 2rem;
-                            }
-                        }
-                        
-                        @media (min-width: 768px) {
-                            .hero-section {
-                                padding: 3rem;
-                            }
-                        }
-                        
-                        @media (min-width: 1024px) {
-                            .hero-section {
-                                padding: 4rem;
-                            }
-                        }
-                        
-                        @media (min-width: 1280px) {
-                            .hero-section {
-                                padding: 6rem;
-                            }
-                        }
-                        
                         /* Optimize font loading */
-                        .font-optimized {
+                        .font-display-swap {
                             font-display: swap;
                         }
                         
-                        /* Reduce layout shift */
-                        .image-container {
-                            aspect-ratio: 16/9;
-                            overflow: hidden;
+                        /* Reduce layout shift for images */
+                        .image-optimized {
+                            aspect-ratio: auto;
+                            object-fit: cover;
                         }
                         
-                        .image-container img {
-                            width: 100%;
-                            height: 100%;
-                            object-fit: cover;
+                        /* Smooth scrolling */
+                        html {
+                            scroll-behavior: smooth;
+                        }
+                        
+                        /* Optimize button interactions */
+                        button {
+                            transition: all 0.2s ease-in-out;
+                        }
+                        
+                        /* Optimize link hover states */
+                        a {
+                            transition: color 0.2s ease-in-out;
                         }
                     `,
                 }}
             />
 
-            {/* Resource hints */}
+            {/* Resource hints for external domains */}
             <link rel="dns-prefetch" href="https://www.google-analytics.com" />
             <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+            <link rel="dns-prefetch" href="https://www.clarity.ms" />
+
+            {/* Preconnect to external domains for faster connections */}
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link
                 rel="preconnect"
                 href="https://fonts.gstatic.com"
                 crossOrigin="anonymous"
             />
+            <link rel="preconnect" href="https://www.google-analytics.com" />
+            <link rel="preconnect" href="https://www.googletagmanager.com" />
 
-            {/* Preload critical images */}
+            {/* Preload critical images used on the homepage */}
             <link
                 rel="preload"
                 href="/invisor-logo.webp"
@@ -76,15 +58,16 @@ export function PerformanceOptimizer() {
             />
             <link
                 rel="preload"
-                href="/assets/banners/banner-1.webp"
+                href="/assets/laptop-lady.webp"
                 as="image"
-                type="image/jpeg"
+                type="image/webp"
             />
 
-            {/* Prefetch important pages */}
+            {/* Prefetch important pages for better navigation performance */}
             <link rel="prefetch" href="/services" />
             <link rel="prefetch" href="/about-us" />
             <link rel="prefetch" href="/contact-us" />
+            <link rel="prefetch" href="/pricing" />
         </>
     );
 }
