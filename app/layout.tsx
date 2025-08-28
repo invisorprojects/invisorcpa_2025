@@ -5,7 +5,6 @@ import Footer from '@/components/layout/footer';
 import { openSans, poppins } from '@/constants/FONTS';
 import FloatingButtons from '@/components/layout/floating-buttons';
 import StoryblokProvider from '@/components/StoryblokProvider';
-import LiveChat from '@/components/layout/LiveChat';
 import Banner from '@/components/layout/banner';
 import SEOStructuredData from '@/components/SEOStructuredData';
 import { PerformanceOptimizer } from '@/components/PerformanceOptimizer';
@@ -186,7 +185,6 @@ export default function RootLayout({
                     {children}
                     <Footer />
                     <FloatingButtons />
-                    {/* <LiveChat /> */}
                     <Toaster richColors />
                     {/* GA4: load and init */}
                     {gaId && (
