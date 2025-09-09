@@ -1,14 +1,14 @@
 export const SERVICES = [
     {
         slug: 'personal-tax-returns',
-        title: 'Personal Tax Returns',
+        title: 'Personal Tax Accountant Toronto',
         description:
-            "Managing personal tax returns shouldn't be stressful. Our expert team simplifies the process, ensuring you take full advantage of deductions and credits to maximize your refund while staying fully compliant with tax laws.",
+            "Managing personal tax returns shouldn't be stressful. Our expert income tax accountants team simplifies the process, ensuring you take full advantage of deductions and credits to maximize your refund while staying fully compliant with tax laws.",
         why: [
             {
                 caption: 'Tailored Expertise',
                 content:
-                    'Our team understands the nuances of tax regulations, offering personalized guidance to suit your financial situation.',
+                    'Our team of tax return accountants  understands the nuances of tax regulations, offering personalized guidance to suit your financial situation.',
             },
             {
                 caption: 'Accuracy & Compliance',
@@ -208,9 +208,9 @@ export const SERVICES = [
 
     {
         slug: 'business-tax-prep-filing',
-        title: 'Business Tax Prep & Filing',
+        title: 'Corporate Tax Accountant - Business Tax Prep & Filing',
         description:
-            "Tax season doesn't have to be a nightmare. Our Business Tax Preparation & Filing services ensure your returns are prepared accurately and on time.",
+            "Tax season doesn't have to be a nightmare. Our Corporate Tax Preparation & Filing services ensure your returns are prepared accurately and on time.",
         why: [
             {
                 caption: 'Accuracy You Can Trust',
@@ -237,7 +237,7 @@ export const SERVICES = [
             {
                 caption: 'Tax Return Preparation',
                 content:
-                    'Full preparation and electronic filing of T2/GST/HST returns.',
+                    'Full preparation and electronic filing of T2/GST/HST returns by experienced corporate tax accountant.',
             },
             {
                 caption: 'Deductions & Credits Review',
@@ -276,71 +276,6 @@ export const SERVICES = [
             {
                 caption: 'Ongoing Support',
                 content: 'Year-round advice and quick answers.',
-            },
-        ],
-    },
-
-    {
-        slug: 'quickbooks-setup-bookkeeping',
-        title: 'QuickBooks Setup & Bookkeeping',
-        description:
-            "Managing finances shouldn't be a hassle. With our QuickBooks Setup & Bookkeeping services, we combine technology and expertise to streamline your financial processes, ensuring accuracy and efficiency.",
-        why: [
-            {
-                caption: 'Tailored Solutions',
-                content: 'Custom chart of accounts and workflows.',
-            },
-            {
-                caption: 'Expertise Across Industries',
-                content: '20+ years serving diverse sectors.',
-            },
-            {
-                caption: 'Cost-Effective',
-                content: 'Bookkeeping-team results at freelancer pricing.',
-            },
-            {
-                caption: 'Compliance Guaranteed',
-                content: 'Accurate, regulation-compliant records.',
-            },
-        ],
-        includes: [
-            {
-                caption: 'QuickBooks Setup & Integration',
-                content: 'Clean onboarding and optimisation.',
-            },
-            {
-                caption: 'Transaction Management',
-                content: 'Daily categorisation of income and expenses.',
-            },
-            {
-                caption: 'Bank Reconciliation',
-                content: 'Balance statements to the cent each month.',
-            },
-            {
-                caption: 'Financial Reporting',
-                content: 'P&L, balance sheet, cash-flow, and custom reports.',
-            },
-            {
-                caption: 'Tax Support',
-                content: 'Export-ready data for smooth year-end filing.',
-            },
-        ],
-        our_process: [
-            {
-                caption: 'Consultation',
-                content: 'Define goals, pain-points, and integrations needed.',
-            },
-            {
-                caption: 'System Setup',
-                content: 'Implement QuickBooks with custom settings.',
-            },
-            {
-                caption: 'Data Management',
-                content: 'Routine transaction posting and record upkeep.',
-            },
-            {
-                caption: 'Ongoing Support',
-                content: 'Live help and periodic performance reviews.',
             },
         ],
     },

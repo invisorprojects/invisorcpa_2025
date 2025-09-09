@@ -63,7 +63,7 @@ export default function Page() {
                             Cross-Border Taxes
                         </h3>
                         <h1 className="text-primary mt-4 text-4xl font-bold sm:text-5xl">
-                            Cross-Border Tax Services by Invisor
+                            Cross-Border Tax Accountant Services by Invisor
                         </h1>
                     </div>
                     <div className="flex max-w-lg flex-col items-start gap-4">
@@ -72,10 +72,10 @@ export default function Page() {
                             solutions, offering expert cross-border tax services
                             for individuals and businesses navigating the
                             complexities of the Canada-US tax landscape. With a
-                            team of highly qualified professionals, Invisor
-                            helps clients ensure compliance, minimize
-                            liabilities, and confidently handle all aspects of
-                            cross-border taxation.
+                            team of highly qualified cross border tax
+                            accountants, Invisor helps clients ensure
+                            compliance, minimize liabilities, and confidently
+                            handle all aspects of cross-border taxation.
                         </p>
                     </div>
                 </div>
@@ -139,7 +139,7 @@ export default function Page() {
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
                 <div className="mx-auto max-w-5xl text-center">
                     <h2 className="text-primary mb-4 text-3xl font-extrabold sm:text-4xl">
-                        Our Cross-Border Tax Services
+                        Our Cross-Border Tax Accountant Services
                     </h2>
                 </div>
                 <div className="mx-auto mt-8 grid w-full max-w-6xl grid-cols-1 gap-6 md:grid-cols-2">
@@ -218,9 +218,10 @@ export default function Page() {
                             Expert Navigation
                         </h3>
                         <p className="mt-2 text-sm leading-relaxed text-gray-700">
-                            Our team guides clients through complex
-                            international tax scenarios, delivering clear and
-                            actionable advice that saves time and money.
+                            Our cross border tax accountant team guides clients
+                            through complex international tax scenarios,
+                            delivering clear and actionable advice that saves
+                            time and money.
                         </p>
                     </div>
                     <div className="rounded-2xl border bg-white p-6 shadow-sm">
@@ -257,7 +258,7 @@ export default function Page() {
                         advisors, and financial consultants dedicated to
                         cross-border tax excellence. Contact Invisor today to
                         schedule a consultation and discover tailored solutions
-                        for all international tax needs.
+                        for all cross-border taxation needs.
                     </p>
                 </div>
                 <div className="flex flex-col gap-4">

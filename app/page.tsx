@@ -107,13 +107,13 @@ export default async function Home() {
                     <div className="flex flex-col items-start justify-between gap-8 sm:w-2/3">
                         <div className="flex flex-col items-start justify-between gap-4">
                             <h1 className="text-4xl font-bold sm:text-5xl">
-                                Trust Us to Handle What Counts with Financial
-                                Support You Can Rely On
+                                Accounting Service for Small Businesses
                             </h1>
                             <p className="max-w-2xl text-lg">
-                                We simplify your bookkeeping and financial
-                                processes so you can focus on growing your
-                                business with confidence and clarity.
+                                Our small business tax accountant simplifies
+                                your bookkeeping and financial processes so you
+                                can focus on growing your business with
+                                confidence and clarity.
                             </p>
                         </div>
                         <StatsGrid />
@@ -215,8 +215,8 @@ export default async function Home() {
                     <div className="flex max-w-lg flex-col items-start gap-4">
                         <p className="text-[#686666]">
                             Our expert team is committed to delivering
-                            personalized accounting and tax services to help you
-                            achieve stability and growth.
+                            personalized accounting and tax services in London,
+                            Ontario to help you achieve stability and growth.
                         </p>
                         <Link href="/about-us">
                             <Button className="flex items-center gap-2 rounded-full bg-[#1E1E5A] px-6 py-4 text-white hover:bg-[#131346]">
@@ -246,12 +246,12 @@ export default async function Home() {
                             Our Journey in Tax Preparation Services Canada
                         </h3>
                         <p className="max-w-xl leading-relaxed">
-                            We are a team of dedicated professionals committed
-                            to delivering exceptional financial services. With
-                            years of expertise in accounting, tax filing, and
-                            consulting, we focus on building long-term
-                            relationships with clients, helping them achieve
-                            financial clarity and growth.
+                            We are a team of dedicated small business
+                            accountants committed to delivering exceptional
+                            financial services. With years of expertise in
+                            accounting, tax filing, and consulting, we focus on
+                            building long-term relationships with clients,
+                            helping them achieve financial clarity and growth.
                         </p>
 
                         {/* Stats Row */}

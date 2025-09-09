@@ -11,7 +11,7 @@ export default function OurTools() {
                 <h2 className="text-primary sm:text- mb-4 text-3xl leading-snug font-bold">
                     Professional Accounting
                     <br />
-                    Software Solutions
+                    Software Solutions For Small Businesses
                 </h2>
 
                 <p className="text-primary text-base leading-relaxed font-medium sm:text-lg">
