@@ -8,9 +8,9 @@ import { Button } from '@/components/ui/button';
 import { CircleArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-    title: 'Cross-Border Tax Services Canada-US | Invisor CPA',
+    title: 'Cross Border Tax Accountant - Tax Services Canada-US',
     description:
-        'Expert cross-border tax services for Canada-US individuals and businesses. IRS streamlined filing, FBAR & FATCA, US estate/gift tax, and ongoing compliance by Invisor CPA.',
+        'Work with a trusted Cross Border Tax Accountant at Invisor CPA. We simplify Canada–US taxes, ensure CRA & IRS compliance, and handle FBAR & FATCA reporting.',
     keywords: [
         'Cross-border tax services',
         'Canada US tax',

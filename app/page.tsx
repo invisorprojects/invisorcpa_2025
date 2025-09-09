@@ -22,9 +22,9 @@ import CountUp from '@/components/react-bits/count-up';
 import PricingSection from '@/components/PricingSection';
 
 export const metadata: Metadata = {
-    title: 'Expert Tax Filing Services Canada | Personal Tax Accountant | CRA Tax Help',
+    title: 'Accountant For Small Business - Tax Services London Ontario',
     description:
-        'Professional tax filing services in Canada. Expert personal tax accountant, CRA tax help, and comprehensive tax preparation services. Trusted by 1000+ clients nationwide. Get your tax returns done right.',
+        'Professional tax filing services in Canada. Expert accountant for small businesses in London, Ontario, . Trusted by 1000+ clients nationwide.',
     keywords: [
         'Tax filing Canada',
         'Tax services Canada',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
         'Tax accountant near me',
     ],
     openGraph: {
-        title: 'Expert Tax Filing Services Canada | Personal Tax Accountant | CRA Tax Help',
+        title: 'Accountant For Small Business - Tax Services London Ontario',
         description:
             'Professional tax filing services in Canada. Expert personal tax accountant, CRA tax help, and comprehensive tax preparation services. Trusted by 1000+ clients nationwide.',
         url: 'https://www.invisorcpa.ca',
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Expert Tax Filing Services Canada | Personal Tax Accountant | CRA Tax Help',
+        title: 'Accountant For Small Business - Tax Services London Ontario',
         description:
             'Professional tax filing services in Canada. Expert personal tax accountant, CRA tax help, and comprehensive tax preparation services.',
         images: ['/invisor-logo.webp'],

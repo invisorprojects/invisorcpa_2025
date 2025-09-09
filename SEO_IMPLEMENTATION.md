@@ -29,7 +29,7 @@ The following primary keywords have been strategically integrated throughout the
 
 #### Homepage (`app/page.tsx`)
 
-- ✅ Keyword-rich title: "Expert Tax Filing Services Canada | Personal Tax Accountant | CRA Tax Help"
+- ✅ Keyword-rich title: "Accountant For Small Business - Tax Services London Ontario"
 - ✅ Comprehensive meta description with target keywords
 - ✅ Open Graph and Twitter meta tags
 - ✅ Canonical URL

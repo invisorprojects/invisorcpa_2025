@@ -118,6 +118,128 @@ export async function generateMetadata({
         'Tax consultant Canada',
     ];
 
+    if (slug === 'business-tax-prep-filing') {
+        return {
+            title: 'Corporate Tax Accountant - Business Tax Prep & Filing',
+            description:
+                'Tax season doesnt have to be a nightmare.Trusted Corporate Tax Accountant offering expert business tax filing services. Save time, & ensure compliance',
+            keywords: [
+                ...keywords,
+                'Tax services Canada',
+                'Tax preparation services Canada',
+                'Canadian tax expert',
+                'CRA tax help',
+                'Best tax service Canada',
+            ],
+            openGraph: {
+                title: `${service.title} | Tax Services Canada | Invisor CPA`,
+                description: `${service.description} Professional ${service.title.toLowerCase()} services in Canada.`,
+                url: `https://www.invisorcpa.ca/services/${slug}`,
+                siteName: 'Invisor CPA',
+                images: [
+                    {
+                        url: '/assets/banners/banner-4.webp',
+                        width: 1200,
+                        height: 630,
+                        alt: `${service.title} - Tax Services Canada`,
+                    },
+                ],
+                locale: 'en_CA',
+                type: 'website',
+            },
+            twitter: {
+                card: 'summary_large_image',
+                title: `${service.title} | Tax Services Canada | Invisor CPA`,
+                description: `${service.description} Professional ${service.title.toLowerCase()} services in Canada.`,
+                images: ['/assets/banners/banner-4.webp'],
+            },
+            alternates: {
+                canonical: `https://www.invisorcpa.ca/services/${slug}`,
+            },
+        };
+    }
+
+    if (slug === 'personal-tax-returns') {
+        return {
+            title: 'Personal Tax Accountant Toronto - Tax Return Accountant',
+            description:
+                'Need a Personal Tax Accountant Toronto? Get expert tax return preparation with accuracy, deductions optimization, and timely CRA filing for maximum savings.',
+            keywords: [
+                ...keywords,
+                'Tax services Canada',
+                'Tax preparation services Canada',
+                'Canadian tax expert',
+                'CRA tax help',
+                'Best tax service Canada',
+            ],
+            openGraph: {
+                title: `${service.title} | Tax Services Canada | Invisor CPA`,
+                description: `${service.description} Professional ${service.title.toLowerCase()} services in Canada.`,
+                url: `https://www.invisorcpa.ca/services/${slug}`,
+                siteName: 'Invisor CPA',
+                images: [
+                    {
+                        url: '/assets/banners/banner-4.webp',
+                        width: 1200,
+                        height: 630,
+                        alt: `${service.title} - Tax Services Canada`,
+                    },
+                ],
+                locale: 'en_CA',
+                type: 'website',
+            },
+            twitter: {
+                card: 'summary_large_image',
+                title: `${service.title} | Tax Services Canada | Invisor CPA`,
+                description: `${service.description} Professional ${service.title.toLowerCase()} services in Canada.`,
+                images: ['/assets/banners/banner-4.webp'],
+            },
+            alternates: {
+                canonical: `https://www.invisorcpa.ca/services/${slug}`,
+            },
+        };
+    }
+    if (slug === 'quickbooks-setup-bookkeeping') {
+        return {
+            title: 'Business Bookkeeping Services - Bookkeeper London, Ontario',
+            description:
+                'Streamline your finances with our Business Bookkeeping Services. Expert QuickBooks setup, accurate records, and tailored support in London, Ontario.',
+            keywords: [
+                ...keywords,
+                'Tax services Canada',
+                'Tax preparation services Canada',
+                'Canadian tax expert',
+                'CRA tax help',
+                'Best tax service Canada',
+            ],
+            openGraph: {
+                title: `${service.title} | Tax Services Canada | Invisor CPA`,
+                description: `${service.description} Professional ${service.title.toLowerCase()} services in Canada.`,
+                url: `https://www.invisorcpa.ca/services/${slug}`,
+                siteName: 'Invisor CPA',
+                images: [
+                    {
+                        url: '/assets/banners/banner-4.webp',
+                        width: 1200,
+                        height: 630,
+                        alt: `${service.title} - Tax Services Canada`,
+                    },
+                ],
+                locale: 'en_CA',
+                type: 'website',
+            },
+            twitter: {
+                card: 'summary_large_image',
+                title: `${service.title} | Tax Services Canada | Invisor CPA`,
+                description: `${service.description} Professional ${service.title.toLowerCase()} services in Canada.`,
+                images: ['/assets/banners/banner-4.webp'],
+            },
+            alternates: {
+                canonical: `https://www.invisorcpa.ca/services/${slug}`,
+            },
+        };
+    }
+
     return {
         title: `${service.title} | Tax Services Canada | Invisor CPA`,
         description: `${service.description} Professional ${service.title.toLowerCase()} services in Canada. Expert tax preparation and filing services.`,

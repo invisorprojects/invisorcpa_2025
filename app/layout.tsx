@@ -15,7 +15,7 @@ import { Suspense } from 'react';
 
 export const metadata: Metadata = {
     title: {
-        template: 'Invisor CPA | %s | Tax Services Canada',
+        template: ' %s ',
         default: 'Invisor CPA - Expert Tax Filing & Accounting Services Canada',
     },
     description:
