@@ -7,6 +7,7 @@ import {
     CircleArrowRight,
     SquareCheck,
 } from 'lucide-react';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -105,9 +106,50 @@ const benefits = [
     },
 ];
 
-export async function generateStaticParams() {
-    return SERVICES.map((service) => ({ slug: service.slug }));
-}
+export const metadata: Metadata = {
+    title: 'Business Bookkeeping Services - Bookkeeper London, Ontario',
+    description:
+        'Work with a trusted Cross Border Tax Accountant at Invisor CPA. We simplify Canada–US taxes, ensure CRA & IRS compliance, and handle FBAR & FATCA reporting.',
+    keywords: [
+        'Cross-border tax services',
+        'Canada US tax',
+        'IRS Streamlined Filing',
+        'FBAR',
+        'FATCA',
+        'US estate tax',
+        'US gift tax',
+        'International tax compliance',
+        'Canadian American tax',
+        'Cross-border accountant',
+    ],
+    openGraph: {
+        title: 'Cross-Border Tax Services Canada-US | Invisor CPA',
+        description:
+            'Invisor CPA helps individuals and businesses navigate Canada-US tax compliance: Streamlined Filing, FBAR/FATCA, estate & gift, and strategic advisory.',
+        url: 'https://www.invisorcpa.ca/cross-border-taxes',
+        siteName: 'Invisor CPA',
+        images: [
+            {
+                url: '/assets/banners/banner-10.webp',
+                width: 1200,
+                height: 630,
+                alt: 'Cross-Border Tax Services by Invisor',
+            },
+        ],
+        locale: 'en_CA',
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Cross-Border Tax Services Canada-US | Invisor CPA',
+        description:
+            'Navigate Canada-US taxes with confidence: Streamlined Filing, FBAR/FATCA, estate & gift, and ongoing compliance.',
+        images: ['/assets/banners/banner-10.webp'],
+    },
+    alternates: {
+        canonical: 'https://www.invisorcpa.ca/cross-border-taxes',
+    },
+};
 
 export default function Page() {
     return (
