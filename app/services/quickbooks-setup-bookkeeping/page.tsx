@@ -109,7 +109,7 @@ const benefits = [
 export const metadata: Metadata = {
     title: 'Business Bookkeeping Services - Bookkeeper London, Ontario',
     description:
-        'Work with a trusted Cross Border Tax Accountant at Invisor CPA. We simplify Canada–US taxes, ensure CRA & IRS compliance, and handle FBAR & FATCA reporting.',
+        'Streamline your finances with our Business Bookkeeping Services. Expert QuickBooks setup, accurate records, and tailored support in London, Ontario.',
     keywords: [
         'Cross-border tax services',
         'Canada US tax',
