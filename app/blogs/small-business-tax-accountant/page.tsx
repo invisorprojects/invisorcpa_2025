@@ -1,8 +1,71 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: '7 Essential Reasons to Work With a Small Business Tax Accountant | Invisor CPA',
+    description:
+        'Discover why partnering with a small business tax accountant can significantly benefit your business. Learn about compliance, deductions, strategic advice, and more from Canadian tax experts.',
+    keywords: [
+        'small business tax accountant',
+        'tax accountant for small business',
+        'business tax services',
+        'small business accounting',
+        'tax compliance',
+        'business tax deductions',
+        'Canadian tax accountant',
+        'small business tax advice',
+        'business tax planning',
+        'tax accountant benefits',
+        'small business CPA',
+        'business tax consultant',
+        'tax preparation services',
+        'business financial advisor',
+        'tax strategy for small business',
+    ],
+    authors: [{ name: 'Invisor CPA' }],
+    openGraph: {
+        title: '7 Essential Reasons to Work With a Small Business Tax Accountant',
+        description:
+            'Discover why partnering with a small business tax accountant can significantly benefit your business. Expert insights on compliance, deductions, and strategic growth.',
+        url: 'https://www.invisorcpa.ca/blogs/small-business-tax-accountant',
+        siteName: 'Invisor CPA',
+        images: [
+            {
+                url: 'https://www.invisorcpa.ca/assets/banners/banner-3.webp',
+                width: 1200,
+                height: 630,
+                alt: '7 Essential Reasons to Work With a Small Business Tax Accountant - Invisor CPA',
+            },
+        ],
+        locale: 'en_CA',
+        type: 'article',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: '7 Essential Reasons to Work With a Small Business Tax Accountant',
+        description:
+            'Discover why partnering with a small business tax accountant can significantly benefit your business. Expert insights from Canadian tax professionals.',
+        images: ['https://www.invisorcpa.ca/assets/banners/banner-3.webp'],
+        creator: '@invisorcpa',
+    },
+    alternates: {
+        canonical:
+            'https://www.invisorcpa.ca/blogs/small-business-tax-accountant',
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+    category: 'Tax Services',
+};
 
 const placeholder = 'https://ui.shadcn.com/placeholder.svg';
 

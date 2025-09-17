@@ -3,8 +3,10 @@ export const dynamic = 'force-static';
 import BlogCard from '@/components/blog-card';
 import ContactUs from '@/components/sections/contact-us';
 import { getStoryblokApi } from '@/lib/storyblok';
+import { CircleArrowRight } from 'lucide-react';
 import { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
     title: 'Blogs',
@@ -56,6 +58,36 @@ export default async function Blogs() {
                             slug={blog.slug}
                         />
                     ))}
+
+                    <div className="group relative max-w-sm overflow-hidden rounded-xl shadow-sm">
+                        <Image
+                            src={'https://ui.shadcn.com/placeholder.svg'}
+                            alt={`7 Essential Reasons to Work With a Small Business Tax Accountant - Tax services blog post by Invisor CPA, Canadian tax accountants`}
+                            width={600}
+                            height={400}
+                            className="h-[436px] w-full object-cover transition duration-300 group-hover:scale-105 group-hover:brightness-75"
+                        />
+                        <Link
+                            href={`/blogs/small-business-tax-accountant`}
+                            aria-label={`Read blog post: 
+                                7 Essential Reasons to Work With a Small Business Tax Accountant`}
+                        >
+                            <div className="absolute right-0 bottom-0 left-0 m-4 rounded-xl bg-white p-6 shadow-md transition-transform duration-300 group-hover:scale-95">
+                                <h3 className="text-lg leading-snug font-bold">
+                                    7 Essential Reasons to Work With a Small
+                                    Business Tax Accountant
+                                </h3>
+                                <div className="text-primary mt-4 inline-flex items-center text-sm font-semibold hover:underline">
+                                    Read Post
+                                    <span className="sr-only">
+                                        :7 Essential Reasons to Work With a
+                                        Small Business Tax Accountant
+                                    </span>
+                                    <CircleArrowRight className="ml-1 h-4 w-4" />
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
                 </div>
             </section>
 
