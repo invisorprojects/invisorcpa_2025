@@ -9,8 +9,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getStoryblokApi } from '@/lib/storyblok';
 
-import { StoryblokRichText } from '@storyblok/react';
 import ContactUsForm from '@/components/ContactUsForm';
+import { StoryblokServerRichText } from '@storyblok/react/rsc';
 // We have identified issues with richtext and Types on React 19 and Next.js 15. As a temporary measure, we advise you to continue using React 18 and Next.js 14 until we have fully resolved the issues.
 // Refer this link
 // https://www.storyblok.com/docs/packages/storyblok-react#storyblokrichtext
@@ -120,7 +120,7 @@ function BlogDetails({
             <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 lg:grid-cols-3">
                 {/* Main Content */}
                 <div className="prose lg:col-span-2">
-                    <StoryblokRichText doc={content.content} />
+                    <StoryblokServerRichText doc={content.content} />
                 </div>
 
                 {/* Sidebar */}
