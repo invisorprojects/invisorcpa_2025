@@ -21,6 +21,14 @@ export async function generateMetadata({
     params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
     const { slug } = await params;
+    if (slug === 'bookkeeper-london-ontario-transaction-management-books') {
+        return {
+            title: 'Bookkeeper London Ontario | Transaction Management for Error-Free Books',
+            description:
+                'Discover how expert transaction management keeps your books accurate and audit-ready. Learn why hiring a skilled bookkeeper in London, Ontario ensures compliance and financial clarity.',
+            keywords: ['books'],
+        };
+    }
     return {
         title: 'Blog Post',
         alternates: {
