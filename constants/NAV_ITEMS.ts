@@ -29,4 +29,9 @@ export const NAV_ITEMS: NAV_ITEMS[] = [
         href: '/about-us',
         disabled: false,
     },
+    {
+        title: 'Contact Us',
+        href: '/contact-us',
+        disabled: false,
+    },
 ];
