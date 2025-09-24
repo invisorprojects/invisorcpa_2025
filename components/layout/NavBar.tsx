@@ -70,7 +70,7 @@ export function NavBar() {
                                 ))}
                             </div>
                             <div className="flex w-full justify-center">
-                                <Link href="https://welcome.taxcycle.com/Identity/Account/Login" className="">
+                                <Link href="https://taxfolder.com/Client/Home" className="">
                                     <Button className="rounded-sm px-4 py-5 hover:cursor-pointer md:hidden">
                                         <span className="font-medium">
                                             Client Login
