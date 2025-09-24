@@ -9,7 +9,7 @@ export function OrganizationsSection() {
         (_, i) => `/assets/customer-logos/${i + 1}.webp`
     );
     return (
-        <section className="flex flex-col items-center justify-between bg-[#EFF0F4] p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
+        <section className="flex flex-col items-center justify-between bg-gradient-to-b from-[#EFF0F4] to-white p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
             <div className="mb-20 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:justify-between">
                 <div className="max-w-sm">
                     <h2 className="text-primary text-4xl font-bold">
@@ -36,7 +36,7 @@ export function OrganizationsSection() {
                 {logos.map((src, index) => (
                     <div
                         key={index}
-                        className="group flex items-center justify-center rounded-xl border border-gray-200 bg-white/80 p-3 shadow-sm outline-none transition-all duration-200 hover:-translate-y-1 hover:shadow-md focus-visible:ring-2 focus-visible:ring-blue-500 md:p-4"
+                        className="group flex items-center justify-center rounded-xl border border-[#1E1E5A]/10 bg-white p-3 shadow-sm outline-none transition-all duration-200 hover:-translate-y-1 hover:bg-[#E5F2F8] hover:shadow-md focus-visible:ring-2 focus-visible:ring-[#1E1E5A] md:p-4"
                         tabIndex={0}
                     >
                         <div className="relative aspect-[2/1] w-24 sm:w-28 md:w-32">
