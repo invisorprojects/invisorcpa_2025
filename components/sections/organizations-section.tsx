@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export function OrganizationsSection() {
     const logos = Array.from(
-        { length: 77 },
+        { length: 78 },
         (_, i) => `/assets/customer-logos/${i + 1}.webp`
     );
     return (
@@ -32,11 +32,11 @@ export function OrganizationsSection() {
                     </Link>
                 </div>
             </div>
-            <div className="grid grid-cols-2 items-center justify-center gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 md:gap-6">
+            <div className="grid grid-cols-2 items-center justify-center gap-4 sm:grid-cols-3 md:grid-cols-4 md:gap-6 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8">
                 {logos.map((src, index) => (
                     <div
                         key={index}
-                        className="group flex items-center justify-center rounded-xl border border-[#1E1E5A]/10 bg-white p-3 shadow-sm outline-none transition-all duration-200 hover:-translate-y-1 hover:bg-[#E5F2F8] hover:shadow-md focus-visible:ring-2 focus-visible:ring-[#1E1E5A] md:p-4"
+                        className="group flex items-center justify-center rounded-xl border border-[#1E1E5A]/10 bg-white p-3 shadow-sm transition-all duration-200 outline-none hover:-translate-y-1 hover:bg-[#E5F2F8] hover:shadow-md focus-visible:ring-2 focus-visible:ring-[#1E1E5A] md:p-4"
                         tabIndex={0}
                     >
                         <div className="relative aspect-[2/1] w-24 sm:w-28 md:w-32">
