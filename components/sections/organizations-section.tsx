@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export function OrganizationsSection() {
     const logos = Array.from(
-        { length: 78 },
+        { length: 79 },
         (_, i) => `/assets/customer-logos/${i + 1}.webp`
     );
     return (
