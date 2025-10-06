@@ -1,6 +1,5 @@
 import ContactUs from '@/components/sections/contact-us';
 import { Button } from '@/components/ui/button';
-import { SERVICES } from '@/constants/SERVICES';
 import {
     BarChart3,
     CheckCircle,
