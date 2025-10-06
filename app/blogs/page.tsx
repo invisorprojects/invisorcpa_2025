@@ -1,4 +1,4 @@
-export const dynamic = 'force-static';
+// export const dynamic = 'force-static';
 
 import BlogCard from '@/components/blog-card';
 import ContactUs from '@/components/sections/contact-us';

@@ -86,7 +86,11 @@ export default function Page() {
                         <p className="text-[#686666]">
                             For entrepreneurs, managing taxes is one of the
                             biggest responsibilities. While many owners attempt
-                            to handle it alone, a small business tax accountant
+                            to handle it alone, a{' '}
+                            <Link href="/" className="text-primary underline">
+                                {' '}
+                                small business tax accountant{' '}
+                            </Link>
                             ensures compliance, efficiency, and valuable
                             savings. Their guidance helps simplify financial
                             obligations while freeing time to focus on growth.
