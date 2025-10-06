@@ -1,6 +1,3 @@
-export const dynamic = 'force-static';
-export const revalidate = false;
-
 import Image from 'next/image';
 import { Metadata } from 'next';
 import TrustedPartners from '@/components/sections/trusted-partners';
