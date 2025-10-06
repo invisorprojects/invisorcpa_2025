@@ -5,12 +5,12 @@ import Image from 'next/image';
 
 export function OrganizationsSection() {
     const logos = Array.from(
-        { length: 85 },
+        { length: 86 },
         (_, i) => `/assets/customer-logos/${i + 1}.webp`
     );
 
     const smallLogos = Array.from(
-        { length: 19 },
+        { length: 18 },
         (_, i) => `/assets/customer-logos/small-logo-${i + 1}.webp`
     );
     return (
