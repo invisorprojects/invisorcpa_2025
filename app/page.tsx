@@ -20,7 +20,6 @@ import { getStoryblokApi } from '@/lib/storyblok';
 import { NumberTicker } from '@/components/magicui/number-ticker';
 import CountUp from '@/components/react-bits/count-up';
 import PricingSection from '@/components/PricingSection';
-export const revalidate = 1;
 
 export const metadata: Metadata = {
     title: 'Accountant For Small Business - Tax Services London Ontario',
