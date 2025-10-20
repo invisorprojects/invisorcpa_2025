@@ -29,7 +29,7 @@ export default function Footer() {
                         <div className="rounded-full bg-[#EAF3FE] p-2 shadow-md">
                             <Mail color="#1B1E65" size={16} />
                         </div>
-                        <span>geevar.c@invisorglobal.com</span>
+                        <span>geevar.c@invisorcpa.ca</span>
                     </div>
                     <div className="flex items-start gap-3">
                         <div className="rounded-full bg-[#EAF3FE] p-2 shadow-md">

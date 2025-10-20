@@ -23,7 +23,7 @@ export default function SEOStructuredData({
                     logo: 'https://www.invisorcpa.ca/invisor-logo.webp',
                     image: 'https://www.invisorcpa.ca/invisor-logo.webp',
                     telephone: '+1-226-227-3482',
-                    email: 'geevar.c@invisorglobal.com',
+                    email: 'geevar.c@invisorcpa.ca',
                     address: {
                         '@type': 'PostalAddress',
                         addressCountry: 'CA',
@@ -148,7 +148,7 @@ export default function SEOStructuredData({
                     logo: 'https://www.invisorcpa.ca/invisor-logo.webp',
                     image: 'https://www.invisorcpa.ca/invisor-logo.webp',
                     telephone: '+1-226-227-3482',
-                    email: 'geevar.c@invisorglobal.com',
+                    email: 'geevar.c@invisorcpa.ca',
                     address: {
                         '@type': 'PostalAddress',
                         addressCountry: 'CA',
