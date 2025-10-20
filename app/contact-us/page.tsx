@@ -63,7 +63,7 @@ function GetInTouchSection() {
                         </div>
                         <div>
                             <h3 className="font-bold text-gray-900">Phone</h3>
-                            <p className="text-gray-600">(+1) 226 577 9183</p>
+                            <p className="text-gray-600">(+1) 226 227 3482</p>
                         </div>
                     </div>
 

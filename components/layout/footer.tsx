@@ -23,7 +23,7 @@ export default function Footer() {
                         <div className="rounded-full bg-[#EAF3FE] p-2 shadow-md">
                             <Phone color="#1B1E65" size={16} />
                         </div>
-                        <span>+1 2265779183</span>
+                        <span>+1 226 227 3482</span>
                     </div>
                     <div className="flex items-start gap-3">
                         <div className="rounded-full bg-[#EAF3FE] p-2 shadow-md">
