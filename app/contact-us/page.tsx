@@ -74,7 +74,7 @@ function GetInTouchSection() {
                         <div>
                             <h3 className="font-bold text-gray-900">Email</h3>
                             <p className="text-gray-600">
-                                geevar.c@invisorglobal.com
+                                geevar.c@invisorcpa.ca
                             </p>
                         </div>
                     </div>
