@@ -1072,4 +1072,100 @@ export const SERVICES = [
             },
         ],
     },
+    {
+        slug: 'ontario-health-at-home-accounting-services',
+        title: 'Ontario Health at Home Accounting Services',
+        description:
+            'Expert Accounting & Advisory for Ontario Health at Home Providers (FMHC). Delivering precision and clarity for providers under the Ontario Health “Health at Home” program. At Invisor, we specialise in handling the financial, accounting, and reporting needs of organisations delivering services through the Ontario Health “Health at Home” initiative. With deep industry knowledge and a proven track record, we give you the confidence to focus on care delivery while we manage your numbers.',
+        why: [
+            {
+                caption: 'Program-Specific Expertise',
+                content:
+                    'We are familiar with the funding, compliance, and reporting processes under Ontario Health “Health at Home,” including expertise in using the Sync.com system for documentation and reporting.',
+            },
+            {
+                caption: 'Seamless Integration of Accounting & Operations',
+                content:
+                    'We manage payroll accounting for employees delivering care under the Ontario Health “Health at Home” program — processing payroll for caregivers, managing payroll liabilities, and reconciling and reporting all transactions through Sync.com as required by Ontario Health.',
+            },
+            {
+                caption: 'Transparent, Scalable Service',
+                content:
+                    'Whether you’re just starting as a Home & Community Care provider or scaling a multi-site operation, our solutions grow with you — with clear pricing, defined deliverables, and expert support every step of the way.',
+            },
+        ],
+        includes: [
+            {
+                caption: 'Funding Reconciliation & Tracking',
+                content:
+                    'Monthly and annual funding reconciliation and tracking for Ontario Health programs.',
+            },
+            {
+                caption: 'Management Reports & Dashboards',
+                content:
+                    'Preparation of management reports, dashboards, and cash-flow projections specific to your Home & Community Care operations.',
+            },
+            {
+                caption: 'Software Setup & Automation',
+                content:
+                    'Support with accounting, cost-tracking, and reporting tool setup and automation for smoother workflows.',
+            },
+            {
+                caption: 'Ongoing Advisory',
+                content:
+                    'Helping you interpret program changes, update policies, and optimise processes for compliance and efficiency.',
+            },
+        ],
+        our_process: [
+            {
+                caption: 'Discovery & Planning',
+                content:
+                    'We thoroughly assess your accounting systems, funding structure, costs, and program setup to align with Ontario Health standards.',
+            },
+            {
+                caption: 'Implementation & Integration',
+                content:
+                    'We set up and align your accounting and reporting systems with Ontario Health’s requirements, including Sync.com integration.',
+            },
+            {
+                caption: 'Continuous Optimisation & Support',
+                content:
+                    'We provide ongoing support and regular updates to ensure you remain aligned with evolving Ontario Health standards.',
+            },
+        ],
+        benefits: [
+            {
+                caption: 'Reduced Administrative Burden',
+                content:
+                    'Let us manage your numbers so you can focus on client care and growth.',
+            },
+            {
+                caption: 'Improved Financial Visibility',
+                content:
+                    'Program-specific reporting gives you clarity on funding, costs, and margins.',
+            },
+            {
+                caption: 'Compliance Assurance',
+                content:
+                    'Stay prepared for Ontario Health reviews, audits, and funding assessments.',
+            },
+            {
+                caption: 'Scalability & Flexibility',
+                content:
+                    'Our services adapt to your organisation’s size, complexity, and future growth in the Home & Community Care sector.',
+            },
+        ],
+        who_we_serve: [
+            {
+                caption: 'Newly-Accredited Providers',
+                content:
+                    'Home & Community Care providers in Ontario newly entering the Health at Home program.',
+            },
+            {
+                caption: 'Established Providers',
+                content:
+                    'Organisations looking to scale and needing better financial infrastructure and reporting alignment with Ontario Health.',
+            },
+        ],
+    },
 ];
