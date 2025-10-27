@@ -64,7 +64,7 @@ export default function Banner() {
                                         </Button>
                                     </TooltipTrigger>
                                     <TooltipContent className="text-primary border-primary border bg-white">
-                                        <p>+1 (226) 227-3482</p>
+                                        <p>+1-226-227-3482</p>
                                     </TooltipContent>
                                 </Tooltip>
                             </a>

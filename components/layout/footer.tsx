@@ -23,13 +23,13 @@ export default function Footer() {
                         <div className="rounded-full bg-[#EAF3FE] p-2 shadow-md">
                             <Phone color="#1B1E65" size={16} />
                         </div>
-                        <span>+1 226 227 3482</span>
+                        <span>+1-226-227-3482</span>
                     </div>
                     <div className="flex items-start gap-3">
                         <div className="rounded-full bg-[#EAF3FE] p-2 shadow-md">
                             <Mail color="#1B1E65" size={16} />
                         </div>
-                        <span>geevar.c@invisorcpa.ca</span>
+                        <span>connect@invisorcpa.ca</span>
                     </div>
                     <div className="flex items-start gap-3">
                         <div className="rounded-full bg-[#EAF3FE] p-2 shadow-md">
@@ -38,7 +38,7 @@ export default function Footer() {
                         <div>
                             <p className="font-semibold">Fergus Office</p>
                             <p>
-                                Unit B, 645 St David St. N, Fergus, N1M2K6, ON,
+                                Unit B, 645 St David St. N, Fergus, ON NIM 2K6,
                                 Canada
                             </p>
                             <p className="mt-2 font-semibold">London Office</p>
