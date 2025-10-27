@@ -1076,7 +1076,7 @@ export const SERVICES = [
         slug: 'ontario-health-at-home-accounting-services',
         title: 'Ontario Health at Home Accounting Services',
         description:
-            'Expert Accounting & Advisory for Ontario Health at Home Providers (FMHC). Delivering precision and clarity for providers under the Ontario Health “Health at Home” program. At Invisor, we specialise in handling the financial, accounting, and reporting needs of organisations delivering services through the Ontario Health “Health at Home” initiative. With deep industry knowledge and a proven track record, we give you the confidence to focus on care delivery while we manage your numbers.',
+            'At Invisor, we specialise in handling the financial, accounting, and reporting needs of organisations delivering services through the Ontario Health “Health at Home” initiative. With deep industry knowledge and a proven track record, we give you the confidence to focus on care delivery while we manage your numbers.',
         why: [
             {
                 caption: 'Program-Specific Expertise',
