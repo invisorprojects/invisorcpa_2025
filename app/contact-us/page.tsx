@@ -88,7 +88,7 @@ function GetInTouchSection() {
                                 Fergus Office
                             </h3>
                             <p className="text-gray-600">
-                                Unit B, 645 St David St. N, Fergus, ON NIM 2K6,
+                                645-B St. David St. N. Fergus, ON, NIM 2K6,
                                 <br /> Canada
                             </p>
                         </div>
@@ -103,7 +103,7 @@ function GetInTouchSection() {
                                 London Office
                             </h3>
                             <p className="text-gray-600">
-                                375V- 341 Talbot St , London, ON N6A 2R5.
+                                375V- 341 Talbot St. London, ON N6A 2R5{' '}
                             </p>
                         </div>
                     </div>
