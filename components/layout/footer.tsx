@@ -66,6 +66,9 @@ export default function Footer() {
                             <li>
                                 <Link href="/site-map">Sitemap</Link>
                             </li>
+                            <li>
+                                <Link href="/add_review">Review</Link>
+                            </li>
                         </ul>
                     </div>
 
