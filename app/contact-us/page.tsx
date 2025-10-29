@@ -63,7 +63,7 @@ function GetInTouchSection() {
                         </div>
                         <div>
                             <h3 className="font-bold text-gray-900">Phone</h3>
-                            <p className="text-gray-600">(+1) 226 577 9183</p>
+                            <p className="text-gray-600">+1 226-227-3482</p>
                         </div>
                     </div>
 
@@ -74,7 +74,7 @@ function GetInTouchSection() {
                         <div>
                             <h3 className="font-bold text-gray-900">Email</h3>
                             <p className="text-gray-600">
-                                geevar.c@invisorglobal.com
+                                connect@invisorcpa.ca
                             </p>
                         </div>
                     </div>
@@ -88,7 +88,7 @@ function GetInTouchSection() {
                                 Fergus Office
                             </h3>
                             <p className="text-gray-600">
-                                Unit B, 645 St David St. N, Fergus, N1M2K6, ON,{' '}
+                                645-B St. David St. N. Fergus, ON, NIM 2K6,
                                 <br /> Canada
                             </p>
                         </div>
@@ -103,7 +103,7 @@ function GetInTouchSection() {
                                 London Office
                             </h3>
                             <p className="text-gray-600">
-                                375V- 341 Talbot St , London, ON N6A 2R5.
+                                375V- 341 Talbot St. London, ON N6A 2R5{' '}
                             </p>
                         </div>
                     </div>

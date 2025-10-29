@@ -41,7 +41,7 @@ export default function Banner() {
                             <NewsLetterModal />
                             <a
                                 target="_blank"
-                                href="tel:+12265779183"
+                                href="tel:+12262273482"
                                 rel="noopener noreferrer"
                                 aria-label="Contact us on Phone"
                             >
@@ -64,7 +64,7 @@ export default function Banner() {
                                         </Button>
                                     </TooltipTrigger>
                                     <TooltipContent className="text-primary border-primary border bg-white">
-                                        <p>+1 (226) 577-9183</p>
+                                        <p>+1 226-227-3482</p>
                                     </TooltipContent>
                                 </Tooltip>
                             </a>

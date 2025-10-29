@@ -5,7 +5,7 @@ export default function FloatingButtons() {
         <div className="fixed bottom-6 left-6 z-50 flex flex-col gap-4">
             <a
                 target="_blank"
-                href="https://wa.me/12265779183?text=Hi"
+                href="https://wa.me/12262273482?text=Hi"
                 rel="noopener noreferrer"
                 aria-label="Contact us on WhatsApp"
             >
@@ -26,7 +26,7 @@ export default function FloatingButtons() {
             </a>
             <a
                 target="_blank"
-                href="tel:+12265779183"
+                href="tel:+12262273482"
                 rel="noopener noreferrer"
                 aria-label="Contact us on Phone"
             >
