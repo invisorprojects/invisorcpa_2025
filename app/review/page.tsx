@@ -7,7 +7,7 @@ export default function ReviewPage() {
 
     const handleRating = (rating: 'sad' | 'okay' | 'happy') => {
         if (rating === 'happy') {
-            window.location.href = 'https://search.google.com/local/writereview?placeid=ChIJ8VEgSGsNCDsR30LpwOFFHrQ';
+            window.location.href = 'https://g.page/r/CR__sP0hWnrvEBM/review';
         } else {
             setShowThanks(true);
         }
