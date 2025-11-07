@@ -7,7 +7,7 @@ import { usePathname, useSearchParams } from 'next/navigation';
 export default function GA() {
     const pathname = usePathname();
     const searchParams = useSearchParams();
-    const gaId = process.env.NEXT_PUBLIC_GA_ID;
+    const gaId = 'G-KLWG9V2SYX';
 
     useEffect(() => {
         if (!gaId || !pathname) return;

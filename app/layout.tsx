@@ -100,12 +100,13 @@ export const metadata: Metadata = {
     },
 };
 
+const GA_MEASUREMENT_ID = 'G-KLWG9V2SYX';
+
 export default function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const gaId = process.env.NEXT_PUBLIC_GA_ID;
     return (
         <StoryblokProvider>
             <html
@@ -186,23 +187,19 @@ export default function RootLayout({
                     <Footer />
                     <FloatingButtons />
                     <Toaster richColors />
-                    {/* GA4: load and init */}
-                    {gaId && (
-                        <>
-                            <Script
-                                src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-                                strategy="afterInteractive"
-                            />
-                            <Script id="ga-init" strategy="afterInteractive">
-                                {`
+                    {/* Google tag (gtag.js) */}
+                    <Script
+                        src="https://www.googletagmanager.com/gtag/js?id=G-KLWG9V2SYX"
+                        strategy="afterInteractive"
+                    />
+                    <Script id="ga-init" strategy="afterInteractive">
+                        {`
                   window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);}
                   gtag('js', new Date());
-                  gtag('config', '${gaId}', { send_page_view: false });
+                  gtag('config', '${GA_MEASUREMENT_ID}');
                 `}
-                            </Script>
-                        </>
-                    )}
+                    </Script>
 
                     {/* Pageview tracker */}
                     <Suspense fallback={null}>
