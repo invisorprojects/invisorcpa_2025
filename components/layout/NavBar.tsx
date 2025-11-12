@@ -69,11 +69,25 @@ export function NavBar() {
                                     </Link>
                                 ))}
                             </div>
-                            <div className="flex w-full justify-center">
-                                <Link href="https://taxfolder.com/Client/Home" className="">
+                            <div className="flex w-full justify-between">
+                                <Link
+                                    href="https://taxfolder.com/Client/Home"
+                                    className=""
+                                >
                                     <Button className="rounded-sm px-4 py-5 hover:cursor-pointer md:hidden">
                                         <span className="font-medium">
                                             Client Login
+                                        </span>
+                                    </Button>
+                                </Link>
+
+                                <Link
+                                    href="https://app.pigeondocuments.com/client-upload/72bb7260-1e29-4ca8-a997-bb627573927a?requesterId=bdf57f0a-63d4-4899-8e4b-cc634d7e3597&teamId=bb57c808-b997-494f-af31-b3ffbff11c68"
+                                    className=""
+                                >
+                                    <Button className="rounded-sm px-4 py-5 hover:cursor-pointer md:hidden">
+                                        <span className="font-medium">
+                                            File Upload
                                         </span>
                                     </Button>
                                 </Link>
