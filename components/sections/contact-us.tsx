@@ -1,4 +1,4 @@
-import { CircleArrowRight } from 'lucide-react';
+import { CircleArrowRight, Phone } from 'lucide-react';
 import { Button } from '../ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -20,12 +20,29 @@ export default function ContactUs() {
                         Let&#39;s Connect : Schedule Your Consultation
                         Today!{' '}
                     </h2>
-                    <Link href="/contact-us">
-                        <Button className="flex items-center gap-2 rounded-full">
-                            <span>Contact Us</span>
-                            <CircleArrowRight className="h-4 w-4" />
-                        </Button>
-                    </Link>
+                    <div className="flex items-center justify-center gap-4">
+                        <Link href="/contact-us">
+                            <Button className="flex items-center gap-2 rounded-full">
+                                <span>Contact Us</span>
+                                <CircleArrowRight className="h-4 w-4" />
+                            </Button>
+                        </Link>
+
+                        <a
+                            target="_blank"
+                            href="tel:+12262273482"
+                            rel="noopener noreferrer"
+                            aria-label="Contact us on Phone"
+                        >
+                            <Button
+                                variant="link"
+                                className="border-primary flex items-center gap-2 rounded-full border"
+                            >
+                                <span>Schedule an Introductory Call</span>
+                                <Phone className="h-4 w-4" />
+                            </Button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
