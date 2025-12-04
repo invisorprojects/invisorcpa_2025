@@ -11,7 +11,7 @@ export const TEAMS = [
     },
     {
         name: 'Geevar Thambi',
-        qualification: 'MBA, CMA, CSCA, CPB',
+        qualification: 'MBA, CMA, CSCA, CPB, EA',
         path: '/assets/team/team-members-3.webp',
     },
     {
