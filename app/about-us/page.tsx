@@ -166,41 +166,42 @@ export default function Page() {
                         with innovative and reliable financial solutions.
                     </p>
                 </div>
-                <div className="mx-auto mt-8 w-full max-w-6xl space-y-12">
-                    {timeline.map((item, index) => (
-                        <div
-                            key={index}
-                            className={`grid grid-cols-1 items-center justify-between gap-8 md:grid-cols-2 ${
-                                index % 2 !== 0 ? 'md:flex-row-reverse' : ''
-                            }`}
-                        >
-                            {/* Text */}
+                <div className="relative mx-auto mt-12 w-full max-w-6xl">
+                    <div
+                        className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-primary/60 via-secondary/40 to-primary/60"
+                        aria-hidden="true"
+                    />
+                    <div className="space-y-10">
+                        {timeline.map((item, index) => (
                             <div
-                                className={`w-full max-w-md text-justify ${index % 2 !== 0 ? 'md:order-2' : ''}`}
+                                key={item.year}
+                                className={`relative flex flex-col gap-4 pl-12 ${
+                                    index !== timeline.length - 1 ? 'pb-10' : ''
+                                }`}
                             >
-                                <h3 className="text-secondary text-lg font-semibold md:text-2xl">
-                                    {item.year}
-                                </h3>
-                                <h3 className="text-primary mt-1 text-xl font-bold md:text-xl">
-                                    {item.title}
-                                </h3>
-                                <p className="mt-2 text-sm leading-relaxed md:text-base">
-                                    {item.description}
-                                </p>
-                            </div>
-
-                            {/* Placeholder Image */}
-                            <div className="flex w-full items-center justify-center rounded-lg text-sm text-gray-500 md:justify-between">
-                                <Image
-                                    src="https://placehold.co/1280x720.png"
-                                    width={1280}
-                                    height={720}
-                                    alt={`Timeline image for ${item.year}`}
-                                    className="h-60 w-auto object-contain"
+                                <div
+                                    className="absolute left-[1rem] top-2 h-3 w-3 rounded-full border-4 border-white bg-primary shadow-[0_0_0_6px_rgba(27,30,101,0.14)]"
+                                    aria-hidden="true"
                                 />
+                                <div className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-md backdrop-blur-sm transition hover:-translate-y-1 hover:shadow-xl">
+                                    <div className="flex flex-wrap items-center gap-3">
+                                        <span className="bg-primary/10 text-primary rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide">
+                                            {item.year}
+                                        </span>
+                                        <span className="text-secondary text-xs font-semibold">
+                                            Milestone {index + 1}
+                                        </span>
+                                    </div>
+                                    <h3 className="text-primary text-xl font-bold md:text-2xl">
+                                        {item.title}
+                                    </h3>
+                                    <p className="text-sm leading-relaxed text-gray-700 md:text-base">
+                                        {item.description}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </section>
 
