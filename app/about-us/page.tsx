@@ -166,38 +166,43 @@ export default function Page() {
                         with innovative and reliable financial solutions.
                     </p>
                 </div>
-                <div className="relative mx-auto mt-12 w-full max-w-6xl">
-                    <div
-                        className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-primary/60 via-secondary/40 to-primary/60"
-                        aria-hidden="true"
-                    />
-                    <div className="space-y-10">
+                <div className="relative mx-auto mt-16 w-full max-w-5xl">
+                    {/* Center Line (Desktop) */}
+                    <div className="absolute top-0 left-1/2 hidden h-full w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-gray-200 to-transparent md:block" />
+
+                    {/* Left Line (Mobile) */}
+                    <div className="absolute top-0 left-8 block h-full w-px bg-gradient-to-b from-transparent via-gray-200 to-transparent md:hidden" />
+
+                    <div className="space-y-12 md:space-y-24">
                         {timeline.map((item, index) => (
                             <div
-                                key={item.year}
-                                className={`relative flex flex-col gap-4 pl-12 ${
-                                    index !== timeline.length - 1 ? 'pb-10' : ''
+                                key={index}
+                                className={`relative flex flex-col items-center justify-between md:flex-row ${
+                                    index % 2 === 0 ? 'md:flex-row-reverse' : ''
                                 }`}
                             >
-                                <div
-                                    className="absolute left-[1rem] top-2 h-3 w-3 rounded-full border-4 border-white bg-primary shadow-[0_0_0_6px_rgba(27,30,101,0.14)]"
-                                    aria-hidden="true"
-                                />
-                                <div className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-md backdrop-blur-sm transition hover:-translate-y-1 hover:shadow-xl">
-                                    <div className="flex flex-wrap items-center gap-3">
-                                        <span className="bg-primary/10 text-primary rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide">
+                                {/* Spacer / Empty Side */}
+                                <div className="hidden w-5/12 md:block" />
+
+                                {/* Center Point */}
+                                <div className="bg-secondary absolute left-8 z-10 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full border-4 border-white shadow-lg md:relative md:left-auto md:translate-x-0">
+                                    <div className="h-3 w-3 rounded-full bg-white" />
+                                </div>
+
+                                {/* Content Card */}
+                                <div className="w-full pl-20 md:w-5/12 md:pl-0">
+                                    <div className="group relative rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                                        {/* Year Badge */}
+                                        <span className="text-secondary group-hover:bg-secondary absolute -top-4 left-6 inline-block rounded-full bg-[#EFF0F4] px-4 py-1 text-sm font-bold shadow-sm transition-colors duration-300 group-hover:text-white">
                                             {item.year}
                                         </span>
-                                        <span className="text-secondary text-xs font-semibold">
-                                            Milestone {index + 1}
-                                        </span>
+                                        <h3 className="text-primary mt-4 text-xl font-bold md:text-2xl">
+                                            {item.title}
+                                        </h3>
+                                        <p className="mt-3 text-sm leading-relaxed text-gray-600 md:text-base">
+                                            {item.description}
+                                        </p>
                                     </div>
-                                    <h3 className="text-primary text-xl font-bold md:text-2xl">
-                                        {item.title}
-                                    </h3>
-                                    <p className="text-sm leading-relaxed text-gray-700 md:text-base">
-                                        {item.description}
-                                    </p>
                                 </div>
                             </div>
                         ))}
