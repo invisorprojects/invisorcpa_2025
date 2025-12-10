@@ -2,7 +2,7 @@ import ContactUs from '@/components/sections/contact-us';
 import Faq from '@/components/sections/faq-section';
 import { Metadata } from 'next';
 import Image from 'next/image';
-import PricingSection from '../../components/PricingSection';
+import PricingSection from '../../../components/PricingSection';
 
 export const metadata: Metadata = {
     title: 'Pricing',

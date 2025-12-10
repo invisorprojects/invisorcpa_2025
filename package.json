@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev --turbopack",
+        "dev": "next dev",
         "dev-https": "next dev --turbopack --experimental-https",
         "build": "next build",
         "start": "next start",
@@ -13,6 +13,9 @@
         "check": "exec prettier . --check"
     },
     "dependencies": {
+        "@payloadcms/db-postgres": "^3.68.1",
+        "@payloadcms/next": "^3.68.1",
+        "@payloadcms/richtext-lexical": "^3.68.1",
         "@radix-ui/react-accordion": "^1.2.11",
         "@radix-ui/react-dialog": "^1.1.14",
         "@radix-ui/react-label": "^2.1.7",
@@ -25,15 +28,18 @@
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "date-fns": "^4.1.0",
+        "graphql": "^16.12.0",
         "leaflet": "^1.9.4",
         "lucide-react": "^0.513.0",
         "motion": "^12.18.1",
         "next": "15.3.3",
+        "payload": "^3.68.1",
         "react": "^19.1.0",
         "react-calendly": "^4.4.0",
         "react-day-picker": "^9.8.0",
         "react-dom": "^19.1.0",
         "react-leaflet": "^5.0.0",
+        "sharp": "^0.34.5",
         "sonner": "^2.0.6",
         "tailwind-merge": "^3.3.0"
     },
