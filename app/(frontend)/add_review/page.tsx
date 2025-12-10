@@ -8,9 +8,10 @@ export default function ReviewPage() {
                 <h1 className="mb-8 text-4xl font-bold text-gray-900">
                     Leave Us a Review
                 </h1>
-                
+
                 <p className="mb-8 text-lg text-gray-600">
-                    We'd love to hear about your experience! Scan the QR code or click the link below to leave us a review.
+                    We&apos;d love to hear about your experience! Scan the QR
+                    code or click the link below to leave us a review.
                 </p>
 
                 <div className="mb-8 flex justify-center">
@@ -26,7 +27,9 @@ export default function ReviewPage() {
                 </div>
 
                 <div className="flex flex-col items-center gap-4">
-                    <p className="text-xl font-medium text-gray-900">Or visit:</p>
+                    <p className="text-xl font-medium text-gray-900">
+                        Or visit:
+                    </p>
                     <Link
                         href="https://www.invisorcpa.ca/review"
                         target="_blank"
@@ -44,4 +47,3 @@ export default function ReviewPage() {
         </div>
     );
 }
-
