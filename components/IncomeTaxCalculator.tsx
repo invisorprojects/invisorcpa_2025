@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
     Card,
     CardHeader,
@@ -42,6 +42,11 @@ const RATES = [
     { value: 'weekly', label: 'Weekly' },
 ];
 
+const getIsLeadCollected = () => {
+    if (typeof window === 'undefined') return false;
+    return localStorage.getItem('is_lead_collected') === 'true';
+};
+
 export default function IncomeTaxCalculator() {
     const [open, setOpen] = useState(false);
     const [province, setProvince] = useState('ON');
@@ -56,15 +61,12 @@ export default function IncomeTaxCalculator() {
     const [rrsp, setRrsp] = useState('0');
     const [result, setResult] = useState<number | null>(null);
     // Placeholder calculation logic (to be replaced with real logic)
-    const [isLeadCollected, setIsLeadCollected] = useState(false);
-
-    useEffect(() => {
-        const collected = localStorage.getItem('is_lead_collected');
-        setIsLeadCollected(collected === 'true');
-        console.log('useEffect working :', collected);
-    }, [open]);
+    const [isLeadCollected, setIsLeadCollected] = useState(getIsLeadCollected);
     const calculate = () => {
-        if (!isLeadCollected) {
+        const collected = getIsLeadCollected();
+        setIsLeadCollected(collected);
+
+        if (!collected) {
             setOpen(true);
         }
         const totalIncome =

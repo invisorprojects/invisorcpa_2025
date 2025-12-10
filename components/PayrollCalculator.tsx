@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
@@ -35,6 +35,11 @@ import {
 import { toast } from 'sonner';
 import SubmitDetailsModal from './SubmitDetailsModal';
 
+const getIsLeadCollected = () => {
+    if (typeof window === 'undefined') return false;
+    return localStorage.getItem('is_lead_collected') === 'true';
+};
+
 interface PayrollResult {
     grossPay: number;
     federalTax: number;
@@ -56,13 +61,7 @@ export default function PayrollCalculator() {
     const [isCalculating, setIsCalculating] = useState(false);
     const [calendarOpen, setCalendarOpen] = useState(false);
     const [open, setOpen] = useState(false);
-    const [isLeadCollected, setIsLeadCollected] = useState(false);
-
-    useEffect(() => {
-        const collected = localStorage.getItem('is_lead_collected');
-        setIsLeadCollected(collected === 'true');
-        console.log('useEffect working :', collected);
-    }, [open]);
+    const [isLeadCollected, setIsLeadCollected] = useState(getIsLeadCollected);
 
     // Tax rates and constants (2024 rates)
     const FEDERAL_TAX_RATES = [
@@ -233,7 +232,10 @@ export default function PayrollCalculator() {
             return;
         }
 
-        if (!isLeadCollected) {
+        const collected = getIsLeadCollected();
+        setIsLeadCollected(collected);
+
+        if (!collected) {
             setOpen(true);
         }
 
