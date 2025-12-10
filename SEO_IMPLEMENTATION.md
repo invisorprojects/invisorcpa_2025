@@ -142,7 +142,6 @@ The following primary keywords have been strategically integrated throughout the
 ### SEO Components Created
 
 1. **SEOStructuredData.tsx**
-
     - Reusable structured data component
     - Supports organization, breadcrumb, service, and local business schemas
     - Dynamic data injection
