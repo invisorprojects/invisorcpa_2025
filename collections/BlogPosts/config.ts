@@ -79,6 +79,6 @@ export const BlogPosts: CollectionConfig = {
         },
     ],
     hooks: {
-        afterChange: [() => revalidateTag(CACHE_TAG_BLOG_POSTS)],
+        afterChange: [() => revalidateTag(CACHE_TAG_BLOG_POSTS,"max")],
     },
 };
