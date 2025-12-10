@@ -5,9 +5,9 @@ frontend:
       commands:
         - npm install -g pnpm
         - pnpm install --frozen-lockfile
+        - env | grep -e PAYLOAD_SECRET -e DATABASE_URI  >> .env
     build:
       commands:
-        - env | grep -e PAYLOAD_SECRET -e DATABASE_URI  >> .env.production
         - pnpm run build
         - rm -f node_modules/@swc/core-linux-x64-gnu/swc.linux-x64-gnu.node
         - rm -f node_modules/@swc/core-linux-x64-musl/swc.linux-x64-musl.node
