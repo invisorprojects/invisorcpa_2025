@@ -1,4 +1,5 @@
-import { withPayload } from "@payloadcms/next/withPayload";
+import { withPayload } from '@payloadcms/next/withPayload';
+import withPlaiceholder from '@plaiceholder/next';
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
@@ -12,4 +13,4 @@ const nextConfig: NextConfig = {
     devIndicators: false,
 };
 
-export default withPayload(nextConfig);
+export default withPlaiceholder(withPayload(nextConfig));
