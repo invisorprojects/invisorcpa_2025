@@ -1,20 +1,15 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-export const dynamic = 'force-static';
-export const revalidate = false;
-
-import ContactUs from '@/components/sections/contact-us';
-import { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import { getBlogPostBySlug } from '@/collections/BlogPosts/fetchers';
 import { notFound } from 'next/navigation';
-import { getStoryblokApi } from '@/lib/storyblok';
-
+import { relationIsObject } from '@/lib/payload/helpers/relation-is-object';
+import { RichText } from '@/lib/payload/components/rich-text';
+import { Metadata } from 'next';
 import ContactUsForm from '@/components/ContactUsForm';
-import { StoryblokServerRichText } from '@storyblok/react/rsc';
+import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-// We have identified issues with richtext and Types on React 19 and Next.js 15. As a temporary measure, we advise you to continue using React 18 and Next.js 14 until we have fully resolved the issues.
-// Refer this link
-// https://www.storyblok.com/docs/packages/storyblok-react#storyblokrichtext
+import ContactUs from '@/components/sections/contact-us';
+import { BlogMetadata } from '@/components/blog-metadata';
+import RecentBlogs from './_components/recent-blogs';
 
 export async function generateMetadata({
     params,
@@ -38,51 +33,16 @@ export async function generateMetadata({
     };
 }
 
-async function fetchData(slug: string) {
-    const storyblokApi = getStoryblokApi();
-    try {
-        const { data } = await storyblokApi.get(`cdn/stories/blogs/${slug}`, {
-            content_type: 'blog',
-            version:
-                process.env.NODE_ENV === 'production' ? 'published' : 'draft',
-        });
-        return data;
-    } catch (error) {
-        console.log('Error fetching data:', error);
-        return null;
-    }
-}
-
-export default async function Page({
+export default async function BlogPostPage({
     params,
 }: {
     params: Promise<{ slug: string }>;
 }) {
     const { slug } = await params;
-    const data = await fetchData(slug);
-    if (!data) {
-        return notFound();
-    }
-    const content = data.story.content;
+    const blogPost = await getBlogPostBySlug(slug);
+    if (!blogPost) notFound();
 
-    // Fetch 2 most recent blogs (excluding the current one)
-    const storyblokApi = getStoryblokApi();
-    const { data: recentData } = await storyblokApi.get('cdn/stories', {
-        starts_with: 'blogs/',
-        sort_by: 'first_published_at:desc',
-        per_page: 3, // Fetch 3 in case current is included, we'll filter below
-        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
-    });
-    // console.log('recentData', recentData);
-
-    // Filter out the current blog and take 2
-    const recentBlogs = recentData.stories
-        .filter((story: any) => story.slug !== slug)
-        .slice(0, 2)
-        .map((story: any) => ({
-            name: story.content.title,
-            slug: story.slug.replace('blogs/', ''),
-        }));
+    if (!relationIsObject(blogPost.coverImage)) return null;
 
     return (
         <main>
@@ -90,7 +50,7 @@ export default async function Page({
                 <div className="mb-20 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:justify-between">
                     <div className="max-w-2xl">
                         <Link
-                            href="/blog"
+                            href="/blogs"
                             aria-label="Back to blog posts"
                             className="relative mb-8 inline-flex items-center gap-2 no-underline after:absolute after:right-0 after:-bottom-1 after:left-1 after:hidden after:h-0.5 after:bg-gray-600 after:content-[''] hover:after:block"
                         >
@@ -101,79 +61,55 @@ export default async function Page({
                             BLOGS
                         </h3>
                         <h1 className="text-primary mt-4 text-4xl font-bold 2xl:text-5xl">
-                            {content.title}
+                            {blogPost.title}
                         </h1>
+                        {/* metadata */}
+                        <BlogMetadata
+                            intent="post"
+                            data={{
+                                publishedAt: new Date(
+                                    blogPost.publishedAt ?? new Date()
+                                ),
+                                readTimeMins: blogPost.readTimeInMins ?? 0,
+                            }}
+                            className="not-prose mt-4 flex"
+                        />
                     </div>
                     <div className="flex max-w-lg flex-col items-start gap-4">
-                        <p className="text-[#686666]">{content.description}</p>
+                        <p className="text-[#686666]">
+                            {blogPost.contentSummary}
+                        </p>
                     </div>
                 </div>
                 <div>
+                    {/* cover image */}
                     <Image
-                        src={content.image.filename}
-                        alt="Blogs"
+                        src={blogPost.coverImage.url ?? ''}
+                        alt="Cover image"
                         width={4096}
                         height={1638}
-                        className="max-h-[500px] rounded-4xl object-cover object-top shadow-md"
+                        className="w-full rounded-md object-cover object-center"
+                        placeholder="blur"
+                        blurDataURL={blogPost.coverImage.blurDataUrl}
                     />
                 </div>
             </section>
 
-            <BlogDetails content={content} recentBlogs={recentBlogs} />
+            <section className="w-full px-4 py-12">
+                <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 lg:grid-cols-3">
+                    {/* Main Content */}
+                    <div className="prose lg:col-span-2">
+                        <RichText lexicalData={blogPost.content} />
+                    </div>
+
+                    {/* Sidebar */}
+                    <aside className="space-y-10">
+                        <RecentBlogs currentBlogSlug={blogPost.slug} />
+                        <ContactUsForm />
+                    </aside>
+                </div>
+            </section>
             <ContactUs />
         </main>
     );
-}
-
-function BlogDetails({
-    content,
-    recentBlogs,
-}: {
-    content: any;
-    recentBlogs: { name: string; slug: string }[];
-}) {
-    return (
-        <section className="w-full px-4 py-12">
-            <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 lg:grid-cols-3">
-                {/* Main Content */}
-                <div className="prose lg:col-span-2">
-                    <StoryblokServerRichText doc={content.content} />
-                </div>
-
-                {/* Sidebar */}
-                <aside className="space-y-10">
-                    <div className="rounded-md bg-sky-50 p-6 shadow-sm">
-                        <h3 className="mb-4 text-lg font-semibold text-sky-800">
-                            Recent Blogs
-                        </h3>
-                        <ul className="list-disc space-y-2 pl-5 text-sm text-gray-700">
-                            {recentBlogs.map((blog) => (
-                                <li key={blog.slug}>
-                                    <Link
-                                        href={`/blogs/${blog.slug}`}
-                                        className="underline hover:text-sky-600"
-                                    >
-                                        {blog.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <ContactUsForm />
-                </aside>
-            </div>
-        </section>
-    );
-}
-
-export async function generateStaticParams() {
-    const storyblokApi = getStoryblokApi();
-    const { data } = await storyblokApi.get('cdn/stories', {
-        starts_with: 'blogs/',
-        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
-    });
-
-    return data.stories.map((story: any) => ({
-        slug: story.slug.replace('blogs/', ''),
-    }));
 }

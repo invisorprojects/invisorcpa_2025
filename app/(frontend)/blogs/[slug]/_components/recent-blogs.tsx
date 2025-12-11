@@ -21,7 +21,7 @@ export default async function RecentBlogs({
                     .map((blog) => (
                         <li key={blog.slug}>
                             <Link
-                                href={`/blog/${blog.slug}`}
+                                href={`/blogs/${blog.slug}`}
                                 className="underline hover:text-sky-600"
                             >
                                 {blog.title}

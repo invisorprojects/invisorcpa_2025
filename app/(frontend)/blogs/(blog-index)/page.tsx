@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { getPublishedBlogPosts } from '@/collections/BlogPosts/fetchers';
 import BlogCard from '@/components/blog-card';
 import { relationIsObject } from '@/lib/payload/helpers/relation-is-object';
@@ -38,7 +40,7 @@ export default async function BlogIndexPage() {
                         <BlogCard
                             key={id}
                             title={title}
-                            href={`/blog/${slug}`}
+                            href={`/blogs/${slug}`}
                             summary={contentSummary}
                             readTimeMins={readTimeInMins ?? 0}
                             publishedAt={new Date(publishedAt ?? new Date())}
