@@ -5,7 +5,7 @@ frontend:
             commands:
                 - npm install -g pnpm
                 - pnpm install --frozen-lockfile
-                - env | grep -e PAYLOAD_SECRET -e DATABASE_URI  >> .env
+                - env | grep -e PAYLOAD_SECRET -e DATABASE_URI -e UPLOADTHING_TOKEN >> .env
         build:
             commands:
                 - pnpm run build
