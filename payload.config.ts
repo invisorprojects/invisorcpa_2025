@@ -7,6 +7,7 @@ import path from 'path';
 import { buildConfig, SharpDependency } from 'payload';
 import { fileURLToPath } from 'url';
 import sharp from 'sharp';
+import { uploadthingStorage } from '@payloadcms/storage-uploadthing';
 
 import { Users } from './collections/Users/config';
 import { Media } from './collections/Media/config';
@@ -47,5 +48,16 @@ export default buildConfig({
         },
     }),
     sharp: sharp as SharpDependency,
-    plugins: [],
+    plugins: [
+        uploadthingStorage({
+            collections: {
+                media: true,
+            },
+            options: {
+                token: process.env.UPLOADTHING_TOKEN,
+                acl: 'public-read',
+            },
+            clientUploads: true,
+        }),
+    ],
 });

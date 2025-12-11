@@ -14,9 +14,10 @@
         "generate:types": "PAYLOAD_CONFIG_PATH=payload.config.ts payload generate:types"
     },
     "dependencies": {
-        "@payloadcms/db-postgres": "^3.68.1",
-        "@payloadcms/next": "^3.68.1",
-        "@payloadcms/richtext-lexical": "^3.68.1",
+        "@payloadcms/db-postgres": "3.68.1",
+        "@payloadcms/next": "3.68.1",
+        "@payloadcms/richtext-lexical": "3.68.1",
+        "@payloadcms/storage-uploadthing": "3.68.1",
         "@plaiceholder/next": "^3.0.0",
         "@radix-ui/react-accordion": "^1.2.12",
         "@radix-ui/react-dialog": "^1.1.15",
