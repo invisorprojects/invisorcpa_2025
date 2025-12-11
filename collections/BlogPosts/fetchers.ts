@@ -1,9 +1,9 @@
-import { getPayloadClient } from '@/lib/payload/client'
-import { CACHE_TAG_BLOG_POSTS, STATUS_OPTIONS } from './constants'
-import { unstable_cache } from 'next/cache'
+import { getPayloadClient } from '@/lib/payload/client';
+import { CACHE_TAG_BLOG_POSTS, STATUS_OPTIONS } from './constants';
+import { unstable_cache } from 'next/cache';
 
-async function _getPublishedBlogPosts() {   
-    const payload = await getPayloadClient()
+async function _getPublishedBlogPosts() {
+    const payload = await getPayloadClient();
     try {
         const { docs: blogPosts } = await payload.find({
             collection: 'blog-posts',
@@ -17,32 +17,32 @@ async function _getPublishedBlogPosts() {
                 readTimeInMins: true,
                 publishedAt: true,
             },
-        })
-        return blogPosts ?? []
+        });
+        return blogPosts ?? [];
     } catch (error) {
-        console.error('Failed to fetch blog posts', error)
-        return []
+        console.error('Failed to fetch blog posts', error);
+        return [];
     }
 }
 
 export function getPublishedBlogPosts() {
     return unstable_cache(_getPublishedBlogPosts, [], {
         tags: [CACHE_TAG_BLOG_POSTS],
-    })()
+    })();
 }
 
 export async function getBlogPostBySlug(slug: string) {
-    const payload = await getPayloadClient()
+    const payload = await getPayloadClient();
     try {
         const { docs: blogPosts } = await payload.find({
             collection: 'blog-posts',
             limit: 1,
             where: { slug: { equals: slug } },
-        })
-        const [firstBlogPost] = blogPosts ?? []
-        return firstBlogPost ?? null
+        });
+        const [firstBlogPost] = blogPosts ?? [];
+        return firstBlogPost ?? null;
     } catch (error) {
-        console.error('Failed to fetch blog posts', error)
-        return null
+        console.error('Failed to fetch blog posts', error);
+        return null;
     }
 }

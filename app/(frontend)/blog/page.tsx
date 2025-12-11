@@ -1,17 +1,24 @@
-import { getPublishedBlogPosts } from '@/collections/BlogPosts/fetchers'
-import BlogCard from '@/components/blog-card'
-import { relationIsObject } from '@/lib/payload/helpers/relation-is-object'
+import { getPublishedBlogPosts } from '@/collections/BlogPosts/fetchers';
+import BlogCard from '@/components/blog-card';
+import { relationIsObject } from '@/lib/payload/helpers/relation-is-object';
 
 import ContactUs from '@/components/sections/contact-us';
 import { CircleArrowRight } from 'lucide-react';
-import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Metadata } from 'next';
 
-export default async function BlogIndexPage() { 
-    const blogPosts = await getPublishedBlogPosts()
+export const metadata: Metadata = {
+    title: 'Blogs',
+    alternates: {
+        canonical: 'https://www.invisorcpa.ca/blogs',
+    },
+};
+
+export default async function BlogIndexPage() {
+    const blogPosts = await getPublishedBlogPosts();
     if (!blogPosts.length) {
-        return <p>No blog posts found</p>
+        return <p>No blog posts found</p>;
     }
 
     return (
@@ -49,31 +56,33 @@ export default async function BlogIndexPage() {
                             slug={blog.slug}
                         />
                     ))} */}
-                              {blogPosts.map(
-                ({
-                    id,
-                    title,
-                    slug,
-                    contentSummary,
-                    coverImage,
-                    readTimeInMins,
-                    publishedAt,
-                }) => {
-                    if (!relationIsObject(coverImage)) return null
+                    {blogPosts.map(
+                        ({
+                            id,
+                            title,
+                            slug,
+                            contentSummary,
+                            coverImage,
+                            readTimeInMins,
+                            publishedAt,
+                        }) => {
+                            if (!relationIsObject(coverImage)) return null;
 
-                    return (
-                        <BlogCard
-                            key={id}
-                            title={title}
-                            href={`/blog/${slug}`}
-                            summary={contentSummary}
-                            readTimeMins={readTimeInMins ?? 0}
-                            publishedAt={new Date(publishedAt ?? new Date())}
-                            coverImage={coverImage}
-                        />
-                    )
-                },
-            )}
+                            return (
+                                <BlogCard
+                                    key={id}
+                                    title={title}
+                                    href={`/blog/${slug}`}
+                                    summary={contentSummary}
+                                    readTimeMins={readTimeInMins ?? 0}
+                                    publishedAt={
+                                        new Date(publishedAt ?? new Date())
+                                    }
+                                    coverImage={coverImage}
+                                />
+                            );
+                        }
+                    )}
 
                     <div className="group relative max-w-sm overflow-hidden rounded-xl shadow-sm">
                         <Image

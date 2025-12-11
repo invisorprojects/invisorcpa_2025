@@ -1,18 +1,18 @@
 import { CircleArrowRight } from 'lucide-react';
 
-import { Media } from '@/payload-types'
-import Image from 'next/image'
-import Link from 'next/link'
-import { BlogMetadata } from './blog-metadata'
+import { Media } from '@/payload-types';
+import Image from 'next/image';
+import Link from 'next/link';
+import { BlogMetadata } from './blog-metadata';
 
 type BlogCardProps = {
-    href: string
-    title: string
-    summary: string
-    coverImage: Media
-    publishedAt: Date
-    readTimeMins: number
-}
+    href: string;
+    title: string;
+    summary: string;
+    coverImage: Media;
+    publishedAt: Date;
+    readTimeMins: number;
+};
 
 export default function BlogCard({
     href,
@@ -24,8 +24,7 @@ export default function BlogCard({
 }: BlogCardProps) {
     return (
         <article className="group relative max-w-sm overflow-hidden rounded-xl shadow-sm">
-                 
-                {/* cover image */}
+            {/* cover image */}
             <Image
                 src={coverImage.url ?? ''}
                 alt={`Cover image for blog post: "${title}"`}
@@ -35,25 +34,20 @@ export default function BlogCard({
                 placeholder="blur"
                 blurDataURL={coverImage.blurDataUrl}
             />
-                {/* content */}
-            <Link
-            href={href} aria-label={`Read blog post: "${title}"`}
-            >
+            {/* content */}
+            <Link href={href} aria-label={`Read blog post: "${title}"`}>
                 <div className="absolute right-0 bottom-0 left-0 m-4 rounded-xl bg-white p-6 shadow-md transition-transform duration-300 group-hover:scale-95">
-                <BlogMetadata
+                    <BlogMetadata
                         intent="card"
                         data={{ publishedAt, readTimeMins }}
-                        className="mb-2 "
+                        className="mb-2"
                     />
-                    <h3 className="text-lg leading-snug font-bold">
-                        {title}
-                    </h3>
+                    <h3 className="text-lg leading-snug font-bold">{title}</h3>
                     <div className="text-primary mt-4 inline-flex items-center text-sm font-semibold hover:underline">
                         Read Post
                         <span className="sr-only">: {title}</span>
                         <CircleArrowRight className="ml-1 h-4 w-4" />
                     </div>
-                   
                 </div>
             </Link>
         </article>
@@ -61,5 +55,5 @@ export default function BlogCard({
 }
 
 export function BlogCardSkeleton() {
-    return <div className="rounded-md h-[350px] animate-pulse bg-gray-700" />
+    return <div className="h-[350px] animate-pulse rounded-md bg-gray-700" />;
 }

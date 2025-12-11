@@ -21,27 +21,24 @@ export const Users: CollectionConfig = {
     fields: [
         // Email added by default
         // Add more fields as needed
-        {  
-            name: 'roles',  
-            type: 'select',  
-            hasMany: true,  
-            saveToJWT: true,  
-            options: [  
-              {label: 'Admin', value: 'admin'},  
-              {label: 'Editor', value: 'editor'},  
-              {label: 'User', value: 'user'},  
-            ],  
-            
-            hooks: {  
+        {
+            name: 'roles',
+            type: 'select',
+            hasMany: true,
+            saveToJWT: true,
+            options: [
+                { label: 'Admin', value: 'admin' },
+                { label: 'Editor', value: 'editor' },
+                { label: 'User', value: 'user' },
+            ],
 
-                beforeChange: [protectRoles]   
-            
-              }  ,
-              access: {
-                update: ({req: {user}}) => checkRole(['admin'], user as User),
-              },
-           
-          
-          },
+            hooks: {
+                beforeChange: [protectRoles],
+            },
+            access: {
+                update: ({ req: { user } }) =>
+                    checkRole(['admin'], user as User),
+            },
+        },
     ],
 };

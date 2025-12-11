@@ -1,4 +1,4 @@
-import { BlogCardSkeleton } from './_components/blog-card'
+import { BlogCardSkeleton } from './_components/blog-card';
 
 export default function BlogIndexPageLoading() {
     return (
@@ -7,5 +7,5 @@ export default function BlogIndexPageLoading() {
                 <BlogCardSkeleton key={index} />
             ))}
         </div>
-    )
+    );
 }

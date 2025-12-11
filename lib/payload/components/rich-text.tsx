@@ -1,32 +1,40 @@
-import type { DefaultNodeTypes, SerializedLinkNode } from '@payloadcms/richtext-lexical'
-import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
+import type {
+    DefaultNodeTypes,
+    SerializedLinkNode,
+} from '@payloadcms/richtext-lexical';
+import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical';
 
-import type { JSXConvertersFunction } from '@payloadcms/richtext-lexical/react'
-import { LinkJSXConverter, RichText as PayloadRichText } from '@payloadcms/richtext-lexical/react'
-import React from 'react'
+import type { JSXConvertersFunction } from '@payloadcms/richtext-lexical/react';
+import {
+    LinkJSXConverter,
+    RichText as PayloadRichText,
+} from '@payloadcms/richtext-lexical/react';
+import React from 'react';
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
-    const { relationTo, value } = linkNode.fields.doc!
+    const { relationTo, value } = linkNode.fields.doc!;
     if (typeof value !== 'object') {
-        throw new TypeError('Expected value to be an object')
+        throw new TypeError('Expected value to be an object');
     }
-    const slug = value.slug
+    const slug = value.slug;
 
     switch (relationTo) {
         case 'blog-posts':
-            return `/blog/${slug}`
+            return `/blog/${slug}`;
         default:
-            return `/${relationTo}/${slug}`
+            return `/${relationTo}/${slug}`;
     }
-}
+};
 
-const jsxConverters: JSXConvertersFunction<DefaultNodeTypes> = ({ defaultConverters }) => ({
+const jsxConverters: JSXConvertersFunction<DefaultNodeTypes> = ({
+    defaultConverters,
+}) => ({
     ...defaultConverters,
     ...LinkJSXConverter({ internalDocToHref }),
-})
+});
 
 export const RichText: React.FC<{
-    lexicalData: SerializedEditorState
+    lexicalData: SerializedEditorState;
 }> = ({ lexicalData }) => {
-    return <PayloadRichText converters={jsxConverters} data={lexicalData} />
-}
+    return <PayloadRichText converters={jsxConverters} data={lexicalData} />;
+};
