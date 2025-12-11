@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
             new URL('https://a.storyblok.com/**'),
         ],
     },
+    reactCompiler: true,
     devIndicators: false,
 };
 
