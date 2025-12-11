@@ -9,7 +9,7 @@ import { fileURLToPath } from 'url';
 import sharp from 'sharp';
 
 import { Users } from './collections/Users/config';
-import { Media } from './collections/Media';
+import { Media } from './collections/Media/config';
 import { BlogPosts } from './collections/BlogPosts/config';
 
 const filename = fileURLToPath(import.meta.url);

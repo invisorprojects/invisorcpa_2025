@@ -11,6 +11,7 @@ import { getStoryblokApi } from '@/lib/storyblok';
 
 import ContactUsForm from '@/components/ContactUsForm';
 import { StoryblokServerRichText } from '@storyblok/react/rsc';
+import { ArrowLeft } from 'lucide-react';
 // We have identified issues with richtext and Types on React 19 and Next.js 15. As a temporary measure, we advise you to continue using React 18 and Next.js 14 until we have fully resolved the issues.
 // Refer this link
 // https://www.storyblok.com/docs/packages/storyblok-react#storyblokrichtext
@@ -88,6 +89,14 @@ export default async function Page({
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
                 <div className="mb-20 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:justify-between">
                     <div className="max-w-2xl">
+                    <Link
+                href="/blog"
+                aria-label="Back to blog posts"
+                className="inline-flex items-center gap-2 mb-8 no-underline relative after:content-[''] after:absolute after:left-1 after:-bottom-1 after:right-0 after:h-0.5 after:bg-gray-600 after:hidden hover:after:block"
+            >
+                <ArrowLeft />
+                All blog posts
+            </Link>
                         <h3 className="text-secondary text-xl font-medium">
                             BLOGS
                         </h3>

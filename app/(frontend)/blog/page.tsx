@@ -1,28 +1,19 @@
-export const dynamic = 'force-static';
+import { getPublishedBlogPosts } from '@/collections/BlogPosts/fetchers'
+import BlogCard from '@/components/blog-card'
+import { relationIsObject } from '@/lib/payload/helpers/relation-is-object'
 
 import ContactUs from '@/components/sections/contact-us';
-import { getStoryblokApi } from '@/lib/storyblok';
 import { CircleArrowRight } from 'lucide-react';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import BlogCardOld from './_components/blog-card-old';
 
-export const metadata: Metadata = {
-    title: 'Blogs',
-    alternates: {
-        canonical: 'https://www.invisorcpa.ca/blogs',
-    },
-};
+export default async function BlogIndexPage() { 
+    const blogPosts = await getPublishedBlogPosts()
+    if (!blogPosts.length) {
+        return <p>No blog posts found</p>
+    }
 
-export default async function Blogs() {
-    const storyblokApi = getStoryblokApi();
-    const blogs = await storyblokApi.getAll('cdn/stories', {
-        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
-        starts_with: 'blogs',
-        content_type: 'blog',
-    });
-    // console.log('blogs:', blogs);
     return (
         <main>
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
@@ -44,20 +35,45 @@ export default async function Blogs() {
                     </div>
                 </div>
                 <Image
-                    src="/assets/banners/banner-3.webp"
+                    src="/assets/banners/banner-6.webp"
                     alt="Blogs"
                     width={4096}
                     height={1632}
                     className="h-[500px] rounded-4xl object-cover shadow-md"
                 />
                 <div className="mt-20 grid w-fit grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8 lg:grid-cols-3">
-                    {blogs.map((blog) => (
-                        <BlogCardOld
+                    {/* {blogs.map((blog) => (
+                        <BlogCard
                             key={blog.slug}
                             content={blog.content}
                             slug={blog.slug}
                         />
-                    ))}
+                    ))} */}
+                              {blogPosts.map(
+                ({
+                    id,
+                    title,
+                    slug,
+                    contentSummary,
+                    coverImage,
+                    readTimeInMins,
+                    publishedAt,
+                }) => {
+                    if (!relationIsObject(coverImage)) return null
+
+                    return (
+                        <BlogCard
+                            key={id}
+                            title={title}
+                            href={`/blog/${slug}`}
+                            summary={contentSummary}
+                            readTimeMins={readTimeInMins ?? 0}
+                            publishedAt={new Date(publishedAt ?? new Date())}
+                            coverImage={coverImage}
+                        />
+                    )
+                },
+            )}
 
                     <div className="group relative max-w-sm overflow-hidden rounded-xl shadow-sm">
                         <Image
