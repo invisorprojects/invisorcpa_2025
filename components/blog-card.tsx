@@ -55,5 +55,17 @@ export default function BlogCard({
 }
 
 export function BlogCardSkeleton() {
-    return <div className="h-[350px] animate-pulse rounded-md bg-gray-700" />;
+    return (
+        <article className="group relative max-w-sm overflow-hidden rounded-xl shadow-sm">
+            {/* cover image skeleton */}
+            <div className="h-[436px] w-full animate-pulse bg-gray-200" />
+
+            {/* content skeleton */}
+            <div className="absolute right-0 bottom-0 left-0 m-4 rounded-xl bg-white p-6 shadow-md transition-transform duration-300 group-hover:scale-95">
+                <div className="mb-2 h-4 w-32 animate-pulse rounded bg-gray-200" />
+                <div className="mb-2 h-6 w-3/4 animate-pulse rounded bg-gray-200" />
+                <div className="mt-4 h-10 w-full animate-pulse rounded bg-gray-100" />
+            </div>
+        </article>
+    );
 }
