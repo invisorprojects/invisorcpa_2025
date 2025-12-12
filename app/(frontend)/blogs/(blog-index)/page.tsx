@@ -52,7 +52,7 @@ export default async function BlogIndexPage() {
 
             <div className="group relative max-w-sm overflow-hidden rounded-xl shadow-sm">
                 <Image
-                    src={'https://ui.shadcn.com/placeholder.svg'}
+                    src={'/assets/banners/banner-3.webp'}
                     alt={`7 Essential Reasons to Work With a Small Business Tax Accountant - Tax services blog post by Invisor CPA, Canadian tax accountants`}
                     width={600}
                     height={400}
