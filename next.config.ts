@@ -5,12 +5,14 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
     /* config options here */
     images: {
+        qualities: [100, 75],
         remotePatterns: [
             new URL('https://placehold.co/**'),
             new URL('https://a.storyblok.com/**'),
             new URL('https://www.invisorcpa.ca/**'),
         ],
     },
+
     reactCompiler: true,
     devIndicators: false,
 };

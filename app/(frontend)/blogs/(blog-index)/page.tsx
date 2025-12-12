@@ -79,6 +79,36 @@ export default async function BlogIndexPage() {
                     </div>
                 </Link>
             </div>
+
+            <div className="group relative max-w-sm overflow-hidden rounded-xl shadow-sm">
+                <Image
+                    src={'/assets/banners/banner-5.webp'}
+                    alt={`6 Signs Your Small Business Needs a Professional Accountant - Tax services blog post by Invisor CPA, Canadian tax accountants`}
+                    width={600}
+                    height={400}
+                    className="h-[436px] w-full object-cover transition duration-300 group-hover:scale-105 group-hover:brightness-75"
+                />
+                <Link
+                    href={`/blogs/6-signs-your-small-business-needs-a-professional-accountant`}
+                    aria-label={`Read blog post: 
+                                6 Signs Your Small Business Needs a Professional Accountant`}
+                >
+                    <div className="absolute right-0 bottom-0 left-0 m-4 rounded-xl bg-white p-6 shadow-md transition-transform duration-300 group-hover:scale-95">
+                        <h3 className="text-lg leading-snug font-bold">
+                            6 Signs Your Small Business Needs a Professional
+                            Accountant
+                        </h3>
+                        <div className="text-primary mt-4 inline-flex items-center text-sm font-semibold hover:underline">
+                            Read Post
+                            <span className="sr-only">
+                                :6 Signs Your Small Business Needs a
+                                Professional Accountant
+                            </span>
+                            <CircleArrowRight className="ml-1 h-4 w-4" />
+                        </div>
+                    </div>
+                </Link>
+            </div>
         </div>
     );
 }
