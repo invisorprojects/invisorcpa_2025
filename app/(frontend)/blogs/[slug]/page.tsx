@@ -89,8 +89,8 @@ export default async function BlogPostPage({
                         width={4096}
                         height={1638}
                         className="w-full rounded-md object-cover object-center"
-                        // placeholder="blur"
-                        // blurDataURL={blogPost.coverImage.blurDataUrl}
+                        placeholder="blur"
+                        blurDataURL={blogPost.coverImage.blurDataUrl}
                     />
                 </div>
             </section>
