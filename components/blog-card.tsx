@@ -26,14 +26,13 @@ export default function BlogCard({
         <article className="group relative max-w-sm overflow-hidden rounded-xl shadow-sm">
             {/* cover image */}
             <Image
-                src={coverImage.url ?? ''}
+                src={`${process.env.NEXT_PUBLIC_SITE_URL}/${coverImage.url}`}
                 alt={`Cover image for blog post: "${title}"`}
                 width={600}
                 height={400}
                 className="h-[436px] w-full object-cover transition duration-300 group-hover:scale-105 group-hover:brightness-75"
                 placeholder="blur"
                 blurDataURL={coverImage.blurDataUrl}
-                unoptimized
             />
             {/* content */}
             <Link href={href} aria-label={`Read blog post: "${title}"`}>
