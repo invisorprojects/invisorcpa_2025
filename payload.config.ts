@@ -17,7 +17,7 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 export default buildConfig({
-    cors: '*',
+    // cors: '*',
     admin: {
         user: Users.slug,
         importMap: {
@@ -58,7 +58,7 @@ export default buildConfig({
                 token: process.env.UPLOADTHING_TOKEN,
                 acl: 'public-read',
             },
-            // clientUploads: true,
+            clientUploads: true,
         }),
     ],
 });

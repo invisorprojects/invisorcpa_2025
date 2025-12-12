@@ -33,6 +33,7 @@ export default function BlogCard({
                 className="h-[436px] w-full object-cover transition duration-300 group-hover:scale-105 group-hover:brightness-75"
                 placeholder="blur"
                 blurDataURL={coverImage.blurDataUrl}
+                unoptimized
             />
             {/* content */}
             <Link href={href} aria-label={`Read blog post: "${title}"`}>
