@@ -33,35 +33,10 @@ export const metadata: Metadata = {
         siteName: 'Invisor CPA',
         images: [
             {
-        'small business tax accountant',
-        'tax accountant for small business',
-        'business tax services',
-        'small business accounting',
-        'tax compliance',
-        'business tax deductions',
-        'Canadian tax accountant',
-        'small business tax advice',
-        'business tax planning',
-        'tax accountant benefits',
-        'small business CPA',
-        'business tax consultant',
-        'tax preparation services',
-        'business financial advisor',
-        'tax strategy for small business',
-    ],
-    authors: [{ name: 'Invisor CPA' }],
-    openGraph: {
-        title: '7 Essential Reasons to Work With a Small Business Tax Accountant',
-        description:
-            'Discover why partnering with a small business tax accountant can significantly benefit your business. Expert insights on compliance, deductions, and strategic growth.',
-        url: 'https://www.invisorcpa.ca/blogs/small-business-tax-accountant',
-        siteName: 'Invisor CPA',
-        images: [
-            {
-                url: 'https://www.invisorcpa.ca/assets/banners/banner-3.webp',
+                url: 'https://www.invisorcpa.ca/assets/banners/banner-5.webp',
                 width: 1200,
                 height: 630,
-                alt: '7 Essential Reasons to Work With a Small Business Tax Accountant - Invisor CPA',
+                alt: '6 Signs Your Small Business Needs a Professional Accountant - Invisor CPA',
             },
         ],
         locale: 'en_CA',
@@ -69,15 +44,15 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: '7 Essential Reasons to Work With a Small Business Tax Accountant',
+        title: '6 Signs Your Small Business Needs a Professional Accountant',
         description:
-            'Discover why partnering with a small business tax accountant can significantly benefit your business. Expert insights from Canadian tax professionals.',
-        images: ['https://www.invisorcpa.ca/assets/banners/banner-3.webp'],
+            'Struggling to manage your business finances? Learn six signs it’s time to hire a professional accountant for your small business from Canadian experts at Invisor CPA.',
+        images: ['https://www.invisorcpa.ca/assets/banners/banner-5.webp'],
         creator: '@invisorcpa',
     },
     alternates: {
         canonical:
-            'https://www.invisorcpa.ca/blogs/small-business-tax-accountant',
+            'https://www.invisorcpa.ca/blogs/6-signs-your-small-business-needs-a-professional-accountant',
     },
     robots: {
         index: true,
