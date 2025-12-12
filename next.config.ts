@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
         remotePatterns: [
             new URL('https://placehold.co/**'),
             new URL('https://a.storyblok.com/**'),
+            new URL('https://www.invisorcpa.ca/**'),
         ],
     },
     reactCompiler: true,
