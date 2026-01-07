@@ -110,7 +110,9 @@ function GetInTouchSection() {
                 </div>
 
                 {/* Contact Form */}
-                <ContactUsForm />
+                <div className="mx-auto w-full max-w-xl sm:mx-0 sm:max-h-[430px]">
+                    <ContactUsForm />
+                </div>
             </div>
         </section>
     );
