@@ -3,7 +3,6 @@ import ContactUs from '@/components/sections/contact-us';
 import Faq from '@/components/sections/faq-section';
 import { OrganizationsSection } from '@/components/sections/organizations-section';
 import OurTools from '@/components/sections/our-tools';
-import { TestimonialsSection } from '@/components/sections/testimonials-section';
 import TrustedPartners from '@/components/sections/trusted-partners';
 import { WhyChooseUs } from '@/components/sections/why-choose-us-section';
 import { Metadata } from 'next';
@@ -368,7 +367,7 @@ export default function Page() {
             </section>
             <OrganizationsSection />
             <BehindTheTeam />
-            <TestimonialsSection />
+            {/* <TestimonialsSection /> */}
             <Faq />
             <ContactUs />
         </main>

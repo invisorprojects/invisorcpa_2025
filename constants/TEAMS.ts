@@ -1,4 +1,10 @@
+
 export const TEAMS = [
+    {
+        name: 'Thomas Roji',
+        qualification: '',
+        path: '/assets/team/roji.png',
+    },
     {
         name: 'Robyn Anderson-Garlough',
         qualification: 'DFA',
@@ -35,4 +41,5 @@ export const TEAMS = [
         qualification: 'PCP',
         path: '/assets/team/team-members-7.webp',
     },
+   
 ];

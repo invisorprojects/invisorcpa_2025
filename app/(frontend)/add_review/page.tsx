@@ -10,8 +10,7 @@ export default function ReviewPage() {
                 </h1>
 
                 <p className="mb-8 text-lg text-gray-600">
-                    We&apos;d love to hear about your experience! Scan the QR
-                    code or click the link below to leave us a review.
+                    We&apos;d love to hear about your experience! Scan the QR code or click the link below to leave us a review.
                 </p>
 
                 <div className="mb-8 flex justify-center">

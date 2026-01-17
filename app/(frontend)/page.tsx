@@ -7,7 +7,6 @@ import { CircleArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import ContactUs from '@/components/sections/contact-us';
 import Faq from '@/components/sections/faq-section';
-import { TestimonialsSection } from '@/components/sections/testimonials-section';
 import OurTools from '@/components/sections/our-tools';
 import OurAchievements from '@/components/sections/our-achievements';
 import { OrganizationsSection } from '@/components/sections/organizations-section';
@@ -411,7 +410,7 @@ export default async function Home() {
 
             <BehindTheTeam />
 
-            <TestimonialsSection />
+            {/* <TestimonialsSection /> */}
 
             <OurAchievements />
 
