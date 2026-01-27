@@ -124,7 +124,7 @@ const pricingData = [
         title: 'US Company',
         location: 'Delaware, USA',
         employees: 3,
-        revenue: '$0M',
+        revenue: '$1M',
         services: 'Tax + Payroll',
         price: {
             amount: '$375',
