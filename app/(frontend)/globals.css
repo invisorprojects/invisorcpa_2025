@@ -57,13 +57,30 @@
     /* Animation variables */
     --animate-marquee: marquee var(--duration) infinite linear;
     --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+    --animate-sparkle: sparkle 2s ease-in-out infinite;
+    --animate-spin-slow: spin 8s linear infinite;
 }
 
 /* Keyframe animations */
+@keyframes sparkle {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 @keyframes marquee {
     from {
         transform: translateX(0);
     }
+
     to {
         transform: translateX(calc(-100% - var(--gap)));
     }
@@ -73,6 +90,7 @@
     from {
         transform: translateY(0);
     }
+
     to {
         transform: translateY(calc(-100% - var(--gap)));
     }
