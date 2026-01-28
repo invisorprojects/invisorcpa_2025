@@ -123,7 +123,7 @@ export function Header() {
                         </div>
 
                         <span className="relative z-10 text-base font-semibold">
-                            Get Started
+                            New Clients
                         </span>
                     </Button>
                 </Link>
