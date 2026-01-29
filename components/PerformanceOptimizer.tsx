@@ -52,7 +52,7 @@ export function PerformanceOptimizer() {
             {/* Preload critical images used on the homepage */}
             <link
                 rel="preload"
-                href="/invisor-logo.webp"
+                href="/invisorcpa-logo.png"
                 as="image"
                 type="image/webp"
             />

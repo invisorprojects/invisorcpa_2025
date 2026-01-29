@@ -64,7 +64,7 @@ export const metadata: Metadata = {
             'Professional tax filing services in Canada. Expert personal tax accountant, CRA tax help, and comprehensive tax preparation services. Trusted by 1000+ clients nationwide.',
         images: [
             {
-                url: '/invisor-logo.webp',
+                url: '/invisorcpa-logo.png',
                 width: 1200,
                 height: 630,
                 alt: 'Invisor CPA - Tax Services Canada',
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
         title: 'Invisor CPA - Expert Tax Filing & Accounting Services Canada',
         description:
             'Professional tax filing services in Canada. Expert personal tax accountant, CRA tax help, and comprehensive tax preparation services.',
-        images: ['/invisor-logo.webp'],
+        images: ['/invisorcpa-logo.png'],
         creator: '@invisorcpa',
     },
     robots: {
@@ -124,8 +124,8 @@ export default function RootLayout({
                                 description:
                                     'Professional tax filing and accounting services in Canada. Expert personal tax accountant, CRA tax help, and comprehensive tax preparation services.',
                                 url: 'https://www.invisorcpa.ca',
-                                logo: 'https://www.invisorcpa.ca/invisor-logo.webp',
-                                image: 'https://www.invisorcpa.ca/invisor-logo.webp',
+                                logo: 'https://www.invisorcpa.ca/invisorcpa-logo.png',
+                                image: 'https://www.invisorcpa.ca/invisorcpa-logo.png',
                                 telephone: '+1-XXX-XXX-XXXX',
                                 email: 'info@invisorcpa.ca',
                                 address: {

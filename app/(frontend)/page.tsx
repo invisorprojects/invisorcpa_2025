@@ -54,7 +54,7 @@ export const metadata: Metadata = {
         siteName: 'Invisor CPA',
         images: [
             {
-                url: '/invisor-logo.webp',
+                url: '/invisorcpa-logo.png',
                 width: 1200,
                 height: 630,
                 alt: 'Invisor CPA - Tax Services Canada',
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
         title: 'Accountant For Small Business - Tax Services London Ontario',
         description:
             'Professional tax filing services in Canada. Expert personal tax accountant, CRA tax help, and comprehensive tax preparation services.',
-        images: ['/invisor-logo.webp'],
+        images: ['/invisorcpa-logo.png'],
     },
     alternates: {
         canonical: 'https://www.invisorcpa.ca',

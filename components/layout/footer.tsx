@@ -9,7 +9,7 @@ export default function Footer() {
                 <Link className="" href={'/'}>
                     <Image
                         className="h-10 w-auto"
-                        src="/invisor-logo.webp"
+                        src="/invisorcpa-logo.png"
                         alt="Invisor"
                         width={805}
                         height={220}

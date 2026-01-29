@@ -27,7 +27,7 @@ export default function GetStartedModal() {
                         <div className="relative aspect-square h-16 w-auto">
                             <Image
                                 className="absolute object-contain"
-                                src={`/invisor-logo.svg`}
+                                src={`/invisorcpa-icon.png`}
                                 alt={`Invisor`}
                                 fill
                             />

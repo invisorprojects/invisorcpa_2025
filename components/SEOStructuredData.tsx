@@ -20,8 +20,8 @@ export default function SEOStructuredData({
                     description:
                         'Professional tax filing and accounting services in Canada. Expert personal tax accountant, CRA tax help, and comprehensive tax preparation services.',
                     url: 'https://www.invisorcpa.ca',
-                    logo: 'https://www.invisorcpa.ca/invisor-logo.webp',
-                    image: 'https://www.invisorcpa.ca/invisor-logo.webp',
+                    logo: 'https://www.invisorcpa.ca/invisorcpa-logo.png',
+                    image: 'https://www.invisorcpa.ca/invisorcpa-logo.png',
                     telephone: '+1-226-227-3482',
                     email: 'connect@invisorcpa.ca',
                     address: {
@@ -145,8 +145,8 @@ export default function SEOStructuredData({
                     description:
                         'Professional tax filing and accounting services in Canada. Expert personal tax accountant, CRA tax help, and comprehensive tax preparation services.',
                     url: 'https://www.invisorcpa.ca',
-                    logo: 'https://www.invisorcpa.ca/invisor-logo.webp',
-                    image: 'https://www.invisorcpa.ca/invisor-logo.webp',
+                    logo: 'https://www.invisorcpa.ca/invisorcpa-logo.png',
+                    image: 'https://www.invisorcpa.ca/invisorcpa-logo.png',
                     telephone: '+1-226-227-3482',
                     email: 'connect@invisorcpa.ca',
                     address: {
