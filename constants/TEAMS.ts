@@ -1,7 +1,6 @@
-
 export const TEAMS = [
     {
-        name: 'Thomas Roji',
+        name: 'Roji Thomas',
         qualification: '',
         path: '/assets/team/roji.png',
     },
@@ -41,5 +40,4 @@ export const TEAMS = [
         qualification: 'PCP',
         path: '/assets/team/team-members-7.webp',
     },
-   
 ];

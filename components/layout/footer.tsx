@@ -38,7 +38,7 @@ export default function Footer() {
                         <div>
                             <p className="font-semibold">Fergus Office</p>
                             <p>
-                                645-B St. David St. N. Fergus, ON, NIM 2K6,
+                                645-B St. David St. N. Fergus, ON, N1M 2K6,
                                 Canada
                             </p>
                             <p className="mt-2 font-semibold">London Office</p>

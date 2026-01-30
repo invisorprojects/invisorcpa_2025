@@ -88,7 +88,7 @@ function GetInTouchSection() {
                                 Fergus Office
                             </h3>
                             <p className="text-gray-600">
-                                645-B St. David St. N. Fergus, ON, NIM 2K6,
+                                645-B St. David St. N. Fergus, ON, N1M 2K6,
                                 <br /> Canada
                             </p>
                         </div>
