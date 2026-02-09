@@ -2,7 +2,6 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 import TrustedPartners from '@/components/sections/trusted-partners';
 import { Button } from '@/components/ui/button';
-import { ScheduleMeeting } from '@/components/sections/ScheduleMeeting';
 import { CircleArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import ContactUs from '@/components/sections/contact-us';
@@ -19,6 +18,7 @@ import { getStoryblokApi } from '@/lib/storyblok';
 import { NumberTicker } from '@/components/magicui/number-ticker';
 import CountUp from '@/components/react-bits/count-up';
 import PricingSection from '@/components/PricingSection';
+import ZoomSchedulerEmbed from '@/components/sections/ZoomSchedulerEmbed';
 
 export const metadata: Metadata = {
     title: 'Accountant For Small Business - Tax Services London Ontario',
@@ -198,7 +198,7 @@ export default async function Home() {
                 </div>
             </section>
 
-            <ScheduleMeeting />
+            <ZoomSchedulerEmbed />
 
             <OrganizationsSection />
             <section className="flex flex-col items-center justify-between bg-[#E5F2F8] p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
