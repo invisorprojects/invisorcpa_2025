@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-static';
 
 import ContactUs from '@/components/sections/contact-us';
 import { getStoryblokApi } from '@/lib/storyblok';
@@ -23,7 +23,7 @@ export default async function CaseStudies() {
         starts_with: 'case-studies',
         content_type: 'case_study',
     });
-    // console.log('caseStudies:', caseStudies);
+    console.log('caseStudies:', caseStudies);
     return (
         <main>
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
