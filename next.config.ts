@@ -7,7 +7,6 @@ const nextConfig: NextConfig = {
     images: {
         qualities: [100, 75],
         remotePatterns: [
-            new URL('https://placehold.co/**'),
             new URL('https://a.storyblok.com/**'),
             new URL('https://www.invisorcpa.ca/**'),
         ],
