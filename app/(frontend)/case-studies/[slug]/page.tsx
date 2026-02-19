@@ -21,8 +21,14 @@ export async function generateMetadata({
     params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
     const { slug } = await params;
+    const data = await fetchData(slug);
+    if (!data) {
+        return notFound();
+    }
+    const content = data.story.content;
     return {
-        title: 'Case Studies',
+        title: content.meta_titile || 'Case Studies',
+        description: content.meta_description || '',
         alternates: {
             canonical: `https://www.invisorcpa.ca/case-studies/${slug}`,
         },
