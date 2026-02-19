@@ -2,7 +2,9 @@ import IncomeTaxCalculator from '@/components/IncomeTaxCalculator';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Income Tax Calculator Canada | Invisor CPA',
+    title: 'Free Canadian Tax Calculator | InvisorCPA',
+    description:
+        "Estimate your Canadian income tax quickly and easily with InvisorCPA's free tax calculator. Calculate federal and provincial taxes for any income level.",
     alternates: {
         canonical: 'https://www.invisorcpa.ca/tax-calculator',
     },

@@ -5,7 +5,9 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-    title: 'Team',
+    title: 'Meet the InvisorCPA Team | Expert CPAs & Accountants',
+    description:
+        'Get to know the experienced CPAs and accountants behind InvisorCPA. Our team is committed to delivering exceptional accounting and bookkeeping services across Canada.',
     alternates: {
         canonical: 'https://www.invisorcpa.ca/team',
     },

@@ -10,7 +10,9 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Blogs',
+    title: 'Accounting & Bookkeeping Insights | InvisorCPA Blog',
+    description:
+        "Explore expert tips on bookkeeping, tax planning, payroll, and financial reporting for Canadian businesses. Stay informed with InvisorCPA's accounting blog.",
     alternates: {
         canonical: 'https://www.invisorcpa.ca/blogs',
     },

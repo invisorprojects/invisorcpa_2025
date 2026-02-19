@@ -5,7 +5,9 @@ import Image from 'next/image';
 import PricingSection from '../../../components/PricingSection';
 
 export const metadata: Metadata = {
-    title: 'Pricing',
+    title: 'Accounting & Bookkeeping Pricing Plans | InvisorCPA',
+    description:
+        "Explore InvisorCPA's transparent pricing for bookkeeping, tax, payroll, and CFO services. Flexible plans designed for small and mid-sized Canadian businesses.",
     alternates: {
         canonical: 'https://www.invisorcpa.ca/pricing',
     },

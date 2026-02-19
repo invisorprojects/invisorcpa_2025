@@ -8,7 +8,9 @@ import Image from 'next/image';
 import { CaseStudyCard } from '@/components/case-study-card';
 
 export const metadata: Metadata = {
-    title: 'Case Studies',
+    title: 'Client Success Stories & Case Studies | InvisorCPA',
+    description:
+        'See how InvisorCPA has helped Canadian businesses solve financial challenges, streamline operations, and optimize taxes. Real results from real clients.',
     alternates: {
         canonical: 'https://www.invisorcpa.ca/case-studies',
     },
