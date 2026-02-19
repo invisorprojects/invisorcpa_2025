@@ -13,7 +13,7 @@ export async function generateMetadata({
     return {
         title: 'Industries',
         alternates: {
-            canonical: `https://www.invisorcpa.ca/services/${slug}/industries`,
+            canonical: `https://www.invisorcpa.ca/services/industries`,
         },
     };
 }
