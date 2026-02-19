@@ -321,6 +321,8 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "blog-posts_select".
  */
 export interface BlogPostsSelect<T extends boolean = true> {
+  metaTitle?: T;
+  metaDescription?: T;
   title?: T;
   slug?: T;
   content?: T;

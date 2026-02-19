@@ -11,27 +11,23 @@ import ContactUs from '@/components/sections/contact-us';
 import { BlogMetadata } from '@/components/blog-metadata';
 import RecentBlogs from './_components/recent-blogs';
 
-export async function generateMetadata({
-    params,
-}: {
-    params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-    const { slug } = await params;
-    if (slug === 'bookkeeper-london-ontario-transaction-management-books') {
-        return {
-            title: 'Bookkeeper London Ontario | Transaction Management for Error-Free Books',
-            description:
-                'Discover how expert transaction management keeps your books accurate and audit-ready. Learn why hiring a skilled bookkeeper in London, Ontario ensures compliance and financial clarity.',
-            keywords: ['books'],
-        };
-    }
-    return {
-        title: 'Blog Post',
-        alternates: {
-            canonical: `https://www.invisorcpa.ca/blogs/${slug}`,
-        },
-    };
-}
+// export async function generateMetadata({
+//     params,
+// }: {
+//     params: Promise<{ slug: string }>;
+// }): Promise<Metadata> {
+//     const { slug } = await params;
+//     const blogPost = await getBlogPostBySlug(slug);
+//     if (!blogPost) notFound();
+
+//     return {
+//         title: blogPost.metaTitle || 'Blog Post',
+//         description: blogPost.metaDescription || '',
+//         alternates: {
+//             canonical: `https://www.invisorcpa.ca/blogs/${slug}`,
+//         },
+//     };
+// }
 
 export default async function BlogPostPage({
     params,

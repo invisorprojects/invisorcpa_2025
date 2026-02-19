@@ -8,6 +8,21 @@ import { revalidateTag } from 'next/cache';
 export const BlogPosts: CollectionConfig = {
     slug: 'blog-posts',
     fields: [
+        // Meta fields
+        {
+            name: 'metaTitle',
+            type: 'text',
+            required: false,
+            unique: true,
+            defaultValue: 'Blog Post',
+        },
+        {
+            name: 'metaDescription',
+            type: 'text',
+            required: false,
+            unique: true,
+            defaultValue: 'Blog Post',
+        },
         {
             name: 'title',
             type: 'text',
