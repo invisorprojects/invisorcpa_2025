@@ -170,6 +170,8 @@ export interface Media {
  */
 export interface BlogPost {
   id: number;
+  metaTitle: string;
+  metaDescription: string;
   title: string;
   slug: string;
   content: {

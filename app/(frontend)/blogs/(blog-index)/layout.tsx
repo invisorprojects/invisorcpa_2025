@@ -1,5 +1,15 @@
 import ContactUs from '@/components/sections/contact-us';
+import { Metadata } from 'next';
 import Image from 'next/image';
+
+export const metadata: Metadata = {
+    title: 'Accounting & Bookkeeping Insights | InvisorCPA Blog',
+    description:
+        "Explore expert tips on bookkeeping, tax planning, payroll, and financial reporting for Canadian businesses. Stay informed with InvisorCPA's accounting blog.",
+    alternates: {
+        canonical: 'https://www.invisorcpa.ca/blogs',
+    },
+};
 export default function BlogIndexLayout({
     children,
 }: {

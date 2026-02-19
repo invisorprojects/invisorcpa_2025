@@ -11,23 +11,23 @@ import ContactUs from '@/components/sections/contact-us';
 import { BlogMetadata } from '@/components/blog-metadata';
 import RecentBlogs from './_components/recent-blogs';
 
-// export async function generateMetadata({
-//     params,
-// }: {
-//     params: Promise<{ slug: string }>;
-// }): Promise<Metadata> {
-//     const { slug } = await params;
-//     const blogPost = await getBlogPostBySlug(slug);
-//     if (!blogPost) notFound();
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+    const { slug } = await params;
+    const blogPost = await getBlogPostBySlug(slug);
+    if (!blogPost) notFound();
 
-//     return {
-//         title: blogPost.metaTitle || 'Blog Post',
-//         description: blogPost.metaDescription || '',
-//         alternates: {
-//             canonical: `https://www.invisorcpa.ca/blogs/${slug}`,
-//         },
-//     };
-// }
+    return {
+        title: blogPost.metaTitle || 'Blog Post',
+        description: blogPost.metaDescription || '',
+        alternates: {
+            canonical: `https://www.invisorcpa.ca/blogs/${slug}`,
+        },
+    };
+}
 
 export default async function BlogPostPage({
     params,
