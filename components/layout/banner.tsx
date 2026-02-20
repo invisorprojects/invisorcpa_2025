@@ -37,6 +37,9 @@ export default function Banner() {
                             Subscribe to receive news and canadian tax law
                             updates.
                         </p>
+                        <p className="text-xs sm:text-sm">
+                        🍁 Member - Canadian Income Tax EFILE Association
+                        </p>
                         <div className="flex gap-2 max-md:flex-wrap">
                             <NewsLetterModal />
                             <a
@@ -68,6 +71,9 @@ export default function Banner() {
                                     </TooltipContent>
                                 </Tooltip>
                             </a>
+
+                     
+
                         </div>
                     </div>
                 </div>
