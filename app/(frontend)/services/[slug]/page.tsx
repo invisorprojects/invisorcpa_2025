@@ -120,7 +120,7 @@ export async function generateMetadata({
 
     if (slug === 'business-tax-prep-filing') {
         return {
-            title: 'Corporate Tax Accountant - Business Tax Prep & Filing',
+            title: 'Corporate Tax Accountant - Business Tax Prep & Filing | Invisor CPA',
             description:
                 'Tax season doesnt have to be a nightmare.Trusted Corporate Tax Accountant offering expert business tax filing services. Save time, & ensure compliance',
             keywords: [
