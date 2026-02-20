@@ -339,9 +339,9 @@ export default function PayrollCalculator() {
                     <div className="bg-primary/10 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full">
                         <Calculator className="text-primary h-6 w-6" />
                     </div>
-                    <CardTitle className="text-foreground text-2xl font-semibold">
+                    <h1 className="text-foreground text-2xl font-semibold">
                         Payroll Calculator
-                    </CardTitle>
+                    </h1>
                     <CardDescription className="text-muted-foreground">
                         Calculate your payroll deductions and net pay with our
                         comprehensive calculator

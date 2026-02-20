@@ -87,9 +87,9 @@ export default function IncomeTaxCalculator() {
                 <div className="bg-primary/10 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full">
                     <HandCoins className="text-primary h-6 w-6" />
                 </div>
-                <CardTitle className="text-foreground text-2xl font-semibold">
+                <h1 className="text-foreground text-2xl font-semibold">
                     Income Tax Calculator
-                </CardTitle>
+                </h1>
                 <CardDescription className="text-muted-foreground">
                     Calculate your take-home pay after tax.
                 </CardDescription>

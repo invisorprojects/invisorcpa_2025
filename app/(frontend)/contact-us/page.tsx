@@ -20,9 +20,9 @@ export default function ContactUsPage() {
             <section className="flex flex-col items-center justify-between px-4 pt-4 sm:px-8 sm:pt-8 md:px-12 md:pt-12 lg:px-16 lg:pt-16 xl:px-24 xl:pt-24">
                 <div className="mb-20 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:justify-between">
                     <div className="max-w-2xl">
-                        <h3 className="text-secondary text-xl font-medium">
+                        <h1 className="text-secondary text-xl font-medium">
                             CONTACT US
-                        </h3>
+                        </h1>
                         <h2 className="text-primary mt-4 text-4xl font-bold sm:text-5xl">
                             Let&apos;s Connect : Schedule Your Consultation
                             Today!
