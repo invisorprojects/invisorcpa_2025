@@ -4,8 +4,8 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
-        "build": "next build",
-        "start": "next start",
+        "build": "next build --webpack",
+        "start": "next start --webpack",
         "lint": "eslint .",
         "fix": "npx eslint . --fix",
         "format": "exec prettier . --write",
@@ -69,6 +69,11 @@
         "overrides": {
             "@types/react": "19.2.7",
             "@types/react-dom": "19.2.3"
-        }
+        },
+        "onlyBuiltDependencies": [
+            "esbuild",
+            "sharp",
+            "unrs-resolver"
+        ]
     }
 }

@@ -1,5 +1,4 @@
 export const dynamic = 'force-dynamic';
-
 import { getPublishedBlogPosts } from '@/collections/BlogPosts/fetchers';
 import BlogCard from '@/components/blog-card';
 import { relationIsObject } from '@/lib/payload/helpers/relation-is-object';

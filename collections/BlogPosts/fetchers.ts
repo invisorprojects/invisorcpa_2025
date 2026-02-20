@@ -26,9 +26,10 @@ async function _getPublishedBlogPosts() {
 }
 
 export function getPublishedBlogPosts() {
-    return unstable_cache(_getPublishedBlogPosts, [], {
-        tags: [CACHE_TAG_BLOG_POSTS],
-    })();
+    return _getPublishedBlogPosts();
+    // return unstable_cache(_getPublishedBlogPosts, [], {
+    //     tags: [CACHE_TAG_BLOG_POSTS],
+    // })();
 }
 
 async function _getRecentBlogPosts() {
@@ -57,9 +58,10 @@ async function _getRecentBlogPosts() {
 }
 
 export function getRecentBlogPosts() {
-    return unstable_cache(_getRecentBlogPosts, [], {
-        tags: [CACHE_TAG_BLOG_POSTS],
-    })();
+    return _getRecentBlogPosts();
+    // return unstable_cache(_getRecentBlogPosts, [], {
+    //     tags: [CACHE_TAG_BLOG_POSTS],
+    // })();
 }
 
 export async function getBlogPostBySlug(slug: string) {
