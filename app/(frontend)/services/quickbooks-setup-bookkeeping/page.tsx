@@ -146,7 +146,7 @@ export const metadata: Metadata = {
         images: ['/assets/banners/banner-10.webp'],
     },
     alternates: {
-        canonical: 'https://www.invisorcpa.ca/cross-border-taxes',
+        canonical: 'https://www.invisorcpa.ca/services/cross-border-taxes',
     },
 };
 

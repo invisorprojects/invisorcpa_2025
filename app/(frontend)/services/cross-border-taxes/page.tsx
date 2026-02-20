@@ -27,7 +27,7 @@ export const metadata: Metadata = {
         title: 'Cross-Border Tax Services Canada-US | Invisor CPA',
         description:
             'Invisor CPA helps individuals and businesses navigate Canada-US tax compliance: Streamlined Filing, FBAR/FATCA, estate & gift, and strategic advisory.',
-        url: 'https://www.invisorcpa.ca/cross-border-taxes',
+        url: 'https://www.invisorcpa.ca/services/cross-border-taxes',
         siteName: 'Invisor CPA',
         images: [
             {
