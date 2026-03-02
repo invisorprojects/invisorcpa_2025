@@ -1072,6 +1072,7 @@ export const SERVICES = [
             },
         ],
     },
+
     {
         slug: 'ontario-health-at-home-accounting-services',
         title: 'Ontario Health at Home Accounting Services',
@@ -1165,6 +1166,109 @@ export const SERVICES = [
                 caption: 'Established Providers',
                 content:
                     'Organisations looking to scale and needing better financial infrastructure and reporting alignment with Ontario Health.',
+            },
+        ],
+    },
+
+    {
+        slug: 'small-business-bookkeeping-services-ontario',
+        title: 'Small Business Bookkeeping Services Ontario',
+        description:
+            'Running a small business in Ontario means wearing a dozen hats before lunch. You handle sales, customer service, hiring, and operations, and somewhere in the middle of that, the books still need to get done.  At Invisor CPA, we take bookkeeping off your plate so you can focus on what actually moves the needle.',
+        why: [
+            {
+                caption: 'Accuracy & Compliance',
+                content:
+                    'We stay updated with the latest tax laws and regulations, ensuring your books are always accurate and compliant.',
+            },
+            {
+                caption: 'Time-Saving',
+                content:
+                    'Free up your valuable time to focus on core business activities while we handle your bookkeeping needs.',
+            },
+            {
+                caption: 'Cost-Effective',
+                content:
+                    'Access professional bookkeeping services at a fraction of the cost of hiring a full-time bookkeeper.',
+            },
+            {
+                caption: 'Scalable Solutions',
+                content:
+                    'Our services grow with your business, adapting to your changing needs and requirements.',
+            },
+        ],
+        includes: [
+            {
+                caption: 'Transaction Recording',
+                content: 'Accurate recording of all income and expenses.',
+            },
+            {
+                caption: 'Bank Reconciliation',
+                content: 'Regular reconciliation of bank and credit card statements.',
+            },
+            {
+                caption: 'Financial Reporting',
+                content: 'Timely generation of P&L, balance sheets, and cash flow statements.',
+            },
+            {
+                caption: 'GST/HST Preparation',
+                content: 'Accurate preparation and filing of GST/HST returns.',
+            },
+            {
+                caption: 'Payroll Services',
+                content: 'Complete payroll processing and employee record management.',
+            },
+        ],
+        our_process: [
+            {
+                caption: 'Discovery & Planning',
+                content:
+                    'We assess your business needs and design a customised bookkeeping plan.',
+            },
+            {
+                caption: 'Implementation & Integration',
+                content:
+                    'We set up your bookkeeping system and integrate it with your existing tools.',
+            },
+            {
+                caption: 'Ongoing Support & Optimisation',
+                content:
+                    'We provide continuous support and regular updates to ensure your bookkeeping stays efficient and compliant.',
+            },
+        ],
+        benefits: [
+            {
+                caption: 'Improved Financial Visibility',
+                content: 'Clear insights into your business performance and financial health.',
+            },
+            {
+                caption: 'Better Decision-Making',
+                content: 'Data-driven insights to support strategic business decisions.',
+            },
+            {
+                caption: 'Reduced Audit Risk',
+                content: 'Maintained compliance with tax laws and regulations.',
+            },
+            {
+                caption: 'Scalability & Flexibility',
+                content: 'Services that grow with your business needs.',
+            },
+        ],
+        who_we_serve: [
+            {
+                caption: 'Startups & Small Businesses',
+                content:
+                    'New businesses needing reliable bookkeeping support from the ground up.',
+            },
+            {
+                caption: 'Growing Businesses',
+                content:
+                    'Established businesses looking to scale their bookkeeping operations.',
+            },
+            {
+                caption: 'E-Commerce Businesses',
+                content:
+                    'Online businesses needing specialised e-commerce bookkeeping solutions.',
             },
         ],
     },
