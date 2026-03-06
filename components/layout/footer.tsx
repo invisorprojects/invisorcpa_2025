@@ -93,12 +93,12 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/free-payroll-calculator">
+                                <Link href="/payroll-calculator">
                                     Payroll Calculator
                                 </Link>
                             </li>
                                <li>
-                                <Link href="/invoice-generator">
+                                <Link href="/free-invoice-generator">
                                     Invoice Generator
                                 </Link>
                             </li>

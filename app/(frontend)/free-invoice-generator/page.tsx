@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     description:
         'Create simple Canadian invoices in CAD, preview live totals, and export them through a print-ready PDF flow.',
     alternates: {
-        canonical: '/invoice-generator',
+        canonical: '/free-invoice-generator',
     },
 };
 
