@@ -854,9 +854,9 @@ export default function InvoiceGenerator() {
     };
 
     return (
-        <main className="bg-[linear-gradient(180deg,#f7fbff_0%,#ffffff_35%,#fdf7ef_100%)]">
+        <main className="overflow-x-clip bg-[linear-gradient(180deg,#f7fbff_0%,#ffffff_35%,#fdf7ef_100%)]">
             <SubmitDetailsModal open={open} setOpen={setOpen} />
-            <section className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-10 sm:px-6 lg:px-0 lg:py-16">
+            <section className="mx-auto flex w-full max-w-7xl min-w-0 flex-col gap-8 overflow-x-clip px-4 py-10 sm:px-6 lg:px-0 lg:py-16">
                 <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
                     <div className="space-y-4">
                         <span className="text-secondary inline-flex items-center rounded-full border border-[#d6e3ff] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] shadow-sm">
@@ -903,7 +903,7 @@ export default function InvoiceGenerator() {
                 </div>
 
                 <div className="grid gap-8 xl:grid-cols-[1.05fr_0.95fr]">
-                    <div className="space-y-6">
+                    <div className="min-w-0 space-y-6">
                         <Card className="border-0 bg-white shadow-xl shadow-slate-200/70">
                             <CardHeader className="border-b border-slate-100">
                                 <CardTitle className="flex items-center gap-2 text-xl">
@@ -1296,7 +1296,7 @@ export default function InvoiceGenerator() {
                                             key={item.id}
                                             className="rounded-3xl border border-slate-200 bg-slate-50/80 p-4"
                                         >
-                                            <div className="mb-4 flex items-center justify-between gap-4">
+                                            <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                                                 <p className="text-sm font-semibold tracking-[0.12em] text-slate-500 uppercase">
                                                     Item {index + 1}
                                                 </p>
@@ -1417,7 +1417,7 @@ export default function InvoiceGenerator() {
                         </Card>
                     </div>
 
-                    <div className="space-y-6 xl:sticky xl:top-28 xl:self-start">
+                    <div className="min-w-0 space-y-6 xl:sticky xl:top-28 xl:self-start">
                         <Card className="overflow-hidden border-0 bg-white shadow-2xl shadow-slate-200/70">
                             <CardHeader className="border-b border-slate-100 bg-[linear-gradient(135deg,#f6fbff_0%,#fff8ee_100%)]">
                                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -1434,7 +1434,7 @@ export default function InvoiceGenerator() {
                                     <Button
                                         type="button"
                                         size="lg"
-                                        className="rounded-full bg-[#1f355b] px-6 hover:bg-[#162945]"
+                                        className="w-full rounded-full bg-[#1f355b] px-6 hover:bg-[#162945] sm:w-auto"
                                         onClick={handleDownloadPdf}
                                     >
                                         <Download className="h-4 w-4" />
@@ -1443,9 +1443,9 @@ export default function InvoiceGenerator() {
                                 </div>
                             </CardHeader>
                             <CardContent className="p-0">
-                                <article className="bg-white p-6 sm:p-8">
+                                <article className="min-w-0 bg-white p-4 sm:p-6 lg:p-8">
                                     <div className="flex flex-col gap-8 border-b border-slate-200 pb-8 sm:flex-row sm:items-start sm:justify-between">
-                                        <div className="max-w-sm">
+                                        <div className="min-w-0 max-w-sm">
                                             {logoDataUrl ? (
                                                 <Image
                                                     src={logoDataUrl}
@@ -1457,7 +1457,7 @@ export default function InvoiceGenerator() {
                                                 />
                                             ) : null}
                                            
-                                            <h2 className="text-primary mt-4 text-3xl font-bold">
+                                            <h2 className="text-primary mt-4 break-words text-2xl font-bold sm:text-3xl">
                                                 {form.companyName ||
                                                     'Your company'}
                                             </h2>
@@ -1489,23 +1489,23 @@ export default function InvoiceGenerator() {
                                             ) : null}
                                         </div>
 
-                                        <div className="sm:text-right">
+                                        <div className="min-w-0 sm:text-right">
                                             <p className="text-[11px] font-semibold tracking-[0.18em] text-slate-500 uppercase">
                                                 Tax Invoice
                                             </p>
-                                            <h2 className="text-primary mt-3 text-4xl font-bold sm:text-5xl">
+                                            <h2 className="text-primary mt-3 text-3xl font-bold sm:text-5xl">
                                                 INVOICE
                                             </h2>
                                         </div>
                                     </div>
 
-                                    <div className="grid gap-6 border-b border-slate-200 py-8 md:grid-cols-[1.2fr_0.8fr]">
-                                        <div className="space-y-5">
+                                    <div className="grid gap-6 border-b border-slate-200 py-8 lg:grid-cols-[1.2fr_0.8fr]">
+                                        <div className="min-w-0 space-y-5">
                                             <div>
                                                 <p className="text-sm font-semibold tracking-[0.14em] text-slate-500 uppercase">
                                                     Bill To
                                                 </p>
-                                                <p className="mt-3 text-lg font-semibold text-slate-900">
+                                                <p className="mt-3 break-words text-lg font-semibold text-slate-900">
                                                     {form.clientName ||
                                                         'Client name'}
                                                 </p>
@@ -1529,12 +1529,12 @@ export default function InvoiceGenerator() {
                                             </div>
                                         </div>
 
-                                        <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
+                                        <div className="min-w-0 rounded-3xl border border-slate-200 bg-slate-50 p-5">
                                             <div className="grid gap-1 border-b border-slate-200 py-3 first:pt-0 last:border-b-0 last:pb-0 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-4">
                                                 <span className="text-sm leading-5 text-slate-500">
                                                     Invoice #
                                                 </span>
-                                                <span className="text-sm font-semibold text-slate-900 sm:text-right whitespace-nowrap">
+                                                <span className="break-words text-sm font-semibold text-slate-900 sm:text-right">
                                                     {form.invoiceNumber ||
                                                         'INV-0001'}
                                                 </span>
@@ -1543,7 +1543,7 @@ export default function InvoiceGenerator() {
                                                 <span className="text-sm leading-5 text-slate-500">
                                                     Invoice Date
                                                 </span>
-                                                <span className="text-sm font-semibold text-slate-900 sm:text-right whitespace-nowrap">
+                                                <span className="text-sm font-semibold text-slate-900 sm:text-right">
                                                     {formatDisplayDate(
                                                         form.invoiceDate
                                                     )}
@@ -1553,7 +1553,7 @@ export default function InvoiceGenerator() {
                                                 <span className="text-sm leading-5 text-slate-500">
                                                     Due Date
                                                 </span>
-                                                <span className="text-sm font-semibold text-slate-900 sm:text-right whitespace-nowrap">
+                                                <span className="text-sm font-semibold text-slate-900 sm:text-right">
                                                     {formatDisplayDate(
                                                         form.dueDate
                                                     )}
@@ -1563,14 +1563,79 @@ export default function InvoiceGenerator() {
                                                 <span className="text-sm leading-5 text-slate-500">
                                                     Currency
                                                 </span>
-                                                <span className="text-sm font-semibold text-slate-900 sm:text-right whitespace-nowrap">
+                                                <span className="text-sm font-semibold text-slate-900 sm:text-right">
                                                     CAD
                                                 </span>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div className="overflow-x-auto py-8">
+                                    <div className="py-8 lg:hidden">
+                                        <div className="space-y-4">
+                                            {lineItems.map((item, index) => {
+                                                const lineTotal =
+                                                    item.quantity * item.rate;
+
+                                                return (
+                                                    <div
+                                                        key={item.id}
+                                                        className="rounded-3xl border border-slate-200 bg-slate-50/70 p-4"
+                                                    >
+                                                        <div className="flex items-start justify-between gap-4">
+                                                            <div className="min-w-0">
+                                                                <p className="text-xs font-semibold tracking-[0.14em] text-slate-500 uppercase">
+                                                                    Item {index + 1}
+                                                                </p>
+                                                                <p className="mt-2 break-words text-sm font-semibold text-slate-900">
+                                                                    {item.description ||
+                                                                        'Untitled service'}
+                                                                </p>
+                                                            </div>
+                                                            <span className="rounded-full bg-white px-3 py-1 text-xs font-medium text-slate-600">
+                                                                {item.taxable
+                                                                    ? 'Taxable'
+                                                                    : 'Exempt'}
+                                                            </span>
+                                                        </div>
+                                                        <div className="mt-4 grid gap-3 rounded-2xl bg-white p-4">
+                                                            <div className="flex items-center justify-between gap-4 text-sm">
+                                                                <span className="text-slate-500">
+                                                                    Qty
+                                                                </span>
+                                                                <span className="font-medium text-slate-900">
+                                                                    {item.quantity.toFixed(
+                                                                        2
+                                                                    )}
+                                                                </span>
+                                                            </div>
+                                                            <div className="flex items-center justify-between gap-4 text-sm">
+                                                                <span className="text-slate-500">
+                                                                    Rate
+                                                                </span>
+                                                                <span className="font-medium text-slate-900">
+                                                                    {formatCurrency(
+                                                                        item.rate
+                                                                    )}
+                                                                </span>
+                                                            </div>
+                                                            <div className="flex items-center justify-between gap-4 border-t border-slate-200 pt-3 text-sm">
+                                                                <span className="text-slate-500">
+                                                                    Amount
+                                                                </span>
+                                                                <span className="font-semibold text-slate-900">
+                                                                    {formatCurrency(
+                                                                        lineTotal
+                                                                    )}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+
+                                    <div className="hidden overflow-x-auto py-8 lg:block">
                                         <table className="min-w-full border-separate border-spacing-0 overflow-hidden rounded-3xl border border-slate-200">
                                             <thead>
                                                 <tr className="bg-[#20345a] text-left text-white">
@@ -1641,8 +1706,8 @@ export default function InvoiceGenerator() {
                                         </table>
                                     </div>
 
-                                    <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
-                                        <div className="max-w-sm rounded-3xl border border-slate-200 bg-slate-50/80 p-5">
+                                    <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+                                        <div className="w-full max-w-sm rounded-3xl border border-slate-200 bg-slate-50/80 p-5">
                                             <p className="text-sm font-semibold tracking-[0.14em] text-slate-500 uppercase">
                                                 Notes
                                             </p>
@@ -1740,7 +1805,7 @@ export default function InvoiceGenerator() {
 
                 <div
                     aria-hidden="true"
-                    className="pointer-events-none fixed top-0 left-[-200vw] overflow-hidden"
+                    className="pointer-events-none fixed top-0 -left-[99999px] h-px w-px overflow-hidden opacity-0"
                 >
                     <div ref={pdfTargetRef}>
                         <InvoicePdfDocument
