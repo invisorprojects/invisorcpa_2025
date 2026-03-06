@@ -311,7 +311,6 @@ function InvoicePdfDocument({
                             }}
                         />
                     ) : null}
-                    <span style={badgeStyle}>CAD Invoice</span>
                     <div
                         style={{
                             marginTop: 16,
@@ -1450,9 +1449,7 @@ export default function InvoiceGenerator() {
                                                     className="mb-5 max-h-24 w-auto rounded-2xl object-contain"
                                                 />
                                             ) : null}
-                                            <span className="inline-flex rounded-full bg-[#eef4ff] px-3 py-1 text-[11px] font-semibold tracking-[0.18em] text-[#284680] uppercase">
-                                                CAD Invoice
-                                            </span>
+                                           
                                             <h2 className="text-primary mt-4 text-3xl font-bold">
                                                 {form.companyName ||
                                                     'Your company'}
