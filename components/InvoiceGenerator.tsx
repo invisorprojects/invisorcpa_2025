@@ -255,17 +255,6 @@ function InvoicePdfDocument({
         fontFamily: 'Arial, Helvetica, sans-serif',
     };
 
-    const badgeStyle: CSSProperties = {
-        display: 'inline-block',
-        borderRadius: 9999,
-        backgroundColor: '#eef4ff',
-        color: '#284680',
-        padding: '6px 12px',
-        fontSize: 11,
-        fontWeight: 700,
-        letterSpacing: '0.18em',
-        textTransform: 'uppercase',
-    };
 
     const labelStyle: CSSProperties = {
         color: '#64748b',
@@ -850,7 +839,7 @@ export default function InvoiceGenerator() {
 
     return (
         <main className="bg-[linear-gradient(180deg,#f7fbff_0%,#ffffff_35%,#fdf7ef_100%)]">
-            <section className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
+            <section className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-10 sm:px-6 lg:px-0 lg:py-16">
                 <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
                     <div className="space-y-4">
                         <span className="text-secondary inline-flex items-center rounded-full border border-[#d6e3ff] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] shadow-sm">
@@ -1335,7 +1324,8 @@ export default function InvoiceGenerator() {
                                                     <Input
                                                         type="number"
                                                         min="0"
-                                                        step="0.01"
+                                                        
+                                                        step="1"
                                                         value={item.quantity}
                                                         onChange={(event) =>
                                                             updateLineItem(
@@ -1523,40 +1513,40 @@ export default function InvoiceGenerator() {
                                         </div>
 
                                         <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
-                                            <div className="flex items-center justify-between gap-3 border-b border-slate-200 py-3 first:pt-0 last:border-b-0 last:pb-0">
-                                                <span className="text-sm text-slate-500">
+                                            <div className="grid gap-1 border-b border-slate-200 py-3 first:pt-0 last:border-b-0 last:pb-0 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-4">
+                                                <span className="text-sm leading-5 text-slate-500">
                                                     Invoice #
                                                 </span>
-                                                <span className="text-sm font-semibold text-slate-900">
+                                                <span className="text-sm font-semibold text-slate-900 sm:text-right whitespace-nowrap">
                                                     {form.invoiceNumber ||
                                                         'INV-0001'}
                                                 </span>
                                             </div>
-                                            <div className="flex items-center justify-between gap-3 border-b border-slate-200 py-3">
-                                                <span className="text-sm text-slate-500">
+                                            <div className="grid gap-1 border-b border-slate-200 py-3 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-4">
+                                                <span className="text-sm leading-5 text-slate-500">
                                                     Invoice Date
                                                 </span>
-                                                <span className="text-sm font-semibold text-slate-900">
+                                                <span className="text-sm font-semibold text-slate-900 sm:text-right whitespace-nowrap">
                                                     {formatDisplayDate(
                                                         form.invoiceDate
                                                     )}
                                                 </span>
                                             </div>
-                                            <div className="flex items-center justify-between gap-3 border-b border-slate-200 py-3">
-                                                <span className="text-sm text-slate-500">
+                                            <div className="grid gap-1 border-b border-slate-200 py-3 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-4">
+                                                <span className="text-sm leading-5 text-slate-500">
                                                     Due Date
                                                 </span>
-                                                <span className="text-sm font-semibold text-slate-900">
+                                                <span className="text-sm font-semibold text-slate-900 sm:text-right whitespace-nowrap">
                                                     {formatDisplayDate(
                                                         form.dueDate
                                                     )}
                                                 </span>
                                             </div>
-                                            <div className="flex items-center justify-between gap-3 pt-3">
-                                                <span className="text-sm text-slate-500">
+                                            <div className="grid gap-1 pt-3 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-4">
+                                                <span className="text-sm leading-5 text-slate-500">
                                                     Currency
                                                 </span>
-                                                <span className="text-sm font-semibold text-slate-900">
+                                                <span className="text-sm font-semibold text-slate-900 sm:text-right whitespace-nowrap">
                                                     CAD
                                                 </span>
                                             </div>
@@ -1701,7 +1691,7 @@ export default function InvoiceGenerator() {
                                                     </span>
                                                 </div>
                                             ) : null}
-                                            <div className="flex items-center justify-between bg-[linear-gradient(135deg,#f6fbff_0%,#fff7ed_100%)] px-5 py-5">
+                                            <div className="flex items-center justify-between bg-[linear-gradient(135deg,#f6fbff_0%,#fff7ed_100%)] rounded-b-3xl px-5 py-5">
                                                 <span className="text-base font-semibold text-slate-900">
                                                     Total
                                                 </span>
