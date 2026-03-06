@@ -31,6 +31,7 @@ import {
     SelectValue,
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
+import SubmitDetailsModal from './SubmitDetailsModal';
 
 type ProvinceTaxPreset = {
     code: string;
@@ -199,6 +200,11 @@ const addDaysAsInput = (days: number) => {
     next.setDate(next.getDate() + days);
     next.setMinutes(next.getMinutes() - next.getTimezoneOffset());
     return next.toISOString().slice(0, 10);
+};
+
+const getIsLeadCollected = () => {
+    if (typeof window === 'undefined') return false;
+    return localStorage.getItem('is_lead_collected') === 'true';
 };
 
 const currencyFormatter = new Intl.NumberFormat('en-CA', {
@@ -643,6 +649,7 @@ function InvoicePdfDocument({
 export default function InvoiceGenerator() {
     const fileInputRef = useRef<HTMLInputElement | null>(null);
     const pdfTargetRef = useRef<HTMLDivElement | null>(null);
+    const [open, setOpen] = useState(false);
     const [logoDataUrl, setLogoDataUrl] = useState('');
     const [form, setForm] = useState<InvoiceFormState>({
         companyName: '',
@@ -756,6 +763,8 @@ export default function InvoiceGenerator() {
         reader.readAsDataURL(file);
     };
     const handleDownloadPdf = async () => {
+  
+
         if (!form.companyName.trim() || !form.clientName.trim()) {
             toast.error('Add both company and client names before exporting.');
             return;
@@ -766,6 +775,13 @@ export default function InvoiceGenerator() {
             return;
         }
 
+        const collected = getIsLeadCollected();
+
+        if (!collected) {
+            setOpen(true);
+            return;
+        }
+        
         const toastId = toast.loading('Generating PDF...');
 
         try {
@@ -839,6 +855,7 @@ export default function InvoiceGenerator() {
 
     return (
         <main className="bg-[linear-gradient(180deg,#f7fbff_0%,#ffffff_35%,#fdf7ef_100%)]">
+            <SubmitDetailsModal open={open} setOpen={setOpen} />
             <section className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-10 sm:px-6 lg:px-0 lg:py-16">
                 <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
                     <div className="space-y-4">
