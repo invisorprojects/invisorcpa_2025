@@ -1805,7 +1805,7 @@ export default function InvoiceGenerator() {
 
                 <div
                     aria-hidden="true"
-                    className="pointer-events-none fixed top-0 -left-[99999px] h-px w-px overflow-hidden opacity-0"
+                    className="pointer-events-none fixed top-0 -left-[99999px]"
                 >
                     <div ref={pdfTargetRef}>
                         <InvoicePdfDocument
