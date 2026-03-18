@@ -105,77 +105,77 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <StoryblokProvider>
-            <html
-                lang="en"
-                className={`${poppins.variable} ${openSans.variable} antialiased`}
-            >
-                <head>
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{
-                            __html: JSON.stringify({
-                                '@context': 'https://schema.org',
-                                '@type': 'AccountingService',
-                                name: 'Invisor CPA',
-                                description:
-                                    'Professional tax filing and accounting services in Canada. Expert personal tax accountant, CRA tax help, and comprehensive tax preparation services.',
-                                url: 'https://www.invisorcpa.ca',
-                                logo: 'https://www.invisorcpa.ca/invisorcpa-logo.png',
-                                image: 'https://www.invisorcpa.ca/invisorcpa-logo.png',
-                                telephone: '+1-XXX-XXX-XXXX',
-                                email: 'info@invisorcpa.ca',
-                                address: {
-                                    '@type': 'PostalAddress',
-                                    addressCountry: 'CA',
-                                    addressRegion: 'Ontario',
-                                    addressLocality: 'Toronto',
-                                },
-                                geo: {
-                                    '@type': 'GeoCoordinates',
-                                    latitude: '43.6532',
-                                    longitude: '-79.3832',
-                                },
-                                openingHours: 'Mo-Fr 09:00-17:00',
-                                priceRange: '$$',
-                                serviceArea: {
-                                    '@type': 'Country',
-                                    name: 'Canada',
-                                },
-                                hasOfferCatalog: {
-                                    '@type': 'OfferCatalog',
-                                    name: 'Tax Services',
-                                    itemListElement: [
-                                        {
-                                            '@type': 'Offer',
-                                            itemOffered: {
-                                                '@type': 'Service',
-                                                name: 'Personal Tax Returns',
-                                                description:
-                                                    'Professional personal tax filing services in Canada',
-                                            },
+        <html
+            lang="en"
+            className={`${poppins.variable} ${openSans.variable} antialiased`}
+        >
+            <head>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            '@context': 'https://schema.org',
+                            '@type': 'AccountingService',
+                            name: 'Invisor CPA',
+                            description:
+                                'Professional tax filing and accounting services in Canada. Expert personal tax accountant, CRA tax help, and comprehensive tax preparation services.',
+                            url: 'https://www.invisorcpa.ca',
+                            logo: 'https://www.invisorcpa.ca/invisorcpa-logo.png',
+                            image: 'https://www.invisorcpa.ca/invisorcpa-logo.png',
+                            telephone: '+1-XXX-XXX-XXXX',
+                            email: 'info@invisorcpa.ca',
+                            address: {
+                                '@type': 'PostalAddress',
+                                addressCountry: 'CA',
+                                addressRegion: 'Ontario',
+                                addressLocality: 'Toronto',
+                            },
+                            geo: {
+                                '@type': 'GeoCoordinates',
+                                latitude: '43.6532',
+                                longitude: '-79.3832',
+                            },
+                            openingHours: 'Mo-Fr 09:00-17:00',
+                            priceRange: '$$',
+                            serviceArea: {
+                                '@type': 'Country',
+                                name: 'Canada',
+                            },
+                            hasOfferCatalog: {
+                                '@type': 'OfferCatalog',
+                                name: 'Tax Services',
+                                itemListElement: [
+                                    {
+                                        '@type': 'Offer',
+                                        itemOffered: {
+                                            '@type': 'Service',
+                                            name: 'Personal Tax Returns',
+                                            description:
+                                                'Professional personal tax filing services in Canada',
                                         },
-                                        {
-                                            '@type': 'Offer',
-                                            itemOffered: {
-                                                '@type': 'Service',
-                                                name: 'Business Tax Services',
-                                                description:
-                                                    'Comprehensive business tax preparation and filing',
-                                            },
+                                    },
+                                    {
+                                        '@type': 'Offer',
+                                        itemOffered: {
+                                            '@type': 'Service',
+                                            name: 'Business Tax Services',
+                                            description:
+                                                'Comprehensive business tax preparation and filing',
                                         },
-                                    ],
-                                },
-                                sameAs: [
-                                    'https://www.linkedin.com/company/invisor-cpa',
-                                    'https://www.facebook.com/invisorcpa',
-                                    'https://twitter.com/invisorcpa',
+                                    },
                                 ],
-                            }),
-                        }}
-                    />
-                </head>
-                <body>
+                            },
+                            sameAs: [
+                                'https://www.linkedin.com/company/invisor-cpa',
+                                'https://www.facebook.com/invisorcpa',
+                                'https://twitter.com/invisorcpa',
+                            ],
+                        }),
+                    }}
+                />
+            </head>
+            <body>
+                <StoryblokProvider>
                     <PerformanceOptimizer />
                     <SEOStructuredData type="localBusiness" data={{}} />
                     <Banner />
@@ -232,8 +232,8 @@ export default function RootLayout({
             `,
                         }}
                     />
-                </body>
-            </html>
-        </StoryblokProvider>
+                </StoryblokProvider>
+            </body>
+        </html>
     );
 }
