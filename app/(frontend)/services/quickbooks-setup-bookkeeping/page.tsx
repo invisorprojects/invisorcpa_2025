@@ -122,17 +122,17 @@ export const metadata: Metadata = {
         'Cross-border accountant',
     ],
     openGraph: {
-        title: 'Cross-Border Tax Services Canada-US | Invisor CPA',
+        title: 'Business Bookkeeping Services - Bookkeeper London, Ontario',
         description:
-            'Invisor CPA helps individuals and businesses navigate Canada-US tax compliance: Streamlined Filing, FBAR/FATCA, estate & gift, and strategic advisory.',
-        url: 'https://www.invisorcpa.ca/services/cross-border-taxes',
+            'Streamline your finances with our Business Bookkeeping Services. Expert QuickBooks setup, accurate records, and tailored support in London, Ontario.',
+        url: 'https://www.invisorcpa.ca/services/quickbooks-setup-bookkeeping',
         siteName: 'Invisor CPA',
         images: [
             {
-                url: '/assets/banners/banner-10.webp',
+                url: '/assets/banners/banner-4.webp',
                 width: 1200,
                 height: 630,
-                alt: 'Cross-Border Tax Services by Invisor',
+                alt: 'Business Bookkeeping Services by Invisor',
             },
         ],
         locale: 'en_CA',
@@ -140,13 +140,13 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Cross-Border Tax Services Canada-US | Invisor CPA',
+        title: 'Business Bookkeeping Services - Bookkeeper London, Ontario',
         description:
-            'Navigate Canada-US taxes with confidence: Streamlined Filing, FBAR/FATCA, estate & gift, and ongoing compliance.',
-        images: ['/assets/banners/banner-10.webp'],
+            'Streamline your finances with our Business Bookkeeping Services. Expert QuickBooks setup, accurate records, and tailored support in London, Ontario.',
+        images: ['/assets/banners/banner-4.webp'],
     },
     alternates: {
-        canonical: 'https://www.invisorcpa.ca/services/cross-border-taxes',
+        canonical: 'https://www.invisorcpa.ca/services/quickbooks-setup-bookkeeping',
     },
 };
 

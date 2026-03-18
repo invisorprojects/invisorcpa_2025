@@ -51,9 +51,6 @@ export const metadata: Metadata = {
         telephone: false,
     },
     metadataBase: new URL('https://www.invisorcpa.ca'),
-    alternates: {
-        canonical: '/',
-    },
     openGraph: {
         type: 'website',
         locale: 'en_CA',

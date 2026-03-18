@@ -1,5 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Leave Us a Review | Invisor CPA',
+    description:
+        'Leave a review for Invisor CPA by scanning the QR code or opening the review page directly.',
+    alternates: {
+        canonical: 'https://www.invisorcpa.ca/add_review',
+    },
+};
 
 export default function ReviewPage() {
     return (
