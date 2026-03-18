@@ -221,7 +221,7 @@ export default function Page() {
                         <p className="text-secondary text-sm font-semibold tracking-[0.22em] uppercase">
                             Canada Incorporation
                         </p>
-                        <h1 className="text-primary text-4xl font-bold sm:text-5xl lg:text-5xl">
+                        <h1 className="text-primary leading-14 text-4xl font-bold sm:text-5xl lg:text-5xl">
                             Company Incorporation Service in Canada -
                             <br />
                             <span className='text-4xl'>
