@@ -18,7 +18,7 @@ import { getStoryblokApi } from '@/lib/storyblok';
 import { NumberTicker } from '@/components/magicui/number-ticker';
 import CountUp from '@/components/react-bits/count-up';
 import PricingSection from '@/components/PricingSection';
-import ZoomSchedulerEmbed from '@/components/sections/ZoomSchedulerEmbed';
+import CalendlyInlineWidget from '@/components/sections/CalendlyInlineWidget';
 
 export const metadata: Metadata = {
     title: 'Accountant For Small Business - Tax Services London Ontario',
@@ -197,8 +197,7 @@ export default async function Home() {
                     </div>
                 </div>
             </section>
-
-            <ZoomSchedulerEmbed />
+<CalendlyInlineWidget/>
 
             <OrganizationsSection />
             <section className="flex flex-col items-center justify-between bg-[#E5F2F8] p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
