@@ -125,7 +125,7 @@ export default function Page() {
             </section>
 
             <Image
-                src="/assets/infographic.png"
+                src="/assets/infographic.webp"
                 alt="7 Essential Reasons to Work With a Small Business Tax Accountant"
                 width={1920}
                 height={600}

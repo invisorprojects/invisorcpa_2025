@@ -125,7 +125,7 @@ export default function Page() {
             </section>
 
             <Image
-                src="/assets/infographic-2.png"
+                src="/assets/infographic-2.webp"
                 alt="6 Signs Your Small Business Needs a Professional Accountant"
                 width={1920}
                 height={600}
