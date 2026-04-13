@@ -1,15 +1,5 @@
 export const TEAMS = [
     {
-        name: 'Roji Thomas',
-        qualification: '',
-        path: '/assets/team/roji.png',
-    },
-    {
-        name: 'Robyn Anderson-Garlough',
-        qualification: 'DFA',
-        path: '/assets/team/team-members-1.webp',
-    },
-    {
         name: 'Bernie Keim',
         qualification: 'MBA, CGA, CPA',
         path: '/assets/team/team-members-2.webp',
@@ -35,9 +25,5 @@ export const TEAMS = [
         qualification: 'MBA',
         path: '/assets/team/team-members-6.webp',
     },
-    {
-        name: 'Andrea Alba Vasquez',
-        qualification: 'PCP',
-        path: '/assets/team/team-members-7.webp',
-    },
+
 ];
