@@ -102,6 +102,11 @@ export default function Footer() {
                                     Invoice Generator
                                 </Link>
                             </li>
+                                   <li>
+                                <Link href="/download">
+                                    Download Exam Software
+                                </Link>
+                            </li>
                          
 
                             {/* <li>
