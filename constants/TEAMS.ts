@@ -1,4 +1,9 @@
 export const TEAMS = [
+        {
+        name: 'Roji Thomas',
+        qualification: 'Specializes in finance transformation and ERP migrations, with a strong focus on financial reporting and data integrity. He partners with CFOs and finance teams to deliver seamless system transitions, including data migration, validation, and reporting optimization. Roji combines deep financial process knowledge with a client-focused approach to help organizations modernize their financial operations and drive better decision-making.',
+        path: '/assets/team/team-members-1.webp',
+    },
     {
         name: 'Bernie Keim',
         qualification: 'MBA, CGA, CPA',
