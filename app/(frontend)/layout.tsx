@@ -96,8 +96,6 @@ export const metadata: Metadata = {
         },
     },
 };
-
-const GA_MEASUREMENT_ID = 'G-KLWG9V2SYX';
 const GOOGLE_ADS_ID = 'AW-18144048863';
 
 export default function RootLayout({
@@ -187,7 +185,7 @@ export default function RootLayout({
                     <Toaster richColors />
                     {/* Google tag (gtag.js) */}
                     <Script
-                        src="https://www.googletagmanager.com/gtag/js?id=G-KLWG9V2SYX"
+                        src="https://www.googletagmanager.com/gtag/js?id=AW-18144048863"
                         strategy="afterInteractive"
                     />
                     <Script id="ga-init" strategy="afterInteractive">
@@ -195,8 +193,8 @@ export default function RootLayout({
                   window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);}
                   gtag('js', new Date());
-                  gtag('config', '${GA_MEASUREMENT_ID}');
-                  gtag('config', '${GOOGLE_ADS_ID}');
+                  gtag('config', 'AW-18144048863');
+                gtag('config', '${GOOGLE_ADS_ID}');
                 `}
                     </Script>
 
