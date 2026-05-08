@@ -1,4 +1,3 @@
-import ContactUsForm from '@/components/ContactUsForm';
 import { BehindTheTeam } from '@/components/sections/behind-the-team';
 import { Button } from '@/components/ui/button';
 import {
@@ -29,6 +28,7 @@ import {
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import BookkeepingQuoteForm from './_components/bookkeeping-quote-form';
 
 const pageUrl = 'https://www.invisorcpa.ca/lp/bookkeeping-ontario';
 
@@ -462,17 +462,10 @@ export default function BookkeepingOntarioPage() {
                         </div>
                         <div
                             id="hero-form"
-                            className="mx-auto w-full max-w-xl sm:mx-0 sm:max-h-[430px]"
+                            className="mx-auto w-full max-w-xl sm:mx-0"
                         >
-                            <ContactUsForm />
+                            <BookkeepingQuoteForm />
                         </div>
-
-                        {/* <div
-                            id="hero-form"
-                            className="rounded-[2rem] border border-[#DCE6F2] bg-white p-3 shadow-sm"
-                        >
-                            <ContactUsForm />
-                        </div> */}
                     </div>
                 </div>
             </section>
@@ -1045,16 +1038,9 @@ export default function BookkeepingOntarioPage() {
                             </a>
                         </div>
                     </div>
-                     <div className="mx-auto  w-full max-w-xl sm:mx-0 sm:max-h-[430px]">
-                            <ContactUsForm />
-
-                </div>
-                    {/* <div
-                        id="final-quote-form"
-                        className="rounded-[2rem] border border-white/10 bg-white p-3 shadow-sm"
-                    >
-                        <ContactUsForm />
-                    </div> */}
+                    <div className="mx-auto w-full max-w-xl sm:mx-0">
+                        <BookkeepingQuoteForm />
+                    </div>
                 </div>
             </section>
 
