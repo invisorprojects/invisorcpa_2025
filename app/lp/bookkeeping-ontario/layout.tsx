@@ -5,6 +5,7 @@ import '../../(frontend)/globals.css';
 import { Button } from '@/components/ui/button';
 import { openSans, poppins } from '@/constants/FONTS';
 import { ArrowRight, Leaf, Mail, Phone } from 'lucide-react';
+import ScrollLink from './_components/scroll-link';
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://www.invisorcpa.ca'),
@@ -55,10 +56,10 @@ function BookkeepingOntarioHeader() {
                         size="lg"
                         className="h-11 rounded-full px-5 text-sm font-semibold sm:px-8 sm:text-base"
                     >
-                        <Link href="#hero-form">
+                        <ScrollLink href="#hero-form">
                             Get Free Quote
                             <ArrowRight data-icon="inline-end" />
-                        </Link>
+                        </ScrollLink>
                     </Button>
                 </div>
             </header>

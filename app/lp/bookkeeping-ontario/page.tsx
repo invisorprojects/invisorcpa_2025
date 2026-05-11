@@ -27,8 +27,8 @@ import {
 } from 'lucide-react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 import BookkeepingQuoteForm from './_components/bookkeeping-quote-form';
+import ScrollLink from './_components/scroll-link';
 
 const pageUrl = 'https://www.invisorcpa.ca/lp/bookkeeping-ontario';
 
@@ -104,18 +104,21 @@ const testimonials = [
     {
         initials: 'SM',
         name: 'Sarah M.',
+        image: '/assets/lp-testimonial/sara.webp',
         meta: 'Restaurant Owner, Toronto, ON',
         quote: "Switched to Invisor after my last bookkeeper missed an HST filing. Geevar's team caught up six months of messy books in two weeks. Now everything runs like clockwork.",
     },
     {
         initials: 'DR',
         name: 'David R.',
+        image: '/assets/lp-testimonial/david.webp',
         meta: 'General Contractor, London, ON',
         quote: "As a contractor running between job sites, I don't have time for spreadsheets. Invisor sends me my P&L every month and just handles my GST. Best decision I made this year.",
     },
     {
         initials: 'PJ',
         name: 'Priya J.',
+        image: '/assets/lp-testimonial/priya.webp',
         meta: 'E-commerce Founder, Mississauga, ON',
         quote: "What I love is that they actually pick up the phone. When CRA sent me a review letter, Invisor handled the entire response. I didn't lose a single hour of sleep.",
     },
@@ -434,10 +437,10 @@ export default function BookkeepingOntarioPage() {
                         </div>
                         <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
                             <Button asChild size="lg" className="rounded-full">
-                                <Link href="#hero-form">
+                                <ScrollLink href="#hero-form">
                                     Get My Free Quote in 24 Hours
                                     <ArrowRight data-icon="inline-end" />
-                                </Link>
+                                </ScrollLink>
                             </Button>
                             <a
                                 href="tel:+12262273482"
@@ -450,19 +453,10 @@ export default function BookkeepingOntarioPage() {
                     </div>
 
                     <div className="flex flex-col gap-5">
-                        <div className="overflow-hidden rounded-[2rem] bg-[#EAF4FF] p-3 shadow-sm">
-                            <Image
-                                src="/assets/banners/banner-4.webp"
-                                alt="Ontario small business owner reviewing bookkeeping reports"
-                                width={1600}
-                                height={900}
-                                priority
-                                className="h-[230px] w-full rounded-[1.5rem] object-cover sm:h-[300px]"
-                            />
-                        </div>
+                   
                         <div
                             id="hero-form"
-                            className="mx-auto w-full max-w-xl sm:mx-0"
+                            className="mx-auto w-full max-w-xl scroll-mt-28 sm:mx-0"
                         >
                             <BookkeepingQuoteForm />
                         </div>
@@ -506,10 +500,10 @@ export default function BookkeepingOntarioPage() {
                         every month.
                     </p>
                     <Button asChild size="lg" className="rounded-full">
-                        <Link href="#hero-form">
+                        <ScrollLink href="#hero-form">
                             Sound familiar? Get your free quote
                             <ArrowRight data-icon="inline-end" />
-                        </Link>
+                        </ScrollLink>
                     </Button>
                 </div>
             </section>
@@ -554,10 +548,10 @@ export default function BookkeepingOntarioPage() {
                             size="lg"
                             className="rounded-full bg-white text-[#0E172A] hover:bg-white/90"
                         >
-                            <Link href="#hero-form">
+                            <ScrollLink href="#hero-form">
                                 Get my custom quote based on my business
                                 <ArrowRight data-icon="inline-end" />
-                            </Link>
+                            </ScrollLink>
                         </Button>
                     </div>
                 </div>
@@ -603,10 +597,10 @@ export default function BookkeepingOntarioPage() {
                     </div>
                     <div className="flex justify-center">
                         <Button asChild size="lg" className="rounded-full">
-                            <Link href="#hero-form">
+                            <ScrollLink href="#hero-form">
                                 Get My Free Quote
                                 <ArrowRight data-icon="inline-end" />
-                            </Link>
+                            </ScrollLink>
                         </Button>
                     </div>
                 </div>
@@ -637,9 +631,13 @@ export default function BookkeepingOntarioPage() {
                                     </p>
                                 </div>
                                 <div className="flex items-center gap-3 border-t border-[#E6EEF7] pt-5">
-                                    <span className="bg-primary flex size-11 items-center justify-center rounded-full text-sm font-semibold text-white">
-                                        {testimonial.initials}
-                                    </span>
+                                    <Image
+                                        src={testimonial.image}
+                                        alt={testimonial.name}
+                                        width={50}
+                                        height={50}
+                                        className="rounded-full"
+                                    />
                                     <div>
                                         <p className="text-primary text-sm font-semibold">
                                             {testimonial.name}
@@ -703,10 +701,10 @@ export default function BookkeepingOntarioPage() {
                     </div>
                     <div className="flex justify-center">
                         <Button asChild size="lg" className="rounded-full">
-                            <Link href="#hero-form">
+                            <ScrollLink href="#hero-form">
                                 Start Step 1: Get My Free Quote
                                 <ArrowRight data-icon="inline-end" />
-                            </Link>
+                            </ScrollLink>
                         </Button>
                     </div>
                 </div>
@@ -790,10 +788,10 @@ export default function BookkeepingOntarioPage() {
                                         item.featured ? 'default' : 'outline'
                                     }
                                 >
-                                    <Link href="#hero-form">
+                                    <ScrollLink href="#hero-form">
                                         Get This Package
                                         <ArrowRight data-icon="inline-end" />
-                                    </Link>
+                                    </ScrollLink>
                                 </Button>
                             </article>
                         ))}
@@ -801,22 +799,22 @@ export default function BookkeepingOntarioPage() {
                     <div className="mx-auto flex max-w-3xl flex-col gap-3 text-center text-sm leading-7 text-[#4F5565]">
                         <p>
                             Not sure which package fits?{' '}
-                            <Link
+                            <ScrollLink
                                 href="#hero-form"
                                 className="text-primary font-semibold underline-offset-4 hover:underline"
                             >
                                 Get a personalized recommendation in your free
                                 consultation.
-                            </Link>
+                            </ScrollLink>
                         </p>
                         <p>
                             More than 500 transactions per month?{' '}
-                            <Link
+                            <ScrollLink
                                 href="#hero-form"
                                 className="text-primary font-semibold underline-offset-4 hover:underline"
                             >
                                 We offer custom enterprise packages.
-                            </Link>
+                            </ScrollLink>
                         </p>
                     </div>
                 </div>
@@ -915,10 +913,10 @@ export default function BookkeepingOntarioPage() {
                             businesses across every sector.
                         </p>
                         <Button asChild size="lg" className="rounded-full">
-                            <Link href="#hero-form">
+                            <ScrollLink href="#hero-form">
                                 Tell us about your business
                                 <ArrowRight data-icon="inline-end" />
-                            </Link>
+                            </ScrollLink>
                         </Button>
                     </div>
                 </div>
@@ -943,10 +941,10 @@ export default function BookkeepingOntarioPage() {
                             variant="secondary"
                             className="mt-8 rounded-full"
                         >
-                            <Link href="#hero-form">
+                            <ScrollLink href="#hero-form">
                                 Ask About Your Business
                                 <ArrowRight data-icon="inline-end" />
-                            </Link>
+                            </ScrollLink>
                         </Button>
                     </div>
                     <Accordion
@@ -1045,12 +1043,12 @@ export default function BookkeepingOntarioPage() {
             </section>
 
 
-            <Link
+            <ScrollLink
                 href="#hero-form"
                 className="bg-primary fixed right-4 bottom-4 left-4 z-40 rounded-full px-5 py-4 text-center text-sm font-bold text-white shadow-lg sm:hidden"
             >
                 Get Free Quote
-            </Link>
+            </ScrollLink>
         </main>
     );
 }
