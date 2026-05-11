@@ -73,14 +73,16 @@ function BookkeepingOntarioFooter() {
             <div className="mx-auto flex max-w-[1490px] flex-col gap-14">
                 <div className="grid gap-12 lg:grid-cols-[1.35fr_0.8fr_0.9fr]">
                     <div className="flex max-w-xl flex-col items-start gap-7">
-                        <Link
-                            href="/"
-                            className="font-serif text-3xl leading-none font-bold tracking-[-0.03em] text-white"
-                            aria-label="Invisor home"
-                        >
-                            INVISOR
-                            <span className="text-[#FACC15]">.</span>
-                        </Link>
+                          <Link href="/" aria-label="Invisor home">
+                        <Image
+                            src="/invisorcpa-logo.png"
+                            alt="Invisor"
+                            width={980}
+                            height={256}
+                            priority
+                            className="h-10 w-auto"
+                        />
+                    </Link>
                         <p className="max-w-[560px] text-base leading-8 text-white/60">
                             CPA-led bookkeeping and tax services for Canadian
                             small businesses since 2008.
