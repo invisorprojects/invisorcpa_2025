@@ -212,22 +212,27 @@ export default function RootLayout({
                         `}
                     </Script>
 
-                    {/* Tawk.to Chat Widget */}
+                    {/* Zoho SalesIQ Chat Widget */}
                     <Script
-                        id="tawk-to-script"
+                        id="zsiqchat"
                         strategy="lazyOnload"
                         dangerouslySetInnerHTML={{
                             __html: `
-              var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-              (function(){
-                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-                s1.async=true;
-                s1.src='https://embed.tawk.to/687e45c13b2af81922773516/1j0mk1036';
-                s1.charset='UTF-8';
-                s1.setAttribute('crossorigin','*');
-                s0.parentNode.insertBefore(s1,s0);
-              })();
-            `,
+                                var $zoho = $zoho || {};
+                                $zoho.salesiq = $zoho.salesiq || {
+                                    widgetcode: "siq1d948c6a930ae771b716446ddda51a6f4660fbc26975166a5c4a2f177d9d12bb901e024f6efc8db9c532992309d4058a",
+                                    values: {},
+                                    ready: function(){}
+                                };
+                                var d = document;
+                                var s = d.createElement("script");
+                                s.type = "text/javascript";
+                                s.id = "zsiqscript";
+                                s.defer = true;
+                                s.src = "https://salesiq.zoho.in/widget";
+                                var t = d.getElementsByTagName("script")[0];
+                                t.parentNode.insertBefore(s, t);
+                            `,
                         }}
                     />
                 </StoryblokProvider>
