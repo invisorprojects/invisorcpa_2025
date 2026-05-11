@@ -22,15 +22,15 @@ const footerBadges = [
 function BookkeepingOntarioHeader() {
     return (
         <>
-            <div className="bg-secondary/10 px-4 py-2.5 text-foreground sm:px-8 lg:px-16 xl:px-24">
+            <div className="bg-secondary/10 text-foreground px-4 py-2.5 sm:px-8 lg:px-16 xl:px-24">
                 <div className="mx-auto flex max-w-[1490px] flex-col gap-2 text-sm sm:flex-row sm:items-center sm:justify-between">
-                    <p className="inline-flex w-fit items-center gap-1.5 font-medium text-primary">
+                    <p className="text-primary inline-flex w-fit items-center gap-1.5 font-medium">
                         <Leaf className="size-4" aria-hidden="true" />
                         Member - Canadian Income Tax EFILE Association
                     </p>
                     <a
                         href="tel:+12262273482"
-                        className="inline-flex w-fit items-center gap-1.5 font-semibold text-primary transition-colors hover:text-secondary"
+                        className="text-primary hover:text-secondary inline-flex w-fit items-center gap-1.5 font-semibold transition-colors"
                         aria-label="Call Invisor at +1 (226) 227-3482"
                     >
                         <Phone className="size-4" />
@@ -74,16 +74,16 @@ function BookkeepingOntarioFooter() {
             <div className="mx-auto flex max-w-[1490px] flex-col gap-14">
                 <div className="grid gap-12 lg:grid-cols-[1.35fr_0.8fr_0.9fr]">
                     <div className="flex max-w-xl flex-col items-start gap-7">
-                          <Link href="/" aria-label="Invisor home">
-                        <Image
-                            src="/invisorcpa-logo.png"
-                            alt="Invisor"
-                            width={980}
-                            height={256}
-                            priority
-                            className="h-10 w-auto"
-                        />
-                    </Link>
+                        <Link href="/" aria-label="Invisor home">
+                            <Image
+                                src="/invisorcpa-logo.png"
+                                alt="Invisor"
+                                width={980}
+                                height={256}
+                                priority
+                                className="h-10 w-auto"
+                            />
+                        </Link>
                         <p className="max-w-[560px] text-base leading-8 text-white/60">
                             CPA-led bookkeeping and tax services for Canadian
                             small businesses since 2008.
@@ -179,8 +179,8 @@ export default function BookkeepingOntarioLayout({
             lang="en"
             className={`${poppins.variable} ${openSans.variable} scroll-smooth antialiased`}
         >
-                   <head>
-       {/* Google Tag Manager */}
+            <head>
+                {/* Google Tag Manager */}
                 <Script id="google-tag-manager" strategy="beforeInteractive">
                     {`
                         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -191,8 +191,7 @@ export default function BookkeepingOntarioLayout({
                     `}
                 </Script>
                 {/* End Google Tag Manager */}
-
-        </head>
+            </head>
             <body>
                 <BookkeepingOntarioHeader />
                 {children}

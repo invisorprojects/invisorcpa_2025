@@ -32,7 +32,7 @@ const serviceItems = [
     {
         title: 'HST/GST Filing & Sales Tax Compliance',
         description:
-            "We prepare and file HST returns accurately and on time, including support for mixed supplies, input tax credits, and Ontario-specific compliance requirements.",
+            'We prepare and file HST returns accurately and on time, including support for mixed supplies, input tax credits, and Ontario-specific compliance requirements.',
     },
     {
         title: 'Payroll Processing & Source Deductions',
@@ -123,55 +123,45 @@ const faqs = [
     {
         question:
             'How much do bookkeeping services cost for a small business in Ontario?',
-        answer:
-            "Pricing depends on transaction volume, complexity, and the services you need. Our bookkeeping plans are fixed-fee, and most small businesses land in a range comparable to a part-time bookkeeper, but with CPA-level oversight included.",
+        answer: 'Pricing depends on transaction volume, complexity, and the services you need. Our bookkeeping plans are fixed-fee, and most small businesses land in a range comparable to a part-time bookkeeper, but with CPA-level oversight included.',
     },
     {
         question: "What's the difference between a bookkeeper and a CPA?",
-        answer:
-            'A bookkeeper handles transaction recording, reconciliations, and expense categorization. A CPA also brings training in tax law, financial analysis, and advisory, so you get accurate books plus stronger financial guidance.',
+        answer: 'A bookkeeper handles transaction recording, reconciliations, and expense categorization. A CPA also brings training in tax law, financial analysis, and advisory, so you get accurate books plus stronger financial guidance.',
     },
     {
         question:
             'Do I really need professional bookkeeping if my business is small?',
-        answer:
-            'Yes. Smaller businesses often feel errors more sharply. Accurate bookkeeping helps you protect margins, claim available deductions, stay CRA-compliant, and make decisions using reliable numbers.',
+        answer: 'Yes. Smaller businesses often feel errors more sharply. Accurate bookkeeping helps you protect margins, claim available deductions, stay CRA-compliant, and make decisions using reliable numbers.',
     },
     {
         question: 'Can you clean up messy or backlogged books?',
-        answer:
-            'Yes. We regularly help Ontario businesses catch up months or years of backlog, reconcile accounts, and establish a clean baseline going forward.',
+        answer: 'Yes. We regularly help Ontario businesses catch up months or years of backlog, reconcile accounts, and establish a clean baseline going forward.',
     },
     {
         question: 'What accounting software do you work with?',
-        answer:
-            'We primarily work with QuickBooks Online, Xero, and Wave. If you already have a system, we can usually work within it. If not, we will recommend and configure the right fit.',
+        answer: 'We primarily work with QuickBooks Online, Xero, and Wave. If you already have a system, we can usually work within it. If not, we will recommend and configure the right fit.',
     },
     {
         question: 'How does virtual bookkeeping work?',
-        answer:
-            'We connect securely to your cloud accounting tools, bank feeds, and shared documents, then manage your books remotely while communicating by phone, email, or video.',
+        answer: 'We connect securely to your cloud accounting tools, bank feeds, and shared documents, then manage your books remotely while communicating by phone, email, or video.',
     },
     {
         question: 'Will I have a dedicated bookkeeper assigned to my account?',
-        answer:
-            'Yes. You work with a consistent point of contact who learns your business and keeps continuity in your reporting process.',
+        answer: 'Yes. You work with a consistent point of contact who learns your business and keeps continuity in your reporting process.',
     },
     {
         question: 'What if I get audited by the CRA?',
-        answer:
-            'Clean, organized books are your best defense. We keep your records audit-ready and can help you respond if the CRA requests information.',
+        answer: 'Clean, organized books are your best defense. We keep your records audit-ready and can help you respond if the CRA requests information.',
     },
     {
         question: 'How often will I receive financial reports?',
-        answer:
-            'Most clients receive monthly financial statements, including profit and loss and balance sheet reports. We can also support custom weekly or quarterly reporting.',
+        answer: 'Most clients receive monthly financial statements, including profit and loss and balance sheet reports. We can also support custom weekly or quarterly reporting.',
     },
     {
         question:
             'When should a small business start using professional bookkeeping services?',
-        answer:
-            'As early as possible. Starting early prevents costly cleanup later and gives you financial visibility from the beginning.',
+        answer: 'As early as possible. Starting early prevents costly cleanup later and gives you financial visibility from the beginning.',
     },
 ];
 
@@ -292,11 +282,11 @@ export default function Page() {
                         </h1>
                         <div className="space-y-4 text-base leading-8 text-[#4F5565] sm:text-lg">
                             <p>
-                                Running a small business in Ontario means wearing
-                                a dozen hats before lunch. You handle sales,
-                                customer service, hiring, and operations, and
-                                somewhere in the middle of that, the books still
-                                need to get done.
+                                Running a small business in Ontario means
+                                wearing a dozen hats before lunch. You handle
+                                sales, customer service, hiring, and operations,
+                                and somewhere in the middle of that, the books
+                                still need to get done.
                             </p>
                             <p>
                                 At Invisor CPA, we take bookkeeping off your
@@ -485,9 +475,9 @@ export default function Page() {
                         </h2>
                         <p className="mt-4 text-base leading-8 text-[#4F5565]">
                             We serve small businesses across virtually every
-                            industry in Ontario. We do not force one-size-fits-all
-                            bookkeeping because your business does not operate
-                            that way.
+                            industry in Ontario. We do not force
+                            one-size-fits-all bookkeeping because your business
+                            does not operate that way.
                         </p>
                         <div className="mt-6 grid gap-3 sm:grid-cols-2">
                             {industries.map((industry) => (
@@ -653,7 +643,7 @@ export default function Page() {
             <section className="bg-[#F4F8FC] px-4 py-12 sm:px-8 lg:px-16 xl:px-24">
                 <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
                     <div className="rounded-[2rem] bg-[linear-gradient(160deg,#0E172A_0%,#123A6B_65%,#1E5C94_100%)] p-8 text-white shadow-sm lg:sticky lg:top-8 lg:h-fit">
-                        <p className="text-sm font-semibold tracking-[0.24em] uppercase text-white/70">
+                        <p className="text-sm font-semibold tracking-[0.24em] text-white/70 uppercase">
                             FAQs
                         </p>
                         <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
@@ -720,10 +710,12 @@ export default function Page() {
                             >
                                 <summary className="flex cursor-pointer list-none items-start gap-4 rounded-[1.5rem] px-5 py-5 transition-colors duration-300 group-open:bg-[#F8FBFF]">
                                     <span className="bg-primary/10 text-primary inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl text-sm font-semibold transition-transform duration-300 ease-out group-open:scale-105">
-                                        {(index + 1).toString().padStart(2, '0')}
+                                        {(index + 1)
+                                            .toString()
+                                            .padStart(2, '0')}
                                     </span>
                                     <span className="min-w-0 flex-1">
-                                        <span className="text-primary block text-base font-semibold transition-colors duration-300 sm:text-lg group-open:text-[#123A6B]">
+                                        <span className="text-primary block text-base font-semibold transition-colors duration-300 group-open:text-[#123A6B] sm:text-lg">
                                             {faq.question}
                                         </span>
                                     </span>
@@ -734,12 +726,12 @@ export default function Page() {
                                 </summary>
                                 <div className="grid grid-rows-[0fr] px-5 pl-[4.75rem] opacity-0 transition-[grid-template-rows,opacity] duration-300 ease-out group-open:grid-rows-[1fr] group-open:opacity-100">
                                     <div className="overflow-hidden">
-                                        <div className="border-t border-[#E6EEF7] pb-5 pt-4">
-                                        <p className="text-sm leading-7 text-[#596172] sm:text-base">
-                                            {faq.answer}
-                                        </p>
+                                        <div className="border-t border-[#E6EEF7] pt-4 pb-5">
+                                            <p className="text-sm leading-7 text-[#596172] sm:text-base">
+                                                {faq.answer}
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
                                 </div>
                             </details>
                         ))}
@@ -751,7 +743,8 @@ export default function Page() {
                 <div className="rounded-[2.5rem] bg-[linear-gradient(135deg,#0E172A_0%,#123A6B_100%)] p-8 text-white sm:p-10 lg:p-14">
                     <div className="max-w-4xl">
                         <h2 className="text-3xl font-bold sm:text-4xl">
-                            Stop Stressing About Your Books. We&apos;ve Got This.
+                            Stop Stressing About Your Books. We&apos;ve Got
+                            This.
                         </h2>
                         <p className="mt-5 text-base leading-8 text-white/85 sm:text-lg">
                             You did not start your business to spend evenings

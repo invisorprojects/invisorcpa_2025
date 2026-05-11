@@ -106,8 +106,7 @@ export function NavBar() {
 
                                 <Link
                                     className="md:hidden"
-                    href="https://calendly.com/geevar-invisorstaffing/meeting-with-geevar-thambi"
-
+                                    href="https://calendly.com/geevar-invisorstaffing/meeting-with-geevar-thambi"
                                     target="_blank"
                                 >
                                     <Button

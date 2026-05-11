@@ -197,7 +197,7 @@ export default async function Home() {
                     </div>
                 </div>
             </section>
-<CalendlyInlineWidget/>
+            <CalendlyInlineWidget />
 
             <OrganizationsSection />
             <section className="flex flex-col items-center justify-between bg-[#E5F2F8] p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">

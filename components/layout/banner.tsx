@@ -38,7 +38,7 @@ export default function Banner() {
                             updates.
                         </p>
                         <p className="text-xs sm:text-sm">
-                        🍁 Member - Canadian Income Tax EFILE Association
+                            🍁 Member - Canadian Income Tax EFILE Association
                         </p>
                         <div className="flex gap-2 max-md:flex-wrap">
                             <NewsLetterModal />
@@ -71,9 +71,6 @@ export default function Banner() {
                                     </TooltipContent>
                                 </Tooltip>
                             </a>
-
-                     
-
                         </div>
                     </div>
                 </div>

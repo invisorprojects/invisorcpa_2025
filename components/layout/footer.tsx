@@ -79,7 +79,7 @@ export default function Footer() {
                             <li>
                                 <Link href="/services">Services</Link>
                             </li>
-                               <li>
+                            <li>
                                 <Link href="/case-studies">Case Study</Link>
                             </li>
                             <li>
@@ -97,17 +97,16 @@ export default function Footer() {
                                     Payroll Calculator
                                 </Link>
                             </li>
-                               <li>
+                            <li>
                                 <Link href="/free-invoice-generator">
                                     Invoice Generator
                                 </Link>
                             </li>
-                                   <li>
+                            <li>
                                 <Link href="/download">
                                     Download Exam Software
                                 </Link>
                             </li>
-                         
 
                             {/* <li>
                                 <Link href="/industries">Industries</Link>

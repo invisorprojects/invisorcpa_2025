@@ -453,7 +453,6 @@ export default function BookkeepingOntarioPage() {
                     </div>
 
                     <div className="flex flex-col gap-5">
-                   
                         <div
                             id="hero-form"
                             className="mx-auto w-full max-w-xl scroll-mt-28 sm:mx-0"
@@ -558,7 +557,6 @@ export default function BookkeepingOntarioPage() {
             </section>
 
             <BehindTheTeam />
-
 
             <section className="px-4 py-14 sm:px-8 lg:px-16 xl:px-24">
                 <div className="flex flex-col gap-10">
@@ -1041,7 +1039,6 @@ export default function BookkeepingOntarioPage() {
                     </div>
                 </div>
             </section>
-
 
             <ScrollLink
                 href="#hero-form"

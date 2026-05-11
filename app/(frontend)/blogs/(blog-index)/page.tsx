@@ -102,7 +102,7 @@ export default async function BlogIndexPage() {
                 </Link>
             </div>
 
-   <div className="group relative max-w-sm overflow-hidden rounded-xl shadow-sm">
+            <div className="group relative max-w-sm overflow-hidden rounded-xl shadow-sm">
                 <Image
                     src={'/assets/banners/banner-10.webp'}
                     alt={`6 Signs Your Small Business Needs a Professional Accountant - Tax services blog post by Invisor CPA, Canadian tax accountants`}
@@ -117,20 +117,20 @@ export default async function BlogIndexPage() {
                 >
                     <div className="absolute right-0 bottom-0 left-0 m-4 rounded-xl bg-white p-6 shadow-md transition-transform duration-300 group-hover:scale-95">
                         <h3 className="text-lg leading-snug font-bold">
-                        Multigenerational Home Renovation Tax Credit (MHRTC) Canada - Complete 2025 Guide
+                            Multigenerational Home Renovation Tax Credit (MHRTC)
+                            Canada - Complete 2025 Guide
                         </h3>
                         <div className="text-primary mt-4 inline-flex items-center text-sm font-semibold hover:underline">
                             Read Post
                             <span className="sr-only">
-                                :Multigenerational Home Renovation Tax Credit (MHRTC) Canada - Complete 2025 Guide
+                                :Multigenerational Home Renovation Tax Credit
+                                (MHRTC) Canada - Complete 2025 Guide
                             </span>
                             <CircleArrowRight className="ml-1 h-4 w-4" />
                         </div>
                     </div>
                 </Link>
             </div>
-
-
         </div>
     );
 }

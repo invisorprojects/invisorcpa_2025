@@ -6,41 +6,44 @@ import Script from 'next/script';
 export default function ZohoLeadsPage() {
     useEffect(() => {
         // Make functions globally available as the original script expects
-        const mndFields1110346000000433216 = [
-            'Potential Name',
-            'POTENTIALCF7',
-        ];
+        const mndFields1110346000000433216 = ['Potential Name', 'POTENTIALCF7'];
         const fldLangVal1110346000000433216 = ['Name', 'Contact Number'];
 
         const wfInnerWidth = window.innerWidth;
-        const form = document.forms[
-            'BiginWebToRecordForm1110346000000433216' as any
-        ];
+        const form =
+            document.forms['BiginWebToRecordForm1110346000000433216' as any];
         if (wfInnerWidth <= 768 && form) {
             form.setAttribute('data-ux-form-alignment', 'top');
         }
 
         function removeError(fieldObj: any) {
             const parentElement = fieldObj.closest('.wf-field');
-            const childEle =
-                parentElement?.getElementsByClassName('wf-error-parent-ele')[0];
+            const childEle = parentElement?.getElementsByClassName(
+                'wf-error-parent-ele'
+            )[0];
             if (childEle && parentElement) {
                 parentElement.classList.remove('wf-field-error-active');
                 parentElement.removeChild(
-                    parentElement.getElementsByClassName('wf-error-parent-ele')[0]
+                    parentElement.getElementsByClassName(
+                        'wf-error-parent-ele'
+                    )[0]
                 );
             }
         }
 
         function setError(fieldObj: any, label: string) {
             const parentElement = fieldObj.closest('.wf-field');
-            const childEle =
-                parentElement?.getElementsByClassName('wf-error-parent-ele')[0];
+            const childEle = parentElement?.getElementsByClassName(
+                'wf-error-parent-ele'
+            )[0];
             if (!childEle && parentElement) {
                 const errorParentEle = document.createElement('DIV');
                 const spanEle = document.createElement('SPAN');
                 const viewMoreEle = document.createElement('SPAN');
-                spanEle.setAttribute('class', 'wf-field-error wf-field-error-long');
+                spanEle.setAttribute(
+                    'class',
+                    'wf-field-error wf-field-error-long'
+                );
                 spanEle.innerHTML = label;
                 errorParentEle.classList.add('wf-error-parent-ele');
                 errorParentEle.appendChild(spanEle);
@@ -62,21 +65,25 @@ export default function ZohoLeadsPage() {
 
         function validateFields1110346000000433216() {
             let isReturn = true;
-            const form = document.forms[
-                'BiginWebToRecordForm1110346000000433216' as any
-            ];
+            const form =
+                document.forms[
+                    'BiginWebToRecordForm1110346000000433216' as any
+                ];
             if (!form) return false;
             const validateFld = form.querySelectorAll('[fvalidate=true]');
             let i;
             for (i = 0; i < validateFld.length; i++) {
-                const validateFldVal = (validateFld[i] as HTMLInputElement).value;
+                const validateFldVal = (validateFld[i] as HTMLInputElement)
+                    .value;
                 const fType = validateFld[i].getAttribute('ftype');
                 if (
                     validateFldVal !== '' ||
                     (validateFldVal === '' && fType?.indexOf('date') !== -1)
                 ) {
                     const wfLabel =
-                        validateFld[i].parentElement?.parentElement?.parentElement?.getElementsByClassName(
+                        validateFld[
+                            i
+                        ].parentElement?.parentElement?.parentElement?.getElementsByClassName(
                             'wf-label'
                         )[0];
                     const fLabel = wfLabel ? wfLabel.innerHTML : '';
@@ -95,7 +102,8 @@ export default function ZohoLeadsPage() {
                                 if (
                                     validateFldVal.length <
                                     parseInt(
-                                        validateFld[i].getAttribute('fmin') || '0'
+                                        validateFld[i].getAttribute('fmin') ||
+                                            '0'
                                     )
                                 ) {
                                     errorKey =
@@ -106,7 +114,8 @@ export default function ZohoLeadsPage() {
                                 } else if (
                                     validateFldVal.length >
                                     parseInt(
-                                        validateFld[i].getAttribute('fmax') || '0'
+                                        validateFld[i].getAttribute('fmax') ||
+                                            '0'
                                     )
                                 ) {
                                     errorKey =
@@ -127,7 +136,10 @@ export default function ZohoLeadsPage() {
                                     /^([A-Za-z0-9-._%'+/]+@[A-Za-z0-9.-]+\.[a-zA-Z]{2,22})$/
                                 ) === null
                             ) {
-                                setError(validateFld[i], 'Enter valid ' + fLabel);
+                                setError(
+                                    validateFld[i],
+                                    'Enter valid ' + fLabel
+                                );
                                 isReturn = false;
                             }
                             break;
@@ -136,11 +148,15 @@ export default function ZohoLeadsPage() {
                             let isErrorNum = false,
                                 errorKeyNum = 'Enter valid ' + fLabel;
                             if (
-                                (validateFld[i].getAttribute('ftype') === 'number' &&
-                                    validateFldVal.match(/^[0-9]+$/) === null) ||
-                                (validateFld[i].getAttribute('ftype') === 'double' &&
-                                    validateFldVal.match(/^[0-9]*(\.[0-9]{0,2})?$/) ===
-                                        null)
+                                (validateFld[i].getAttribute('ftype') ===
+                                    'number' &&
+                                    validateFldVal.match(/^[0-9]+$/) ===
+                                        null) ||
+                                (validateFld[i].getAttribute('ftype') ===
+                                    'double' &&
+                                    validateFldVal.match(
+                                        /^[0-9]*(\.[0-9]{0,2})?$/
+                                    ) === null)
                             ) {
                                 isErrorNum = true;
                             } else if (validateFld[i].hasAttribute('fmin')) {
@@ -174,9 +190,14 @@ export default function ZohoLeadsPage() {
                             break;
                         case 'mobile':
                             if (
-                                validateFldVal.match(/^[0-9a-zA-Z+.()\-;\s]+$/) === null
+                                validateFldVal.match(
+                                    /^[0-9a-zA-Z+.()\-;\s]+$/
+                                ) === null
                             ) {
-                                setError(validateFld[i], 'Enter valid ' + fLabel);
+                                setError(
+                                    validateFld[i],
+                                    'Enter valid ' + fLabel
+                                );
                                 isReturn = false;
                             }
                             break;
@@ -190,29 +211,39 @@ export default function ZohoLeadsPage() {
             let isReturn = true;
             let isNotCaptcha = false;
             for (let i = 0; i < mndFields1110346000000433216.length; i++) {
-                const fieldObj = (document.forms[
-                    'BiginWebToRecordForm1110346000000433216' as any
-                ] as any)[mndFields1110346000000433216[i]];
+                const fieldObj = (
+                    document.forms[
+                        'BiginWebToRecordForm1110346000000433216' as any
+                    ] as any
+                )[mndFields1110346000000433216[i]];
                 if (fieldObj) {
                     if (
-                        (fieldObj.value as string).replace(/^\s+|\s+$/g, '').length ===
-                        0
+                        (fieldObj.value as string).replace(/^\s+|\s+$/g, '')
+                            .length === 0
                     ) {
                         if (fieldObj.type == 'file') {
-                            setError(fieldObj, 'Please select a file to upload.');
+                            setError(
+                                fieldObj,
+                                'Please select a file to upload.'
+                            );
                             isReturn = false;
                         } else {
                             setError(
                                 fieldObj,
-                                fldLangVal1110346000000433216[i] + ' cannot be empty'
+                                fldLangVal1110346000000433216[i] +
+                                    ' cannot be empty'
                             );
                             isReturn = false;
                         }
                     } else if (fieldObj.nodeName == 'SELECT') {
-                        if (fieldObj.options[fieldObj.selectedIndex].value == '-None-') {
+                        if (
+                            fieldObj.options[fieldObj.selectedIndex].value ==
+                            '-None-'
+                        ) {
                             setError(
                                 fieldObj,
-                                fldLangVal1110346000000433216[i] + ' cannot be none.'
+                                fldLangVal1110346000000433216[i] +
+                                    ' cannot be none.'
                             );
                             isReturn = false;
                         }
@@ -220,7 +251,8 @@ export default function ZohoLeadsPage() {
                         if (fieldObj.checked == false) {
                             setError(
                                 fieldObj,
-                                'Please accept  ' + fldLangVal1110346000000433216[i]
+                                'Please accept  ' +
+                                    fldLangVal1110346000000433216[i]
                             );
                             isReturn = false;
                         }
@@ -232,14 +264,20 @@ export default function ZohoLeadsPage() {
                 isReturn = false;
             }
             if (!isReturn) {
-                const errEle = document.getElementsByClassName('wf-field-error');
+                const errEle =
+                    document.getElementsByClassName('wf-field-error');
                 if (errEle && errEle.length > 0) {
                     const fieldElement = errEle[0].closest('.wf-field');
                     if (fieldElement) {
-                        let inputEle: HTMLCollectionOf<HTMLElement> | undefined =
-                            fieldElement.getElementsByTagName('input') as unknown as HTMLCollectionOf<HTMLElement>;
+                        let inputEle:
+                            | HTMLCollectionOf<HTMLElement>
+                            | undefined = fieldElement.getElementsByTagName(
+                            'input'
+                        ) as unknown as HTMLCollectionOf<HTMLElement>;
                         if (!inputEle || inputEle.length == 0) {
-                            inputEle = fieldElement.getElementsByTagName('select') as unknown as HTMLCollectionOf<HTMLElement>;
+                            inputEle = fieldElement.getElementsByTagName(
+                                'select'
+                            ) as unknown as HTMLCollectionOf<HTMLElement>;
                         }
                         if (inputEle && inputEle.length > 0) {
                             inputEle[0].focus();
@@ -267,7 +305,8 @@ export default function ZohoLeadsPage() {
         if (iframe) {
             iframe.addEventListener('load', function () {
                 try {
-                    const doc = (this as HTMLIFrameElement).contentWindow?.document;
+                    const doc = (this as HTMLIFrameElement).contentWindow
+                        ?.document;
                     if (doc && doc.body.childElementCount !== 0) {
                         (this as HTMLIFrameElement).style.display = 'block';
                         const formParent = document.getElementById(
@@ -292,7 +331,9 @@ export default function ZohoLeadsPage() {
 
     return (
         <>
-            <style dangerouslySetInnerHTML={{ __html: `
+            <style
+                dangerouslySetInnerHTML={{
+                    __html: `
                 /* COMMON STYLES */
                 :root,
                 html {
@@ -890,7 +931,9 @@ export default function ZohoLeadsPage() {
                     }
                 }
                 /* ==================== *** Mediaquery ends *** ==================== */
-            ` }} />
+            `,
+                }}
+            />
             <iframe
                 id="hidden1110346000000433216Frame"
                 name="hidden1110346000000433216Frame"
@@ -926,7 +969,8 @@ export default function ZohoLeadsPage() {
                             }
                             // Call validation function - return false to prevent submission if invalid
                             if (
-                                typeof (window as any).validateForm1110346000000433216 ===
+                                typeof (window as any)
+                                    .validateForm1110346000000433216 ===
                                 'function'
                             ) {
                                 const isValid = (
@@ -1002,10 +1046,13 @@ export default function ZohoLeadsPage() {
                                             className="wf-field-item wf-field-input"
                                             onInput={(e) => {
                                                 if (
-                                                    typeof (window as any).removeError ===
+                                                    typeof (window as any)
+                                                        .removeError ===
                                                     'function'
                                                 ) {
-                                                    (window as any).removeError(e.target);
+                                                    (window as any).removeError(
+                                                        e.target
+                                                    );
                                                 }
                                             }}
                                         />
@@ -1028,10 +1075,13 @@ export default function ZohoLeadsPage() {
                                             className="wf-field-item wf-field-input"
                                             onInput={(e) => {
                                                 if (
-                                                    typeof (window as any).removeError ===
+                                                    typeof (window as any)
+                                                        .removeError ===
                                                     'function'
                                                 ) {
-                                                    (window as any).removeError(e.target);
+                                                    (window as any).removeError(
+                                                        e.target
+                                                    );
                                                 }
                                             }}
                                         />
@@ -1054,10 +1104,13 @@ export default function ZohoLeadsPage() {
                                             className="wf-field-item wf-field-input"
                                             onInput={(e) => {
                                                 if (
-                                                    typeof (window as any).removeError ===
+                                                    typeof (window as any)
+                                                        .removeError ===
                                                     'function'
                                                 ) {
-                                                    (window as any).removeError(e.target);
+                                                    (window as any).removeError(
+                                                        e.target
+                                                    );
                                                 }
                                             }}
                                         />
@@ -1075,17 +1128,28 @@ export default function ZohoLeadsPage() {
                                             defaultValue="London"
                                             onChange={(e) => {
                                                 if (
-                                                    typeof (window as any).removeError ===
+                                                    typeof (window as any)
+                                                        .removeError ===
                                                     'function'
                                                 ) {
-                                                    (window as any).removeError(e.target);
+                                                    (window as any).removeError(
+                                                        e.target
+                                                    );
                                                 }
                                             }}
                                         >
-                                            <option value="-None-">-None-</option>
-                                            <option value="London">London</option>
-                                            <option value="Fergus">Fergus</option>
-                                            <option value="Halifax">Halifax</option>
+                                            <option value="-None-">
+                                                -None-
+                                            </option>
+                                            <option value="London">
+                                                London
+                                            </option>
+                                            <option value="Fergus">
+                                                Fergus
+                                            </option>
+                                            <option value="Halifax">
+                                                Halifax
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
@@ -1101,25 +1165,38 @@ export default function ZohoLeadsPage() {
                                             defaultValue="Website"
                                             onChange={(e) => {
                                                 if (
-                                                    typeof (window as any).removeError ===
+                                                    typeof (window as any)
+                                                        .removeError ===
                                                     'function'
                                                 ) {
-                                                    (window as any).removeError(e.target);
+                                                    (window as any).removeError(
+                                                        e.target
+                                                    );
                                                 }
                                             }}
                                         >
-                                            <option value="-None-">-None-</option>
-                                            <option value="Website">Website</option>
+                                            <option value="-None-">
+                                                -None-
+                                            </option>
+                                            <option value="Website">
+                                                Website
+                                            </option>
                                             <option value="Bark">Bark</option>
-                                            <option value="Reference">Reference</option>
+                                            <option value="Reference">
+                                                Reference
+                                            </option>
                                             <option value="Inward Whatsapp">
                                                 Inward Whatsapp
                                             </option>
                                             <option value="Direct Inward Call/SMS">
                                                 Direct Inward Call/SMS
                                             </option>
-                                            <option value="FB/Insta">FB/Insta</option>
-                                            <option value="Google Ads">Google Ads</option>
+                                            <option value="FB/Insta">
+                                                FB/Insta
+                                            </option>
+                                            <option value="Google Ads">
+                                                Google Ads
+                                            </option>
                                             <option value="Events/Trade Show">
                                                 Events/Trade Show
                                             </option>
@@ -1147,10 +1224,13 @@ export default function ZohoLeadsPage() {
                                             defaultValue="New Leads Standard"
                                             onChange={(e) => {
                                                 if (
-                                                    typeof (window as any).removeError ===
+                                                    typeof (window as any)
+                                                        .removeError ===
                                                     'function'
                                                 ) {
-                                                    (window as any).removeError(e.target);
+                                                    (window as any).removeError(
+                                                        e.target
+                                                    );
                                                 }
                                             }}
                                         >
@@ -1172,18 +1252,25 @@ export default function ZohoLeadsPage() {
                                             defaultValue="Untouched"
                                             onChange={(e) => {
                                                 if (
-                                                    typeof (window as any).removeError ===
+                                                    typeof (window as any)
+                                                        .removeError ===
                                                     'function'
                                                 ) {
-                                                    (window as any).removeError(e.target);
+                                                    (window as any).removeError(
+                                                        e.target
+                                                    );
                                                 }
                                             }}
                                         >
-                                            <option value="Closed Won">Closed Won</option>
+                                            <option value="Closed Won">
+                                                Closed Won
+                                            </option>
                                             <option value="Closed Lost">
                                                 Closed Lost
                                             </option>
-                                            <option value="Untouched">Untouched</option>
+                                            <option value="Untouched">
+                                                Untouched
+                                            </option>
                                             <option value="Dialed Not Connected">
                                                 Dialed Not Connected
                                             </option>

@@ -12,8 +12,8 @@ export default function ThankYouLayout({
             lang="en"
             className={`${poppins.variable} ${openSans.variable} antialiased`}
         >
-                               <head>
-       {/* Google Tag Manager */}
+            <head>
+                {/* Google Tag Manager */}
                 <Script id="google-tag-manager" strategy="beforeInteractive">
                     {`
                         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -24,8 +24,7 @@ export default function ThankYouLayout({
                     `}
                 </Script>
                 {/* End Google Tag Manager */}
-
-        </head>
+            </head>
             <body>{children}</body>
         </html>
     );

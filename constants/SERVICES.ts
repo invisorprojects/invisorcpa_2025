@@ -1204,11 +1204,13 @@ export const SERVICES = [
             },
             {
                 caption: 'Bank Reconciliation',
-                content: 'Regular reconciliation of bank and credit card statements.',
+                content:
+                    'Regular reconciliation of bank and credit card statements.',
             },
             {
                 caption: 'Financial Reporting',
-                content: 'Timely generation of P&L, balance sheets, and cash flow statements.',
+                content:
+                    'Timely generation of P&L, balance sheets, and cash flow statements.',
             },
             {
                 caption: 'GST/HST Preparation',
@@ -1216,7 +1218,8 @@ export const SERVICES = [
             },
             {
                 caption: 'Payroll Services',
-                content: 'Complete payroll processing and employee record management.',
+                content:
+                    'Complete payroll processing and employee record management.',
             },
         ],
         our_process: [
@@ -1239,11 +1242,13 @@ export const SERVICES = [
         benefits: [
             {
                 caption: 'Improved Financial Visibility',
-                content: 'Clear insights into your business performance and financial health.',
+                content:
+                    'Clear insights into your business performance and financial health.',
             },
             {
                 caption: 'Better Decision-Making',
-                content: 'Data-driven insights to support strategic business decisions.',
+                content:
+                    'Data-driven insights to support strategic business decisions.',
             },
             {
                 caption: 'Reduced Audit Risk',
@@ -1272,7 +1277,7 @@ export const SERVICES = [
             },
         ],
     },
-      {
+    {
         slug: 'company-incorporation-service-canada',
         title: 'Company Incorporation Service Canada',
         description:
@@ -1306,11 +1311,13 @@ export const SERVICES = [
             },
             {
                 caption: 'Bank Reconciliation',
-                content: 'Regular reconciliation of bank and credit card statements.',
+                content:
+                    'Regular reconciliation of bank and credit card statements.',
             },
             {
                 caption: 'Financial Reporting',
-                content: 'Timely generation of P&L, balance sheets, and cash flow statements.',
+                content:
+                    'Timely generation of P&L, balance sheets, and cash flow statements.',
             },
             {
                 caption: 'GST/HST Preparation',
@@ -1318,7 +1325,8 @@ export const SERVICES = [
             },
             {
                 caption: 'Payroll Services',
-                content: 'Complete payroll processing and employee record management.',
+                content:
+                    'Complete payroll processing and employee record management.',
             },
         ],
         our_process: [
@@ -1341,11 +1349,13 @@ export const SERVICES = [
         benefits: [
             {
                 caption: 'Improved Financial Visibility',
-                content: 'Clear insights into your business performance and financial health.',
+                content:
+                    'Clear insights into your business performance and financial health.',
             },
             {
                 caption: 'Better Decision-Making',
-                content: 'Data-driven insights to support strategic business decisions.',
+                content:
+                    'Data-driven insights to support strategic business decisions.',
             },
             {
                 caption: 'Reduced Audit Risk',

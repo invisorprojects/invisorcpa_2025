@@ -137,7 +137,7 @@ export default function BookkeepingQuoteForm() {
 
                 {state.status === 'ERROR' && (
                     <p
-                        className="rounded-xl border border-destructive/20 bg-destructive/5 px-4 py-3 text-sm font-medium text-destructive"
+                        className="border-destructive/20 bg-destructive/5 text-destructive rounded-xl border px-4 py-3 text-sm font-medium"
                         role="alert"
                     >
                         {state.message}

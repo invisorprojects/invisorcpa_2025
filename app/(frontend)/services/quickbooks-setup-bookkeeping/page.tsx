@@ -146,7 +146,8 @@ export const metadata: Metadata = {
         images: ['/assets/banners/banner-4.webp'],
     },
     alternates: {
-        canonical: 'https://www.invisorcpa.ca/services/quickbooks-setup-bookkeeping',
+        canonical:
+            'https://www.invisorcpa.ca/services/quickbooks-setup-bookkeeping',
     },
 };
 

@@ -1,22 +1,22 @@
 version: 1
 frontend:
-  phases:
-    preBuild:
-      commands:
-        - corepack enable
-        - corepack prepare pnpm@9 --activate
-        - pnpm install --frozen-lockfile
-        - env | grep -e PAYLOAD_SECRET -e DATABASE_URI -e UPLOADTHING_TOKEN >> .env
-    build:
-      commands:
-        - pnpm run build
-        - rm -f node_modules/@swc/core-linux-x64-gnu/swc.linux-x64-gnu.node
-        - rm -f node_modules/@swc/core-linux-x64-musl/swc.linux-x64-musl.node
-  artifacts:
-    baseDirectory: .next
-    files:
-      - '**/*'
-  cache:
-    paths:
-      - $(pnpm store path)
-      - .next/cache/**/*
+    phases:
+        preBuild:
+            commands:
+                - corepack enable
+                - corepack prepare pnpm@9 --activate
+                - pnpm install --frozen-lockfile
+                - env | grep -e PAYLOAD_SECRET -e DATABASE_URI -e UPLOADTHING_TOKEN >> .env
+        build:
+            commands:
+                - pnpm run build
+                - rm -f node_modules/@swc/core-linux-x64-gnu/swc.linux-x64-gnu.node
+                - rm -f node_modules/@swc/core-linux-x64-musl/swc.linux-x64-musl.node
+    artifacts:
+        baseDirectory: .next
+        files:
+            - '**/*'
+    cache:
+        paths:
+            - $(pnpm store path)
+            - .next/cache/**/*
