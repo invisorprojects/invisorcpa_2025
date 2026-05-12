@@ -31,4 +31,14 @@ export const TEAMS = [
         qualification: 'MBA',
         path: '/assets/team/team-members-6.webp',
     },
+    {
+        name: 'Anjali Anil',
+        qualification: 'CMA',
+        path: '/assets/team/team-members-7.webp',
+    },
+    {
+        name: 'Dayana Silvin',
+        qualification: 'CMA',
+        path: '/assets/team/team-members-8.webp',
+    },
 ];
