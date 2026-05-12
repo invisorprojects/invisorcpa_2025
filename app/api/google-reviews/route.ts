@@ -39,6 +39,8 @@ const CACHE_HEADERS = {
     'Cache-Control': `public, s-maxage=${FOURTEEN_DAYS}, stale-while-revalidate=${FOURTEEN_DAYS}`,
 };
 
+export const revalidate = 0;
+
 export async function GET() {
     const placeId = process.env.GOOGLE_PLACE_ID;
     const apiKey = process.env.GOOGLE_MAPS_API_KEY;
