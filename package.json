@@ -2,10 +2,11 @@
     "name": "invisor-global",
     "version": "0.1.0",
     "private": true,
+    "type": "module",
     "scripts": {
         "dev": "next dev",
-        "build": "next build",
-        "start": "next start",
+        "build": "next build --webpack",
+        "start": "next start --webpack",
         "lint": "eslint .",
         "fix": "npx eslint . --fix",
         "format": "exec prettier . --write",
