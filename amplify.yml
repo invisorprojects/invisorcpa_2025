@@ -3,9 +3,12 @@ frontend:
     phases:
         preBuild:
             commands:
-                - npm install -g pnpm
+                - nvm install 20
+                - nvm use 20
+                - corepack enable
+                - corepack prepare pnpm@11.1.0 --activate
                 - pnpm install --frozen-lockfile
-                - env | grep -e PAYLOAD_SECRET -e DATABASE_URI -e UPLOADTHING_TOKEN >> .env
+                - printenv | grep -E '^(PAYLOAD_SECRET|DATABASE_URI|UPLOADTHING_TOKEN|NEXT_PUBLIC_STORYBLOK_TOKEN|NEXT_PUBLIC_SITE_URL|NEXT_PUBLIC_GA_ID)=' > .env.production
         build:
             commands:
                 - pnpm run build
