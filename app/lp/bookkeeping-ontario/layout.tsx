@@ -191,12 +191,12 @@ export default function BookkeepingOntarioLayout({
                     `}
                 </Script>
                 {/* End Google Tag Manager */}
-                  {/* Zoho SalesIQ Chat Widget */}
-                    <Script
-                        id="zsiqchat"
-                        strategy="lazyOnload"
-                        dangerouslySetInnerHTML={{
-                            __html: `
+                {/* Zoho SalesIQ Chat Widget */}
+                <Script
+                    id="zsiqchat"
+                    strategy="lazyOnload"
+                    dangerouslySetInnerHTML={{
+                        __html: `
                                 var $zoho = $zoho || {};
                                 $zoho.salesiq = $zoho.salesiq || {
                                     widgetcode: "siq1d948c6a930ae771b716446ddda51a6f4660fbc26975166a5c4a2f177d9d12bb901e024f6efc8db9c532992309d4058a",
@@ -212,8 +212,8 @@ export default function BookkeepingOntarioLayout({
                                 var t = d.getElementsByTagName("script")[0];
                                 t.parentNode.insertBefore(s, t);
                             `,
-                        }}
-                    />
+                    }}
+                />
             </head>
             <body>
                 <BookkeepingOntarioHeader />

@@ -19,6 +19,7 @@ import { NumberTicker } from '@/components/magicui/number-ticker';
 import CountUp from '@/components/react-bits/count-up';
 import PricingSection from '@/components/PricingSection';
 import CalendlyInlineWidget from '@/components/sections/CalendlyInlineWidget';
+import GoogleReviewsCarousel from '@/components/sections/GoogleReviewsCarousel';
 
 export const metadata: Metadata = {
     title: 'Accountant For Small Business - Tax Services London Ontario',
@@ -527,7 +528,7 @@ export default async function Home() {
             </section>
 
             <Faq />
-
+            <GoogleReviewsCarousel />
             <ContactUs />
         </main>
     );
