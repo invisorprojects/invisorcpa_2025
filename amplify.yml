@@ -3,7 +3,7 @@ frontend:
     phases:
         preBuild:
             commands:
-                - npm install -g pnpm
+                - npm install -g pnpm@11.1.1
                 - pnpm install --frozen-lockfile
                 - env | grep -e PAYLOAD_SECRET -e DATABASE_URI -e UPLOADTHING_TOKEN >> .env
         build:
