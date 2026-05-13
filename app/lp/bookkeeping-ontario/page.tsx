@@ -29,6 +29,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import BookkeepingQuoteForm from './_components/bookkeeping-quote-form';
 import ScrollLink from './_components/scroll-link';
+import GoogleReviewsCarousel from '@/components/sections/GoogleReviewsCarousel';
 
 const pageUrl = 'https://www.invisorcpa.ca/lp/bookkeeping-ontario';
 
@@ -604,68 +605,7 @@ export default function BookkeepingOntarioPage() {
                 </div>
             </section>
 
-            <section className="bg-[#F8FAFC] px-4 py-14 sm:px-8 lg:px-16 xl:px-24">
-                <div className="flex flex-col gap-10">
-                    <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 text-center">
-                        <p className="text-secondary text-sm font-semibold tracking-[0.22em] uppercase">
-                            Trusted Across Canada
-                        </p>
-                        <h2 className="text-primary text-3xl leading-tight font-bold text-balance sm:text-4xl">
-                            Why 1,000+ Canadian businesses trust Invisor.
-                        </h2>
-                    </div>
-                    <div className="grid gap-5 lg:grid-cols-3">
-                        {testimonials.map((testimonial) => (
-                            <article
-                                key={testimonial.name}
-                                className="flex flex-col justify-between gap-6 rounded-[1.75rem] bg-white p-6 shadow-sm"
-                            >
-                                <div className="flex flex-col gap-4">
-                                    <div className="text-sm font-semibold tracking-[0.18em] text-[#F59E0B] uppercase">
-                                        5/5 Rating
-                                    </div>
-                                    <p className="text-base leading-8 text-[#263143]">
-                                        &ldquo;{testimonial.quote}&rdquo;
-                                    </p>
-                                </div>
-                                <div className="flex items-center gap-3 border-t border-[#E6EEF7] pt-5">
-                                    <Image
-                                        src={testimonial.image}
-                                        alt={testimonial.name}
-                                        width={50}
-                                        height={50}
-                                        className="rounded-full"
-                                    />
-                                    <div>
-                                        <p className="text-primary text-sm font-semibold">
-                                            {testimonial.name}
-                                        </p>
-                                        <p className="text-xs text-[#6B7280]">
-                                            {testimonial.meta}
-                                        </p>
-                                    </div>
-                                </div>
-                            </article>
-                        ))}
-                    </div>
-                    <div className="grid gap-3 rounded-[1.5rem] bg-white p-5 text-center shadow-sm sm:grid-cols-5">
-                        {[
-                            'Google Reviews',
-                            'Facebook',
-                            'EFILE Member',
-                            'QuickBooks Partner',
-                            'Xero Partner',
-                        ].map((badge) => (
-                            <div
-                                key={badge}
-                                className="rounded-2xl bg-[#F8FAFC] px-4 py-3 text-sm font-semibold text-[#263143]"
-                            >
-                                {badge}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+        <GoogleReviewsCarousel/>
 
             <section className="px-4 py-14 sm:px-8 lg:px-16 xl:px-24">
                 <div className="flex flex-col gap-10">
