@@ -8,6 +8,7 @@ type GoogleReview = {
         uri?: string;
     };
     googleMapsUri?: string;
+    publishTime?: string;
     rating?: number;
     relativePublishTimeDescription?: string;
     text?: {
@@ -33,13 +34,68 @@ type Review = {
     authorUrl?: string;
     reviewUrl?: string;
 };
+type SortableReview = {
+    publishTime?: string;
+    relativePublishTimeDescription?: string;
+    time?: string;
+};
 const FOURTEEN_DAYS = 60 * 60 * 24 * 14; // 1209600
 const MINIMUM_REVIEW_RATING = 4;
 const CACHE_HEADERS = {
     'Cache-Control': `public, s-maxage=${FOURTEEN_DAYS}, stale-while-revalidate=${FOURTEEN_DAYS}`,
 };
+const RELATIVE_TIME_UNITS: Record<string, number> = {
+    second: 1000,
+    minute: 60 * 1000,
+    hour: 60 * 60 * 1000,
+    day: 24 * 60 * 60 * 1000,
+    week: 7 * 24 * 60 * 60 * 1000,
+    month: 30 * 24 * 60 * 60 * 1000,
+    year: 365 * 24 * 60 * 60 * 1000,
+};
 
 export const revalidate = 0;
+
+function getRelativeReviewTime(time?: string) {
+    if (!time) {
+        return 0;
+    }
+
+    const match = time
+        .toLowerCase()
+        .match(
+            /^(a|an|\d+)\s+(second|minute|hour|day|week|month|year)s?\s+ago$/
+        );
+
+    if (!match) {
+        return 0;
+    }
+
+    const amount = match[1] === 'a' || match[1] === 'an' ? 1 : Number(match[1]);
+    const unit = RELATIVE_TIME_UNITS[match[2]];
+
+    return Date.now() - amount * unit;
+}
+
+function getReviewSortTime(review: SortableReview) {
+    if (review.publishTime) {
+        const publishedAt = Date.parse(review.publishTime);
+
+        if (!Number.isNaN(publishedAt)) {
+            return publishedAt;
+        }
+    }
+
+    return getRelativeReviewTime(
+        review.relativePublishTimeDescription || review.time
+    );
+}
+
+function sortReviewsByLatest<T extends SortableReview>(reviews: T[]) {
+    return [...reviews].sort(
+        (first, second) => getReviewSortTime(second) - getReviewSortTime(first)
+    );
+}
 
 export async function GET() {
     const placeId = process.env.GOOGLE_PLACE_ID;
@@ -51,7 +107,7 @@ export async function GET() {
                 businessName: 'Test Business',
                 rating: 5,
                 totalReviews: 100,
-                reviews: DUMMY_REVIEWS,
+                reviews: sortReviewsByLatest(DUMMY_REVIEWS),
             },
             { headers: CACHE_HEADERS }
         );
@@ -90,7 +146,7 @@ export async function GET() {
 
     const data = (await res.json()) as GooglePlaceDetails;
     const reviews: Review[] =
-        data.reviews
+        sortReviewsByLatest(data.reviews || [])
             ?.filter(
                 (review) =>
                     typeof review.rating === 'number' &&
@@ -105,7 +161,7 @@ export async function GET() {
                 time: review.relativePublishTimeDescription,
                 authorUrl: review.authorAttribution?.uri,
                 reviewUrl: review.googleMapsUri,
-            })) || [];
+            }));
 
     return NextResponse.json(
         {

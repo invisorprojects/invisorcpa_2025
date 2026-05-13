@@ -289,10 +289,8 @@ function ReviewCard({ review }: { review: Review }) {
                                 </p>
                             )}
                             <p className="text-sm leading-5 text-gray-500">
-                                Posted on{' '}
-                                <span className="font-semibold text-[#1E1E5A]">
-                                    Google
-                                </span>
+                                                        {review.time ? `  ${review.time}` : ''}
+
                             </p>
                         </div>
                     </div>
