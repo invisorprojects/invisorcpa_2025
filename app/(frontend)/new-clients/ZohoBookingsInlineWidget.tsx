@@ -15,23 +15,32 @@ declare global {
     }
 }
 
-const BOOKING_CONTAINER_ID = 'zoho-booking-inline-container';
+const BOOKING_CONTAINER_ID = 'inline-container';
 const BOOKING_URL =
-    'https://engagecmareview1.zohobookings.in/portal-embed#/432161000000035193';
+    'https://engagecmareview1.zohobookings.in/portal-embed#/432161000000035178';
 
 function getBookingHeight() {
     if (typeof window === 'undefined') {
-        return '600px';
+        return '625px';
     }
 
-    const availableHeight = window.innerHeight - 220;
-    const boundedHeight = Math.min(Math.max(availableHeight, 460), 600);
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+    if (isMobile) {
+        const availableHeight = window.innerHeight - 140;
+        const boundedHeight = Math.min(Math.max(availableHeight, 720), 860);
+
+        return `${boundedHeight}px`;
+    }
+
+    const availableHeight = window.innerHeight - 170;
+    const boundedHeight = Math.min(Math.max(availableHeight, 600), 680);
 
     return `${boundedHeight}px`;
 }
 
-export default function CalendlyInlineWidget() {
-    const [height, setHeight] = useState('600px');
+export default function ZohoBookingsInlineWidget() {
+    const [height, setHeight] = useState('625px');
 
     useEffect(() => {
         const updateHeight = () => {
@@ -73,9 +82,15 @@ export default function CalendlyInlineWidget() {
                 onReady={initializeBookingWidget}
             />
             <div
-                id={BOOKING_CONTAINER_ID}
-                style={{ minWidth: '320px', height }}
-            />
+                className="relative left-1/2 w-[calc(100vw-1.5rem)] max-w-[1500px] -translate-x-1/2 overflow-hidden rounded-lg border border-[#dde2ec] bg-white shadow-[0_1px_8px_rgba(28,38,61,0.05)] sm:w-[calc(100vw-3rem)] md:w-[calc(100vw-5rem)] lg:w-[calc(100vw-8rem)]"
+                style={{ minHeight: height }}
+            >
+                <div
+                    id={BOOKING_CONTAINER_ID}
+                    className="calendly-inline-widget w-full"
+                    style={{ minWidth: '320px', height, width: '100%' }}
+                />
+            </div>
         </>
     );
 }
