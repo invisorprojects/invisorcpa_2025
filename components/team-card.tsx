@@ -16,8 +16,8 @@ export function TeamCard({
                 alt={`${name} - ${qualification} at Invisor CPA, Canadian tax accountant and tax services expert`}
                 fill
                 sizes="260px"
-                className="object-cover transition-all duration-500 group-hover:scale-105 group-hover:grayscale-[0.2]"
-            />
+  className="object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-[0.2]"
+              />
 
             <div className="absolute inset-x-4 bottom-4 rounded-2xl bg-white/92 px-4 py-3 text-center shadow-lg backdrop-blur-sm transition-all duration-300 group-hover:translate-y-4 group-hover:opacity-0">
                 <h3 className="text-base font-semibold text-slate-900">

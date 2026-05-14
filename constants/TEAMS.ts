@@ -34,15 +34,16 @@ export const TEAMS = [
         qualification: 'CMA',
         path: '/assets/team/team-members-4.webp',
     },
-    {
-        name: 'Mohammed Shafeeque',
-        qualification: 'CMA',
-        path: '/assets/team/team-members-5.webp',
-    },
+
     {
         name: 'Dayana Silvin',
         qualification: 'CMA',
         path: '/assets/team/team-members-8.webp',
+    },
+        {
+        name: 'Mohammed Shafeeque',
+        qualification: 'CMA',
+        path: '/assets/team/team-members-5.webp',
     },
          {
         name: 'Anjali Anil',
