@@ -1,4 +1,3 @@
-import { BehindTheTeam } from '@/components/sections/behind-the-team';
 import { Button } from '@/components/ui/button';
 import {
     Accordion,
@@ -13,11 +12,13 @@ import {
     Building2,
     CalendarCheck2,
     CheckCircle2,
+    CircleArrowRight,
     CircleDollarSign,
     Clock3,
     FileText,
     HeartPulse,
     Home,
+    Link,
     MapPin,
     MessagesSquare,
     Phone,
@@ -30,6 +31,8 @@ import Image from 'next/image';
 import BookkeepingQuoteForm from './_components/bookkeeping-quote-form';
 import ScrollLink from './_components/scroll-link';
 import GoogleReviewsCarousel from '@/components/sections/GoogleReviewsCarousel';
+import { TeamCard } from '@/components/team-card';
+import { TEAMS } from '@/constants/TEAMS';
 
 const pageUrl = 'https://www.invisorcpa.ca/lp/bookkeeping-ontario';
 
@@ -557,7 +560,41 @@ export default function BookkeepingOntarioPage() {
                 </div>
             </section>
 
-            <BehindTheTeam />
+                  <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
+                        <div className="mb-8 text-center">
+                            <h3 className="text-secondary mb-4 text-xl font-semibold tracking-widest uppercase">
+                                BEHIND THE TEAM{' '}
+                            </h3>
+            
+                            <h2 className="text-primary mb-4 text-3xl font-extrabold sm:text-4xl">
+                                Dynamic Team of Accounting
+                                <br className="hidden sm:block" />
+                                Specialists
+                            </h2>
+            
+                            <p className="text-primary mx-auto max-w-xl font-bold">
+                                Our team’s dedication and expertise drive every project
+                                <br className="hidden sm:block" />
+                                forward, delivering excellence in every accounting solution.
+                            </p>
+                        </div>
+                        <div className="flex flex-col gap-4">
+                            <div className="flex w-full flex-col gap-4 md:flex-row">
+                                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                                    {TEAMS.slice(0, 4).map((team, index) => (
+                                        <TeamCard
+                                            key={index}
+                                            name={team.name}
+                                            qualification={team.qualification}
+                                            path={team.path}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </section>
+
 
             <section className="px-4 py-14 sm:px-8 lg:px-16 xl:px-24">
                 <div className="flex flex-col gap-10">
@@ -962,16 +999,7 @@ export default function BookkeepingOntarioPage() {
                                 <strong>WhatsApp us</strong> Quick response,
                                 anytime
                             </a>
-                            <a
-                                href="https://calendly.com/geevar-invisorstaffing/meeting-with-geevar-thambi"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-3 text-white/85 transition-colors hover:text-white"
-                            >
-                                <MapPin className="size-4" />
-                                <strong>Schedule a call</strong> Book a
-                                30-minute slot
-                            </a>
+                     
                         </div>
                     </div>
                     <div className="mx-auto w-full max-w-xl sm:mx-0">
