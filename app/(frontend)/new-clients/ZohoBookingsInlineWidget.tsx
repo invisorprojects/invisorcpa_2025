@@ -82,7 +82,7 @@ export default function ZohoBookingsInlineWidget() {
                 onReady={initializeBookingWidget}
             />
             <div
-                className="relative left-1/2 w-[calc(100vw-1.5rem)] max-w-[1500px] -translate-x-1/2 overflow-hidden rounded-lg border border-[#dde2ec] bg-white shadow-[0_1px_8px_rgba(28,38,61,0.05)] sm:w-[calc(100vw-3rem)] md:w-[calc(100vw-5rem)] lg:w-[calc(100vw-8rem)]"
+                className="relative left-1/2 w-[calc(100vw-1.5rem)] max-w-[1500px] -translate-x-1/2 overflow-hidden rounded-lg border border-[#dde2ec] bg-white shadow-[0_1px_8px_rgba(28,38,61,0.05)] sm:w-[calc(100vw-2rem)] lg:w-[calc(100vw-3rem)]"
                 style={{ minHeight: height }}
             >
                 <div
