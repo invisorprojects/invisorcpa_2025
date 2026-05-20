@@ -24,6 +24,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
 
 type StepId =
+    | 'office'
     | 'service'
     | 'experienceRating'
     | 'experience'
@@ -51,7 +52,20 @@ type GenerateResponse = {
     error?: string;
 };
 
+const GOOGLE_REVIEW_BASE_URL = 'https://search.google.com/local/writereview?placeid=';
+
+const OFFICE_PLACE_IDS = {
+    London: 'ChIJS4dQXIzzLogRH_-w_SFaeu8',
+    Fergus: 'ChIJnwAyNiC_K4gRJr1cFih8V9E',
+    Strathroy: 'ChIJYxvDSZgFL4gRSckyvwWdnew',
+} as const;
+
 const QUESTIONS: Question[] = [
+    {
+        id: 'office',
+        prompt: 'Which office?',
+        options: ['London', 'Fergus', 'Strathroy'],
+    },
     {
         id: 'service',
         prompt: 'What service did Invisor help you with?',
@@ -108,14 +122,13 @@ const QUESTIONS: Question[] = [
 ];
 
 const EMPTY_ANSWERS: Answers = {
+    office: '',
     service: '',
     experienceRating: '',
     experience: '',
     standout: '',
     teamMember: '',
 };
-
-const GOOGLE_REVIEW_URL = process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL || '';
 
 async function copyTextToClipboard(text: string) {
     if (navigator.clipboard && window.isSecureContext) {
@@ -545,8 +558,11 @@ export function ReviewAssistant() {
     }
 
     async function selectReview(review: ReviewOption) {
-        if (!GOOGLE_REVIEW_URL) {
-            toast.error('Google review link is not configured.');
+        const placeId =
+            OFFICE_PLACE_IDS[answers.office as keyof typeof OFFICE_PLACE_IDS];
+
+        if (!placeId) {
+            toast.error('Select an office first.');
             return;
         }
 
@@ -561,7 +577,7 @@ export function ReviewAssistant() {
         }
 
         toast.success('Review copied. Opening Google review page.');
-        window.location.assign(GOOGLE_REVIEW_URL);
+        window.location.assign(`${GOOGLE_REVIEW_BASE_URL}${placeId}`);
     }
 
     return (
