@@ -158,7 +158,7 @@ export default function GoogleReviewsCarousel() {
                             </div>
                         </div>
 
-                        <Link
+                        {/* <Link
                             href="/request-review"
                             aria-label="Leave us a review"
                             className="flex w-fit items-center gap-3 rounded-md border border-[#1E1E5A]/10 bg-white p-2 pr-4 transition-colors hover:border-[#1E1E5A]/40 focus-visible:ring-2 focus-visible:ring-[#1E1E5A] focus-visible:outline-none"
@@ -173,7 +173,7 @@ export default function GoogleReviewsCarousel() {
                             <span className="text-sm font-semibold text-[#11135f]">
                                 Leave us a review
                             </span>
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
 

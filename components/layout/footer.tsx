@@ -131,7 +131,7 @@ export default function Footer() {
                     </div>
 
                     {/* Review */}
-                    <div>
+                    {/* <div>
                         <h3 className="mb-2 font-semibold">
                             Leave us a review
                         </h3>
@@ -148,7 +148,7 @@ export default function Footer() {
                                 className="h-22 w-22"
                             />
                         </Link>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
