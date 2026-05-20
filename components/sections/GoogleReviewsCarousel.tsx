@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
+import Image from 'next/image';
+import Link from 'next/link';
 import {
     BadgeCheck,
     ChevronLeft,
@@ -129,7 +131,7 @@ export default function GoogleReviewsCarousel() {
                         </p>
                     </div>
 
-                    <div className="w-full rounded-lg border border-[#1E1E5A]/10 bg-white p-5 shadow-sm md:w-auto md:min-w-64">
+                    <div className="flex w-full flex-col gap-4 rounded-lg border border-[#1E1E5A]/10 bg-white p-5 shadow-sm sm:flex-row sm:items-center sm:justify-between md:w-auto md:min-w-96">
                         <div className="flex items-center gap-3">
                             <div className="text-4xl font-bold text-[#11135f]">
                                 4.9
@@ -155,6 +157,23 @@ export default function GoogleReviewsCarousel() {
                                 </p>
                             </div>
                         </div>
+
+                        <Link
+                            href="/request-review"
+                            aria-label="Leave us a review"
+                            className="flex w-fit items-center gap-3 rounded-md border border-[#1E1E5A]/10 bg-white p-2 pr-4 transition-colors hover:border-[#1E1E5A]/40 focus-visible:ring-2 focus-visible:ring-[#1E1E5A] focus-visible:outline-none"
+                        >
+                            <Image
+                                src="/qr.svg"
+                                alt="QR code for leaving an Invisor CPA review"
+                                width={72}
+                                height={72}
+                                className="h-18 w-18"
+                            />
+                            <span className="text-sm font-semibold text-[#11135f]">
+                                Leave us a review
+                            </span>
+                        </Link>
                     </div>
                 </div>
 

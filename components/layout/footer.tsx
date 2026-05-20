@@ -46,7 +46,7 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-                <div className="flex w-full flex-row items-start justify-between gap-4 md:w-1/2">
+                <div className="flex w-full flex-row flex-wrap items-start justify-between gap-6 md:w-1/2">
                     {/* Explore */}
                     <div>
                         <h3 className="mb-2 font-semibold">Explore</h3>
@@ -128,6 +128,26 @@ export default function Footer() {
                                 <Link href="/pricing">Pricing</Link>
                             </li>
                         </ul>
+                    </div>
+
+                    {/* Review */}
+                    <div>
+                        <h3 className="mb-2 font-semibold">
+                            Leave us a review
+                        </h3>
+                        <Link
+                            href="/request-review"
+                            aria-label="Leave us a review"
+                            className="block w-fit rounded-md border bg-white p-2 transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                        >
+                            <Image
+                                src="/qr.svg"
+                                alt="QR code for leaving an Invisor CPA review"
+                                width={88}
+                                height={88}
+                                className="h-22 w-22"
+                            />
+                        </Link>
                     </div>
                 </div>
             </div>
