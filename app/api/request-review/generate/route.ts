@@ -17,8 +17,10 @@ type ReviewResponse = {
 
 type ReviewRequestBody = {
     service?: unknown;
+    experienceRating?: unknown;
     experience?: unknown;
     standout?: unknown;
+    teamMember?: unknown;
     details?: unknown;
 };
 
@@ -130,11 +132,19 @@ export async function POST(request: Request) {
     }
 
     const service = cleanField(body.service);
+    const experienceRating = cleanField(body.experienceRating);
     const experience = cleanField(body.experience);
     const standout = cleanField(body.standout);
+    const teamMember = cleanField(body.teamMember);
     const details = cleanField(body.details);
 
-    if (!service || !experience || !standout) {
+    if (
+        !service ||
+        !experienceRating ||
+        !experience ||
+        !standout ||
+        !teamMember
+    ) {
         return NextResponse.json(
             { error: 'Please complete the required review prompts.' },
             { status: 400 }
@@ -147,7 +157,7 @@ export async function POST(request: Request) {
             temperature: 0.72,
             maxOutputTokens: 1100,
             system:
-                'You write authentic, first-person Google reviews for Invisor CPA, an accounting firm in Canada. Write like a real satisfied client: specific, calm, clear, and believable. Return only valid JSON. Do not include markdown. Do not mention that AI wrote the review. Do not include ratings, bullets, names, dates, dollar amounts, CRA outcomes, refund amounts, legal guarantees, or facts the client did not provide.',
+                'You write authentic, first-person Google reviews for Invisor CPA, an accounting firm in Canada. Write like a real satisfied client: specific, calm, clear, and believable. Return only valid JSON. Do not include markdown. Do not mention that AI wrote the review. Do not include ratings, bullets, names other than the selected Invisor team member, dates, dollar amounts, CRA outcomes, refund amounts, legal guarantees, or facts the client did not provide.',
             prompt: [
                 'Create exactly three Google review options for Invisor CPA.',
                 'Each review must be first-person and suitable for a public Google review.',
@@ -159,8 +169,10 @@ export async function POST(request: Request) {
                 '',
                 'Client inputs:',
                 `Service: ${service}`,
+                `Experience rating: ${experienceRating}`,
                 `Experience: ${experience}`,
                 `What stood out: ${standout}`,
+                `Worked with: ${teamMember}`,
                 details ? `Specific note: ${details}` : 'Specific note: none',
                 '',
                 'Keep wording natural. Avoid hype such as "best ever", "life-changing", or repeated marketing phrases.',

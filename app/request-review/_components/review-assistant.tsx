@@ -23,7 +23,12 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
 
-type StepId = 'service' | 'experience' | 'standout';
+type StepId =
+    | 'service'
+    | 'experienceRating'
+    | 'experience'
+    | 'standout'
+    | 'teamMember';
 type FlowPhase = 'questions' | 'details' | 'generating' | 'results';
 
 type Question = {
@@ -73,6 +78,11 @@ const QUESTIONS: Question[] = [
         ],
     },
     {
+        id: 'experienceRating',
+        prompt: 'How do you rate the experience?',
+        options: ['Excellent', 'Great', 'Good', 'Average', 'Could be better'],
+    },
+    {
         id: 'standout',
         prompt: 'What stood out most?',
         options: [
@@ -84,12 +94,25 @@ const QUESTIONS: Question[] = [
             'Helped with CRA/tax issue',
         ],
     },
+    {
+        id: 'teamMember',
+        prompt: 'Whom did you work with?',
+        options: [
+            'Geever Thambi',
+            'Mohammed Shafeeque',
+            'Anjali Anil',
+            'Dayana Silvin',
+            'Irine Catherine',
+        ],
+    },
 ];
 
 const EMPTY_ANSWERS: Answers = {
     service: '',
+    experienceRating: '',
     experience: '',
     standout: '',
+    teamMember: '',
 };
 
 const GOOGLE_REVIEW_URL = process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL || '';
@@ -244,22 +267,27 @@ function ProgressRail({
     phase: FlowPhase;
 }) {
     const shouldReduceMotion = useReducedMotion();
+    const totalSteps = QUESTIONS.length + 1;
     const activeStep =
         phase === 'details' || phase === 'generating' || phase === 'results'
-            ? 3
+            ? QUESTIONS.length
             : currentIndex;
     const percent =
         phase === 'results'
             ? 100
             : phase === 'generating'
               ? 88
-              : Math.max(12, (activeStep / 4) * 100);
+              : Math.max(12, (activeStep / totalSteps) * 100);
 
     return (
         <div className="space-y-2">
             <div className="flex items-center justify-between text-xs font-semibold text-[#616363]">
                 <span>Review draft</span>
-                <span>{phase === 'results' ? 'Ready' : `${Math.min(activeStep + 1, 4)} of 4`}</span>
+                <span>
+                    {phase === 'results'
+                        ? 'Ready'
+                        : `${Math.min(activeStep + 1, totalSteps)} of ${totalSteps}`}
+                </span>
             </div>
             <div className="h-1.5 overflow-hidden rounded-full bg-[#dfe0e0]">
                 <motion.div
@@ -462,9 +490,11 @@ export function ReviewAssistant() {
                     },
                     body: JSON.stringify({
                         service: answers.service,
+                        experienceRating: answers.experienceRating,
                         experience: answers.experience,
                         standout: answers.standout,
                         details: nextDetails,
+                        teamMember: answers.teamMember,
                     }),
                 });
 
@@ -578,7 +608,9 @@ export function ReviewAssistant() {
                             options you can choose from before opening Google.
                         </ChatBubble>
 
-                        {QUESTIONS.slice(0, currentIndex).map((question) => (
+                        {QUESTIONS.filter(
+                            (question) => answers[question.id]
+                        ).map((question) => (
                             <motion.div
                                 key={`answered-${question.id}`}
                                 layout="position"
@@ -593,22 +625,6 @@ export function ReviewAssistant() {
                                 </ChatBubble>
                             </motion.div>
                         ))}
-
-                        {phase !== 'questions' && answers.standout ? (
-                            <motion.div
-                                key="answered-standout-final"
-                                layout="position"
-                                variants={messageVariants}
-                                initial="hidden"
-                                animate="show"
-                                className="space-y-3"
-                            >
-                                <ChatBubble>{QUESTIONS[2].prompt}</ChatBubble>
-                                <ChatBubble side="user">
-                                    {answers.standout}
-                                </ChatBubble>
-                            </motion.div>
-                        ) : null}
 
                         <AnimatePresence initial={false} mode="wait">
                             {phase === 'questions' && currentQuestion ? (
