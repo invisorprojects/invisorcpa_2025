@@ -6,14 +6,14 @@ export const TEAMS = [
     },
       {
         name: 'Bernie Keim',
-        qualification: 'MBA, CGA, CPA',
+        qualification: 'Principal Consultant',
         path: '/assets/team/team-members-2.webp',
     },
-  {
-        name: 'Andrea Alba Vasquez',
-        qualification: 'PCP',
-        path: '/assets/team/andrea.webp',
-    },
+//   {
+//         name: 'Andrea Alba Vasquez',
+//         qualification: 'PCP',
+//         path: '/assets/team/andrea.webp',
+//     },
   
    {
         name: 'Roji Thomas',
@@ -52,7 +52,7 @@ export const TEAMS = [
     },
     {
         name: 'Sanoop KS',
-        qualification: '',
+        qualification: 'Solutions Architect',
         path: '/assets/team/sanoop.webp',
     },
        {
