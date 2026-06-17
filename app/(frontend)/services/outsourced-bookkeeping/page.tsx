@@ -31,7 +31,7 @@ const comparisonRows = [
     },
     {
         label: 'Coverage if they leave',
-        inHouse: 'Work stops while you re-hire',
+        inHouse: 'Work stops until you re-hire',
         outsourced: 'A team covers you with no gap',
     },
     {
@@ -130,17 +130,17 @@ const processSteps = [
 const pricingRows = [
     {
         plan: 'Starter',
-        cost: '$300 - $600 / month',
+        cost: '$300 - $600/month',
         bestFor: 'Lower volume, simple needs',
     },
     {
         plan: 'Growth',
-        cost: '$600 - $1,200 / month',
+        cost: '$600 - $1,200/month',
         bestFor: 'Steady volume, payroll',
     },
     {
         plan: 'Scale',
-        cost: '$1,200 - $2,500+ / month',
+        cost: '$1,200 - $2,500+/month',
         bestFor: 'Higher volume, multiple accounts',
     },
 ];
@@ -305,7 +305,7 @@ export default function Page() {
                         </p>
                         <div className="flex flex-col gap-3 sm:flex-row">
                             <Button asChild size="lg" className="rounded-full">
-                                <Link href="/contact-us">
+                                <Link href="/lp/bookkeeping-ontario#hero-form">
                                     Get a Free Quote
                                     <ArrowRight className="h-4 w-4" />
                                 </Link>
@@ -428,7 +428,7 @@ export default function Page() {
             <section className="px-4 py-12 sm:px-8 lg:px-16 xl:px-24">
                 <div className="mb-10 max-w-3xl">
                     <h2 className="text-primary text-3xl font-bold sm:text-4xl">
-                        Why Canadian Businesses Outsource Their Bookkeeping
+                        Why Canadian Businesses Outsource Their Bookkeeping?
                     </h2>
                     <p className="mt-4 text-base leading-8 text-[#4F5565]">
                         Each benefit maps to a real pressure point in the
@@ -483,7 +483,7 @@ export default function Page() {
                     </div>
                     <div>
                         <h2 className="text-primary text-3xl font-bold sm:text-4xl">
-                            What Is Included When You Outsource to Invisor
+                            What Is Included When You Outsource to Invisor?
                         </h2>
                         <p className="mt-4 text-base leading-8 text-[#4F5565]">
                             We act as your full bookkeeping department -
@@ -566,7 +566,7 @@ export default function Page() {
                 <div className="grid gap-10 lg:grid-cols-[1fr_0.95fr] lg:items-center">
                     <div>
                         <h2 className="text-primary text-3xl font-bold sm:text-4xl">
-                            How Outsourcing Your Books Works
+                            How Outsourcing Your Books Works?
                         </h2>
                         <p className="mt-4 text-base leading-8 text-[#4F5565]">
                             Getting started is structured, practical and built
@@ -713,16 +713,13 @@ export default function Page() {
                                     reporting needs.
                                 </p>
                             </div>
-                            <Button
-                                asChild
-                                variant="secondary"
-                                className="mt-5 rounded-full"
+                          <Link
+                                href="/new-clients"
+                                className="mt-5 inline-flex h-9 items-center justify-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium whitespace-nowrap text-[#0E172A] shadow-xs transition-all outline-none hover:bg-white/90 focus-visible:border-white focus-visible:ring-3 focus-visible:ring-white/50"
                             >
-                                <Link href="/contact-us">
-                                    Ask About Your Situation
-                                    <ArrowRight className="h-4 w-4" />
-                                </Link>
-                            </Button>
+                                Ask About Your Situation
+                                <ArrowRight className="h-4 w-4 shrink-0" />
+                            </Link>
                         </div>
                     </div>
 

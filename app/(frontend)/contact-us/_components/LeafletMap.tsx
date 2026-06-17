@@ -15,10 +15,10 @@ const locations = [
         name: 'Unit 120, 341 Talbot Street, London, Ontario, N6A2R5, Canada.',
         position: [42.9849, -81.2463],
     },
-    {
-        name: '300 Thorn Dr, Strathroy, ON N7G 4E1, Canada Strathroy office',
-        position: [42.9583, -81.6071],
-    },
+    // {
+    //     name: '300 Thorn Dr, Strathroy, ON N7G 4E1, Canada Strathroy office',
+    //     position: [42.9583, -81.6071],
+    // },
 ];
 
 const CanadaMap = () => {

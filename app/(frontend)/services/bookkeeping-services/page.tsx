@@ -117,18 +117,18 @@ const processSteps = [
 
 const pricingRows = [
     {
-        level: 'Basic',
-        cost: '$200 - $500 / month',
+        level: 'Essential',
+        cost: '$200 - $500/month',
         bestFor: 'Sole proprietors, low volume',
     },
     {
-        level: 'Standard',
-        cost: '$500 - $1,200 / month',
+        level: 'Advanced',
+        cost: '$500 - $1,200/month',
         bestFor: 'Growing incorporated businesses',
     },
     {
         level: 'Premium',
-        cost: '$1,200 - $2,500 / month',
+        cost: '$1,200 - $2,500/month',
         bestFor: 'Higher volume, payroll, multiple accounts',
     },
 ];
@@ -298,7 +298,7 @@ export default function Page() {
                         </p>
                         <div className="flex flex-col gap-3 sm:flex-row">
                             <Button asChild size="lg" className="rounded-full">
-                                <Link href="/contact-us">
+                                <Link href="/lp/bookkeeping-ontario#hero-form">
                                     Get a Free Quote
                                     <ArrowRight className="h-4 w-4" />
                                 </Link>
@@ -309,7 +309,7 @@ export default function Page() {
                                 size="lg"
                                 className="rounded-full"
                             >
-                                <Link href="/contact-us">
+                                <Link href="/new-clients">
                                     Book a 15-Minute Call
                                     <ChevronRight className="h-4 w-4" />
                                 </Link>
@@ -361,7 +361,7 @@ export default function Page() {
             <section className="bg-[#F8FAFC] px-4 py-12 sm:px-8 lg:px-16 xl:px-24">
                 <div className="mb-10 max-w-3xl">
                     <h2 className="text-primary text-3xl font-bold sm:text-4xl">
-                        Why Businesses Choose Invisor
+                        Why Businesses Choose Invisor?
                     </h2>
                     <p className="mt-4 text-base leading-8 text-[#4F5565]">
                         Most owners do not come to us because they love
@@ -420,7 +420,7 @@ export default function Page() {
                     </div>
                     <div>
                         <h2 className="text-primary text-3xl font-bold sm:text-4xl">
-                            What Our Bookkeeping Services Include
+                            What Our Bookkeeping Services Include?
                         </h2>
                         <div className="mt-6 grid gap-3 sm:grid-cols-2">
                             {bookkeepingIncludes.map((item) => (
@@ -451,7 +451,7 @@ export default function Page() {
                         </p>
                     </div>
                     <Button asChild variant="outline" className="rounded-full">
-                        <Link href="/contact-us">
+                        <Link href="/new-clients">
                             Ask Which Service Fits
                             <ArrowRight className="h-4 w-4" />
                         </Link>
@@ -491,7 +491,7 @@ export default function Page() {
                 <div className="grid gap-10 lg:grid-cols-[1fr_0.95fr] lg:items-center">
                     <div>
                         <h2 className="text-primary text-3xl font-bold sm:text-4xl">
-                            How It Works
+                            How It Works?
                         </h2>
                         <p className="mt-4 text-base leading-8 text-[#4F5565]">
                             Getting started takes about a week. Here is the
@@ -552,7 +552,7 @@ export default function Page() {
                             surprises.
                         </p>
                         <Button asChild className="mt-6 rounded-full">
-                            <Link href="/contact-us">
+                            <Link href="/lp/bookkeeping-ontario#hero-form">
                                 Get Your Free Quote
                                 <ArrowRight className="h-4 w-4" />
                             </Link>
@@ -627,16 +627,13 @@ export default function Page() {
                                     and compliance risks directly.
                                 </p>
                             </div>
-                            <Button
-                                asChild
-                                variant="secondary"
-                                className="mt-5 rounded-full"
+                            <Link
+                                href="/new-clients"
+                                className="mt-5 inline-flex h-9 items-center justify-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium whitespace-nowrap text-[#0E172A] shadow-xs transition-all outline-none hover:bg-white/90 focus-visible:border-white focus-visible:ring-3 focus-visible:ring-white/50"
                             >
-                                <Link href="/contact-us">
-                                    Ask About Your Situation
-                                    <ArrowRight className="h-4 w-4" />
-                                </Link>
-                            </Button>
+                                Ask About Your Situation
+                                <ArrowRight className="h-4 w-4 shrink-0" />
+                            </Link>
                         </div>
                     </div>
 
@@ -698,7 +695,7 @@ export default function Page() {
                                 size="lg"
                                 className="rounded-full bg-white text-[#0E172A] hover:bg-white/90"
                             >
-                                <Link href="/contact-us">
+                                <Link href="/lp/bookkeeping-ontario#hero-form">
                                     Get Your Free Quote
                                     <ArrowRight className="h-4 w-4" />
                                 </Link>

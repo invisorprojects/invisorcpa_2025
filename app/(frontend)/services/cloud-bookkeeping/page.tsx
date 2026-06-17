@@ -1,13 +1,10 @@
 import { Button } from '@/components/ui/button';
 import {
     ArrowRight,
-    Banknote,
     CheckCircle2,
     ChevronRight,
-    Cloud,
     DatabaseBackup,
     FileText,
-    Laptop,
     LockKeyhole,
     MessageCircle,
     ReceiptText,
@@ -47,7 +44,7 @@ const benefitCards = [
         icon: RefreshCcw,
     },
     {
-        title: 'Less admin for you',
+        title: 'Less administration for you',
         description:
             'Automatic bank feeds and digital receipt capture cut the manual data entry.',
         icon: ReceiptText,
@@ -77,24 +74,28 @@ const softwareTools = [
         title: 'QuickBooks Online',
         description:
             'Our most popular platform; ideal for most small businesses.',
-        icon: Laptop,
+        logo: '/assets/tools/quickbooks.webp',
+        logoAlt: 'QuickBooks Online logo',
     },
     {
         title: 'Xero',
         description:
             'A strong choice for growing and product-based businesses.',
-        icon: Cloud,
+        logo: '/assets/tools/xero.svg',
+        logoAlt: 'Xero logo',
     },
     {
         title: 'Dext & Hubdoc',
         description:
             'Automated receipt and bill capture, so paperwork handles itself.',
-        icon: ReceiptText,
+        logo: '/assets/tools/dext.webp',
+        logoAlt: 'Dext logo',
     },
     {
         title: 'Plooto',
         description: 'Streamlined, trackable bill payments.',
-        icon: Banknote,
+        logo: '/assets/tools/plooto.webp',
+        logoAlt: 'Plooto logo',
     },
 ];
 
@@ -124,17 +125,17 @@ const processSteps = [
 const pricingRows = [
     {
         plan: 'Starter',
-        cost: '$200 - $450 / month',
+        cost: '$200 - $450/month',
         bestFor: 'Sole proprietors, low volume',
     },
     {
         plan: 'Growth',
-        cost: '$450 - $1,000 / month',
+        cost: '$450 - $1,000/month',
         bestFor: 'Incorporated, steady volume',
     },
     {
         plan: 'Scale',
-        cost: '$1,000 - $2,000+ / month',
+        cost: '$1,000 - $2,000+/month',
         bestFor: 'Higher volume + payroll',
     },
 ];
@@ -279,7 +280,7 @@ export default function Page() {
                 <div className="grid gap-10 lg:grid-cols-[1.12fr_0.88fr] lg:items-center">
                     <div className="space-y-6">
                         <p className="text-secondary text-sm font-semibold tracking-[0.22em] uppercase">
-                            Online Cloud Bookkeeping
+                            Cloud Bookkeeping
                         </p>
                         <h1 className="text-primary text-4xl leading-tight font-bold sm:text-5xl lg:text-6xl">
                             Cloud Bookkeeping Services for Businesses Across
@@ -296,7 +297,7 @@ export default function Page() {
                         </p>
                         <div className="flex flex-col gap-3 sm:flex-row">
                             <Button asChild size="lg" className="rounded-full">
-                                <Link href="/contact-us">
+                                <Link href="/lp/bookkeeping-ontario#hero-form">
                                     Get a Free Quote
                                     <ArrowRight className="h-4 w-4" />
                                 </Link>
@@ -307,7 +308,7 @@ export default function Page() {
                                 size="lg"
                                 className="rounded-full"
                             >
-                                <Link href="/contact-us">
+                                <Link href="/new-clients">
                                     Book a 15-Minute Call
                                     <ChevronRight className="h-4 w-4" />
                                 </Link>
@@ -404,7 +405,7 @@ export default function Page() {
             <section className="px-4 py-12 sm:px-8 lg:px-16 xl:px-24">
                 <div className="mb-10 max-w-3xl">
                     <h2 className="text-primary text-3xl font-bold sm:text-4xl">
-                        Why Canadian Businesses Switch to Cloud Bookkeeping
+                        Why Canadian Businesses Switch to Cloud Bookkeeping?
                     </h2>
                     <p className="mt-4 text-base leading-8 text-[#4F5565]">
                         Cloud accounting gives owners faster access to cleaner
@@ -460,7 +461,7 @@ export default function Page() {
                     </div>
                     <div>
                         <h2 className="text-primary text-3xl font-bold sm:text-4xl">
-                            What Our Cloud Bookkeeping Service Includes
+                            What Our Cloud Bookkeeping Service Includes?
                         </h2>
                         <div className="mt-6 grid gap-3 sm:grid-cols-2">
                             {serviceIncludes.map((item) => (
@@ -498,26 +499,28 @@ export default function Page() {
                 </div>
 
                 <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-                    {softwareTools.map((tool) => {
-                        const Icon = tool.icon;
-
-                        return (
-                            <article
-                                key={tool.title}
-                                className="rounded-[1.75rem] border border-[#DCE6F2] bg-white p-6 shadow-sm"
-                            >
-                                <div className="bg-primary/10 text-primary mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl">
-                                    <Icon className="h-5 w-5" />
-                                </div>
-                                <h3 className="text-primary text-xl font-semibold">
-                                    {tool.title}
-                                </h3>
-                                <p className="mt-3 text-sm leading-7 text-[#596172]">
-                                    {tool.description}
-                                </p>
-                            </article>
-                        );
-                    })}
+                    {softwareTools.map((tool) => (
+                        <article
+                            key={tool.title}
+                            className="rounded-[1.75rem] border border-[#DCE6F2] bg-white p-6 shadow-sm"
+                        >
+                            <div className="mb-5 flex h-14 w-28 items-center justify-start">
+                                <Image
+                                    src={tool.logo}
+                                    alt={tool.logoAlt}
+                                    width={112}
+                                    height={56}
+                                    className="max-h-14 w-auto object-contain rounded-full border"
+                                />
+                            </div>
+                            <h3 className="text-primary text-xl font-semibold">
+                                {tool.title}
+                            </h3>
+                            <p className="mt-3 text-sm leading-7 text-[#596172]">
+                                {tool.description}
+                            </p>
+                        </article>
+                    ))}
                 </div>
             </section>
 
@@ -525,7 +528,7 @@ export default function Page() {
                 <div className="grid gap-10 lg:grid-cols-[1fr_0.95fr] lg:items-center">
                     <div>
                         <h2 className="text-primary text-3xl font-bold sm:text-4xl">
-                            How Moving to the Cloud Works
+                            How Moving to the Cloud Works?
                         </h2>
                         <p className="mt-4 text-base leading-8 text-[#4F5565]">
                             Switching is easier than most owners expect. We
@@ -588,7 +591,7 @@ export default function Page() {
                         </p>
                         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                             <Button asChild className="rounded-full">
-                                <Link href="/contact-us">
+                                <Link href="/lp/bookkeeping-ontario#hero-form">
                                     Get Your Free Quote
                                     <ArrowRight className="h-4 w-4" />
                                 </Link>
@@ -672,16 +675,13 @@ export default function Page() {
                                     and monthly reporting process.
                                 </p>
                             </div>
-                            <Button
-                                asChild
-                                variant="secondary"
-                                className="mt-5 rounded-full"
+                        <Link
+                                href="/new-clients"
+                                className="mt-5 inline-flex h-9 items-center justify-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium whitespace-nowrap text-[#0E172A] shadow-xs transition-all outline-none hover:bg-white/90 focus-visible:border-white focus-visible:ring-3 focus-visible:ring-white/50"
                             >
-                                <Link href="/contact-us">
-                                    Ask About Your Situation
-                                    <ArrowRight className="h-4 w-4" />
-                                </Link>
-                            </Button>
+                                Ask About Your Situation
+                                <ArrowRight className="h-4 w-4 shrink-0" />
+                            </Link>
                         </div>
                     </div>
 
@@ -742,7 +742,7 @@ export default function Page() {
                                 size="lg"
                                 className="rounded-full bg-white text-[#0E172A] hover:bg-white/90"
                             >
-                                <Link href="/contact-us">
+                                <Link href="/lp/bookkeeping-ontario#hero-form">
                                     Get Your Free Quote
                                     <ArrowRight className="h-4 w-4" />
                                 </Link>

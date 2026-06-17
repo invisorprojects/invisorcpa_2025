@@ -576,16 +576,13 @@ export default function Page() {
                                 incorporation path, CRA setup needs, and tax
                                 implications directly.
                             </p>
-                            <Button
-                                asChild
-                                variant="secondary"
-                                className="mt-5 rounded-full"
+                           <Link
+                                href="/new-clients"
+                                className="mt-5 inline-flex h-9 items-center justify-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium whitespace-nowrap text-[#0E172A] shadow-xs transition-all outline-none hover:bg-white/90 focus-visible:border-white focus-visible:ring-3 focus-visible:ring-white/50"
                             >
-                                <Link href="/contact-us">
-                                    Ask About Your Situation
-                                    <ArrowRight className="h-4 w-4" />
-                                </Link>
-                            </Button>
+                                Ask About Your Situation
+                                <ArrowRight className="h-4 w-4 shrink-0" />
+                            </Link>
                         </div>
                     </div>
 
