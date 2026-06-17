@@ -1,80 +1,21 @@
 'use client';
 
 import Script from 'next/script';
-import { useCallback, useEffect, useState } from 'react';
 
-declare global {
-    interface Window {
-        Bookings?: {
-            inlineEmbed: (options: {
-                url: string;
-                parent: string;
-                height: string;
-            }) => void;
-        };
-    }
-}
-
-const BOOKING_CONTAINER_ID = 'zoho-booking-inline-container';
-const BOOKING_URL =
-    'https://engagecmareview1.zohobookings.in/portal-embed#/432161000000035193';
-
-function getBookingHeight() {
-    if (typeof window === 'undefined') {
-        return '600px';
-    }
-
-    const availableHeight = window.innerHeight - 220;
-    const boundedHeight = Math.min(Math.max(availableHeight, 460), 600);
-
-    return `${boundedHeight}px`;
-}
+const CALENDLY_URL =
+    'https://calendly.com/geevar-invisorstaffing/tax-consultation';
 
 export default function CalendlyInlineWidget() {
-    const [height, setHeight] = useState('600px');
-
-    useEffect(() => {
-        const updateHeight = () => {
-            setHeight(getBookingHeight());
-        };
-
-        updateHeight();
-        window.addEventListener('resize', updateHeight);
-
-        return () => {
-            window.removeEventListener('resize', updateHeight);
-        };
-    }, []);
-
-    const initializeBookingWidget = useCallback(() => {
-        const container = document.getElementById(BOOKING_CONTAINER_ID);
-
-        if (!container || !window.Bookings) {
-            return;
-        }
-
-        container.innerHTML = '';
-        window.Bookings.inlineEmbed({
-            url: BOOKING_URL,
-            parent: `#${BOOKING_CONTAINER_ID}`,
-            height,
-        });
-    }, [height]);
-
-    useEffect(() => {
-        initializeBookingWidget();
-    }, [initializeBookingWidget]);
-
     return (
         <>
             <Script
-                src="https://bookings.nimbuspop.com/assets/embed.js"
+                src="https://assets.calendly.com/assets/external/widget.js"
                 strategy="afterInteractive"
-                onReady={initializeBookingWidget}
             />
             <div
-                id={BOOKING_CONTAINER_ID}
-                style={{ minWidth: '320px', height }}
+                className="calendly-inline-widget"
+                data-url={CALENDLY_URL}
+                style={{ minWidth: '320px', height: '700px' }}
             />
         </>
     );

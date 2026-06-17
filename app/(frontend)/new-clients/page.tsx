@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import ZohoBookingsInlineWidget from './ZohoBookingsInlineWidget';
+import CalendlyInlineWidget from '@/components/sections/CalendlyInlineWidget';
 
 export const metadata: Metadata = {
     title: 'New Clients - Invisor CPA',
@@ -22,7 +22,7 @@ export default function NewClientsPage() {
                         </p>
                     </div>
 
-                    <ZohoBookingsInlineWidget />
+                    <CalendlyInlineWidget />
                 </div>
             </section>
         </main>
