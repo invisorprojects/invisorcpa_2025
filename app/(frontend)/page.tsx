@@ -122,7 +122,7 @@ export default async function Home() {
                     <div className="w-full sm:w-1/3">
                         <div className="relative h-fit w-fit bg-blue-50">
                             <div className="absolute top-0 left-0 h-1/4 w-full bg-white"></div>
-                            <div className="absolute top-36 -left-24 hidden max-w-52 rounded-2xl border bg-white p-4 shadow-md drop-shadow-lg sm:block">
+                            <div className="absolute top-13 -left-32 hidden max-w-52 rounded-2xl border bg-white p-4 shadow-md drop-shadow-lg sm:block">
                                 <p className="text-base font-bold">
                                     Canada&#39;s Trusted Bookkeeping &
                                     Accounting Experts
@@ -130,11 +130,11 @@ export default async function Home() {
                             </div>
                             <Image
                                 className="relative"
-                                src="/assets/laptop-lady.webp"
+                                src="/assets/hero.png"
                                 alt="Professional tax accountant working on tax returns in Canada"
                                 priority={true}
-                                width={500}
-                                height={500}
+                                width={4000}
+                                height={3000}
                                 fetchPriority="high"
                             />
                         </div>
@@ -145,54 +145,66 @@ export default async function Home() {
                 </div>
             </section>
 
-            <section className="flex flex-col items-center justify-between bg-[#EFF0F4] p-4 px-2 sm:flex-row sm:p-8 sm:px-4 md:p-12 md:px-8 lg:p-16 lg:px-12 xl:p-24 xl:px-24">
-                <div className="p-4 sm:w-1/2">
-                    <Image
-                        className="h-auto w-full rounded-3xl"
-                        src="/assets/section-2-1.webp"
-                        alt="Professional tax preparation services in Canada"
-                        width={1199}
-                        height={899}
-                    />
-                </div>
-                <div className="flex flex-col items-center justify-between gap-4 p-4 sm:w-1/2">
-                    <div className="flex flex-col gap-4">
-                        <h2 className="text-4xl font-bold">
-                            Simplify Your Accounts, Maximize Your Success!
-                        </h2>
-                        <p>
-                            Whether you&#39;re managing accounting or navigating
-                            taxes, our dedicated team is here to support you. We
-                            provide expert accounting, tax planning, and
-                            bookkeeping services to simplify your accounting
-                            journey with efficient, tech-driven solutions. We
-                            take the stress out of financial management so you
-                            can focus on what matters most—growing your
-                            business. With personalized support and smart
-                            automation, we ensure accuracy, compliance, and
-                            peace of mind at every step.
-                        </p>
+            <section className="bg-[#EFF0F4] px-4 py-12 sm:px-8 md:px-12 lg:px-16 xl:px-24">
+                <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+                    <div className="flex flex-col justify-between gap-10 rounded-2xl bg-white p-6 shadow-sm sm:p-8 lg:p-10">
+                        <div className="flex max-w-3xl flex-col gap-5">
+                            <h2 className="text-primary text-3xl leading-tight font-bold sm:text-4xl lg:text-5xl">
+                                Simplify Your Accounts, Maximize Your Success!
+                            </h2>
+                            <p className="text-base leading-8 text-[#4E4E5A] sm:text-lg">
+                                Whether you&#39;re managing accounting or
+                                navigating taxes, our dedicated team is here to
+                                support you. We provide expert accounting, tax
+                                planning, and bookkeeping services to simplify
+                                your accounting journey with efficient,
+                                tech-driven solutions. We take the stress out of
+                                financial management so you can focus on what
+                                matters most—growing your business. With
+                                personalized support and smart automation, we
+                                ensure accuracy, compliance, and peace of mind
+                                at every step.
+                            </p>
+                        </div>
+                        <div
+                            aria-hidden="true"
+                            className="grid grid-cols-3 gap-3 border-t border-[#E1E4EC] pt-6"
+                        >
+                            <div className="h-2 rounded-full bg-primary"></div>
+                            <div className="h-2 rounded-full bg-secondary"></div>
+                            <div className="h-2 rounded-full bg-[#9BC8DA]"></div>
+                        </div>
                     </div>
 
-                    <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-                        <Image
-                            className="h-52 w-auto rounded-3xl"
-                            src="/assets/section-2-2.webp"
-                            alt="Canadian tax preparation services and CRA tax filing support"
-                            width={2417}
-                            height={1811}
-                        />
-                        <div className="flex flex-col items-start justify-between gap-4 py-4">
-                            <h3 className="text-primary text-xl font-bold">
+                    <div className="relative overflow-hidden rounded-2xl h-80 bg-[#113598] p-6 text-white sm:p-8 lg:p-10">
+                        <div
+                            aria-hidden="true"
+                            className="absolute top-0 right-0 h-28 w-28 translate-x-8 -translate-y-8 rounded-full border border-white/20"
+                        ></div>
+                        <div
+                            aria-hidden="true"
+                            className="absolute bottom-0 left-0 h-36 w-36 -translate-x-12 translate-y-12 rounded-full bg-white/10"
+                        ></div>
+                        
+                        
+                        <div className="relative flex flex-col justify-end gap-5">
+                            <h3 className="text-2xl leading-snug font-bold sm:text-3xl">
                                 Canada&#39;s Leading Bookkeeping Service
                                 providers - Trusted by Over 1,000 Clients
                                 Nationwide
                             </h3>
-                            <p>
+                            <p className="max-w-xl text-base leading-7 text-white/85 sm:text-lg">
                                 At Invisor, we handle your bookkeeping with
                                 precision, so you can focus on growing your
                                 business.
                             </p>
+                            {/* <Image
+                            src="/assets/book-pen.png"
+                            alt="Calculator"
+                            width={1920}
+                            height={1920}
+                            className="relative mx-auto mb-8 h-24 w-24 rounded-2xl sm:h-32 sm:w-32 lg:h-44 lg:w-auto"
+                        /> */}
                             {/* <Button className="rounded-full">Learn More</Button> */}
                         </div>
                     </div>
@@ -201,61 +213,53 @@ export default async function Home() {
             <CalendlyInlineWidget />
 
             <OrganizationsSection />
-            <section className="flex flex-col items-center justify-between bg-[#E5F2F8] p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
-                <div className="mb-20 flex w-full flex-col items-start justify-center gap-4 md:flex-row md:items-center md:justify-between">
-                    <div className="max-w-2xl space-y-2">
-                        <h3 className="text-secondary text-xl font-medium uppercase">
-                            About Us
-                        </h3>
-                        <h2 className="text-primary text-4xl font-bold md:text-5xl">
-                            Your Partner in Accounting Success
-                        </h2>
-                    </div>
-                    <div className="flex max-w-lg flex-col items-start gap-4">
-                        <p className="text-[#686666]">
-                            Our expert team is committed to delivering
-                            personalized accounting and tax services in London,
-                            Ontario to help you achieve stability and growth.
-                        </p>
-                        <Link href="/about-us">
-                            <Button className="flex items-center gap-2 rounded-full bg-[#1E1E5A] px-6 py-4 text-white hover:bg-[#131346]">
-                                <span className="font-bold">More About Us</span>
-                                <CircleArrowRight className="h-4 w-4" />
-                            </Button>
-                        </Link>
-                    </div>
-                </div>
-
-                {/* Image and Text Section */}
-                <div className="flex w-full flex-col gap-8 md:flex-row md:items-center md:justify-between">
-                    {/* Image */}
-                    <div className="md:w-1/2">
-                        <Image
-                            src="/assets/about-us.webp"
-                            alt="Professional Canadian tax accountants providing tax filing services"
-                            width={2049}
-                            height={1170}
-                            className="h-auto w-full rounded-xl object-cover"
-                        />
+            <section className="bg-[#E5F2F8] px-4 py-12 sm:px-8 md:px-12 lg:px-16 xl:px-24">
+                <div className="mx-auto max-w-7xl">
+                    <div className="mb-12 grid gap-6 md:grid-cols-[1.1fr_0.9fr] md:items-end md:justify-between">
+                        <div className="max-w-2xl space-y-2">
+                            <h3 className="text-secondary text-xl font-medium uppercase">
+                                About Us
+                            </h3>
+                            <h2 className="text-primary text-4xl font-bold md:text-5xl">
+                                Your Partner in Accounting Success
+                            </h2>
+                        </div>
+                        <div className="flex max-w-lg flex-col items-start gap-4 md:justify-self-end">
+                            <p className="text-[#686666]">
+                                Our expert team is committed to delivering
+                                personalized accounting and tax services in
+                                London, Ontario to help you achieve stability
+                                and growth.
+                            </p>
+                            <Link href="/about-us">
+                                <Button className="flex items-center gap-2 rounded-full bg-[#1E1E5A] px-6 py-4 text-white hover:bg-[#131346]">
+                                    <span className="font-bold">
+                                        More About Us
+                                    </span>
+                                    <CircleArrowRight className="h-4 w-4" />
+                                </Button>
+                            </Link>
+                        </div>
                     </div>
 
-                    {/* Text Content */}
-                    <div className="space-y-6 md:w-1/2">
-                        <h3 className="text-primary text-3xl font-bold md:text-3xl">
-                            Our Journey in Tax Preparation Services Canada
-                        </h3>
-                        <p className="max-w-xl leading-relaxed">
-                            We are a team of dedicated small business
-                            accountants committed to delivering exceptional
-                            financial services. With years of expertise in
-                            accounting, tax filing, and consulting, we focus on
-                            building long-term relationships with clients,
-                            helping them achieve financial clarity and growth.
-                        </p>
+                    <div className="grid gap-6 rounded-2xl bg-white p-6 shadow-sm sm:p-8 lg:grid-cols-[1fr_1.1fr] lg:p-10">
+                        <div className="flex flex-col justify-center gap-5">
+                            <h3 className="text-primary text-3xl leading-tight font-bold md:text-4xl">
+                                Our Journey in Tax Preparation Services Canada
+                            </h3>
+                            <p className="max-w-xl leading-relaxed text-[#50505A]">
+                                We are a team of dedicated small business
+                                accountants committed to delivering exceptional
+                                financial services. With years of expertise in
+                                accounting, tax filing, and consulting, we focus
+                                on building long-term relationships with
+                                clients, helping them achieve financial clarity
+                                and growth.
+                            </p>
+                        </div>
 
-                        {/* Stats Row */}
-                        <div className="grid grid-cols-3 gap-4 pt-4 text-start">
-                            <div>
+                        <div className="grid gap-4 sm:grid-cols-3 justify-center items-center ">
+                            <div className="rounded-xl border border-[#DCEAF1] bg-[#F7FCFF] p-5 h-40">
                                 <NumberTicker
                                     value={20}
                                     className="text-primary text-3xl font-extrabold md:text-4xl"
@@ -264,11 +268,11 @@ export default async function Home() {
                                     +
                                 </span>
 
-                                <p className="mt-2 text-lg">
+                                <p className="mt-3 text-base font-medium text-[#4E4E5A] sm:text-lg">
                                     Professional Experts
                                 </p>
                             </div>
-                            <div>
+                            <div className="rounded-xl border border-[#DCEAF1] bg-[#F7FCFF] p-5 h-40">
                                 <NumberTicker
                                     value={15}
                                     className="text-primary text-3xl font-extrabold md:text-4xl"
@@ -276,9 +280,11 @@ export default async function Home() {
                                 <span className="text-primary text-3xl font-extrabold md:text-4xl">
                                     +
                                 </span>
-                                <p className="mt-2 text-lg">Years Experience</p>
+                                <p className="mt-3 text-base font-medium text-[#4E4E5A] sm:text-lg">
+                                    Years Experience
+                                </p>
                             </div>
-                            <div>
+                            <div className="rounded-xl border border-[#DCEAF1] bg-[#F7FCFF] p-5 h-40">
                                 <NumberTicker
                                     value={1}
                                     className="text-primary text-3xl font-extrabold md:text-4xl"
@@ -289,7 +295,7 @@ export default async function Home() {
                                 <span className="text-primary text-3xl font-extrabold md:text-4xl">
                                     +
                                 </span>
-                                <p className="mt-2 text-lg">
+                                <p className="mt-3 text-base font-medium text-[#4E4E5A] sm:text-lg">
                                     Satisfied Clients
                                 </p>
                             </div>

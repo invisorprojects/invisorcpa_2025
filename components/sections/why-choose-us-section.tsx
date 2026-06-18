@@ -36,10 +36,10 @@ export function WhyChooseUs() {
                 {/* Image */}
                 <div className="flex justify-center md:w-1/2 md:justify-end">
                     <Image
-                        src="/assets/why-choose-us.webp" // Replace with your image path
+                        src="/assets/why-choose-us.png" // Replace with your image path
                         alt="Accounting Team"
-                        width={1777}
-                        height={1999}
+                        width={4000}
+                        height={3577}
                         className="border-primary h-auto w-full max-w-lg rounded-sm rounded-tl-[6.25rem] rounded-br-[6.25rem] border-t-8 border-r-8 object-cover shadow-lg"
                     />
                 </div>

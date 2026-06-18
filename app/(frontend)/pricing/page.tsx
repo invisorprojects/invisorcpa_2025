@@ -17,7 +17,7 @@ export default function Page() {
     return (
         <main>
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
-                <div className="mb-20 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:justify-between">
+                <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:justify-between">
                     <div className="max-w-2xl">
                         <h1 className="text-secondary text-xl font-medium">
                             PRICING
@@ -34,13 +34,13 @@ export default function Page() {
                         </p>
                     </div>
                 </div>
-                <Image
+                {/* <Image
                     src="/assets/banners/banner-9.webp"
                     alt="Services"
                     width={3074}
                     height={1333}
                     className="rounded-4xl shadow-md"
-                />
+                /> */}
             </section>
             <section className="px-4 py-8 sm:p-4 md:p-8 lg:p-12 xl:p-16">
                 <PricingSection />

@@ -57,8 +57,8 @@ export const metadata: Metadata = {
 export default function Page() {
     return (
         <main>
-            <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
-                <div className="mb-20 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:justify-between">
+            <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 ">
+                <div className=" flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:justify-between">
                     <div className="max-w-2xl">
                         <h1 className="text-secondary text-xl font-medium">
                             SERVICES
@@ -77,15 +77,23 @@ export default function Page() {
                         </p>
                     </div>
                 </div>
-                <Image
+                {/* <Image
                     src="/assets/banners/banner-7.webp"
                     alt="Professional tax services Canada - Personal tax accountant and business tax preparation"
                     width={4096}
                     height={1632}
                     className="rounded-4xl shadow-md"
-                />
+                /> */}
             </section>
-            <section className="flex flex-col items-center justify-between gap-4 p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
+       
+            <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    {SERVICES.map((service, index) => (
+                        <ServicesCard key={index} service={service} />
+                    ))}
+                </div>
+            </section>
+                 <section className="flex flex-col items-center justify-between gap-4 p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
                 <div className="mx-auto max-w-5xl text-center">
                     <h2 className="text-primary mb-4 text-3xl font-extrabold sm:text-4xl">
                         Why Our Clients Prefer Working with Us
@@ -116,13 +124,6 @@ export default function Page() {
                             />
                         ))}
                     </div>
-                </div>
-            </section>
-            <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {SERVICES.map((service, index) => (
-                        <ServicesCard key={index} service={service} />
-                    ))}
                 </div>
             </section>
 

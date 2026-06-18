@@ -96,7 +96,7 @@ export default function Page() {
     return (
         <main>
             <section className="flex flex-col items-center justify-between p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
-                <div className="mb-20 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:justify-between">
+                <div className="mb-10 flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:justify-between">
                     <div className="max-w-2xl">
                         <h1 className="text-secondary text-xl font-medium uppercase">
                             About us
@@ -116,13 +116,13 @@ export default function Page() {
                         </p>
                     </div>
                 </div>
-                <Image
+                {/* <Image
                     src="/assets/banners/banner-2.webp"
                     alt="Services"
                     width={4096}
                     height={1800}
                     className="rounded-4xl object-contain shadow-md"
-                />
+                /> */}
                 <section className="w-full px-4 pt-12">
                     <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 text-center md:grid-cols-4">
                         {stats.map((item, index) => (
