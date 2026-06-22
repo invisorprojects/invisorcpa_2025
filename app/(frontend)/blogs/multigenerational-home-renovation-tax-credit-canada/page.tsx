@@ -412,7 +412,7 @@ export default function Page() {
                         </div>
                         <div className="relative overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-slate-100">
                             <Image
-                                src="/assets/why-choose-us.webp"
+                                src="/assets/why-choose-us.jpg"
                                 alt="Contractor planning an accessible secondary suite renovation"
                                 width={960}
                                 height={640}

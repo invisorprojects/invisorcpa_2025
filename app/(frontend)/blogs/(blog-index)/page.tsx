@@ -15,31 +15,7 @@ export default async function BlogIndexPage() {
 
     return (
         <div className="mt-20 grid w-fit grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8 lg:grid-cols-3">
-            {blogPosts.map(
-                ({
-                    id,
-                    title,
-                    slug,
-                    contentSummary,
-                    coverImage,
-                    readTimeInMins,
-                    publishedAt,
-                }) => {
-                    if (!relationIsObject(coverImage)) return null;
-
-                    return (
-                        <BlogCard
-                            key={id}
-                            title={title}
-                            href={`/blogs/${slug}`}
-                            summary={contentSummary}
-                            readTimeMins={readTimeInMins ?? 0}
-                            publishedAt={new Date(publishedAt ?? new Date())}
-                            coverImage={coverImage}
-                        />
-                    );
-                }
-            )}
+       
 
             <div className="group relative max-w-sm overflow-hidden rounded-xl shadow-sm">
                 <Image
@@ -217,6 +193,31 @@ export default async function BlogIndexPage() {
                     </div>
                 </Link>
             </div>
+                 {blogPosts.map(
+                ({
+                    id,
+                    title,
+                    slug,
+                    contentSummary,
+                    coverImage,
+                    readTimeInMins,
+                    publishedAt,
+                }) => {
+                    if (!relationIsObject(coverImage)) return null;
+
+                    return (
+                        <BlogCard
+                            key={id}
+                            title={title}
+                            href={`/blogs/${slug}`}
+                            summary={contentSummary}
+                            readTimeMins={readTimeInMins ?? 0}
+                            publishedAt={new Date(publishedAt ?? new Date())}
+                            coverImage={coverImage}
+                        />
+                    );
+                }
+            )}
 
             <div className="group relative max-w-sm overflow-hidden rounded-xl shadow-sm">
                 <Image

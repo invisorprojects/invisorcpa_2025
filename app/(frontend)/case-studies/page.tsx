@@ -44,13 +44,13 @@ export default async function CaseStudies() {
                         </p>
                     </div>
                 </div>
-                <Image
+                {/* <Image
                     src="/assets/banners/banner-1.webp"
                     alt="Case Studies"
                     width={4096}
                     height={1632}
                     className="rounded-4xl shadow-md"
-                />
+                /> */}
             </section>
 
             <div className="flex w-full flex-col items-center justify-center gap-4 md:flex-row md:items-stretch">

@@ -90,15 +90,15 @@ export default async function Home() {
         per_page: 3,
     });
 
-    const { data } = await storyblokApi.get('cdn/stories', {
-        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
-        starts_with: 'blogs/',
-        content_type: 'blog',
-        sort_by: 'first_published_at:desc',
-        per_page: 3,
-        page: 1,
-    });
-    const blogs = data.stories;
+    // const { data } = await storyblokApi.get('cdn/stories', {
+    //     version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
+    //     starts_with: 'blogs/',
+    //     content_type: 'blog',
+    //     sort_by: 'first_published_at:desc',
+    //     per_page: 3,
+    //     page: 1,
+    // });
+    // const blogs = data.stories;
     // console.log('blogs::', blogs);
     return (
         <main className="">
@@ -120,23 +120,24 @@ export default async function Home() {
                     </div>
 
                     <div className="w-full sm:w-1/3">
-                        <div className="relative h-fit w-fit bg-blue-50">
-                            <div className="absolute top-0 left-0 h-1/4 w-full bg-white"></div>
+                        <div className="relative h-fit w-fit ">
                             <div className="absolute top-13 -left-32 hidden max-w-52 rounded-2xl border bg-white p-4 shadow-md drop-shadow-lg sm:block">
                                 <p className="text-base font-bold">
                                     Canada&#39;s Trusted Bookkeeping &
                                     Accounting Experts
                                 </p>
                             </div>
+
+
                             <Image
-                                className="relative"
+                                className=" rounded-2xl object-cover object-center"
                                 src="/assets/hero.png"
                                 alt="Professional tax accountant working on tax returns in Canada"
                                 priority={true}
-                                width={4000}
-                                height={3000}
+                                width={1920}
+                                height={1080}
                                 fetchPriority="high"
-                            />
+                                />
                         </div>
                     </div>
                 </div>
@@ -455,8 +456,9 @@ export default async function Home() {
                             {/* Left: Image */}
                             <div className="w-full overflow-hidden rounded-lg">
                                 <Image
-                                    src={blogs[0].content.image.filename} // replace with your actual image path
-                                    alt="Outsourcing bookkeeping"
+                                    src={"/assets/banners/banner-3.webp"} // replace with your actual image path
+                    alt={`7 Essential Reasons to Work With a Small Business Tax Accountant - Tax services blog post by Invisor CPA, Canadian tax accountants`}
+
                                     width={2048}
                                     height={1366}
                                     className="h-full w-auto rounded-lg object-cover"
@@ -464,13 +466,14 @@ export default async function Home() {
                             </div>
 
                             {/* Right: Content */}
-                            <Link href={`/blogs/${blogs[0].slug}`}>
+                            <Link href={`/blogs/small-business-tax-accountant`}>
                                 <div className="flex w-full flex-col gap-2 p-2">
                                     <h3 className="text-primary text-base font-medium">
-                                        {blogs[0].content.title}
+                                       7 Essential Reasons to Work With a Small Business
+                            Tax Accountant
                                     </h3>
                                     <p className="text-xs leading-relaxed text-gray-500">
-                                        {blogs[0].content.description}
+                                       For entrepreneurs, managing taxes is one of the biggest responsibilities. While many owners attempt to handle it alone, a small business tax accountant ensures compliance, efficiency, and valuable savings. Their guidance helps simplify financial obligations while freeing time to focus on growth.
                                     </p>
                                     <div>
                                         <Button
@@ -488,31 +491,30 @@ export default async function Home() {
 
                     {/* Text Content */}
                     <div className="space-y-6 md:w-1/2">
-                        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-                        {blogs.slice(1).map((blog: any, index: number) => (
                             <div
-                                key={index}
                                 className="flex flex-col items-center gap-4 p-1 md:flex-row"
                             >
                                 {/* Left: Image */}
                                 <div className="w-full overflow-hidden rounded-lg md:w-1/3">
                                     <Image
-                                        src={blog.content.image.filename}
-                                        alt="Outsourcing bookkeeping"
+                                                          src={'/assets/blogs/blog-cover-3.webp'}
+                    alt={`What Canadian Business Owners Should Track Monthly - Monthly financial tracking blog post by Invisor CPA, Canadian accountants`}
+
                                         width={2048}
                                         height={1366}
-                                        className="h-full w-full rounded-lg object-cover"
+                                        className="h-50 w-full rounded-lg object-cover"
                                     />
                                 </div>
 
                                 {/* Right: Content */}
                                 <div className="flex w-full flex-col gap-2 p-2 md:w-2/3">
-                                    <Link href={`/blogs/${blog.slug}`}>
+                                    <Link href={`/blogs/monthly-tracking-canadian-business-owners`}>
                                         <h3 className="text-primary text-base font-medium">
-                                            {blog.content.title}
+                            What Canadian Business Owners Should Track Monthly
+
                                         </h3>
                                         <p className="text-xs leading-relaxed text-gray-500">
-                                            {blog.content.description}
+                                        Many Canadian business owners focus on sales but overlook the financial details that actually determine profitability, cash flow, and CRA compliance.
                                         </p>
                                         <div>
                                             <Button
@@ -528,7 +530,44 @@ export default async function Home() {
                                     </Link>
                                 </div>
                             </div>
-                        ))}
+                                <div
+                                className="flex flex-col items-center gap-4 p-1 md:flex-row"
+                            >
+                                {/* Left: Image */}
+                                <div className="w-full overflow-hidden rounded-lg md:w-1/3">
+                                    <Image
+                                                          src={'/assets/why-choose-us.jpg'}
+                    alt={`What Canadian Business Owners Should Track Monthly - Monthly financial tracking blog post by Invisor CPA, Canadian accountants`}
+
+                                        width={2048}
+                                        height={1366}
+                                        className="h-50 w-full rounded-lg object-cover"
+                                    />
+                                </div>
+
+                                {/* Right: Content */}
+                                <div className="flex w-full flex-col gap-2 p-2 md:w-2/3">
+                                    <Link href={`/blogs/tax-id-number-canada`}>
+                                        <h3 className="text-primary text-base font-medium">
+                            Tax ID Number in Canada: SIN, BN, ITN & GST/HST Explained
+
+                                        </h3>
+                                        <p className="text-xs leading-relaxed text-gray-500">
+Canada does not issue one universal tax identification number. Instead, your Canadian tax ID depends on who you are and what you need to do.                                        </p>
+                                        <div>
+                                            <Button
+                                                variant={'outline'}
+                                                className="text-primary border-primary hover:bg-primary flex items-center gap-4 rounded-full hover:text-white"
+                                            >
+                                                <span className="">
+                                                    Read More
+                                                </span>
+                                                <CircleArrowRight className="h-4 w-4" />
+                                            </Button>
+                                        </div>
+                                    </Link>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </section>
