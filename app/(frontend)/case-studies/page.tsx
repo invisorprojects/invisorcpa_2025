@@ -1,4 +1,4 @@
-export const dynamic = 'force-static';
+// export const dynamic = 'force-static';
 
 import ContactUs from '@/components/sections/contact-us';
 import { getStoryblokApi } from '@/lib/storyblok';
@@ -22,6 +22,7 @@ export default async function CaseStudies() {
         version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
         starts_with: 'case-studies',
         content_type: 'case_study',
+        sort_by: 'first_published_at:asc',
     });
     // console.log('caseStudies:', caseStudies);
     return (

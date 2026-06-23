@@ -86,7 +86,7 @@ export default async function Home() {
         version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
         starts_with: 'case-studies',
         content_type: 'case_study',
-        sort_by: 'first_published_at:desc',
+        sort_by: 'first_published_at:asc',
         per_page: 3,
     });
 
