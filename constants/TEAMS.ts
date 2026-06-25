@@ -1,12 +1,12 @@
 export const TEAMS = [
-    {
-        name: 'Geevar Thambi',
-        qualification: 'MBA, CMA, CSCA, CPB, EA',
-        path: '/assets/team/team-members-3.webp',
-    },
+    // {
+    //     name: 'Geevar Thambi',
+    //     qualification: 'MBA, CMA, CSCA, CPB, EA',
+    //     path: '/assets/team/team-members-3.webp',
+    // },
       {
         name: 'Bernie Keim',
-        qualification: 'Principal Consultant',
+        qualification: 'MBA, CGA, CPA',
         path: '/assets/team/team-members-2.webp',
     },
   {
