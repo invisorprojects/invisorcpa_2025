@@ -28,7 +28,7 @@ export function BehindTheTeam() {
             <div className="flex flex-col gap-4">
                 <div className="flex w-full flex-col gap-4 md:flex-row">
                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                             <div className="group relative h-[340px] w-[260px] overflow-hidden rounded-[24px] bg-[#E5F2F8] shadow-md">
+                        <div className="group relative h-[340px] w-[260px] overflow-hidden rounded-[24px] bg-[#E5F2F8] shadow-md">
                             <Image
                                 src="/assets/team/team-members-3.webp"
                                 alt="Geevar Thambi - MBA, CMA, CSCA, CPB, EA at Invisor CPA, Canadian tax accountant and tax services expert"
@@ -37,14 +37,14 @@ export function BehindTheTeam() {
                                 className="object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-[0.2]"
                             />
 
-                            <div className="absolute inset-x-4 bottom-4 rounded-2xl bg-white/92 px-4 py-3 text-center shadow-lg backdrop-blur-sm transition-all duration-300 group-hover:translate-y-4 group-hover:opacity-0">
+                            <div className="absolute inset-x-4 bottom-4 hidden rounded-2xl bg-white/92 px-4 py-3 text-center shadow-lg backdrop-blur-sm transition-all duration-300 md:block md:group-hover:translate-y-4 md:group-hover:opacity-0">
                                 <h3 className="text-base font-semibold text-slate-900">
                                     Geevar Thambi
                                 </h3>
                             </div>
 
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#071a23]/95 via-[#071a23]/82 to-[#071a23]/28 opacity-0 transition-all duration-300 group-hover:opacity-100">
-                                <div className="flex h-full translate-y-6 flex-col justify-end p-5 text-white transition-transform duration-300 group-hover:translate-y-0">
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#071a23]/95 via-[#071a23]/82 to-[#071a23]/28 opacity-100 transition-all duration-300 md:opacity-0 md:group-hover:opacity-100">
+                                <div className="flex h-full translate-y-0 flex-col justify-end p-5 text-white transition-transform duration-300 md:translate-y-6 md:group-hover:translate-y-0">
                                     <p className="text-[11px] font-semibold tracking-[0.32em] text-white/65 uppercase">
                                         Team
                                     </p>
