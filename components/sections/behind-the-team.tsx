@@ -28,7 +28,7 @@ export function BehindTheTeam() {
             <div className="flex flex-col gap-4">
                 <div className="flex w-full flex-col gap-4 md:flex-row">
                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                        <div className="group relative h-[340px] w-[260px] overflow-hidden rounded-[24px] bg-[#E5F2F8] shadow-md">
+                             <div className="group relative h-[340px] w-[260px] overflow-hidden rounded-[24px] bg-[#E5F2F8] shadow-md">
                             <Image
                                 src="/assets/team/team-members-3.webp"
                                 alt="Geevar Thambi - MBA, CMA, CSCA, CPB, EA at Invisor CPA, Canadian tax accountant and tax services expert"
@@ -66,8 +66,7 @@ export function BehindTheTeam() {
                                 </div>
                             </div>
                         </div>
-
-                        {TEAMS.slice(1, 4).map((team, index) => (
+                        {TEAMS.slice(0, 3).map((team, index) => (
                             <TeamCard
                                 key={index}
                                 name={team.name}
