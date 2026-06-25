@@ -23,6 +23,12 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
 
+import {
+    OFFICE_PLACE_IDS,
+    REVIEW_LOCATION_NAMES,
+    type ReviewLocationName,
+} from '../review-locations';
+
 type StepId =
     | 'office'
     | 'service'
@@ -54,17 +60,11 @@ type GenerateResponse = {
 
 const GOOGLE_REVIEW_BASE_URL = 'https://search.google.com/local/writereview?placeid=';
 
-const OFFICE_PLACE_IDS = {
-    London: 'ChIJS4dQXIzzLogRH_-w_SFaeu8',
-    Fergus: 'ChIJnwAyNiC_K4gRJr1cFih8V9E',
-    Strathroy: 'ChIJYxvDSZgFL4gRSckyvwWdnew',
-} as const;
-
 const QUESTIONS: Question[] = [
     {
         id: 'office',
         prompt: 'Which office?',
-        options: ['London', 'Fergus', 'Strathroy'],
+        options: [...REVIEW_LOCATION_NAMES],
     },
     {
         id: 'service',
@@ -434,9 +434,18 @@ function ReviewCard({
     );
 }
 
-export function ReviewAssistant() {
-    const [answers, setAnswers] = useState<Answers>(EMPTY_ANSWERS);
-    const [currentIndex, setCurrentIndex] = useState(0);
+export function ReviewAssistant({
+    initialOffice = '',
+}: {
+    initialOffice?: ReviewLocationName | '';
+}) {
+    const initialAnswers = {
+        ...EMPTY_ANSWERS,
+        office: initialOffice,
+    };
+    const initialQuestionIndex = initialOffice ? 1 : 0;
+    const [answers, setAnswers] = useState<Answers>(initialAnswers);
+    const [currentIndex, setCurrentIndex] = useState(initialQuestionIndex);
     const [phase, setPhase] = useState<FlowPhase>('questions');
     const [details, setDetails] = useState('');
     const [reviews, setReviews] = useState<ReviewOption[]>([]);
@@ -465,8 +474,8 @@ export function ReviewAssistant() {
     ]);
 
     function resetFlow() {
-        setAnswers(EMPTY_ANSWERS);
-        setCurrentIndex(0);
+        setAnswers(initialAnswers);
+        setCurrentIndex(initialQuestionIndex);
         setPhase('questions');
         setDetails('');
         setReviews([]);
@@ -559,7 +568,7 @@ export function ReviewAssistant() {
 
     async function selectReview(review: ReviewOption) {
         const placeId =
-            OFFICE_PLACE_IDS[answers.office as keyof typeof OFFICE_PLACE_IDS];
+            OFFICE_PLACE_IDS[answers.office as ReviewLocationName];
 
         if (!placeId) {
             toast.error('Select an office first.');
