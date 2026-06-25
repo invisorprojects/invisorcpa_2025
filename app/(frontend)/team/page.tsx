@@ -74,12 +74,13 @@ export default function Team() {
                                     MBA, CMA, CSCA, CPB, EA
                                 </p>
                                 <Link
-                                    href="https://calendly.com/geevar-invisorstaffing/tax-consultation"
+                                    href="https://calendly.com/geevar-invisorstaffing/discovery-call-invisor-clone?month=2026-06"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="mt-4 inline-flex h-8 w-fit items-center justify-center rounded-full bg-white px-4 text-xs font-semibold text-[#071a23] transition-colors hover:bg-sky-50"
                                 >
-                                    Book a Call
+                                                                            Book a Consultation
+
                                 </Link>
                             </div>
                         </div>
