@@ -16,6 +16,7 @@ import {
     type Transition,
     useReducedMotion,
 } from 'motion/react';
+import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState, useTransition } from 'react';
 import { toast } from 'sonner';
 
@@ -35,7 +36,7 @@ type StepId =
     | 'experienceRating'
     | 'standout'
     | 'teamMember';
-type FlowPhase = 'questions' | 'details' | 'generating' | 'results';
+type FlowPhase = 'questions' | 'details' | 'generating' | 'results' | 'submitted';
 
 type Question = {
     id: StepId;
@@ -58,6 +59,7 @@ type GenerateResponse = {
 };
 
 const GOOGLE_REVIEW_BASE_URL = 'https://search.google.com/local/writereview?placeid=';
+const NOT_SATISFIED_OPTION = 'Not Satisfied';
 
 const QUESTIONS: Question[] = [
     {
@@ -268,11 +270,14 @@ function ProgressRail({
     const shouldReduceMotion = useReducedMotion();
     const totalSteps = QUESTIONS.length + 1;
     const activeStep =
-        phase === 'details' || phase === 'generating' || phase === 'results'
+        phase === 'details' ||
+        phase === 'generating' ||
+        phase === 'results' ||
+        phase === 'submitted'
             ? QUESTIONS.length
             : currentIndex;
     const percent =
-        phase === 'results'
+        phase === 'results' || phase === 'submitted'
             ? 100
             : phase === 'generating'
               ? 88
@@ -283,8 +288,10 @@ function ProgressRail({
             <div className="flex items-center justify-between text-xs font-semibold text-[#616363]">
                 <span>Review draft</span>
                 <span>
-                    {phase === 'results'
-                        ? 'Ready'
+                    {phase === 'results' || phase === 'submitted'
+                        ? phase === 'submitted'
+                            ? 'Submitted'
+                            : 'Ready'
                         : `${Math.min(activeStep + 1, totalSteps)} of ${totalSteps}`}
                 </span>
             </div>
@@ -439,7 +446,9 @@ export function ReviewAssistant({
     const [redirectingReviewId, setRedirectingReviewId] = useState('');
     const [error, setError] = useState('');
     const [isPending, startTransition] = useTransition();
+    const router = useRouter();
     const bottomRef = useRef<HTMLDivElement>(null);
+    const homeRedirectTimeoutRef = useRef<number | null>(null);
     const shouldReduceMotion = useReducedMotion();
 
     const currentQuestion = QUESTIONS[currentIndex];
@@ -459,7 +468,23 @@ export function ReviewAssistant({
         shouldReduceMotion,
     ]);
 
+    useEffect(() => {
+        return () => {
+            if (homeRedirectTimeoutRef.current) {
+                window.clearTimeout(homeRedirectTimeoutRef.current);
+            }
+        };
+    }, []);
+
+    const isNotSatisfied =
+        answers.experienceRating === NOT_SATISFIED_OPTION;
+
     function resetFlow() {
+        if (homeRedirectTimeoutRef.current) {
+            window.clearTimeout(homeRedirectTimeoutRef.current);
+            homeRedirectTimeoutRef.current = null;
+        }
+
         setAnswers(initialAnswers);
         setCurrentIndex(initialQuestionIndex);
         setPhase('questions');
@@ -483,6 +508,29 @@ export function ReviewAssistant({
         }
 
         setCurrentIndex((index) => index + 1);
+    }
+
+    function submitFeedback(nextDetails = details) {
+        setDetails(nextDetails);
+        setError('');
+        setReviews([]);
+        setSelectedReviewId('');
+        setRedirectingReviewId('');
+        setPhase('submitted');
+        toast.success('Submitted. Thank you for your feedback.');
+
+        homeRedirectTimeoutRef.current = window.setTimeout(() => {
+            router.replace('/');
+        }, 1400);
+    }
+
+    function handleDetailsSubmit(nextDetails = details) {
+        if (isNotSatisfied) {
+            submitFeedback(nextDetails);
+            return;
+        }
+
+        generateReviews(nextDetails);
     }
 
     async function generateReviews(nextDetails = details) {
@@ -691,7 +739,7 @@ export function ReviewAssistant({
                                                 type="button"
                                                 variant="outline"
                                                 className="h-11 border-[#1b1e65]/25 text-[#1b1e65] hover:bg-[#eff4ff]"
-                                                onClick={() => generateReviews('')}
+                                                onClick={() => handleDetailsSubmit('')}
                                                 disabled={isPending}
                                             >
                                                 Skip
@@ -700,7 +748,7 @@ export function ReviewAssistant({
                                                 type="button"
                                                 className="h-11 bg-[#1b1e65] text-white hover:bg-[#020252]"
                                                 onClick={() =>
-                                                    generateReviews(details)
+                                                    handleDetailsSubmit(details)
                                                 }
                                                 disabled={isPending}
                                             >
@@ -708,7 +756,9 @@ export function ReviewAssistant({
                                                     className="size-4"
                                                     aria-hidden="true"
                                                 />
-                                                Generate reviews
+                                                {isNotSatisfied
+                                                    ? 'Submit feedback'
+                                                    : 'Generate reviews'}
                                             </Button>
                                         </div>
                                     </div>
@@ -733,6 +783,30 @@ export function ReviewAssistant({
                                     )}
                                 >
                                     <TypingIndicator />
+                                </motion.div>
+                            ) : null}
+
+                            {phase === 'submitted' ? (
+                                <motion.div
+                                    key="submitted"
+                                    layout="position"
+                                    variants={messageVariants}
+                                    initial="hidden"
+                                    animate="show"
+                                    exit="exit"
+                                    transition={getTransition(
+                                        Boolean(shouldReduceMotion)
+                                    )}
+                                    className="space-y-3"
+                                >
+                                    <ChatBubble>
+                                        Submitted. Thank you for sharing your
+                                        feedback.
+                                    </ChatBubble>
+                                    <ChatBubble>
+                                        We&apos;ll take a look and redirect you
+                                        back home.
+                                    </ChatBubble>
                                 </motion.div>
                             ) : null}
 
