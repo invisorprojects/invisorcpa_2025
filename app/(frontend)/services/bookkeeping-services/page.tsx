@@ -87,7 +87,7 @@ const childServices = [
     {
         title: 'Small Business Bookkeeping',
         description: 'Packages built for owner-operators.',
-        href: '/services/small-business-bookkeeping',
+        href: '/services/bookkeeping-services',
         icon: Landmark,
     },
 ];
