@@ -131,12 +131,12 @@ export default function Footer() {
                     </div>
 
                     {/* Review */}
-                    {/* <div>
+                    <div>
                         <h3 className="mb-2 font-semibold">
                             Leave us a review
                         </h3>
                         <Link
-                            href="/request-review"
+                            href="/review"
                             aria-label="Leave us a review"
                             className="block w-fit rounded-md border bg-white p-2 transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                         >
@@ -148,7 +148,7 @@ export default function Footer() {
                                 className="h-22 w-22"
                             />
                         </Link>
-                    </div> */}
+                    </div>
                 </div>
             </div>
 

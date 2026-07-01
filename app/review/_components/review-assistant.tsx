@@ -33,7 +33,6 @@ type StepId =
     | 'office'
     | 'service'
     | 'experienceRating'
-    | 'experience'
     | 'standout'
     | 'teamMember';
 type FlowPhase = 'questions' | 'details' | 'generating' | 'results';
@@ -75,26 +74,14 @@ const QUESTIONS: Question[] = [
             'Bookkeeping',
             'Payroll',
             'Incorporation',
-            'Accounting advice',
+            'Cross Border Tax',
             'Other',
-        ],
-    },
-    {
-        id: 'experience',
-        prompt: 'How was your experience?',
-        options: [
-            'Very smooth',
-            'Professional',
-            'Fast',
-            'Helpful',
-            'Clear communication',
-            'Stress-free',
         ],
     },
     {
         id: 'experienceRating',
         prompt: 'How do you rate the experience?',
-        options: ['Excellent', 'Great', 'Good', 'Average', 'Could be better'],
+        options: ['Excellent', 'Great', 'Good', 'Average', 'Not Satisfied'],
     },
     {
         id: 'standout',
@@ -112,11 +99,11 @@ const QUESTIONS: Question[] = [
         id: 'teamMember',
         prompt: 'Whom did you work with?',
         options: [
-            'Geever Thambi',
-            'Mohammed Shafeeque',
-            'Anjali Anil',
-            'Dayana Silvin',
-            'Irine Catherine',
+            'Geever',
+            'Mohammed',
+            'Anjali',
+            'Dayana',
+            'Irine',
         ],
     },
 ];
@@ -125,7 +112,6 @@ const EMPTY_ANSWERS: Answers = {
     office: '',
     service: '',
     experienceRating: '',
-    experience: '',
     standout: '',
     teamMember: '',
 };
@@ -513,7 +499,6 @@ export function ReviewAssistant({
                     body: JSON.stringify({
                         service: answers.service,
                         experienceRating: answers.experienceRating,
-                        experience: answers.experience,
                         standout: answers.standout,
                         details: nextDetails,
                         teamMember: answers.teamMember,
