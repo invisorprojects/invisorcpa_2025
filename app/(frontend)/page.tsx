@@ -4,6 +4,7 @@ import TrustedPartners from '@/components/sections/trusted-partners';
 import { Button } from '@/components/ui/button';
 import { CircleArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import HomeHero from '@/components/sections/home-hero';
 import ContactUs from '@/components/sections/contact-us';
 import Faq from '@/components/sections/faq-section';
 import OurTools from '@/components/sections/our-tools';
@@ -16,7 +17,6 @@ import { ServicesCard } from '@/components/service-card';
 import { CaseStudyCard } from '@/components/case-study-card';
 import { getStoryblokApi } from '@/lib/storyblok';
 import { NumberTicker } from '@/components/magicui/number-ticker';
-import CountUp from '@/components/react-bits/count-up';
 import PricingSection from '@/components/PricingSection';
 import CalendlyInlineWidget from '@/components/sections/CalendlyInlineWidget';
 import GoogleReviewsCarousel from '@/components/sections/GoogleReviewsCarousel';
@@ -102,45 +102,8 @@ export default async function Home() {
     // console.log('blogs::', blogs);
     return (
         <main className="">
-            <section className="flex flex-col gap-4 p-4 sm:p-8 md:p-12 lg:p-16 xl:p-24">
-                <div className="flex h-full flex-col items-end justify-between sm:flex-row">
-                    <div className="flex flex-col items-start justify-between gap-8 sm:w-2/3">
-                        <div className="flex flex-col items-start justify-between gap-4">
-                            <h1 className="text-4xl font-bold sm:text-5xl">
-                                Accounting Service for Small Businesses
-                            </h1>
-                            <p className="max-w-2xl text-lg">
-                                Our small business tax accountant simplifies
-                                your bookkeeping and financial processes so you
-                                can focus on growing your business with
-                                confidence and clarity.
-                            </p>
-                        </div>
-                        <StatsGrid />
-                    </div>
-
-                    <div className="w-full sm:w-1/3">
-                        <div className="relative h-fit w-fit ">
-                            <div className="absolute top-13 -left-32 hidden max-w-52 rounded-2xl border bg-white p-4 shadow-md drop-shadow-lg sm:block">
-                                <p className="text-base font-bold">
-                                    Canada&#39;s Trusted Bookkeeping &
-                                    Accounting Experts
-                                </p>
-                            </div>
-
-
-                            <Image
-                                className=" rounded-2xl object-cover object-center"
-                                src="/assets/hero.png"
-                                alt="Professional tax accountant working on tax returns in Canada"
-                                priority={true}
-                                width={1920}
-                                height={1080}
-                                fetchPriority="high"
-                                />
-                        </div>
-                    </div>
-                </div>
+            <section className="flex flex-col gap-4 p-4 sm:p-8 md:p-12 lg:p-16 ">
+                <HomeHero />
                 <div className="w-full">
                     <TrustedPartners />
                 </div>
@@ -177,7 +140,7 @@ export default async function Home() {
                         </div>
                     </div>
 
-                    <div className="relative overflow-hidden rounded-2xl h-80 bg-[#113598] p-6 text-white sm:p-8 lg:p-10">
+                    <div className="relative h-80 overflow-hidden rounded-2xl bg-primary p-6 text-white sm:p-8 lg:p-10">
                         <div
                             aria-hidden="true"
                             className="absolute top-0 right-0 h-28 w-28 translate-x-8 -translate-y-8 rounded-full border border-white/20"
@@ -576,88 +539,5 @@ Canada does not issue one universal tax identification number. Instead, your Can
             <GoogleReviewsCarousel />
             <ContactUs />
         </main>
-    );
-}
-
-function StatsGrid() {
-    return (
-        <div className="flex h-80 max-w-xl gap-4">
-            <div className="flex h-full w-1/2 flex-col gap-4">
-                <div className="flex h-1/2 w-full flex-col justify-center rounded-lg bg-gradient-to-br from-green-100 to-blue-100 p-6 text-[#11135f]">
-                    <div className="flex items-center">
-                        <CountUp
-                            from={0}
-                            to={20}
-                            separator=","
-                            direction="up"
-                            duration={1}
-                            className="count-up-text text-3xl font-[900] sm:text-4xl"
-                        />
-                        <span className="text-3xl font-[900]">+</span>
-                    </div>
-                    <p className="mt-1 text-sm text-gray-700 sm:text-base">
-                        Professional Experts
-                    </p>
-                </div>
-                <div className="flex h-1/2 w-full flex-col justify-center rounded-lg bg-gray-100 p-6 text-[#11135f]">
-                    <div className="flex items-center">
-                        <CountUp
-                            from={0}
-                            to={20}
-                            separator=","
-                            direction="up"
-                            duration={1}
-                            className="count-up-text text-3xl font-[900] sm:text-4xl"
-                        />
-                        <span className="text-3xl font-[900]">+</span>
-                    </div>
-                    <p className="mt-1 text-sm text-gray-700 sm:text-base">
-                        Year of Affiliate Experience
-                    </p>
-                </div>
-            </div>
-
-            <div className="flex h-full w-1/2 flex-col gap-4">
-                <div className="flex h-1/3 flex-col justify-center rounded-lg border border-gray-200 p-6 text-[#11135f]">
-                    <div className="flex items-center">
-                        <CountUp
-                            from={0}
-                            to={15}
-                            separator=","
-                            direction="up"
-                            duration={1}
-                            className="count-up-text text-3xl font-[900] sm:text-4xl"
-                        />
-                        <span className="text-3xl font-[900]">+</span>
-                    </div>
-                    <p className="mt-1 text-sm text-gray-700 sm:text-base">
-                        Years Experience
-                    </p>
-                </div>
-
-                <div className="flex h-2/3 flex-col justify-center rounded-lg bg-blue-100 p-6 text-[#11135f]">
-                    <div className="flex items-center">
-                        <CountUp
-                            from={0}
-                            to={1}
-                            separator=","
-                            direction="up"
-                            duration={1}
-                            className="count-up-text text-3xl font-[900] sm:text-4xl"
-                        />
-                        <span className="text-3xl font-[900] sm:text-4xl">
-                            K
-                        </span>
-                        <span className="text-3xl font-[900] sm:text-4xl">
-                            +
-                        </span>
-                    </div>
-                    <p className="mt-1 text-sm text-gray-700 sm:text-base">
-                        Canada&#39;s trusted accounting experts, proudly serving
-                        1000+ clients nationwide
-                    </p>
-                </div>
-            </div>
-        </div>
     );
 }
