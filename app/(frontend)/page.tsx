@@ -109,67 +109,87 @@ export default async function Home() {
                 </div>
             </section>
 
-            <section className="bg-[#EFF0F4] px-4 py-12 sm:px-8 md:px-12 lg:px-16 xl:px-24">
-                <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-                    <div className="flex flex-col justify-between gap-10 rounded-2xl bg-white p-6 shadow-sm sm:p-8 lg:p-10">
+            <section className="bg-[#F4FAFD] px-4 py-14 sm:px-8 md:px-12 lg:px-16 xl:px-24">
+                <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
+                    <div className="flex flex-col justify-between gap-8 rounded-2xl border border-[#DCEAF1] bg-white p-6 shadow-sm sm:p-8 lg:p-10">
                         <div className="flex max-w-3xl flex-col gap-5">
-                            <h2 className="text-primary text-3xl leading-tight font-bold sm:text-4xl lg:text-5xl">
+                            <span className="text-secondary text-sm font-semibold tracking-widest uppercase">
+                                Financial Operations
+                            </span>
+                            <h2 className="text-3xl leading-tight font-bold text-[#103D56] sm:text-4xl lg:text-5xl">
                                 Simplify Your Accounts, Maximize Your Success!
                             </h2>
                             <p className="text-base leading-8 text-[#4E4E5A] sm:text-lg">
                                 Whether you&#39;re managing accounting or
                                 navigating taxes, our dedicated team is here to
                                 support you. We provide expert accounting, tax
-                                planning, and bookkeeping services to simplify
-                                your accounting journey with efficient,
-                                tech-driven solutions. We take the stress out of
-                                financial management so you can focus on what
-                                matters most—growing your business. With
-                                personalized support and smart automation, we
-                                ensure accuracy, compliance, and peace of mind
-                                at every step.
+                                planning, and bookkeeping services with
+                                efficient, tech-enabled workflows so you can
+                                focus on growing your business.
                             </p>
                         </div>
-                        <div
-                            aria-hidden="true"
-                            className="grid grid-cols-3 gap-3 border-t border-[#E1E4EC] pt-6"
-                        >
-                            <div className="h-2 rounded-full bg-primary"></div>
-                            <div className="h-2 rounded-full bg-secondary"></div>
-                            <div className="h-2 rounded-full bg-[#9BC8DA]"></div>
+
+                        <div className="grid gap-4 border-t border-[#DCEAF1] pt-6 sm:grid-cols-3">
+                            <div className="rounded-lg bg-[#E5F2F8] p-4">
+                                <p className="text-sm font-semibold text-[#103D56]">
+                                    Accurate Books
+                                </p>
+                                <p className="mt-2 text-sm leading-6 text-[#4E4E5A]">
+                                    Clean records and reliable monthly reporting.
+                                </p>
+                            </div>
+                            <div className="rounded-lg bg-[#EFF0F4] p-4">
+                                <p className="text-sm font-semibold text-[#103D56]">
+                                    Tax Ready
+                                </p>
+                                <p className="mt-2 text-sm leading-6 text-[#4E4E5A]">
+                                    Organized support for CRA compliance.
+                                </p>
+                            </div>
+                            <div className="rounded-lg bg-[#F7FCFF] p-4">
+                                <p className="text-sm font-semibold text-[#103D56]">
+                                    Less Admin
+                                </p>
+                                <p className="mt-2 text-sm leading-6 text-[#4E4E5A]">
+                                    Streamlined workflows for busy owners.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="relative h-80 overflow-hidden rounded-2xl bg-primary p-6 text-white sm:p-8 lg:p-10">
-                        <div
-                            aria-hidden="true"
-                            className="absolute top-0 right-0 h-28 w-28 translate-x-8 -translate-y-8 rounded-full border border-white/20"
-                        ></div>
-                        <div
-                            aria-hidden="true"
-                            className="absolute bottom-0 left-0 h-36 w-36 -translate-x-12 translate-y-12 rounded-full bg-white/10"
-                        ></div>
-                        
-                        
-                        <div className="relative flex flex-col justify-end gap-5">
-                            <h3 className="text-2xl leading-snug font-bold sm:text-3xl">
-                                Canada&#39;s Leading Bookkeeping Service
-                                providers - Trusted by Over 1,000 Clients
-                                Nationwide
+                    <div className="grid gap-4">
+                        <div className="rounded-2xl border border-[#DCEAF1] bg-white p-6 shadow-sm sm:p-8">
+                            <p className="text-sm font-semibold text-secondary uppercase">
+                                Trusted Nationwide
+                            </p>
+                            <h3 className="mt-4 text-3xl leading-tight font-bold text-[#103D56] sm:text-4xl">
+                                Canada&#39;s leading bookkeeping service
+                                providers
                             </h3>
-                            <p className="max-w-xl text-base leading-7 text-white/85 sm:text-lg">
+                            <p className="mt-4 text-base leading-7 text-[#4E4E5A]">
                                 At Invisor, we handle your bookkeeping with
                                 precision, so you can focus on growing your
                                 business.
                             </p>
-                            {/* <Image
-                            src="/assets/book-pen.png"
-                            alt="Calculator"
-                            width={1920}
-                            height={1920}
-                            className="relative mx-auto mb-8 h-24 w-24 rounded-2xl sm:h-32 sm:w-32 lg:h-44 lg:w-auto"
-                        /> */}
-                            {/* <Button className="rounded-full">Learn More</Button> */}
+                        </div>
+
+                        <div className="grid gap-4 sm:grid-cols-2">
+                            <div className="rounded-2xl bg-[#E5F2F8] p-6">
+                                <p className="text-4xl font-extrabold text-[#103D56]">
+                                    1K+
+                                </p>
+                                <p className="mt-2 text-sm leading-6 text-[#4E4E5A]">
+                                    clients supported across Canada
+                                </p>
+                            </div>
+                            <div className="rounded-2xl bg-[#EFF0F4] p-6">
+                                <p className="text-4xl font-extrabold text-[#103D56]">
+                                    15+
+                                </p>
+                                <p className="mt-2 text-sm leading-6 text-[#4E4E5A]">
+                                    years of accounting experience
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

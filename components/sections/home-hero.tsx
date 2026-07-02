@@ -66,7 +66,7 @@ const stats = [
 export default function HomeHero() {
     return (
         <motion.div
-            className="mx-auto grid max-w-7xl 2xl:max-w-8xl gap-8 lg:grid-cols-[1.02fr_0.98fr] lg:items-center"
+            className="mx-auto grid max-w-7xl 2xl:max-w-8xl 2xl:gap-10 gap-8 lg:grid-cols-[1.02fr_0.98fr] lg:items-center"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
