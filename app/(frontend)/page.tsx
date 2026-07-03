@@ -102,7 +102,7 @@ export default async function Home() {
     // console.log('blogs::', blogs);
     return (
         <main className="">
-            <section className="flex flex-col gap-4 p-4 sm:p-8 md:p-12 lg:p-16  xl:p-18">
+            <section className="flex flex-col gap-4 p-4 sm:p-8 md:p-12 lg:p-16  xl:p-18 xl:px-28">
                 <HomeHero />
                 <div className="w-full">
                     <TrustedPartners />

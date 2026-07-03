@@ -15,7 +15,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({
     params,
-}: PageProps<'/request-review/[office]'>): Promise<Metadata> {
+}: PageProps<'/review/[office]'>): Promise<Metadata> {
     const { office } = await params;
     const location = getReviewLocationBySlug(office);
 
@@ -34,7 +34,7 @@ export async function generateMetadata({
 
 export default async function RequestReviewLocationPage({
     params,
-}: PageProps<'/request-review/[office]'>) {
+}: PageProps<'/review/[office]'>) {
     const { office } = await params;
     const location = getReviewLocationBySlug(office);
 
