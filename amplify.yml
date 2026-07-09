@@ -5,7 +5,7 @@ frontend:
             commands:
                 - npm install -g pnpm@11.1.1
                 - pnpm install --frozen-lockfile
-                - env | grep -e PAYLOAD_SECRET -e DATABASE_URI -e UPLOADTHING_TOKEN -e GOOGLE_MAPS_API_KEY -e GOOGLE_PLACE_ID >> .env.production
+                - env | grep -E '^(PAYLOAD_SECRET|DATABASE_URI|UPLOADTHING_TOKEN|GOOGLE_MAPS_API_KEY|GOOGLE_PLACE_ID|GROQ_API_KEY|GROQ_MODEL)=' >> .env.production
         build:
             commands:
                 - pnpm run build
