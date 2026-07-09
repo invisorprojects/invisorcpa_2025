@@ -29,8 +29,7 @@ export default function ContactUs() {
                         </Link>
 
                         <a
-                            target="_blank"
-                            href="tel:+12262273482"
+                href='new-clients'
                             rel="noopener noreferrer"
                             aria-label="Contact us on Phone"
                         >
