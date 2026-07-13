@@ -20,7 +20,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const pageUrl =
-    'https://www.invisorcpa.ca/case-studies/restaurant-and-hospitality';
+    'https://www.invisorcpa.ca/case-studies/restaurant-bookkeeping';
 
 const caseFacts = [
     {
@@ -279,8 +279,8 @@ export default function Page() {
                             </p>
                             <Button
                                 asChild
-                                variant="secondary"
-                                className="mt-6 rounded-full"
+                                variant="outline"
+                                className="mt-6 rounded-full text-primary hover:bg-white"
                             >
                                 <Link href="/new-clients">
                                     Book a Health Check
