@@ -66,7 +66,7 @@ export default async function CaseStudies() {
                 ))}
                 <div className="flex max-w-sm flex-1 flex-col overflow-hidden rounded-xl bg-gray-100 hover:bg-sky-50">
                     <Image
-                        src={"/assets/hero.png"}
+                        src={"/assets/hero.webp"}
                         alt="Case Study"
                         width={2048}
                         height={1152}

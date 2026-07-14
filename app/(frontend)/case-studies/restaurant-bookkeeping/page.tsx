@@ -112,7 +112,7 @@ export const metadata: Metadata = {
         type: 'article',
         images: [
             {
-                url: '/assets/hero.png',
+                url: '/assets/hero.webp',
                 width: 1120,
                 height: 1120,
                 alt: 'Restaurant bookkeeping case study by InvisorCPA',
@@ -124,7 +124,7 @@ export const metadata: Metadata = {
         title: 'Restaurant & Hospitality Case Study | InvisorCPA',
         description:
             'How InvisorCPA helped a family-owned restaurant get its evenings back and know its true profit.',
-        images: ['/assets/hero.png'],
+        images: ['/assets/hero.webp'],
     },
 };
 
@@ -135,7 +135,7 @@ export default function Page() {
         headline:
             'How a Family-Owned Restaurant Got Its Evenings Back and Finally Knew Its True Profit',
         description: metadata.description,
-        image: `https://www.invisorcpa.ca/assets/hero.png`,
+        image: `https://www.invisorcpa.ca/assets/hero.webp`,
         author: {
             '@type': 'Organization',
             name: 'InvisorCPA',
@@ -209,7 +209,7 @@ export default function Page() {
 
                     <div className="rounded-[2rem] bg-[#EAF4FF] p-4 shadow-sm">
                         <Image
-                            src="/assets/hero.png"
+                            src="/assets/hero.webp"
                             alt="Restaurant owner reviewing financial reports after hours"
                             width={1120}
                             height={1120}
