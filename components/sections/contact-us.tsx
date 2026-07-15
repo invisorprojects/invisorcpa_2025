@@ -29,7 +29,7 @@ export default function ContactUs() {
                         </Link>
 
                         <a
-                href='new-clients'
+                href='/new-clients'
                             rel="noopener noreferrer"
                             aria-label="Contact us on Phone"
                         >
