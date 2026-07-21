@@ -104,13 +104,14 @@ function GetInTouchSection() {
                             </h3>
                             <p className="text-gray-600">
                                 375V- 341 Talbot St. London, ON N6A 2R5{' '}
+                                <br /> Canada
                             </p>
                         </div>
                     </div>
                 </div>
 
                 {/* Contact Form */}
-                <div className="mx-auto w-full max-w-xl sm:mx-0 sm:max-h-[430px]">
+                <div className="mx-auto w-full max-w-xl sm:mx-0">
                     <ContactUsForm />
                 </div>
             </div>
