@@ -2,13 +2,12 @@
 
 import React, { useEffect, useState } from 'react';
 import Script from 'next/script';
-import { User, Mail, Phone, RefreshCw, Send, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { User, Mail, Phone, RefreshCw, Send, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
 export default function ContactUsForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [captchaRefreshing, setCaptchaRefreshing] = useState(false);
 
     useEffect(() => {
         // Define Zoho global helper functions
@@ -22,26 +21,6 @@ export default function ContactUsForm() {
             if (optionElem.options && optionElem.selectedIndex >= 0) {
                 optionElem.options[optionElem.selectedIndex].setAttribute('aria-selected', 'true');
             }
-        };
-
-        (window as any).reloadImg1324457000002829011 = function () {
-            var captcha = document.getElementById('imgid1324457000002829011') as HTMLImageElement;
-            if (captcha) {
-                if (captcha.src.indexOf('&d') !== -1) {
-                    captcha.src = captcha.src.substring(0, captcha.src.indexOf('&d')) + '&d' + new Date().getTime();
-                } else {
-                    captcha.src = captcha.src + '&d' + new Date().getTime();
-                }
-            }
-        };
-
-        (window as any).historyBack1324457000002829011 = function () {
-            var btn = document.querySelector('.crmWebToEntityForm .formsubmit') as HTMLInputElement;
-            if (btn) btn.removeAttribute('disabled');
-            if (typeof (window as any).reloadImg1324457000002829011 !== 'undefined') {
-                (window as any).reloadImg1324457000002829011();
-            }
-            window.removeEventListener('focus', (window as any).historyBack1324457000002829011);
         };
 
         (window as any).validateEmail1324457000002829011 = function () {
@@ -144,21 +123,6 @@ export default function ContactUsForm() {
             return true;
         };
 
-        (window as any).captchaFailedHandling1324457000002829011 = function (message: string) {
-            var capErr = document.getElementById('captchaErr1324457000002829011');
-            if (capErr) {
-                capErr.innerHTML = message;
-                capErr.style.visibility = 'visible';
-                capErr.style.display = 'block';
-                var capFld = document.getElementById('captchaField1324457000002829011');
-                if (capFld) capFld.focus();
-                setTimeout(function () {
-                    var el = document.getElementById('captchaErr1324457000002829011');
-                    if (el) el.style.visibility = 'hidden';
-                }, 5000);
-            }
-        };
-
         if (typeof (window as any)._wfa_fstprtcken === 'undefined') {
             (window as any)._wfa_fstprtcken = {};
         }
@@ -189,34 +153,24 @@ export default function ContactUsForm() {
                         setIsSubmitting(false);
                         if (typeof data === 'object') {
                             if (data.actionsubmit === 'Splash Message') {
-                                if (data.invalidCaptcha && data.invalidCaptcha === 'true') {
-                                    (window as any).captchaFailedHandling1324457000002829011(data.actionvalue);
-                                } else {
-                                    if (typeof (window as any).reloadImg1324457000002829011 !== 'undefined') {
-                                        (window as any).reloadImg1324457000002829011();
-                                    }
-                                    var splashinfodom = document.getElementById('wf_splash_info');
-                                    var splashdom = document.getElementById('wf_splash');
-                                    if (splashinfodom && splashdom) {
-                                        splashinfodom.innerText = data.actionvalue || 'Thank you! Your submission has been received.';
-                                        (document.getElementById('webform1324457000002829011') as HTMLFormElement)?.reset();
-                                        splashdom.style.display = 'flex';
-                                        setTimeout(function () {
-                                            var sDom = document.getElementById('wf_splash');
-                                            if (sDom) sDom.style.display = 'none';
-                                        }, 5000);
-                                    }
-                                    if (typeof (window as any)._wfa_track !== 'undefined' && (window as any)._wfa_track.wfa_post_submit) {
-                                        (window as any)._wfa_track.wfa_post_submit(e);
-                                    }
+                                var splashinfodom = document.getElementById('wf_splash_info');
+                                var splashdom = document.getElementById('wf_splash');
+                                if (splashinfodom && splashdom) {
+                                    splashinfodom.innerText = data.actionvalue || 'Thank you! Your submission has been received.';
+                                    (document.getElementById('webform1324457000002829011') as HTMLFormElement)?.reset();
+                                    splashdom.style.display = 'flex';
+                                    setTimeout(function () {
+                                        var sDom = document.getElementById('wf_splash');
+                                        if (sDom) sDom.style.display = 'none';
+                                    }, 5000);
+                                }
+                                if (typeof (window as any)._wfa_track !== 'undefined' && (window as any)._wfa_track.wfa_post_submit) {
+                                    (window as any)._wfa_track.wfa_post_submit(e);
                                 }
                             } else if (data.actionsubmit === 'redirect_url' || data.actionsubmit === 'parent_redirect') {
                                 if (data.success) {
                                     if (typeof (window as any)._wfa_track !== 'undefined' && (window as any)._wfa_track.wfa_post_submit) {
                                         (window as any)._wfa_track.wfa_post_submit(e);
-                                    }
-                                    if (typeof (window as any).historyBack1324457000002829011 !== 'undefined') {
-                                        window.addEventListener('focus', (window as any).historyBack1324457000002829011);
                                     }
                                 }
                                 if (data.actionsubmit === 'redirect_url') {
@@ -228,22 +182,9 @@ export default function ContactUsForm() {
                                 document.location.hash = data.hash;
                             } else if (data.actionsubmit === 'error_msg') {
                                 alert(data.message);
-                            } else if (data.invalidCaptcha && data.invalidCaptcha === 'true') {
-                                (window as any).captchaFailedHandling1324457000002829011(data.actionvalue);
-                                if (data.extraAction === 'parent_signal') {
-                                    window.parent.postMessage('checkCaptchaError', '*');
-                                }
-                            } else if (data.actionsubmit === 'captcha_error') {
-                                alert(data.message);
-                                if (data.extraAction === 'parent_signal') {
-                                    window.parent.postMessage('checkCaptchaError', '*');
-                                }
                             } else if (data.actionsubmit === 'thankyou_page') {
                                 if (typeof (window as any)._wfa_track !== 'undefined' && (window as any)._wfa_track.wfa_post_submit) {
                                     (window as any)._wfa_track.wfa_post_submit(e);
-                                    if (typeof (window as any).historyBack1324457000002829011 !== 'undefined') {
-                                        window.addEventListener('focus', (window as any).historyBack1324457000002829011);
-                                    }
                                 }
                                 window.location.assign(data.redirectUrl);
                             }
@@ -280,23 +221,6 @@ export default function ContactUsForm() {
         };
     }, []);
 
-    const handleReloadCaptcha = () => {
-        setCaptchaRefreshing(true);
-        if (typeof (window as any).reloadImg1324457000002829011 === 'function') {
-            (window as any).reloadImg1324457000002829011();
-        } else {
-            var captcha = document.getElementById('imgid1324457000002829011') as HTMLImageElement;
-            if (captcha) {
-                if (captcha.src.indexOf('&d') !== -1) {
-                    captcha.src = captcha.src.substring(0, captcha.src.indexOf('&d')) + '&d' + new Date().getTime();
-                } else {
-                    captcha.src = captcha.src + '&d' + new Date().getTime();
-                }
-            }
-        }
-        setTimeout(() => setCaptchaRefreshing(false), 500);
-    };
-
     return (
         <div id="crmWebToEntityForm" className="zcwf_lblLeft crmWebToEntityForm w-full">
             {/* SalesIQ Script */}
@@ -329,7 +253,7 @@ export default function ContactUsForm() {
             {/* Analytics Tracking Code */}
             <Script
                 id="wf_anal"
-                src="https://crm.zohopublic.in/crm/WebFormAnalyticsServeServlet?rid=576e4a65d0e322f74e1aa82ef5e21b93db543e868d3c30d9154614bc63d52f1f707082d3e97fa1d49a7f864a129a5138gid5127a1eb9b5730f3fd1d2907dcf6530030f099721e0382acfc3b9faf9993c8e5gid6ba52b5cb9efc4141c8e5e0f5d417d190bef113275c30e6bc0fa8d3da64ce468gidf7e31cc6a1c65add829507e4e0962f0329ccdafd924562ef05f994605e7ddec4&tw=2e1c3356d90022e20e4f7514611f7ab79d85ed383b57c3bb60b26baa3935f029&version=v2"
+                src="https://crm.zohopublic.in/crm/WebFormAnalyticsServeServlet?rid=b71a7e65245003c64cdf6d1a5351633523869a4014a507d46725ee88d2f97023efb40d464aedbf67fbd4634289e62b26gidb2322d72ac1b0ab6fccfbf7e211243cf83d37a7f9a8ac69386bad572dba052c1gid31f63926f33f047e02a0f731099647af9fed615c0f52c9d46af6d73a89a26a25gid84b69c3045f292086ec0593e4ce3805c9905683ce933ffc884bb1bde45547197&tw=1ef345afe46b65434b8f6fcf5250d5e5895049cba407d070ad960fcea4840aab&version=v2"
                 strategy="afterInteractive"
             />
 
@@ -367,7 +291,7 @@ export default function ContactUsForm() {
                         type="text"
                         style={{ display: 'none' }}
                         name="xnQsjsdp"
-                        value="2fe12553e3128c314996e3ac2a33d9a4cb215fcca2095656c8e009cebaaf21d0"
+                        value="f3be78d1aa1b7b22ed25abeb3d8eef2c706c5e76ac34ccfd3c64e90286a1fea2"
                         readOnly
                     />
                     <input type="hidden" name="zc_gad" id="zc_gad" value="" />
@@ -375,7 +299,7 @@ export default function ContactUsForm() {
                         type="text"
                         style={{ display: 'none' }}
                         name="xmIwtLD"
-                        value="019026ae08cdc1ad68539d9e3dd9a0b5b47e53df2d530970c47a2a0aeb745c56950f1e9757ad6a5430b2c6e4264042c2"
+                        value="87f9f4fbca9fe2676bc5f929d5c2472351617f3ba197bd3c77539ce04b182751c69767704132380062a2c39fc647e7d3"
                         readOnly
                     />
                     <input
@@ -536,63 +460,6 @@ export default function ContactUsForm() {
                         </select>
                     </div>
 
-                    {/* Captcha Section */}
-                    <div className="space-y-3 rounded-xl border border-slate-200/80 bg-slate-50/70 p-4 dark:border-slate-800 dark:bg-slate-950/50">
-                        <div className="flex items-center justify-between">
-                            <label
-                                id="reCaptchaField"
-                                htmlFor="captchaField1324457000002829011"
-                                className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300"
-                            >
-                                <ShieldCheck className="h-4 w-4 text-blue-600" />
-                                Security Verification <span className="text-red-500">*</span>
-                            </label>
-                            <button
-                                type="button"
-                                onClick={handleReloadCaptcha}
-                                className="inline-flex items-center gap-1 text-xs font-medium text-blue-600 transition-colors hover:text-blue-700 hover:underline dark:text-blue-400"
-                            >
-                                <RefreshCw className={`h-3.5 w-3.5 ${captchaRefreshing ? 'animate-spin' : ''}`} />
-                                Refresh Code
-                            </button>
-                        </div>
-
-                        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                            {/* Captcha Image Container */}
-                            <div className="relative flex h-11 items-center justify-center overflow-hidden rounded-lg border border-slate-200 bg-white px-3 py-1 dark:border-slate-800 dark:bg-slate-900">
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img
-                                    id="imgid1324457000002829011"
-                                    src="https://crm.zoho.in/crm/CaptchaServlet?formId=019026ae08cdc1ad68539d9e3dd9a0b5b47e53df2d530970c47a2a0aeb745c56950f1e9757ad6a5430b2c6e4264042c2&grpid=2fe12553e3128c314996e3ac2a33d9a4cb215fcca2095656c8e009cebaaf21d0"
-                                    alt="Captcha"
-                                    className="h-full object-contain"
-                                />
-                            </div>
-
-                            {/* Captcha Input */}
-                            <div className="relative flex-1">
-                                <Input
-                                    type="text"
-                                    id="captchaField1324457000002829011"
-                                    aria-labelledby="reCaptchaField"
-                                    maxLength={10}
-                                    name="enterdigest"
-                                    required
-                                    placeholder="Enter code above"
-                                    className="h-11 rounded-lg border-slate-200 bg-white text-slate-900 transition-all focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100"
-                                />
-                            </div>
-                        </div>
-
-                        {/* Captcha Error Container */}
-                        <div
-                            id="captchaErr1324457000002829011"
-                            aria-live="polite"
-                            style={{ visibility: 'hidden' }}
-                            className="text-xs font-semibold text-red-600"
-                        ></div>
-                    </div>
-
                     {/* Action Buttons */}
                     <div className="flex items-center gap-3 pt-2">
                         <Button
@@ -622,11 +489,7 @@ export default function ContactUsForm() {
                         />
                     </div>
                 </form>
-
-                {/* Hidden captcha iframe required by Zoho */}
-                <iframe name="captchaFrame" style={{ display: 'none' }}></iframe>
             </div>
         </div>
     );
 }
-
