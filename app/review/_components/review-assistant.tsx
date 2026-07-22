@@ -59,15 +59,17 @@ type GenerateResponse = {
 };
 
 const GOOGLE_REVIEW_BASE_URL = 'https://search.google.com/local/writereview?placeid=';
-const NOT_SATISFIED_OPTION = 'Not Satisfied';
+const PRIVATE_FEEDBACK_RATINGS = new Set(['Average', 'Not Satisfied']);
 
 const QUESTIONS: Question[] = [
+
     {
         id: 'office',
         prompt: 'Which office?',
         options: [...REVIEW_LOCATION_NAMES],
     },
-    {
+
+            {
         id: 'service',
         prompt: 'What service did Invisor help you with?',
         options: [
@@ -101,11 +103,13 @@ const QUESTIONS: Question[] = [
         id: 'teamMember',
         prompt: 'Whom did you work with?',
         options: [
-            'Geever',
+            'Geevar',
             'Mohammed',
             'Anjali',
             'Dayana',
             'Irine',
+            'Roji',
+            'Other'
         ],
     },
 ];
@@ -476,8 +480,9 @@ export function ReviewAssistant({
         };
     }, []);
 
-    const isNotSatisfied =
-        answers.experienceRating === NOT_SATISFIED_OPTION;
+    const isPrivateFeedback = PRIVATE_FEEDBACK_RATINGS.has(
+        answers.experienceRating
+    );
 
     function resetFlow() {
         if (homeRedirectTimeoutRef.current) {
@@ -525,7 +530,7 @@ export function ReviewAssistant({
     }
 
     function handleDetailsSubmit(nextDetails = details) {
-        if (isNotSatisfied) {
+        if (isPrivateFeedback) {
             submitFeedback(nextDetails);
             return;
         }
@@ -661,10 +666,10 @@ export function ReviewAssistant({
                         animate="show"
                         className="flex-1 space-y-4 overflow-y-auto bg-[#f8fafc] px-4 py-5 sm:px-6 sm:py-6"
                     >
-                        <ChatBubble>
+                        {/* <ChatBubble>
                             Answer a few quick prompts. I&apos;ll draft review
                             options you can choose from before opening Google.
-                        </ChatBubble>
+                        </ChatBubble> */}
 
                         {QUESTIONS.filter(
                             (question) => answers[question.id]
@@ -756,7 +761,7 @@ export function ReviewAssistant({
                                                     className="size-4"
                                                     aria-hidden="true"
                                                 />
-                                                {isNotSatisfied
+                                                {isPrivateFeedback
                                                     ? 'Submit feedback'
                                                     : 'Generate reviews'}
                                             </Button>
