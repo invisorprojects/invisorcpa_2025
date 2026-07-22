@@ -4,7 +4,7 @@ frontend:
         preBuild:
             commands:
                 - npm install -g pnpm@11.1.1
-                - pnpm install --frozen-lockfile
+                - pnpm install --frozen-lockfile --prod=false
                 - env | grep -e PAYLOAD_SECRET -e DATABASE_URI -e UPLOADTHING_TOKEN -e GOOGLE_MAPS_API_KEY -e GOOGLE_PLACE_ID >> .env.production
         build:
             commands:
