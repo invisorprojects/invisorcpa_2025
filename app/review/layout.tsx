@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
         'Create a thoughtful Google review for Invisor CPA in a few quick taps.',
     alternates: {
-        canonical: 'https://www.invisorcpa.ca/request-review',
+        canonical: 'https://www.invisorcpa.ca/review',
     },
 };
 

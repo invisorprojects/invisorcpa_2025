@@ -16,6 +16,7 @@ import {
     type Transition,
     useReducedMotion,
 } from 'motion/react';
+import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState, useTransition } from 'react';
 import { toast } from 'sonner';
 
@@ -23,14 +24,19 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
 
+import {
+    OFFICE_PLACE_IDS,
+    REVIEW_LOCATION_NAMES,
+    type ReviewLocationName,
+} from '../review-locations';
+
 type StepId =
     | 'office'
     | 'service'
     | 'experienceRating'
-    | 'experience'
     | 'standout'
     | 'teamMember';
-type FlowPhase = 'questions' | 'details' | 'generating' | 'results';
+type FlowPhase = 'questions' | 'details' | 'generating' | 'results' | 'submitted';
 
 type Question = {
     id: StepId;
@@ -53,20 +59,17 @@ type GenerateResponse = {
 };
 
 const GOOGLE_REVIEW_BASE_URL = 'https://search.google.com/local/writereview?placeid=';
-
-const OFFICE_PLACE_IDS = {
-    London: 'ChIJS4dQXIzzLogRH_-w_SFaeu8',
-    Fergus: 'ChIJnwAyNiC_K4gRJr1cFih8V9E',
-    Strathroy: 'ChIJYxvDSZgFL4gRSckyvwWdnew',
-} as const;
+const PRIVATE_FEEDBACK_RATINGS = new Set(['Average', 'Not Satisfied']);
 
 const QUESTIONS: Question[] = [
+
     {
         id: 'office',
         prompt: 'Which office?',
-        options: ['London', 'Fergus', 'Strathroy'],
+        options: [...REVIEW_LOCATION_NAMES],
     },
-    {
+
+            {
         id: 'service',
         prompt: 'What service did Invisor help you with?',
         options: [
@@ -75,26 +78,14 @@ const QUESTIONS: Question[] = [
             'Bookkeeping',
             'Payroll',
             'Incorporation',
-            'Accounting advice',
+            'Cross Border Tax',
             'Other',
-        ],
-    },
-    {
-        id: 'experience',
-        prompt: 'How was your experience?',
-        options: [
-            'Very smooth',
-            'Professional',
-            'Fast',
-            'Helpful',
-            'Clear communication',
-            'Stress-free',
         ],
     },
     {
         id: 'experienceRating',
         prompt: 'How do you rate the experience?',
-        options: ['Excellent', 'Great', 'Good', 'Average', 'Could be better'],
+        options: ['Excellent', 'Great', 'Good', 'Average', 'Not Satisfied'],
     },
     {
         id: 'standout',
@@ -112,11 +103,13 @@ const QUESTIONS: Question[] = [
         id: 'teamMember',
         prompt: 'Whom did you work with?',
         options: [
-            'Geever Thambi',
-            'Mohammed Shafeeque',
-            'Anjali Anil',
-            'Dayana Silvin',
-            'Irine Catherine',
+            'Geevar',
+            'Mohammed',
+            'Anjali',
+            'Dayana',
+            'Irine',
+            'Roji',
+            'Other'
         ],
     },
 ];
@@ -125,7 +118,6 @@ const EMPTY_ANSWERS: Answers = {
     office: '',
     service: '',
     experienceRating: '',
-    experience: '',
     standout: '',
     teamMember: '',
 };
@@ -282,11 +274,14 @@ function ProgressRail({
     const shouldReduceMotion = useReducedMotion();
     const totalSteps = QUESTIONS.length + 1;
     const activeStep =
-        phase === 'details' || phase === 'generating' || phase === 'results'
+        phase === 'details' ||
+        phase === 'generating' ||
+        phase === 'results' ||
+        phase === 'submitted'
             ? QUESTIONS.length
             : currentIndex;
     const percent =
-        phase === 'results'
+        phase === 'results' || phase === 'submitted'
             ? 100
             : phase === 'generating'
               ? 88
@@ -297,8 +292,10 @@ function ProgressRail({
             <div className="flex items-center justify-between text-xs font-semibold text-[#616363]">
                 <span>Review draft</span>
                 <span>
-                    {phase === 'results'
-                        ? 'Ready'
+                    {phase === 'results' || phase === 'submitted'
+                        ? phase === 'submitted'
+                            ? 'Submitted'
+                            : 'Ready'
                         : `${Math.min(activeStep + 1, totalSteps)} of ${totalSteps}`}
                 </span>
             </div>
@@ -434,9 +431,18 @@ function ReviewCard({
     );
 }
 
-export function ReviewAssistant() {
-    const [answers, setAnswers] = useState<Answers>(EMPTY_ANSWERS);
-    const [currentIndex, setCurrentIndex] = useState(0);
+export function ReviewAssistant({
+    initialOffice = '',
+}: {
+    initialOffice?: ReviewLocationName | '';
+}) {
+    const initialAnswers = {
+        ...EMPTY_ANSWERS,
+        office: initialOffice,
+    };
+    const initialQuestionIndex = initialOffice ? 1 : 0;
+    const [answers, setAnswers] = useState<Answers>(initialAnswers);
+    const [currentIndex, setCurrentIndex] = useState(initialQuestionIndex);
     const [phase, setPhase] = useState<FlowPhase>('questions');
     const [details, setDetails] = useState('');
     const [reviews, setReviews] = useState<ReviewOption[]>([]);
@@ -444,7 +450,9 @@ export function ReviewAssistant() {
     const [redirectingReviewId, setRedirectingReviewId] = useState('');
     const [error, setError] = useState('');
     const [isPending, startTransition] = useTransition();
+    const router = useRouter();
     const bottomRef = useRef<HTMLDivElement>(null);
+    const homeRedirectTimeoutRef = useRef<number | null>(null);
     const shouldReduceMotion = useReducedMotion();
 
     const currentQuestion = QUESTIONS[currentIndex];
@@ -464,9 +472,26 @@ export function ReviewAssistant() {
         shouldReduceMotion,
     ]);
 
+    useEffect(() => {
+        return () => {
+            if (homeRedirectTimeoutRef.current) {
+                window.clearTimeout(homeRedirectTimeoutRef.current);
+            }
+        };
+    }, []);
+
+    const isPrivateFeedback = PRIVATE_FEEDBACK_RATINGS.has(
+        answers.experienceRating
+    );
+
     function resetFlow() {
-        setAnswers(EMPTY_ANSWERS);
-        setCurrentIndex(0);
+        if (homeRedirectTimeoutRef.current) {
+            window.clearTimeout(homeRedirectTimeoutRef.current);
+            homeRedirectTimeoutRef.current = null;
+        }
+
+        setAnswers(initialAnswers);
+        setCurrentIndex(initialQuestionIndex);
         setPhase('questions');
         setDetails('');
         setReviews([]);
@@ -490,6 +515,29 @@ export function ReviewAssistant() {
         setCurrentIndex((index) => index + 1);
     }
 
+    function submitFeedback(nextDetails = details) {
+        setDetails(nextDetails);
+        setError('');
+        setReviews([]);
+        setSelectedReviewId('');
+        setRedirectingReviewId('');
+        setPhase('submitted');
+        toast.success('Submitted. Thank you for your feedback.');
+
+        homeRedirectTimeoutRef.current = window.setTimeout(() => {
+            router.replace('/');
+        }, 1400);
+    }
+
+    function handleDetailsSubmit(nextDetails = details) {
+        if (isPrivateFeedback) {
+            submitFeedback(nextDetails);
+            return;
+        }
+
+        generateReviews(nextDetails);
+    }
+
     async function generateReviews(nextDetails = details) {
         setPhase('generating');
         setError('');
@@ -504,7 +552,6 @@ export function ReviewAssistant() {
                     body: JSON.stringify({
                         service: answers.service,
                         experienceRating: answers.experienceRating,
-                        experience: answers.experience,
                         standout: answers.standout,
                         details: nextDetails,
                         teamMember: answers.teamMember,
@@ -559,7 +606,7 @@ export function ReviewAssistant() {
 
     async function selectReview(review: ReviewOption) {
         const placeId =
-            OFFICE_PLACE_IDS[answers.office as keyof typeof OFFICE_PLACE_IDS];
+            OFFICE_PLACE_IDS[answers.office as ReviewLocationName];
 
         if (!placeId) {
             toast.error('Select an office first.');
@@ -619,10 +666,10 @@ export function ReviewAssistant() {
                         animate="show"
                         className="flex-1 space-y-4 overflow-y-auto bg-[#f8fafc] px-4 py-5 sm:px-6 sm:py-6"
                     >
-                        <ChatBubble>
+                        {/* <ChatBubble>
                             Answer a few quick prompts. I&apos;ll draft review
                             options you can choose from before opening Google.
-                        </ChatBubble>
+                        </ChatBubble> */}
 
                         {QUESTIONS.filter(
                             (question) => answers[question.id]
@@ -697,7 +744,7 @@ export function ReviewAssistant() {
                                                 type="button"
                                                 variant="outline"
                                                 className="h-11 border-[#1b1e65]/25 text-[#1b1e65] hover:bg-[#eff4ff]"
-                                                onClick={() => generateReviews('')}
+                                                onClick={() => handleDetailsSubmit('')}
                                                 disabled={isPending}
                                             >
                                                 Skip
@@ -706,7 +753,7 @@ export function ReviewAssistant() {
                                                 type="button"
                                                 className="h-11 bg-[#1b1e65] text-white hover:bg-[#020252]"
                                                 onClick={() =>
-                                                    generateReviews(details)
+                                                    handleDetailsSubmit(details)
                                                 }
                                                 disabled={isPending}
                                             >
@@ -714,7 +761,9 @@ export function ReviewAssistant() {
                                                     className="size-4"
                                                     aria-hidden="true"
                                                 />
-                                                Generate reviews
+                                                {isPrivateFeedback
+                                                    ? 'Submit feedback'
+                                                    : 'Generate reviews'}
                                             </Button>
                                         </div>
                                     </div>
@@ -739,6 +788,30 @@ export function ReviewAssistant() {
                                     )}
                                 >
                                     <TypingIndicator />
+                                </motion.div>
+                            ) : null}
+
+                            {phase === 'submitted' ? (
+                                <motion.div
+                                    key="submitted"
+                                    layout="position"
+                                    variants={messageVariants}
+                                    initial="hidden"
+                                    animate="show"
+                                    exit="exit"
+                                    transition={getTransition(
+                                        Boolean(shouldReduceMotion)
+                                    )}
+                                    className="space-y-3"
+                                >
+                                    <ChatBubble>
+                                        Submitted. Thank you for sharing your
+                                        feedback.
+                                    </ChatBubble>
+                                    <ChatBubble>
+                                        We&apos;ll take a look and redirect you
+                                        back home.
+                                    </ChatBubble>
                                 </motion.div>
                             ) : null}
 
