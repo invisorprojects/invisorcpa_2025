@@ -2,9 +2,10 @@
 
 import React, { useEffect, useState } from 'react';
 import Script from 'next/script';
-import { User, Mail, Phone, RefreshCw, Send, CheckCircle2 } from 'lucide-react';
+import { User, Mail, Phone, RefreshCw, Send, CheckCircle2, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 export default function ContactUsForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -253,7 +254,7 @@ export default function ContactUsForm() {
             {/* Analytics Tracking Code */}
             <Script
                 id="wf_anal"
-                src="https://crm.zohopublic.in/crm/WebFormAnalyticsServeServlet?rid=b71a7e65245003c64cdf6d1a5351633523869a4014a507d46725ee88d2f97023efb40d464aedbf67fbd4634289e62b26gidb2322d72ac1b0ab6fccfbf7e211243cf83d37a7f9a8ac69386bad572dba052c1gid31f63926f33f047e02a0f731099647af9fed615c0f52c9d46af6d73a89a26a25gid84b69c3045f292086ec0593e4ce3805c9905683ce933ffc884bb1bde45547197&tw=1ef345afe46b65434b8f6fcf5250d5e5895049cba407d070ad960fcea4840aab&version=v2"
+                src="https://crm.zohopublic.in/crm/WebFormAnalyticsServeServlet?rid=49ccacb85890151def45efaf3036fed561c4663bf2a8e68fcd046f01ae21f9a68052f2dc52ae298f393f095133ed3e62gide84d0131a9aab88bc58b1ecbe0aaa56f7f13c688d18cf749059f9c1e877270e1gidcd5de85c08fef1146ef30404ffd73f37242a3dd0b62be1691c49c312ffb23f68gid499417063d81621b2bb44eb6f6c4458552aa273867c783ffcfd41c903cf01be8&tw=ea20361527057f5044d256014df2b1edd5c583d0a13b3e5d1cde87a629e7211c&version=v2"
                 strategy="afterInteractive"
             />
 
@@ -291,7 +292,7 @@ export default function ContactUsForm() {
                         type="text"
                         style={{ display: 'none' }}
                         name="xnQsjsdp"
-                        value="f3be78d1aa1b7b22ed25abeb3d8eef2c706c5e76ac34ccfd3c64e90286a1fea2"
+                        value="93108f27608e72f336668528c22d0a704fb5730fe4728712f14c0d302bbaf90c"
                         readOnly
                     />
                     <input type="hidden" name="zc_gad" id="zc_gad" value="" />
@@ -299,7 +300,7 @@ export default function ContactUsForm() {
                         type="text"
                         style={{ display: 'none' }}
                         name="xmIwtLD"
-                        value="87f9f4fbca9fe2676bc5f929d5c2472351617f3ba197bd3c77539ce04b182751c69767704132380062a2c39fc647e7d3"
+                        value="8725995e4973668ac96e905ff69d10c175b1dff4e226bb139ed1fc2f7bed83ff460a34cbdceb8d1c8770bd7e75477a80"
                         readOnly
                     />
                     <input
@@ -424,6 +425,25 @@ export default function ContactUsForm() {
                             maxLength={30}
                             placeholder="+1 (555) 000-0000"
                             className="h-11 rounded-lg border-slate-200 bg-slate-50/50 text-slate-900 transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100"
+                        />
+                    </div>
+
+                    {/* Purpose Field */}
+                    <div className="space-y-2">
+                        <label
+                            htmlFor="LEADCF32"
+                            className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300"
+                        >
+                            <MessageSquare className="h-3.5 w-3.5 text-slate-400" />
+                            Purpose
+                        </label>
+                        <Textarea
+                            id="LEADCF32"
+                            aria-required="false"
+                            aria-label="LEADCF32"
+                            name="LEADCF32"
+                            placeholder="Tell us about your requirements..."
+                            className="min-h-[100px] rounded-lg border-slate-200 bg-slate-50/50 text-slate-900 transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100 resize-y"
                         />
                     </div>
 
