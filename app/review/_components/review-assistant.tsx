@@ -34,6 +34,7 @@ type StepId =
     | 'office'
     | 'service'
     | 'experienceRating'
+    | 'experience'
     | 'standout'
     | 'teamMember';
 type FlowPhase = 'questions' | 'details' | 'generating' | 'results' | 'submitted';
@@ -88,6 +89,16 @@ const QUESTIONS: Question[] = [
         options: ['Excellent', 'Great', 'Good', 'Average', 'Not Satisfied'],
     },
     {
+        id: 'experience',
+        prompt: 'How would you describe your experience?',
+        options: [
+            'Smooth and stress-free',
+            'Professional and responsive',
+            'Clear and helpful',
+            'Efficient from start to finish',
+        ],
+    },
+    {
         id: 'standout',
         prompt: 'What stood out most?',
         options: [
@@ -118,6 +129,7 @@ const EMPTY_ANSWERS: Answers = {
     office: '',
     service: '',
     experienceRating: '',
+    experience: '',
     standout: '',
     teamMember: '',
 };
@@ -552,6 +564,7 @@ export function ReviewAssistant({
                     body: JSON.stringify({
                         service: answers.service,
                         experienceRating: answers.experienceRating,
+                        experience: answers.experience,
                         standout: answers.standout,
                         details: nextDetails,
                         teamMember: answers.teamMember,
