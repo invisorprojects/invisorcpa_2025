@@ -26,12 +26,10 @@ import { cn } from '@/lib/utils';
 
 import {
     OFFICE_PLACE_IDS,
-    REVIEW_LOCATION_NAMES,
     type ReviewLocationName,
 } from '../review-locations';
 
 type StepId =
-    | 'office'
     | 'service'
     | 'experienceRating'
     | 'experience'
@@ -63,14 +61,7 @@ const GOOGLE_REVIEW_BASE_URL = 'https://search.google.com/local/writereview?plac
 const PRIVATE_FEEDBACK_RATINGS = new Set(['Average', 'Not Satisfied']);
 
 const QUESTIONS: Question[] = [
-
     {
-        id: 'office',
-        prompt: 'Which office?',
-        options: [...REVIEW_LOCATION_NAMES],
-    },
-
-            {
         id: 'service',
         prompt: 'What service did Invisor help you with?',
         options: [
@@ -126,7 +117,6 @@ const QUESTIONS: Question[] = [
 ];
 
 const EMPTY_ANSWERS: Answers = {
-    office: '',
     service: '',
     experienceRating: '',
     experience: '',
@@ -444,15 +434,12 @@ function ReviewCard({
 }
 
 export function ReviewAssistant({
-    initialOffice = '',
+    initialOffice = 'Fergus',
 }: {
-    initialOffice?: ReviewLocationName | '';
+    initialOffice?: ReviewLocationName;
 }) {
-    const initialAnswers = {
-        ...EMPTY_ANSWERS,
-        office: initialOffice,
-    };
-    const initialQuestionIndex = initialOffice ? 1 : 0;
+    const initialAnswers = EMPTY_ANSWERS;
+    const initialQuestionIndex = 0;
     const [answers, setAnswers] = useState<Answers>(initialAnswers);
     const [currentIndex, setCurrentIndex] = useState(initialQuestionIndex);
     const [phase, setPhase] = useState<FlowPhase>('questions');
@@ -618,13 +605,7 @@ export function ReviewAssistant({
     }
 
     async function selectReview(review: ReviewOption) {
-        const placeId =
-            OFFICE_PLACE_IDS[answers.office as ReviewLocationName];
-
-        if (!placeId) {
-            toast.error('Select an office first.');
-            return;
-        }
+        const placeId = OFFICE_PLACE_IDS[initialOffice];
 
         setSelectedReviewId(review.id);
         setRedirectingReviewId(review.id);
