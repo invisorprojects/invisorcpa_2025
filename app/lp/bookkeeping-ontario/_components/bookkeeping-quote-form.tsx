@@ -62,7 +62,7 @@ export default function BookkeepingQuoteForm() {
                         htmlFor={`${formId}-name`}
                         className="text-primary text-base font-bold"
                     >
-                        Full Name *
+                        Your Name *
                     </Label>
                     <Input
                         id={`${formId}-name`}

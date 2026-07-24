@@ -435,7 +435,7 @@ export default function ContactUsForm() {
                             className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300"
                         >
                             <MessageSquare className="h-3.5 w-3.5 text-slate-400" />
-                            Purpose
+                            Message
                         </label>
                         <Textarea
                             id="LEADCF32"
@@ -496,7 +496,7 @@ export default function ContactUsForm() {
                             ) : (
                                 <span className="flex items-center justify-center gap-2">
                                     <Send className="h-4 w-4" />
-                                    Submit Request
+                                    Submit
                                 </span>
                             )}
                         </Button>
