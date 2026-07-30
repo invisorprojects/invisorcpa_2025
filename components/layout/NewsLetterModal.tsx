@@ -59,7 +59,10 @@ export default function NewsLetterModal() {
 
                 <p className="text-muted-foreground text-center text-xs">
                     By subscribing you agree to our{' '}
-                    <a className="underline hover:no-underline" href="#">
+                    <a
+                        className="underline hover:no-underline"
+                        href="/privacy-policy"
+                    >
                         Privacy Policy
                     </a>
                     .

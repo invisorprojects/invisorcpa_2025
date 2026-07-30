@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import Script from 'next/script';
 import { User, Mail, Phone, RefreshCw, Send, CheckCircle2, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -508,6 +509,20 @@ export default function ContactUsForm() {
                             value="Reset"
                         />
                     </div>
+                    <p className="text-xs leading-5 text-slate-500 dark:text-slate-400">
+                        By submitting this form, you consent to Invisor Business
+                        Facts Ltd. collecting and using the information you
+                        provide to respond to your inquiry and, if requested,
+                        deliver accounting, bookkeeping, payroll, and tax
+                        services. For more information, please review our{' '}
+                        <Link
+                            href="/privacy-policy"
+                            className="text-primary font-semibold underline underline-offset-2 transition-colors hover:text-blue-700"
+                        >
+                            Privacy Policy
+                        </Link>
+                        .
+                    </p>
                 </form>
             </div>
         </div>

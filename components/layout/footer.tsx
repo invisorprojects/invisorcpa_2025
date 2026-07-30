@@ -66,6 +66,11 @@ export default function Footer() {
                                 <Link href="/site-map">Sitemap</Link>
                             </li>
                             <li>
+                                <Link href="/privacy-policy">
+                                    Privacy Policy
+                                </Link>
+                            </li>
+                            <li>
                                 <Link href="/add_review">Review</Link>
                             </li>
                         </ul>

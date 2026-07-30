@@ -80,6 +80,9 @@ export default async function HtmlSitemap() {
                         <Link href="/contact-us">Contact Us</Link>
                     </li>
                     <li>
+                        <Link href="/privacy-policy">Privacy Policy</Link>
+                    </li>
+                    <li>
                         <Link href="/tax-calculator">Tax Calculator</Link>
                     </li>
                     <li>
