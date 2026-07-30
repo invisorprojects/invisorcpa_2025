@@ -56,17 +56,6 @@ export default function NewsLetterModal() {
                 </div>
 
                 <NewLetterForm />
-
-                <p className="text-muted-foreground text-center text-xs">
-                    By subscribing you agree to our{' '}
-                    <a
-                        className="underline hover:no-underline"
-                        href="/privacy-policy"
-                    >
-                        Privacy Policy
-                    </a>
-                    .
-                </p>
             </DialogContent>
         </Dialog>
     );

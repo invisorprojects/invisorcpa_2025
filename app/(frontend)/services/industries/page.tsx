@@ -1,6 +1,7 @@
 export const dynamic = 'force-static';
 export const revalidate = false;
 import ContactUs from '@/components/sections/contact-us';
+import { PrivacyConsent } from '@/components/privacy-consent';
 import { Metadata } from 'next';
 import Image from 'next/image';
 
@@ -214,6 +215,7 @@ function CaseStudyDetails() {
                             >
                                 SEND
                             </button>
+                            <PrivacyConsent />
                         </form>
                     </div>
                 </aside>

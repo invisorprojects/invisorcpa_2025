@@ -7,6 +7,7 @@ import { User, Mail, Phone, RefreshCw, Send, CheckCircle2, MessageSquare } from 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { PrivacyConsent } from '@/components/privacy-consent';
 
 export default function ContactUsForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -509,13 +510,7 @@ export default function ContactUsForm() {
                             value="Reset"
                         />
                     </div>
-                    <p className="text-xs leading-5 text-slate-500 dark:text-slate-400">
-                        By submitting this form, you consent to Invisor Business
-                        Facts Ltd. collecting and using the information you
-                        provide to respond to your inquiry and, if requested,
-                        deliver accounting, bookkeeping, payroll, and tax
-                        services. For more information, please review our Privacy Policy.
-                    </p>
+                    <PrivacyConsent className="text-slate-500 dark:text-slate-400" />
                 </form>
             </div>
         </div>

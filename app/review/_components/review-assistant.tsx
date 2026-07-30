@@ -22,6 +22,7 @@ import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
+import { PrivacyConsent } from '@/components/privacy-consent';
 import { cn } from '@/lib/utils';
 
 import {
@@ -760,6 +761,7 @@ export function ReviewAssistant({
                                                     : 'Generate reviews'}
                                             </Button>
                                         </div>
+                                        <PrivacyConsent className="mt-3" />
                                     </div>
                                     {error ? (
                                         <p className="px-1 text-sm font-medium text-[#ba1a1a]">

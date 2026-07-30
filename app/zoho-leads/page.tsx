@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import Script from 'next/script';
+import { PrivacyConsent } from '@/components/privacy-consent';
 
 export default function ZohoLeadsPage() {
     useEffect(() => {
@@ -1308,6 +1309,7 @@ export default function ZohoLeadsPage() {
                                     value="Submit"
                                 />
                             </div>
+                            <PrivacyConsent className="mt-3 max-w-xl" />
                         </div>
                         <a
                             className="wform-poweredby-container"
