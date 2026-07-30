@@ -514,14 +514,7 @@ export default function ContactUsForm() {
                         Facts Ltd. collecting and using the information you
                         provide to respond to your inquiry and, if requested,
                         deliver accounting, bookkeeping, payroll, and tax
-                        services. For more information, please review our{' '}
-                        <Link
-                            href="/privacy-policy"
-                            className="text-primary font-semibold underline underline-offset-2 transition-colors hover:text-blue-700"
-                        >
-                            Privacy Policy
-                        </Link>
-                        .
+                        services. For more information, please review our Privacy Policy.
                     </p>
                 </form>
             </div>
