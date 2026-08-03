@@ -107,7 +107,7 @@ const QUESTIONS: Question[] = [
         prompt: 'Whom did you work with?',
         options: [
             'Geevar',
-            'Mohammed',
+            'Muhammed',
             'Anjali',
             'Dayana',
             'Irine',
@@ -515,6 +515,21 @@ export function ReviewAssistant({
         setCurrentIndex((index) => index + 1);
     }
 
+    function skipQuestion(question: Question) {
+        setAnswers((current) => ({
+            ...current,
+            [question.id]: '',
+        }));
+        setError('');
+
+        if (currentIndex >= QUESTIONS.length - 1) {
+            setPhase('details');
+            return;
+        }
+
+        setCurrentIndex((index) => index + 1);
+    }
+
     function submitFeedback(nextDetails = details) {
         setDetails(nextDetails);
         setError('');
@@ -705,6 +720,18 @@ export function ReviewAssistant({
                                             selectAnswer(currentQuestion, option)
                                         }
                                     />
+                                    {currentQuestion.id === 'teamMember' ? (
+                                        <Button
+                                            type="button"
+                                            variant="outline"
+                                            className="h-11 border-[#1b1e65]/25 text-[#1b1e65] hover:bg-[#eff4ff]"
+                                            onClick={() =>
+                                                skipQuestion(currentQuestion)
+                                            }
+                                        >
+                                            Skip
+                                        </Button>
+                                    ) : null}
                                 </motion.div>
                             ) : null}
 
