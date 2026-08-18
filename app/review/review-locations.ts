@@ -33,5 +33,9 @@ export const OFFICE_PLACE_IDS = REVIEW_LOCATIONS.reduce(
 );
 
 export function getReviewLocationBySlug(slug: string) {
-    return REVIEW_LOCATIONS.find((location) => location.slug === slug);
+    const normalizedSlug = slug === 'starthroy' ? 'strathroy' : slug;
+
+    return REVIEW_LOCATIONS.find(
+        (location) => location.slug === normalizedSlug
+    );
 }

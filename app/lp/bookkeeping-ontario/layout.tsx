@@ -151,7 +151,7 @@ function BookkeepingOntarioFooter() {
                     <p>&copy; 2026 Invisor Canada. All rights reserved.</p>
                     <div className="flex flex-wrap gap-x-8 gap-y-3">
                         <a
-                            href="#"
+                            href="/privacy-policy"
                             className="transition-colors hover:text-white"
                         >
                             Privacy Policy

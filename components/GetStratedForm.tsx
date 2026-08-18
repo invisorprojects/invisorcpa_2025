@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Check, LoaderCircle } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from './ui/textarea';
+import { PrivacyConsent } from '@/components/privacy-consent';
 const initialState = {
     status: '',
     message: '',
@@ -103,6 +104,7 @@ export default function GetStartedForm() {
                     'Submit'
                 )}
             </Button>
+            <PrivacyConsent />
         </form>
     );
 }

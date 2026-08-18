@@ -38,8 +38,7 @@ export default function Footer() {
                         <div>
                             <p className="font-semibold">Fergus Office</p>
                             <p>
-                                645-B St. David St. N. Fergus, ON, N1M 2K6,
-                                Canada
+                                645-B St. David St. N. Fergus, ON, N1M 2K6
                             </p>
                             <p className="mt-2 font-semibold">London Office</p>
                             <p>375V- 341 Talbot St. London, ON N6A 2R5</p>
@@ -65,6 +64,11 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link href="/site-map">Sitemap</Link>
+                            </li>
+                            <li>
+                                <Link href="/privacy-policy">
+                                    Privacy Policy
+                                </Link>
                             </li>
                             <li>
                                 <Link href="/add_review">Review</Link>

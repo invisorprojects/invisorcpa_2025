@@ -9,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function RequestReviewPage() {
-    return <ReviewAssistant />;
+    return <ReviewAssistant initialOffice="Fergus" />;
 }

@@ -4,6 +4,7 @@ import { sendContact } from '@/actions';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { PrivacyConsent } from '@/components/privacy-consent';
 import { ArrowRight, LoaderCircle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useActionState, useEffect, useId } from 'react';
@@ -62,7 +63,7 @@ export default function BookkeepingQuoteForm() {
                         htmlFor={`${formId}-name`}
                         className="text-primary text-base font-bold"
                     >
-                        Full Name *
+                        Your Name *
                     </Label>
                     <Input
                         id={`${formId}-name`}
@@ -164,6 +165,8 @@ export default function BookkeepingQuoteForm() {
                         </>
                     )}
                 </Button>
+
+                <PrivacyConsent className="text-center" />
 
                 <p className="text-muted-foreground text-center text-sm">
                     100% confidential. We respond within 1 business day.

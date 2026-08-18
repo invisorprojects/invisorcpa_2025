@@ -5,6 +5,7 @@ import { useActionState } from 'react';
 import { Button } from '../ui/button';
 import { Check, LoaderCircle, MailIcon } from 'lucide-react';
 import { Input } from '../ui/input';
+import { PrivacyConsent } from '@/components/privacy-consent';
 const initialState = {
     status: '',
     message: '',
@@ -96,6 +97,7 @@ export default function NewLetterForm() {
                     'Subscribe'
                 )}
             </Button>
+            <PrivacyConsent className="text-center" />
         </form>
     );
 }

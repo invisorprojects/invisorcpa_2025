@@ -1,11 +1,13 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import Script from 'next/script';
 import { User, Mail, Phone, RefreshCw, Send, CheckCircle2, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { PrivacyConsent } from '@/components/privacy-consent';
 
 export default function ContactUsForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -435,7 +437,7 @@ export default function ContactUsForm() {
                             className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300"
                         >
                             <MessageSquare className="h-3.5 w-3.5 text-slate-400" />
-                            Purpose
+                            Message
                         </label>
                         <Textarea
                             id="LEADCF32"
@@ -496,7 +498,7 @@ export default function ContactUsForm() {
                             ) : (
                                 <span className="flex items-center justify-center gap-2">
                                     <Send className="h-4 w-4" />
-                                    Submit Request
+                                    Submit
                                 </span>
                             )}
                         </Button>
@@ -508,6 +510,7 @@ export default function ContactUsForm() {
                             value="Reset"
                         />
                     </div>
+                    <PrivacyConsent className="text-slate-500 dark:text-slate-400" />
                 </form>
             </div>
         </div>

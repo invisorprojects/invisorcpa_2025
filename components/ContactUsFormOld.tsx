@@ -6,6 +6,7 @@ import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
+import { PrivacyConsent } from '@/components/privacy-consent';
 import {
     LoaderCircle,
     Send,
@@ -139,6 +140,7 @@ export default function ContactUsFormOld() {
                             </>
                         )}
                     </Button>
+                    <PrivacyConsent />
                 </form>
             </CardContent>
         </Card>

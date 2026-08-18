@@ -22,18 +22,18 @@ import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
+import { PrivacyConsent } from '@/components/privacy-consent';
 import { cn } from '@/lib/utils';
 
 import {
     OFFICE_PLACE_IDS,
-    REVIEW_LOCATION_NAMES,
     type ReviewLocationName,
 } from '../review-locations';
 
 type StepId =
-    | 'office'
     | 'service'
     | 'experienceRating'
+    | 'experience'
     | 'standout'
     | 'teamMember';
 type FlowPhase = 'questions' | 'details' | 'generating' | 'results' | 'submitted';
@@ -62,14 +62,7 @@ const GOOGLE_REVIEW_BASE_URL = 'https://search.google.com/local/writereview?plac
 const PRIVATE_FEEDBACK_RATINGS = new Set(['Average', 'Not Satisfied']);
 
 const QUESTIONS: Question[] = [
-
     {
-        id: 'office',
-        prompt: 'Which office?',
-        options: [...REVIEW_LOCATION_NAMES],
-    },
-
-            {
         id: 'service',
         prompt: 'What service did Invisor help you with?',
         options: [
@@ -88,6 +81,16 @@ const QUESTIONS: Question[] = [
         options: ['Excellent', 'Great', 'Good', 'Average', 'Not Satisfied'],
     },
     {
+        id: 'experience',
+        prompt: 'How would you describe your experience?',
+        options: [
+            'Smooth and stress-free',
+            'Professional and responsive',
+            'Clear and helpful',
+            'Efficient from start to finish',
+        ],
+    },
+    {
         id: 'standout',
         prompt: 'What stood out most?',
         options: [
@@ -104,7 +107,7 @@ const QUESTIONS: Question[] = [
         prompt: 'Whom did you work with?',
         options: [
             'Geevar',
-            'Mohammed',
+            'Muhammed',
             'Anjali',
             'Dayana',
             'Irine',
@@ -115,9 +118,9 @@ const QUESTIONS: Question[] = [
 ];
 
 const EMPTY_ANSWERS: Answers = {
-    office: '',
     service: '',
     experienceRating: '',
+    experience: '',
     standout: '',
     teamMember: '',
 };
@@ -432,15 +435,12 @@ function ReviewCard({
 }
 
 export function ReviewAssistant({
-    initialOffice = '',
+    initialOffice = 'Fergus',
 }: {
-    initialOffice?: ReviewLocationName | '';
+    initialOffice?: ReviewLocationName;
 }) {
-    const initialAnswers = {
-        ...EMPTY_ANSWERS,
-        office: initialOffice,
-    };
-    const initialQuestionIndex = initialOffice ? 1 : 0;
+    const initialAnswers = EMPTY_ANSWERS;
+    const initialQuestionIndex = 0;
     const [answers, setAnswers] = useState<Answers>(initialAnswers);
     const [currentIndex, setCurrentIndex] = useState(initialQuestionIndex);
     const [phase, setPhase] = useState<FlowPhase>('questions');
@@ -515,6 +515,21 @@ export function ReviewAssistant({
         setCurrentIndex((index) => index + 1);
     }
 
+    function skipQuestion(question: Question) {
+        setAnswers((current) => ({
+            ...current,
+            [question.id]: '',
+        }));
+        setError('');
+
+        if (currentIndex >= QUESTIONS.length - 1) {
+            setPhase('details');
+            return;
+        }
+
+        setCurrentIndex((index) => index + 1);
+    }
+
     function submitFeedback(nextDetails = details) {
         setDetails(nextDetails);
         setError('');
@@ -552,6 +567,7 @@ export function ReviewAssistant({
                     body: JSON.stringify({
                         service: answers.service,
                         experienceRating: answers.experienceRating,
+                        experience: answers.experience,
                         standout: answers.standout,
                         details: nextDetails,
                         teamMember: answers.teamMember,
@@ -605,13 +621,7 @@ export function ReviewAssistant({
     }
 
     async function selectReview(review: ReviewOption) {
-        const placeId =
-            OFFICE_PLACE_IDS[answers.office as ReviewLocationName];
-
-        if (!placeId) {
-            toast.error('Select an office first.');
-            return;
-        }
+        const placeId = OFFICE_PLACE_IDS[initialOffice];
 
         setSelectedReviewId(review.id);
         setRedirectingReviewId(review.id);
@@ -710,6 +720,18 @@ export function ReviewAssistant({
                                             selectAnswer(currentQuestion, option)
                                         }
                                     />
+                                    {currentQuestion.id === 'teamMember' ? (
+                                        <Button
+                                            type="button"
+                                            variant="outline"
+                                            className="h-11 border-[#1b1e65]/25 text-[#1b1e65] hover:bg-[#eff4ff]"
+                                            onClick={() =>
+                                                skipQuestion(currentQuestion)
+                                            }
+                                        >
+                                            Skip
+                                        </Button>
+                                    ) : null}
                                 </motion.div>
                             ) : null}
 
@@ -766,6 +788,7 @@ export function ReviewAssistant({
                                                     : 'Generate reviews'}
                                             </Button>
                                         </div>
+                                        <PrivacyConsent className="mt-3" />
                                     </div>
                                     {error ? (
                                         <p className="px-1 text-sm font-medium text-[#ba1a1a]">

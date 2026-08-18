@@ -120,13 +120,13 @@ export const ADVANCED_PRICING_CARDS = [
         ],
     },
     {
-        title: 'Catchup Accounting',
+        title: 'Catch-Up Accounting',
         subtitle: 'Ideal for high volume transaction clients',
         price: '$3,600',
         duration: '',
         height: '32rem',
         features: [
-            'Cleanup books for previous periods',
+            'Clean up books for previous periods',
             'Books Migration & Setup',
             'T2 - Annual Income Tax Filing (Unlimited Backyear Filing)',
             'GST/HST/PST Filing (Unlimited Backyear Filings)',
