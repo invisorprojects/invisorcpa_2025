@@ -174,7 +174,7 @@ const packages = [
             'Incorporated small businesses needing the full corporate package.',
         intro: 'Everything in Essentials, plus:',
         features: [
-            'QuickBooks Online subscription included',
+            'QuickBooks Setup Support',
             'T2 Annual Corporate Tax Return',
             'Payroll Management, T4, ROE, pay stubs',
             'T5018 filings for sub-contractors',
@@ -193,7 +193,7 @@ const packages = [
             'Incorporated businesses with under 50 transactions per month.',
         intro: 'Everything in Essentials, plus:',
         features: [
-            'QuickBooks Online subscription',
+            'QuickBooks Setup Support',
             'T2 Annual Corporate Tax Return',
             'Annual Return Filing',
             'Bank feed management',
@@ -211,7 +211,7 @@ const packages = [
             'Businesses doing books themselves who need year-end support only.',
         intro: 'Everything in Essentials, plus:',
         features: [
-            'QuickBooks Online subscription, ledgers',
+            'QuickBooks Setup Support',
             'T2 Annual Corporate Tax Return',
             'GST/HST/PST annual filing',
             'Annual Return Filing',

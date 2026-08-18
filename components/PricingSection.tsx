@@ -25,7 +25,7 @@ export const STANDARD_PRICING_CARDS = [
         duration: 'Annually',
         height: '32rem',
         features: [
-            'Quickbooks Online Subscription (Ledgers)',
+            'QuickBooks Setup Support',
             'Track Income & Expenses',
             'Bank Feeds Reconciliations',
             'Business GST/HST/PST Filing',
@@ -41,7 +41,7 @@ export const STANDARD_PRICING_CARDS = [
         duration: 'Per Month',
         height: '34rem',
         features: [
-            'Quickbooks Online Subscription (Essentials Plan)',
+            'QuickBooks Setup Support',
             'T2 - Annual Income Tax Filing',
             'GST/HST/PST Filing',
             'Annual Return Filing (Provisional)',
@@ -58,7 +58,7 @@ export const STANDARD_PRICING_CARDS = [
         duration: 'Per Quarter',
         height: '32rem',
         features: [
-            'Quickbooks Online Subscription (Essentials Plan)',
+            'QuickBooks Setup Support',
             'T2 - Annual Income Tax Filing',
             'GST/HST/PST Filing',
             'Annual Return Filing (Provisional)',
@@ -74,7 +74,7 @@ export const STANDARD_PRICING_CARDS = [
         duration: 'Annually',
         height: '30rem',
         features: [
-            'Quickbooks Online Subscription (Ledgers)',
+            'QuickBooks Setup Support',
             'T2 - Annual Income Tax Filing',
             'GST/HST/PST Annual Filing',
             'Annual Return Filing (Provisional)',
@@ -109,7 +109,7 @@ export const ADVANCED_PRICING_CARDS = [
         duration: 'Per Month',
         height: '32rem',
         features: [
-            'Quickbooks Online Subscription (QB Plus Plan)',
+            'QuickBooks Setup Support',
             'T2 - Annual Income Tax Filing',
             'GST/HST/PST Filing',
             'Annual Return Filing (Provincial)',
