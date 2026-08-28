@@ -1,5 +1,5 @@
 import { groq } from '@ai-sdk/groq';
-import { generateText } from 'ai';
+import { generateText, jsonSchema, Output } from 'ai';
 import { NextResponse } from 'next/server';
 
 type ReviewTone = 'concise professional' | 'warm personal' | 'detailed helpful';
@@ -39,14 +39,6 @@ function cleanField(value: unknown) {
     }
 
     return value.trim().replace(/\s+/g, ' ').slice(0, MAX_FIELD_LENGTH);
-}
-
-function parseJsonResponse(text: string) {
-    const trimmed = text.trim();
-    const fencedMatch = trimmed.match(/```(?:json)?\s*([\s\S]*?)\s*```/i);
-    const jsonText = fencedMatch?.[1] || trimmed;
-
-    return JSON.parse(jsonText) as unknown;
 }
 
 function normalizeReviewOption(
@@ -112,6 +104,61 @@ function validateReviewResponse(value: unknown): ReviewResponse | null {
     return { reviews: normalized };
 }
 
+const reviewResponseSchema = jsonSchema<ReviewResponse>(
+    {
+        type: 'object',
+        additionalProperties: false,
+        required: ['reviews'],
+        properties: {
+            reviews: {
+                type: 'array',
+                minItems: 3,
+                maxItems: 3,
+                items: {
+                    type: 'object',
+                    additionalProperties: false,
+                    required: ['id', 'tone', 'title', 'text'],
+                    properties: {
+                        id: {
+                            type: 'string',
+                            enum: ['concise', 'warm', 'detailed'],
+                        },
+                        tone: {
+                            type: 'string',
+                            enum: [
+                                'concise professional',
+                                'warm personal',
+                                'detailed helpful',
+                            ],
+                        },
+                        title: {
+                            type: 'string',
+                            minLength: 1,
+                            maxLength: 42,
+                        },
+                        text: {
+                            type: 'string',
+                            minLength: 80,
+                        },
+                    },
+                },
+            },
+        },
+    },
+    {
+        validate(value) {
+            const response = validateReviewResponse(value);
+
+            return response
+                ? { success: true, value: response }
+                : {
+                      success: false,
+                      error: new Error('Model returned invalid review JSON.'),
+                  };
+        },
+    }
+);
+
 export async function POST(request: Request) {
     if (!process.env.GROQ_API_KEY) {
         return NextResponse.json(
@@ -152,12 +199,17 @@ export async function POST(request: Request) {
     }
 
     try {
-        const { text } = await generateText({
+        const { output } = await generateText({
             model: groq(process.env.GROQ_MODEL || DEFAULT_MODEL),
-            temperature: 0.72,
-            maxOutputTokens: 1100,
+            temperature: 0.35,
+            maxOutputTokens: 1600,
+            output: Output.object({
+                schema: reviewResponseSchema,
+                name: 'review_options',
+                description: 'Three valid Google review options for Invisor CPA.',
+            }),
             system:
-                'You write authentic, first-person Google reviews for Invisor CPA, an accounting firm in Canada. Write like a real satisfied client: specific, calm, clear, and believable. Return only valid JSON. Do not include markdown. Do not mention that AI wrote the review. Do not include ratings, bullets, names other than the selected Invisor team member, dates, dollar amounts, CRA outcomes, refund amounts, legal guarantees, or facts the client did not provide.',
+                'You write authentic, first-person Google reviews for Invisor CPA, an accounting firm in Canada. Write like a real satisfied client: specific, calm, clear, and believable. Do not mention that AI wrote the review. Do not include ratings, bullets, names other than the selected Invisor team member, dates, dollar amounts, CRA outcomes, refund amounts, legal guarantees, or facts the client did not provide.',
             prompt: [
                 'Create exactly three Google review options for Invisor CPA.',
                 'Each review must be first-person and suitable for a public Google review.',
@@ -177,24 +229,11 @@ export async function POST(request: Request) {
                 '',
                 'Keep wording natural. Avoid hype such as "best ever", "life-changing", or repeated marketing phrases.',
                 '',
-                'Return only this JSON shape:',
-                '{',
-                '  "reviews": [',
-                '    { "id": "concise", "tone": "concise professional", "title": "Short label", "text": "Review text..." },',
-                '    { "id": "warm", "tone": "warm personal", "title": "Short label", "text": "Review text..." },',
-                '    { "id": "detailed", "tone": "detailed helpful", "title": "Short label", "text": "Review text..." }',
-                '  ]',
-                '}',
+                'Return three objects with ids concise, warm, and detailed, using the matching tone for each id.'
             ].join('\n'),
         });
 
-        const parsed = validateReviewResponse(parseJsonResponse(text));
-
-        if (!parsed) {
-            throw new Error('Model returned invalid review JSON.');
-        }
-
-        return NextResponse.json(parsed);
+        return NextResponse.json(output);
     } catch (error) {
         console.error('Review generation failed', error);
 
