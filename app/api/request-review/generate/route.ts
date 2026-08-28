@@ -66,10 +66,12 @@ function normalizeReviewOption(
             ? (candidate.tone as ReviewTone)
             : fallbackTones[fallbackIndex];
     const title =
-        typeof candidate.title === 'string' ? candidate.title.trim() : '';
+        typeof candidate.title === 'string' && candidate.title.trim()
+            ? candidate.title.trim()
+            : `${fallbackIds[fallbackIndex]} Review`;
     const text = typeof candidate.text === 'string' ? candidate.text.trim() : '';
 
-    if (!id || !title || text.length < 80) {
+    if (!id || !title || text.length < 30) {
         return null;
     }
 
@@ -92,58 +94,57 @@ function validateReviewResponse(value: unknown): ReviewResponse | null {
         return null;
     }
 
+    const fallbackIds = ['concise', 'warm', 'detailed'];
+    const fallbackTones: ReviewTone[] = [
+        'concise professional',
+        'warm personal',
+        'detailed helpful',
+    ];
+
     const normalized = reviews
-        .slice(0, 3)
         .map((review, index) => normalizeReviewOption(review, index))
         .filter((review): review is ReviewOption => Boolean(review));
 
-    if (normalized.length !== 3) {
+    if (normalized.length === 0) {
         return null;
     }
 
-    return { reviews: normalized };
+    const result: ReviewOption[] = fallbackIds.map((id, index) => {
+        const found = normalized.find((r) => r.id === id) || normalized[index];
+        const item = found || normalized[0];
+
+        return {
+            id,
+            tone: fallbackTones[index],
+            title: item.title || `${fallbackIds[index]} Review`,
+            text: item.text,
+        };
+    });
+
+    return { reviews: result };
 }
 
 const reviewResponseSchema = jsonSchema<ReviewResponse>(
     {
         type: 'object',
         additionalProperties: false,
-        required: ['reviews'],
         properties: {
             reviews: {
                 type: 'array',
-                minItems: 3,
-                maxItems: 3,
                 items: {
                     type: 'object',
                     additionalProperties: false,
-                    required: ['id', 'tone', 'title', 'text'],
                     properties: {
-                        id: {
-                            type: 'string',
-                            enum: ['concise', 'warm', 'detailed'],
-                        },
-                        tone: {
-                            type: 'string',
-                            enum: [
-                                'concise professional',
-                                'warm personal',
-                                'detailed helpful',
-                            ],
-                        },
-                        title: {
-                            type: 'string',
-                            minLength: 1,
-                            maxLength: 42,
-                        },
-                        text: {
-                            type: 'string',
-                            minLength: 80,
-                        },
+                        id: { type: 'string' },
+                        tone: { type: 'string' },
+                        title: { type: 'string' },
+                        text: { type: 'string' },
                     },
+                    required: ['id', 'tone', 'title', 'text'],
                 },
             },
         },
+        required: ['reviews'],
     },
     {
         validate(value) {
@@ -189,8 +190,7 @@ export async function POST(request: Request) {
         !service ||
         !experienceRating ||
         !experience ||
-        !standout ||
-        !teamMember
+        !standout
     ) {
         return NextResponse.json(
             { error: 'Please complete the required review prompts.' },
@@ -213,7 +213,8 @@ export async function POST(request: Request) {
             prompt: [
                 'Create exactly three Google review options for Invisor CPA.',
                 'Each review must be first-person and suitable for a public Google review.',
-                'Each review should be 50 to 110 words.',
+                'Each review must be between 60 and 110 words.',
+                'Even if specific notes or team member names are omitted, write complete, realistic reviews expanding on the selected service and experience.',
                 'Make the options meaningfully different in tone:',
                 '1. concise professional',
                 '2. warm personal',
@@ -224,8 +225,8 @@ export async function POST(request: Request) {
                 `Experience rating: ${experienceRating}`,
                 `Experience: ${experience}`,
                 `What stood out: ${standout}`,
-                `Worked with: ${teamMember}`,
-                details ? `Specific note: ${details}` : 'Specific note: none',
+                teamMember ? `Worked with: ${teamMember}` : 'Worked with: Invisor CPA team',
+                details ? `Specific note: ${details}` : 'Specific note: none (expand naturally on the client rating and experience)',
                 '',
                 'Keep wording natural. Avoid hype such as "best ever", "life-changing", or repeated marketing phrases.',
                 '',
