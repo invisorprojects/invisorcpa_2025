@@ -55,10 +55,13 @@ export default function Team() {
                             className="object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-[0.2]"
                         />
 
-                        <div className="absolute inset-x-4 bottom-4 hidden rounded-2xl bg-white/92 px-4 py-3 text-center shadow-lg backdrop-blur-sm transition-all duration-300 md:block md:group-hover:translate-y-4 md:group-hover:opacity-0">
+                        <div className="absolute inset-x-4 bottom-4 z-10 rounded-2xl bg-white/92 px-4 py-3 text-center shadow-lg backdrop-blur-sm transition-all duration-300 group-hover:translate-y-4 group-hover:opacity-0">
                             <h3 className="text-base font-semibold text-slate-900">
                                 Geevar Thambi
                             </h3>
+                            <p className="mt-1 text-xs font-medium text-slate-600">
+                                MBA, CMA, CSCA, CPB, EA
+                            </p>
                         </div>
 
                         <div className="absolute inset-0 bg-gradient-to-t from-[#071a23]/95 via-[#071a23]/82 to-[#071a23]/28 opacity-100 transition-all duration-300 md:opacity-0 md:group-hover:opacity-100">
