@@ -90,6 +90,14 @@ export default async function HtmlSitemap() {
                             Payroll Calculator
                         </Link>
                     </li>
+                    <li>
+                        <Link href="/free-invoice-generator">
+                            Free Invoice Generator
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/new-clients">New Clients</Link>
+                    </li>
                 </ul>
             </section>
 
@@ -106,6 +114,31 @@ export default async function HtmlSitemap() {
                             Cross-Border Taxes
                         </Link>
                     </li>
+                    <li>
+                        <Link href="/services/bookkeeping-services">
+                            Bookkeeping Services
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/services/cloud-bookkeeping">
+                            Cloud Bookkeeping
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/services/industries">
+                            Industries We Serve
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/services/outsourced-bookkeeping">
+                            Outsourced Bookkeeping
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/services/quickbooks-setup-bookkeeping">
+                            QuickBooks Setup and Bookkeeping
+                        </Link>
+                    </li>
                 </ul>
             </section>
 
@@ -114,6 +147,32 @@ export default async function HtmlSitemap() {
                 <ul className="list-inside list-disc space-y-1">
                     <li>
                         <Link href="/blogs">All Blogs</Link>
+                    </li>
+                    <li>
+                        <Link href="/blogs/6-signs-your-small-business-needs-a-professional-accountant">
+                            6 Signs Your Small Business Needs a Professional
+                            Accountant
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/blogs/multigenerational-home-renovation-tax-credit-canada">
+                            Multigenerational Home Renovation Tax Credit
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/blogs/payroll-errors-ontario-businesses">
+                            Payroll Errors Ontario Businesses Should Avoid
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/blogs/small-business-tax-accountant">
+                            Small Business Tax Accountant
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/blogs/tax-id-number-canada">
+                            Tax ID Number in Canada
+                        </Link>
                     </li>
                     {blogs.map((b) => (
                         <li key={b.slug}>
@@ -128,6 +187,16 @@ export default async function HtmlSitemap() {
                 <ul className="list-inside list-disc space-y-1">
                     <li>
                         <Link href="/case-studies">All Case Studies</Link>
+                    </li>
+                    <li>
+                        <Link href="/case-studies/construction-bookkeeping">
+                            Construction Bookkeeping
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/case-studies/restaurant-bookkeeping">
+                            Restaurant Bookkeeping
+                        </Link>
                     </li>
                     {caseStudies.map((c) => (
                         <li key={c.slug}>

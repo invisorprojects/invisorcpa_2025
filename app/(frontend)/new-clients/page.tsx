@@ -5,6 +5,9 @@ export const metadata: Metadata = {
     title: 'New Clients - Invisor CPA',
     description:
         'Book a consultation with Invisor CPA for small business accounting, bookkeeping, payroll, and tax support.',
+    alternates: {
+        canonical: 'https://www.invisorcpa.ca/new-clients',
+    },
 };
 
 export default function NewClientsPage() {

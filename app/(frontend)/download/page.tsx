@@ -1,4 +1,13 @@
 import { Button } from '@/components/ui/button';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Download | Invisor CPA',
+    robots: {
+        index: false,
+        follow: false,
+    },
+};
 
 export default function DownloadPage() {
     return (

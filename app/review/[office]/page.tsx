@@ -27,7 +27,7 @@ export async function generateMetadata({
         title: `Create Your ${location.name} Review | Invisor CPA`,
         description: `Create a ready-to-post Google review for Invisor CPA ${location.name}.`,
         alternates: {
-            canonical: `https://www.invisorcpa.ca/request-review/${location.slug}`,
+            canonical: `https://www.invisorcpa.ca/review/${location.slug}`,
         },
     };
 }

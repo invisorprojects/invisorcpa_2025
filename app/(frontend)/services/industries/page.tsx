@@ -5,19 +5,12 @@ import { PrivacyConsent } from '@/components/privacy-consent';
 import { Metadata } from 'next';
 import Image from 'next/image';
 
-export async function generateMetadata({
-    params,
-}: {
-    params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-    const { slug } = await params;
-    return {
-        title: 'Industries',
-        alternates: {
-            canonical: `https://www.invisorcpa.ca/services/industries`,
-        },
-    };
-}
+export const metadata: Metadata = {
+    title: 'Industries',
+    alternates: {
+        canonical: 'https://www.invisorcpa.ca/services/industries',
+    },
+};
 
 export default function Page() {
     return (

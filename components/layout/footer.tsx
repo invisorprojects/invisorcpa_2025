@@ -112,9 +112,11 @@ export default function Footer() {
                                 </Link>
                             </li> */}
 
-                            {/* <li>
-                                <Link href="/industries">Industries</Link>
-                            </li> */}
+                            <li>
+                                <Link href="/services/industries">
+                                    Industries
+                                </Link>
+                            </li>
                             {/* <li>
                                 <Link href="/tax-season">Tax Season</Link>
                             </li> */}

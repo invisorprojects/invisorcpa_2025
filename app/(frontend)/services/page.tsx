@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
     title: 'Tax Services Canada | Personal Tax Accountant | Business Tax Preparation',
@@ -124,6 +125,12 @@ export default function Page() {
                         <ServicesCard key={index} service={service} />
                     ))}
                 </div>
+                <Link
+                    href="/services/industries"
+                    className="bg-primary mt-10 rounded-md px-6 py-3 font-semibold text-white transition-opacity hover:opacity-90"
+                >
+                    Explore the Industries We Serve
+                </Link>
             </section>
 
             <ContactUs />
