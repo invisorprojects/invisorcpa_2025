@@ -9,9 +9,6 @@ import Link from 'next/link';
 
 export default async function BlogIndexPage() {
     const blogPosts = await getPublishedBlogPosts();
-    if (!blogPosts.length) {
-        return <p>No blog posts found</p>;
-    }
 
     return (
         <div className="mt-20 grid w-fit grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8 lg:grid-cols-3">

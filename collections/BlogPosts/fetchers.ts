@@ -1,10 +1,9 @@
 import { getPayloadClient } from '@/lib/payload/client';
-import { CACHE_TAG_BLOG_POSTS, STATUS_OPTIONS } from './constants';
-import { unstable_cache } from 'next/cache';
+import { STATUS_OPTIONS } from './constants';
 
 async function _getPublishedBlogPosts() {
-    const payload = await getPayloadClient();
     try {
+        const payload = await getPayloadClient();
         const { docs: blogPosts } = await payload.find({
             collection: 'blog-posts',
             where: { status: { equals: STATUS_OPTIONS.PUBLISHED } },
@@ -27,14 +26,11 @@ async function _getPublishedBlogPosts() {
 
 export function getPublishedBlogPosts() {
     return _getPublishedBlogPosts();
-    // return unstable_cache(_getPublishedBlogPosts, [], {
-    //     tags: [CACHE_TAG_BLOG_POSTS],
-    // })();
 }
 
 async function _getRecentBlogPosts() {
-    const payload = await getPayloadClient();
     try {
+        const payload = await getPayloadClient();
         const { docs: blogPosts } = await payload.find({
             collection: 'blog-posts',
             where: { status: { equals: STATUS_OPTIONS.PUBLISHED } },
@@ -59,14 +55,11 @@ async function _getRecentBlogPosts() {
 
 export function getRecentBlogPosts() {
     return _getRecentBlogPosts();
-    // return unstable_cache(_getRecentBlogPosts, [], {
-    //     tags: [CACHE_TAG_BLOG_POSTS],
-    // })();
 }
 
 export async function getBlogPostBySlug(slug: string) {
-    const payload = await getPayloadClient();
     try {
+        const payload = await getPayloadClient();
         const { docs: blogPosts } = await payload.find({
             collection: 'blog-posts',
             limit: 1,
