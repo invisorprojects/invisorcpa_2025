@@ -1,37 +1,28 @@
-export const dynamic = 'force-dynamic';
-import { getPublishedBlogPosts } from '@/collections/BlogPosts/fetchers';
+import { blogPosts } from '@/content/blogs';
 import BlogCard from '@/components/blog-card';
-import { relationIsObject } from '@/lib/payload/helpers/relation-is-object';
 
 import { CircleArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default async function BlogIndexPage() {
-    const blogPosts = await getPublishedBlogPosts();
-
+export default function BlogIndexPage() {
     return (
         <div className="mt-20 grid w-fit grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8 lg:grid-cols-3">
             {blogPosts.map(
                 ({
-                    id,
                     title,
                     slug,
-                    contentSummary,
                     coverImage,
                     readTimeInMins,
                     publishedAt,
                 }) => {
-                    if (!relationIsObject(coverImage)) return null;
-
                     return (
                         <BlogCard
-                            key={id}
+                            key={slug}
                             title={title}
                             href={`/blogs/${slug}`}
-                            summary={contentSummary}
-                            readTimeMins={readTimeInMins ?? 0}
-                            publishedAt={new Date(publishedAt ?? new Date())}
+                            readTimeMins={readTimeInMins}
+                            publishedAt={new Date(publishedAt)}
                             coverImage={coverImage}
                         />
                     );

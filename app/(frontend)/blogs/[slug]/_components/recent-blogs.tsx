@@ -1,12 +1,12 @@
-import { getRecentBlogPosts } from '@/collections/BlogPosts/fetchers';
+import { getRecentBlogPosts } from '@/content/blogs';
 import Link from 'next/link';
 
-export default async function RecentBlogs({
+export default function RecentBlogs({
     currentBlogSlug,
 }: {
     currentBlogSlug: string;
 }) {
-    const recentBlogPosts = await getRecentBlogPosts();
+    const recentBlogPosts = getRecentBlogPosts();
     if (!recentBlogPosts.length) {
         return <p>No blog posts found</p>;
     }

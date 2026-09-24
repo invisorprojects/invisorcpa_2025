@@ -1,6 +1,8 @@
-import { withPayload } from '@payloadcms/next/withPayload';
+import createMDX from '@next/mdx';
 import withPlaiceholder from '@plaiceholder/next';
 import type { NextConfig } from 'next';
+
+const withMDX = createMDX();
 
 const nextConfig: NextConfig = {
     async headers() {
@@ -39,4 +41,4 @@ const nextConfig: NextConfig = {
     devIndicators: false,
 };
 
-export default withPlaiceholder(withPayload(nextConfig));
+export default withMDX(withPlaiceholder(nextConfig));

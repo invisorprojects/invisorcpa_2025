@@ -4,6 +4,7 @@ export const dynamic = 'force-static';
 import Link from 'next/link';
 import { SERVICES } from '@/constants/SERVICES';
 import { getStoryblokApi } from '@/lib/storyblok';
+import { blogPosts } from '@/content/blogs';
 
 export const metadata = {
     title: 'HTML Sitemap',
@@ -15,7 +16,10 @@ export const metadata = {
 
 export default async function HtmlSitemap() {
     const storyblokApi = getStoryblokApi();
-    let blogs: { name: string; slug: string }[] = [];
+    let blogs: { name: string; slug: string }[] = blogPosts.map((post) => ({
+        name: post.title,
+        slug: post.slug,
+    }));
     let caseStudies: { name: string; slug: string }[] = [];
 
     try {
@@ -40,10 +44,15 @@ export default async function HtmlSitemap() {
             }),
         ]);
 
-        blogs = (blogsData.data.stories || []).map((s: any) => ({
+        const storyblokBlogs = (blogsData.data.stories || []).map((s: any) => ({
             name: s.content?.title || s.name,
             slug: s.slug.replace('blogs/', ''),
         }));
+        blogs = Array.from(
+            new Map(
+                [...blogs, ...storyblokBlogs].map((blog) => [blog.slug, blog])
+            ).values()
+        );
         caseStudies = (caseStudiesData.data.stories || []).map((s: any) => ({
             name: s.content?.title || s.name,
             slug: s.slug.replace('case-studies/', ''),

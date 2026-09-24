@@ -2,6 +2,7 @@
 import { MetadataRoute } from 'next';
 import { getStoryblokApi } from '@/lib/storyblok';
 import { SERVICES } from '@/constants/SERVICES';
+import { blogPosts } from '@/content/blogs';
 
 const BASE_URL = 'https://www.invisorcpa.ca';
 
@@ -142,7 +143,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
 
     const storyblokApi = getStoryblokApi();
-    let blogEntries: MetadataRoute.Sitemap = [];
+    const localBlogEntries: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+        url: `${BASE_URL}/blogs/${post.slug}`,
+        lastModified: post.publishedAt,
+        changeFrequency: 'weekly',
+        priority: 0.6,
+    }));
+    let storyblokBlogEntries: MetadataRoute.Sitemap = [];
     let caseStudyEntries: MetadataRoute.Sitemap = [];
 
     try {
@@ -165,7 +172,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             }),
         ]);
 
-        blogEntries = blogs.map((story: any) => ({
+        storyblokBlogEntries = blogs.map((story: any) => ({
             url: `${BASE_URL}/blogs/${story.slug.replace('blogs/', '')}`,
             lastModified: story.published_at || story.updated_at,
             changeFrequency: 'weekly',
@@ -185,7 +192,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const entries = [
         ...staticEntries,
         ...serviceEntries,
-        ...blogEntries,
+        ...localBlogEntries,
+        ...storyblokBlogEntries,
         ...caseStudyEntries,
     ];
 

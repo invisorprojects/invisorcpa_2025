@@ -1,6 +1,6 @@
 import { CircleArrowRight } from 'lucide-react';
 
-import { Media } from '@/payload-types';
+import type { BlogCoverImage } from '@/content/blogs';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BlogMetadata } from './blog-metadata';
@@ -8,8 +8,7 @@ import { BlogMetadata } from './blog-metadata';
 type BlogCardProps = {
     href: string;
     title: string;
-    summary: string;
-    coverImage: Media;
+    coverImage: BlogCoverImage;
     publishedAt: Date;
     readTimeMins: number;
 };
@@ -17,7 +16,6 @@ type BlogCardProps = {
 export default function BlogCard({
     href,
     title,
-    summary,
     coverImage,
     publishedAt,
     readTimeMins,
@@ -26,13 +24,11 @@ export default function BlogCard({
         <article className="group relative max-w-sm overflow-hidden rounded-xl shadow-sm">
             {/* cover image */}
             <Image
-                src={coverImage.url ?? ''}
-                alt={`Cover image for blog post: "${title}"`}
-                width={600}
-                height={400}
+                src={coverImage.src}
+                alt={coverImage.alt}
+                width={coverImage.width}
+                height={coverImage.height}
                 className="h-[436px] w-full object-cover transition duration-300 group-hover:scale-105 group-hover:brightness-75"
-                placeholder="blur"
-                blurDataURL={coverImage.blurDataUrl}
             />
             {/* content */}
             <Link href={href} aria-label={`Read blog post: "${title}"`}>

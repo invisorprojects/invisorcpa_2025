@@ -1,8 +1,6 @@
 import Image from 'next/image';
-import { getBlogPostBySlug } from '@/collections/BlogPosts/fetchers';
+import { blogPosts, getBlogPostBySlug } from '@/content/blogs';
 import { notFound } from 'next/navigation';
-import { relationIsObject } from '@/lib/payload/helpers/relation-is-object';
-import { RichText } from '@/lib/payload/components/rich-text';
 import { Metadata } from 'next';
 import ContactUsForm from '@/components/ContactUsForm';
 import Link from 'next/link';
@@ -11,18 +9,24 @@ import ContactUs from '@/components/sections/contact-us';
 import { BlogMetadata } from '@/components/blog-metadata';
 import RecentBlogs from './_components/recent-blogs';
 
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+    return blogPosts.map(({ slug }) => ({ slug }));
+}
+
 export async function generateMetadata({
     params,
 }: {
     params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
     const { slug } = await params;
-    const blogPost = await getBlogPostBySlug(slug);
+    const blogPost = getBlogPostBySlug(slug);
     if (!blogPost) notFound();
 
     return {
-        title: blogPost.metaTitle || 'Blog Post',
-        description: blogPost.metaDescription || '',
+        title: blogPost.metadata.metaTitle,
+        description: blogPost.metadata.metaDescription,
         alternates: {
             canonical: `https://www.invisorcpa.ca/blogs/${slug}`,
         },
@@ -35,10 +39,10 @@ export default async function BlogPostPage({
     params: Promise<{ slug: string }>;
 }) {
     const { slug } = await params;
-    const blogPost = await getBlogPostBySlug(slug);
+    const blogPost = getBlogPostBySlug(slug);
     if (!blogPost) notFound();
 
-    if (!relationIsObject(blogPost.coverImage)) return null;
+    const { default: BlogContent, metadata } = blogPost;
 
     return (
         <main>
@@ -57,36 +61,32 @@ export default async function BlogPostPage({
                             BLOGS
                         </h3>
                         <h1 className="text-primary mt-4 text-4xl font-bold 2xl:text-5xl">
-                            {blogPost.title}
+                            {metadata.title}
                         </h1>
                         {/* metadata */}
                         <BlogMetadata
                             intent="post"
                             data={{
-                                publishedAt: new Date(
-                                    blogPost.publishedAt ?? new Date()
-                                ),
-                                readTimeMins: blogPost.readTimeInMins ?? 0,
+                                publishedAt: new Date(metadata.publishedAt),
+                                readTimeMins: metadata.readTimeInMins,
                             }}
                             className="not-prose mt-4 flex"
                         />
                     </div>
                     <div className="flex max-w-lg flex-col items-start gap-4">
                         <p className="text-[#686666]">
-                            {blogPost.contentSummary}
+                            {metadata.contentSummary}
                         </p>
                     </div>
                 </div>
                 <div>
                     {/* cover image */}
                     <Image
-                        src={blogPost.coverImage.url ?? ''}
-                        alt="Cover image"
-                        width={4096}
-                        height={1638}
+                        src={metadata.coverImage.src}
+                        alt={metadata.coverImage.alt}
+                        width={metadata.coverImage.width}
+                        height={metadata.coverImage.height}
                         className="w-full rounded-md object-cover object-center"
-                        placeholder="blur"
-                        blurDataURL={blogPost.coverImage.blurDataUrl}
                     />
                 </div>
             </section>
@@ -95,12 +95,12 @@ export default async function BlogPostPage({
                 <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 lg:grid-cols-3">
                     {/* Main Content */}
                     <div className="prose lg:col-span-2">
-                        <RichText lexicalData={blogPost.content} />
+                        <BlogContent />
                     </div>
 
                     {/* Sidebar */}
                     <aside className="space-y-10">
-                        <RecentBlogs currentBlogSlug={blogPost.slug} />
+                        <RecentBlogs currentBlogSlug={metadata.slug} />
                         <ContactUsForm />
                     </aside>
                 </div>
