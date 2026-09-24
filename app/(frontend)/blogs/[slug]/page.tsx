@@ -80,7 +80,7 @@ export default async function BlogPostPage({
                 <div>
                     {/* cover image */}
                     <Image
-                        src={`${process.env.NEXT_PUBLIC_SITE_URL}/${blogPost.coverImage.url}`}
+                        src={blogPost.coverImage.url ?? ''}
                         alt="Cover image"
                         width={4096}
                         height={1638}

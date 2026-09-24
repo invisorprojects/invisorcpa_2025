@@ -26,7 +26,7 @@ export default function BlogCard({
         <article className="group relative max-w-sm overflow-hidden rounded-xl shadow-sm">
             {/* cover image */}
             <Image
-                src={`${process.env.NEXT_PUBLIC_SITE_URL}/${coverImage.url}`}
+                src={coverImage.url ?? ''}
                 alt={`Cover image for blog post: "${title}"`}
                 width={600}
                 height={400}

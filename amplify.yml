@@ -5,9 +5,10 @@ frontend:
             commands:
                 - npm install -g pnpm@11.1.1
                 - pnpm install --frozen-lockfile --prod=false
-                - env | grep -E '^(PAYLOAD_SECRET|DATABASE_URI|UPLOADTHING_TOKEN|GOOGLE_MAPS_API_KEY|GOOGLE_PLACE_ID|GROQ_API_KEY|GROQ_MODEL)=' >> .env.production
         build:
             commands:
+                - node scripts/validate-production-env.mjs
+                - env | grep -E '^(PAYLOAD_SECRET|DATABASE_URI|UPLOADTHING_TOKEN|NEXT_PUBLIC_SITE_URL|NEXT_PUBLIC_GA_ID|NEXT_PUBLIC_STORYBLOK_TOKEN|STORYBLOK_MANAGEMENT_TOKEN|STORYBLOK_SPACE_ID|GOOGLE_MAPS_API_KEY|GOOGLE_PLACE_ID|GROQ_API_KEY|GROQ_MODEL)=' > .env.production
                 - pnpm run build
                 - rm -f node_modules/@swc/core-linux-x64-gnu/swc.linux-x64-gnu.node
                 - rm -f node_modules/@swc/core-linux-x64-musl/swc.linux-x64-musl.node
