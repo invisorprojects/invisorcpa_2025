@@ -15,6 +15,15 @@ import { StoryblokServerRichText } from '@storyblok/react/rsc';
 // Refer this link
 // https://www.storyblok.com/docs/packages/storyblok-react#storyblokrichtext
 
+const caseStudyDescriptionFallbacks: Record<string, string> = {
+    'financial-crisis-management':
+        'Learn how InvisorCPA helped a Canadian business navigate a financial crisis, restore cash flow stability, and build a stronger financial recovery plan.',
+    'financial-process-streamlining':
+        'Discover how InvisorCPA helped a client streamline and automate financial processes, save time each month, and improve reporting accuracy.',
+    'tax-optimization-for-small-business':
+        'See how InvisorCPA created a customized tax strategy for a Canadian small business, reducing tax liability while maintaining CRA compliance.',
+};
+
 export async function generateMetadata({
     params,
 }: {
@@ -28,7 +37,10 @@ export async function generateMetadata({
     const content = data.story.content;
     return {
         title: content.meta_titile || 'Case Studies',
-        description: content.meta_description || '',
+        description:
+            content.meta_description ||
+            caseStudyDescriptionFallbacks[slug] ||
+            'Explore an InvisorCPA case study and see how expert accounting support helps Canadian businesses grow.',
         alternates: {
             canonical: `https://www.invisorcpa.ca/case-studies/${slug}`,
         },
