@@ -24,6 +24,15 @@ const caseStudyDescriptionFallbacks: Record<string, string> = {
         'See how InvisorCPA created a customized tax strategy for a Canadian small business, reducing tax liability while maintaining CRA compliance.',
 };
 
+const caseStudyTitleFallbacks: Record<string, string> = {
+    'financial-crisis-management':
+        'Financial Crisis Management Case Study | InvisorCPA',
+    'financial-process-streamlining':
+        'Financial Process Streamlining Case Study | InvisorCPA',
+    'tax-optimization-for-small-business':
+        'Tax Optimization for Small Business Case Study | InvisorCPA',
+};
+
 export async function generateMetadata({
     params,
 }: {
@@ -36,7 +45,11 @@ export async function generateMetadata({
     }
     const content = data.story.content;
     return {
-        title: content.meta_titile || 'Case Studies',
+        title:
+            content.meta_titile ||
+            content.meta_title ||
+            caseStudyTitleFallbacks[slug] ||
+            'Case Studies | InvisorCPA',
         description:
             content.meta_description ||
             caseStudyDescriptionFallbacks[slug] ||
