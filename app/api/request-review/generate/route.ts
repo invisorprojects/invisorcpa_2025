@@ -1,5 +1,5 @@
 import { groq } from '@ai-sdk/groq';
-import { generateText, jsonSchema, Output } from 'ai';
+import { generateText, Output } from 'ai';
 import { NextResponse } from 'next/server';
 
 type ReviewTone = 'concise professional' | 'warm personal' | 'detailed helpful';
@@ -25,7 +25,8 @@ type ReviewRequestBody = {
 };
 
 const MAX_FIELD_LENGTH = 260;
-const DEFAULT_MODEL = 'llama-3.1-8b-instant';
+const DEFAULT_MODEL = 'openai/gpt-oss-20b';
+const MAX_ATTEMPTS_PER_MODEL = 2;
 const REVIEW_IDS = new Set(['concise', 'warm', 'detailed']);
 const REVIEW_TONES = new Set<ReviewTone>([
     'concise professional',
@@ -124,41 +125,88 @@ function validateReviewResponse(value: unknown): ReviewResponse | null {
     return { reviews: result };
 }
 
-const reviewResponseSchema = jsonSchema<ReviewResponse>(
-    {
-        type: 'object',
-        additionalProperties: false,
-        properties: {
-            reviews: {
-                type: 'array',
-                items: {
-                    type: 'object',
-                    additionalProperties: false,
-                    properties: {
-                        id: { type: 'string' },
-                        tone: { type: 'string' },
-                        title: { type: 'string' },
-                        text: { type: 'string' },
-                    },
-                    required: ['id', 'tone', 'title', 'text'],
-                },
+class InvalidReviewResponseError extends Error {
+    constructor() {
+        super('Model returned invalid review JSON.');
+        this.name = 'InvalidReviewResponseError';
+    }
+}
+
+type GenerationError = {
+    name?: unknown;
+    message?: unknown;
+    statusCode?: unknown;
+    responseHeaders?: unknown;
+};
+
+function getGenerationErrorDetails(error: unknown) {
+    const candidate = error as GenerationError;
+    const name = typeof candidate?.name === 'string' ? candidate.name : 'UnknownError';
+    const message =
+        typeof candidate?.message === 'string' ? candidate.message : 'Unknown error';
+    const statusCode =
+        typeof candidate?.statusCode === 'number' ? candidate.statusCode : undefined;
+    const responseHeaders = candidate?.responseHeaders as
+        | Record<string, string | undefined>
+        | undefined;
+
+    return {
+        name,
+        message,
+        statusCode,
+        requestId: responseHeaders?.['x-request-id'],
+    };
+}
+
+function shouldRetryGeneration(error: unknown) {
+    const { name, statusCode } = getGenerationErrorDetails(error);
+
+    return (
+        name === 'AI_NoOutputGeneratedError' ||
+        name === 'AI_NoObjectGeneratedError' ||
+        name === 'InvalidReviewResponseError' ||
+        statusCode === 429 ||
+        (typeof statusCode === 'number' && statusCode >= 500)
+    );
+}
+
+async function generateReviewOptions({
+    model,
+    prompt,
+}: {
+    model: string;
+    prompt: string;
+}) {
+    const { output } = await generateText({
+        model: groq(model),
+        temperature: 0.35,
+        // GPT-OSS spends output tokens on reasoning. This leaves enough room for
+        // both low-effort reasoning and three complete public reviews.
+        maxOutputTokens: 2400,
+        // JSON object mode is supported across both production models. The
+        // application validation below remains the source of truth.
+        providerOptions: {
+            groq: {
+                reasoningEffort: 'low',
             },
         },
-        required: ['reviews'],
-    },
-    {
-        validate(value) {
-            const response = validateReviewResponse(value);
+        output: Output.json({
+            name: 'review_options',
+            description: 'Three valid Google review options for Invisor CPA.',
+        }),
+        system:
+            'You write authentic, first-person Google reviews for Invisor CPA, an accounting firm in Canada. Write like a real satisfied client: specific, calm, clear, and believable. Do not mention that AI wrote the review. Do not include ratings, bullets, names other than the selected Invisor team member, dates, dollar amounts, CRA outcomes, refund amounts, legal guarantees, or facts the client did not provide.',
+        prompt,
+    });
 
-            return response
-                ? { success: true, value: response }
-                : {
-                      success: false,
-                      error: new Error('Model returned invalid review JSON.'),
-                  };
-        },
+    const response = validateReviewResponse(output);
+
+    if (!response) {
+        throw new InvalidReviewResponseError();
     }
-);
+
+    return response;
+}
 
 export async function POST(request: Request) {
     if (!process.env.GROQ_API_KEY) {
@@ -198,49 +246,66 @@ export async function POST(request: Request) {
         );
     }
 
-    try {
-        const { output } = await generateText({
-            model: groq(process.env.GROQ_MODEL || DEFAULT_MODEL),
-            temperature: 0.35,
-            maxOutputTokens: 1600,
-            output: Output.object({
-                schema: reviewResponseSchema,
-                name: 'review_options',
-                description: 'Three valid Google review options for Invisor CPA.',
-            }),
-            system:
-                'You write authentic, first-person Google reviews for Invisor CPA, an accounting firm in Canada. Write like a real satisfied client: specific, calm, clear, and believable. Do not mention that AI wrote the review. Do not include ratings, bullets, names other than the selected Invisor team member, dates, dollar amounts, CRA outcomes, refund amounts, legal guarantees, or facts the client did not provide.',
-            prompt: [
-                'Create exactly three Google review options for Invisor CPA.',
-                'Each review must be first-person and suitable for a public Google review.',
-                'Each review must be between 60 and 110 words.',
-                'Even if specific notes or team member names are omitted, write complete, realistic reviews expanding on the selected service and experience.',
-                'Make the options meaningfully different in tone:',
-                '1. concise professional',
-                '2. warm personal',
-                '3. detailed helpful',
-                '',
-                'Client inputs:',
-                `Service: ${service}`,
-                `Experience rating: ${experienceRating}`,
-                `Experience: ${experience}`,
-                `What stood out: ${standout}`,
-                teamMember ? `Worked with: ${teamMember}` : 'Worked with: Invisor CPA team',
-                details ? `Specific note: ${details}` : 'Specific note: none (expand naturally on the client rating and experience)',
-                '',
-                'Keep wording natural. Avoid hype such as "best ever", "life-changing", or repeated marketing phrases.',
-                '',
-                'Return three objects with ids concise, warm, and detailed, using the matching tone for each id.'
-            ].join('\n'),
-        });
+    const prompt = [
+        'Create exactly three Google review options for Invisor CPA.',
+        'Each review must be first-person and suitable for a public Google review.',
+        'Each review must be between 60 and 110 words.',
+        'Even if specific notes or team member names are omitted, write complete, realistic reviews expanding on the selected service and experience.',
+        'Make the options meaningfully different in tone:',
+        '1. concise professional',
+        '2. warm personal',
+        '3. detailed helpful',
+        '',
+        'Client inputs:',
+        `Service: ${service}`,
+        `Experience rating: ${experienceRating}`,
+        `Experience: ${experience}`,
+        `What stood out: ${standout}`,
+        teamMember ? `Worked with: ${teamMember}` : 'Worked with: Invisor CPA team',
+        details ? `Specific note: ${details}` : 'Specific note: none (expand naturally on the client rating and experience)',
+        '',
+        'Keep wording natural. Avoid hype such as "best ever", "life-changing", or repeated marketing phrases.',
+        '',
+        'Return JSON only, with this exact top-level shape:',
+        '{"reviews":[{"id":"concise","tone":"concise professional","title":"...","text":"..."},{"id":"warm","tone":"warm personal","title":"...","text":"..."},{"id":"detailed","tone":"detailed helpful","title":"...","text":"..."}]}',
+        'Do not wrap the JSON in Markdown or add any other keys.',
+    ].join('\n');
+    const primaryModel = process.env.GROQ_MODEL?.trim() || DEFAULT_MODEL;
+    // Keep the default free-tier path to one verified model. A fallback is
+    // opt-in so deployments never call a model the account cannot access.
+    const fallbackModel = process.env.GROQ_FALLBACK_MODEL?.trim();
+    const models = [
+        ...new Set(
+            [primaryModel, fallbackModel].filter(
+                (model): model is string => Boolean(model)
+            )
+        ),
+    ];
 
-        return NextResponse.json(output);
-    } catch (error) {
-        console.error('Review generation failed', error);
+    for (const model of models) {
+        for (let attempt = 1; attempt <= MAX_ATTEMPTS_PER_MODEL; attempt += 1) {
+            try {
+                const output = await generateReviewOptions({ model, prompt });
 
-        return NextResponse.json(
-            { error: 'Could not generate reviews right now. Please try again.' },
-            { status: 502 }
-        );
+                return NextResponse.json(output);
+            } catch (error) {
+                const details = getGenerationErrorDetails(error);
+
+                console.error('Review generation attempt failed', {
+                    model,
+                    attempt,
+                    ...details,
+                });
+
+                if (!shouldRetryGeneration(error)) {
+                    break;
+                }
+            }
+        }
     }
+
+    return NextResponse.json(
+        { error: 'Could not generate reviews right now. Please try again.' },
+        { status: 502 }
+    );
 }
