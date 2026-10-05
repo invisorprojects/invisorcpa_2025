@@ -42,6 +42,11 @@ export default function Footer() {
                             </p>
                             <p className="mt-2 font-semibold">London Office</p>
                             <p>375V- 341 Talbot St. London, ON N6A 2R5</p>
+                            <p className="mt-2 font-semibold">Quebec Office</p>
+                            <p>
+                                204 rue du Saint-Sacrement, Suite 300,
+                                Montreal, QC H2Y 1W8
+                            </p>
                         </div>
                     </div>
                 </div>

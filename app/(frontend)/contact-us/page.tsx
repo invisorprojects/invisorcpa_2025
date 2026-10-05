@@ -108,6 +108,22 @@ function GetInTouchSection() {
                             </p>
                         </div>
                     </div>
+
+                    <div className="flex items-start gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm transition-all hover:shadow-md">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-red-100">
+                            <MapPin className="h-5 w-5 text-red-600" />
+                        </div>
+                        <div>
+                            <h3 className="font-bold text-gray-900">
+                                Quebec Office
+                            </h3>
+                            <p className="text-gray-600">
+                                204 rue du Saint-Sacrement, Suite 300,
+                                <br />
+                                Montreal, QC H2Y 1W8
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Contact Form */}
