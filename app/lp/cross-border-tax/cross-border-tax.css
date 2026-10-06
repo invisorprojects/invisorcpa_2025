@@ -11,6 +11,7 @@
     --cbt-ink: #101828;
     --cbt-copy: #536176;
     --cbt-muted: #738198;
+    --cbt-star: #f7b928;
     --cbt-white: #ffffff;
 }
 
@@ -246,7 +247,7 @@
 }
 
 .cbt-hero__rating > span {
-    color: #8bd9ff;
+    color: var(--cbt-star);
     font-size: 18px;
     letter-spacing: 2px;
 }
@@ -1254,7 +1255,7 @@
 
 .cbt-review-score > span {
     margin: 17px 0;
-    color: #8bd9ff;
+    color: var(--cbt-star);
     font-size: 18px;
     letter-spacing: 2px;
 }
@@ -1304,7 +1305,7 @@
     display: flex;
     gap: 2px;
     margin-bottom: 18px;
-    color: var(--cbt-secondary);
+    color: var(--cbt-star);
 }
 
 .cbt-review-card__stars svg {

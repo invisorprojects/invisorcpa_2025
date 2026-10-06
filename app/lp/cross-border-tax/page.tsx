@@ -270,7 +270,7 @@ export default function CrossBorderTaxPage() {
                             </span>
                         </div>
                         <div className="cbt-hero__rating">
-                            <span aria-label="Five stars">★★★★★</span>
+                            <span className='' aria-label="Five stars">★★★★★</span>
                             <div>
                                 <strong>4.9 on Google</strong>
                                 <small>
