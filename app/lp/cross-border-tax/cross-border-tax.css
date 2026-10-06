@@ -1176,14 +1176,14 @@
 
 .cbt-team-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 22px;
+    grid-template-columns: 1fr;
+    max-width: 900px;
 }
 
 .cbt-team-card {
     display: grid;
-    grid-template-columns: 170px 1fr;
-    min-height: 220px;
+    grid-template-columns: minmax(280px, 34%) 1fr;
+    min-height: 360px;
     overflow: hidden;
     border: 1px solid var(--cbt-border);
     border-radius: 12px;
@@ -1192,7 +1192,7 @@
 
 .cbt-team-card__image {
     position: relative;
-    min-height: 220px;
+    min-height: 360px;
     background: var(--cbt-sky);
 }
 
@@ -1200,30 +1200,31 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 28px;
+    padding: clamp(36px, 6vw, 64px);
 }
 
 .cbt-team-card span {
-    margin-bottom: 9px;
+    margin-bottom: 14px;
     color: var(--cbt-secondary);
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.13em;
     text-transform: uppercase;
 }
 
 .cbt-team-card h3 {
-    margin-bottom: 10px;
+    margin-bottom: 16px;
     color: var(--cbt-blue);
     font-family: var(--font-cbt-serif), Georgia, serif;
-    font-size: 23px;
+    font-size: clamp(29px, 4vw, 40px);
 }
 
 .cbt-team-card p {
     margin-bottom: 0;
     color: var(--cbt-copy);
-    font-size: 12px;
-    line-height: 1.65;
+    max-width: 540px;
+    font-size: 15px;
+    line-height: 1.75;
 }
 
 .cbt-reviews-section {
@@ -1288,6 +1289,13 @@
     gap: 18px;
 }
 
+.cbt-review-content {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 12px;
+}
+
 .cbt-review-card {
     display: flex;
     flex-direction: column;
@@ -1302,23 +1310,19 @@
 }
 
 .cbt-review-card__stars {
-    display: flex;
-    gap: 2px;
     margin-bottom: 18px;
     color: var(--cbt-star);
-}
-
-.cbt-review-card__stars svg {
-    width: 15px;
-    height: 15px;
-    fill: currentColor;
+    font-size: 16px;
+    letter-spacing: 2px;
 }
 
 .cbt-review-card blockquote {
     margin: 0 0 25px;
     color: #344054;
-    font-size: 14px;
-    line-height: 1.7;
+    font-family: var(--font-cbt-serif), Georgia, serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.55;
 }
 
 .cbt-review-card footer {
@@ -1330,11 +1334,19 @@
 .cbt-review-card footer strong {
     color: var(--cbt-blue);
     font-size: 12px;
+    font-weight: 700;
 }
 
 .cbt-review-card footer span {
     color: var(--cbt-muted);
     font-size: 10px;
+}
+
+.cbt-review-disclosure {
+    margin: 0;
+    color: var(--cbt-muted);
+    font-size: 9px;
+    line-height: 1.5;
 }
 
 .cbt-faq-wrap {
@@ -1470,7 +1482,7 @@
     }
 
     .cbt-team-card {
-        grid-template-columns: 140px 1fr;
+        grid-template-columns: 220px 1fr;
     }
 }
 
@@ -1675,7 +1687,11 @@
     }
 
     .cbt-team-card {
-        grid-template-columns: 115px 1fr;
+        grid-template-columns: 1fr;
+    }
+
+    .cbt-team-card__image {
+        min-height: 330px;
     }
 
     .cbt-team-card > div:last-child {

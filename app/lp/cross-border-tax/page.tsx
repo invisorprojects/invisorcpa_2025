@@ -6,7 +6,6 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from '@/components/ui/accordion';
-import { DUMMY_REVIEWS } from '@/constants/DUMMY_REVIEWS';
 import {
     ArrowRight,
     BadgeCheck,
@@ -21,7 +20,6 @@ import {
     Phone,
     ShieldCheck,
     Sparkles,
-    Star,
 } from 'lucide-react';
 import CrossBorderLeadForm from './_components/cross-border-lead-form';
 import ScrollLink from './_components/scroll-link';
@@ -140,18 +138,32 @@ const steps = [
 
 const team = [
     {
-        role: 'CPA',
-        name: 'Bernie Keim, CPA',
-        description:
-            'Canadian tax preparation and cross-border coordination, with the whole file reviewed as one connected plan.',
-        src: '/assets/team/team-members-2.webp',
-    },
-    {
         role: 'IRS Enrolled Agent',
         name: 'Geevar Thambi, EA',
         description:
             'US returns, FBAR and Streamlined filings, with authority to represent clients before the IRS.',
         src: '/assets/team/team-members-3.webp',
+    },
+];
+
+const sampleTestimonials = [
+    {
+        name: 'Emily Carter',
+        location: 'Toronto, Ontario',
+        rating: 5,
+        quote: 'Living in Canada as a US citizen made tax season feel overwhelming. The team coordinated my Canadian return, US return and FBAR together, explained every step clearly and made the whole process far easier than I expected.',
+    },
+    {
+        name: 'Michael Reynolds',
+        location: 'Seattle, Washington',
+        rating: 5,
+        quote: 'I moved back to the US after several years in Ontario and needed help sorting out filings in both countries. I received a clear plan, a fixed quote and responsive support from start to finish.',
+    },
+    {
+        name: 'Claire Thompson',
+        location: 'Vancouver, British Columbia',
+        rating: 5,
+        quote: 'They helped me catch up on several years of US returns and foreign-account reporting through the Streamlined process. What had felt stressful for years was handled with patience, clarity and real cross-border expertise.',
     },
 ];
 
@@ -521,8 +533,8 @@ export default function CrossBorderTaxPage() {
             <section className="cbt-section cbt-team-section">
                 <div className="cbt-container">
                     <div className="cbt-section-heading">
-                        <Eyebrow>Your team</Eyebrow>
-                        <h2>The people who’ll handle your file</h2>
+                        <Eyebrow>Your specialist</Eyebrow>
+                        <h2>Meet your cross-border tax specialist</h2>
                     </div>
                     <div className="cbt-team-grid">
                         {team.map((member) => (
@@ -562,26 +574,31 @@ export default function CrossBorderTaxPage() {
                             <ArrowRight aria-hidden="true" />
                         </a>
                     </aside>
-                    <div className="cbt-review-grid">
-                        {DUMMY_REVIEWS.slice(0, 3).map((review) => (
-                            <article key={review.name} className="cbt-review-card">
-                                <div
-                                    className="cbt-review-card__stars"
-                                    aria-label={`${review.rating} stars`}
+                    <div className="cbt-review-content">
+                        <div className="cbt-review-grid">
+                            {sampleTestimonials.map((testimonial) => (
+                                <article
+                                    key={testimonial.name}
+                                    className="cbt-review-card"
                                 >
-                                    {Array.from({ length: review.rating }).map(
-                                        (_, index) => (
-                                            <Star key={index} aria-hidden="true" />
-                                        )
-                                    )}
-                                </div>
-                                <blockquote>“{review.text}”</blockquote>
-                                <footer>
-                                    <strong>{review.name}</strong>
-                                    <span>Google review · {review.time}</span>
-                                </footer>
-                            </article>
-                        ))}
+                                    <div
+                                        className="cbt-review-card__stars"
+                                        aria-label={`${testimonial.rating} out of 5 stars`}
+                                    >
+                                        {'★'.repeat(testimonial.rating)}
+                                    </div>
+                                    <blockquote>“{testimonial.quote}”</blockquote>
+                                    <footer>
+                                        <strong>{testimonial.name}</strong>
+                                        <span>{testimonial.location}</span>
+                                    </footer>
+                                </article>
+                            ))}
+                        </div>
+                        <p className="cbt-review-disclosure">
+                            Sample testimonial content for design preview. Replace
+                            with verified client reviews before publishing.
+                        </p>
                     </div>
                 </div>
             </section>
