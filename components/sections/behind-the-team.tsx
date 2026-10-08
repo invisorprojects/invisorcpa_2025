@@ -46,7 +46,7 @@ export function BehindTheTeam() {
                                 </p>
                             </div>
 
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#071a23]/95 via-[#071a23]/82 to-[#071a23]/28 opacity-100 transition-all duration-300 md:opacity-0 md:group-hover:opacity-100">
+                            <div className="absolute inset-0 z-20 bg-gradient-to-t from-[#071a23]/95 via-[#071a23]/82 to-[#071a23]/28 opacity-100 transition-all duration-300 md:opacity-0 md:group-hover:opacity-100">
                                 <div className="flex h-full translate-y-0 flex-col justify-end p-5 text-white transition-transform duration-300 md:translate-y-6 md:group-hover:translate-y-0">
                                     <p className="text-[11px] font-semibold tracking-[0.32em] text-white/65 uppercase">
                                         Team
