@@ -31,7 +31,11 @@ function CrossBorderHeader() {
     return (
         <header className="cbt-simple-header">
             <div className="cbt-container cbt-simple-header__inner">
-                <Link href="/" aria-label="Invisor home" className="cbt-logo">
+                <ScrollLink
+                    href="#top"
+                    aria-label="Back to top"
+                    className="cbt-logo"
+                >
                     <Image
                         src="/invisorcpa-logo.png"
                         alt="Invisor"
@@ -39,7 +43,7 @@ function CrossBorderHeader() {
                         height={256}
                         priority
                     />
-                </Link>
+                </ScrollLink>
                 <div className="cbt-simple-header__actions">
                     <a
                         href="tel:+12262273482"

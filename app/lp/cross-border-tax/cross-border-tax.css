@@ -523,6 +523,7 @@
 }
 
 .cbt-form-grid input,
+.cbt-form-grid select,
 .cbt-form-grid textarea {
     width: 100%;
     border: 1px solid var(--cbt-border);
@@ -535,9 +536,25 @@
     transition: border 140ms ease, box-shadow 140ms ease;
 }
 
-.cbt-form-grid input {
+.cbt-form-grid input,
+.cbt-form-grid select {
     height: 43px;
     padding: 0 12px;
+}
+
+.cbt-form-grid select {
+    cursor: pointer;
+    padding-right: 36px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%231b1e65' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+.cbt-form-grid select:invalid,
+.cbt-form-grid select[data-placeholder] {
+    color: var(--cbt-muted);
 }
 
 .cbt-form-grid textarea {
@@ -547,9 +564,29 @@
 }
 
 .cbt-form-grid input:focus,
+.cbt-form-grid select:focus,
 .cbt-form-grid textarea:focus {
     border-color: var(--cbt-blue);
     box-shadow: 0 0 0 3px rgba(27, 30, 101, 0.1);
+}
+
+.cbt-form-grid input[aria-invalid='true'],
+.cbt-form-grid select[aria-invalid='true'] {
+    border-color: #e4626f;
+    background: #fff7f8;
+}
+
+.cbt-field-error {
+    color: #c01c38;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.cbt-form-focus-anchor {
+    width: 0;
+    height: 0;
+    outline: none;
 }
 
 .cbt-form-legal {
@@ -1719,6 +1756,212 @@
         justify-content: center;
         padding: 18px 0;
         text-align: center;
+    }
+}
+
+/* Anchor targets used by the ad sitelinks: keep the title clear of the
+   header when scrolled to. */
+#how-it-works,
+#faq,
+#reviews,
+#services,
+#who-we-help {
+    scroll-margin-top: 90px;
+}
+
+/* ------------------------------------------------------------------ *
+ * Button variant used on the thank-you page (dark background)
+ * ------------------------------------------------------------------ */
+.cbt-button--outline-dark {
+    border-color: rgba(255, 255, 255, 0.4);
+    color: white;
+    background: transparent;
+}
+
+.cbt-button--outline-dark:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ------------------------------------------------------------------ *
+ * Thank-you page
+ * ------------------------------------------------------------------ */
+/* Thank-you keeps the header to logo + phone only — drop the CTA button. */
+.cbt-site:has(.cbt-thank-you) .cbt-header-cta {
+    display: none;
+}
+
+.cbt-thanks-hero {
+    padding: clamp(56px, 9vw, 104px) 0;
+    color: white;
+    background:
+        radial-gradient(circle at 14% 18%, rgba(82, 184, 236, 0.16), transparent 32%),
+        linear-gradient(135deg, var(--cbt-navy-deep), var(--cbt-navy) 60%, #18226f);
+}
+
+.cbt-thanks-wrap {
+    max-width: 760px;
+}
+
+.cbt-thanks-wrap > h1 {
+    margin-bottom: 36px;
+    color: white;
+    font-family: var(--font-cbt-serif), Georgia, serif;
+    font-size: clamp(32px, 5vw, 50px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+}
+
+.cbt-thanks-card {
+    margin-bottom: 18px;
+    padding: 26px 28px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.cbt-thanks-card h2 {
+    margin-bottom: 14px;
+    color: white;
+    font-family: var(--font-cbt-serif), Georgia, serif;
+    font-size: 21px;
+}
+
+.cbt-thanks-card p {
+    margin-bottom: 0;
+    color: #d6e2ef;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.cbt-thanks-steps {
+    margin: 0;
+    padding-left: 20px;
+    display: grid;
+    gap: 12px;
+    color: #d6e2ef;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.cbt-thanks-steps li {
+    padding-left: 6px;
+}
+
+.cbt-thanks-steps li::marker {
+    color: #8bd9ff;
+    font-weight: 700;
+}
+
+.cbt-thanks-contact {
+    margin-top: 28px;
+}
+
+.cbt-thanks-contact > strong {
+    display: block;
+    margin-bottom: 14px;
+    font-size: 14px;
+}
+
+.cbt-thanks-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.cbt-thanks-actions .cbt-button {
+    margin-top: 0;
+}
+
+/* ------------------------------------------------------------------ *
+ * Mobile sticky action bar (phones only)
+ * ------------------------------------------------------------------ */
+.cbt-sticky-bar {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    /* Prevent iOS zoom-on-focus and keep tap targets large. */
+    .cbt-form-grid input,
+    .cbt-form-grid select,
+    .cbt-form-grid textarea {
+        font-size: 16px;
+    }
+
+    .cbt-form-grid input,
+    .cbt-form-grid select {
+        height: 48px;
+    }
+
+    .cbt-form-grid textarea {
+        min-height: 88px;
+    }
+
+    .cbt-form-next {
+        min-height: 48px;
+    }
+
+    /* Make room so the fixed bar never covers the footer / last button. */
+    .cbt-site:has(.cbt-sticky-bar) {
+        padding-bottom: calc(76px + env(safe-area-inset-bottom));
+    }
+
+    .cbt-sticky-bar {
+        position: fixed;
+        z-index: 60;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        gap: 8px;
+        padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+        border-top: 1px solid var(--cbt-border);
+        background: white;
+        box-shadow: 0 -8px 24px -16px rgba(1, 7, 44, 0.5);
+        transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .cbt-sticky-bar[data-hidden='true'] {
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    .cbt-sticky-bar__btn {
+        display: inline-flex;
+        min-height: 48px;
+        flex: 1 1 auto;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .cbt-sticky-bar__btn svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .cbt-sticky-bar__btn--outline {
+        flex-grow: 0;
+        min-width: 86px;
+        padding: 0 12px;
+        border: 1px solid var(--cbt-blue);
+        color: var(--cbt-blue);
+        background: white;
+    }
+
+    /* Spec calls for "brand orange"; this palette has no orange and amber
+       fails contrast with white text, so the filled CTA uses the brand's
+       primary navy (consistent with every other CTA on the page). */
+    .cbt-sticky-bar__btn--primary {
+        flex-grow: 1.6;
+        padding: 0 14px;
+        color: white;
+        background: var(--cbt-blue);
     }
 }
 

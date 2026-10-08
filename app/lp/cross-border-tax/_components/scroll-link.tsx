@@ -21,6 +21,14 @@ const ScrollLink = React.forwardRef<HTMLAnchorElement, ScrollLinkProps>(
                 return;
             }
 
+            // "#top" scrolls to the very top of the page (used by the logo,
+            // so it works on every page in this section without leaving it).
+            if (href === '#top') {
+                event.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+
             const target = document.getElementById(href.slice(1));
 
             if (!target) {

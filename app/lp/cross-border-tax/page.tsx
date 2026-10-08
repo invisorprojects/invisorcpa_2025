@@ -22,6 +22,7 @@ import {
     Sparkles,
 } from 'lucide-react';
 import CrossBorderLeadForm from './_components/cross-border-lead-form';
+import MobileStickyBar from './_components/mobile-sticky-bar';
 import ScrollLink from './_components/scroll-link';
 
 const pageUrl = 'https://www.invisorcpa.ca/lp/cross-border-tax';
@@ -256,9 +257,8 @@ export default function CrossBorderTaxPage() {
                             <ShieldCheck aria-hidden="true" />
                             Cross-border tax specialists · Serving all of Canada
                         </p>
-                        <Eyebrow inverse>Cross-Border Tax</Eyebrow>
                         <h1>
-                            Accountants Who File Both Your{' '}
+                            Cross-Border Tax Accountants Who File Both Your{' '}
                             <span>US and Canadian</span> Returns
                         </h1>
                         <p className="cbt-hero__lead">
@@ -293,7 +293,7 @@ export default function CrossBorderTaxPage() {
                     </div>
 
                     <div id="hero-form" className="cbt-hero__form">
-                        <CrossBorderLeadForm withScripts />
+                        <CrossBorderLeadForm formLocation="hero" />
                     </div>
                 </div>
             </section>
@@ -497,7 +497,7 @@ export default function CrossBorderTaxPage() {
                 </div>
             </section>
 
-            <section id="process" className="cbt-section cbt-process">
+            <section id="how-it-works" className="cbt-section cbt-process">
                 <div className="cbt-container">
                     <div className="cbt-section-heading cbt-section-heading--inverse">
                         <Eyebrow inverse>How it works</Eyebrow>
@@ -535,6 +535,12 @@ export default function CrossBorderTaxPage() {
                     <div className="cbt-section-heading">
                         <Eyebrow>Your specialist</Eyebrow>
                         <h2>Meet your cross-border tax specialist</h2>
+                        <p>
+                            Geevar leads your US filings, FBAR and Streamlined
+                            cases, working in-house alongside our CPA and
+                            Canadian tax team so both returns are prepared under
+                            one roof.
+                        </p>
                     </div>
                     <div className="cbt-team-grid">
                         {team.map((member) => (
@@ -559,7 +565,7 @@ export default function CrossBorderTaxPage() {
                 </div>
             </section>
 
-            <section className="cbt-section cbt-reviews-section">
+            <section id="reviews" className="cbt-section cbt-reviews-section">
                 <div className="cbt-container cbt-reviews-layout">
                     <aside className="cbt-review-score">
                         <strong>4.9</strong>
@@ -667,12 +673,15 @@ export default function CrossBorderTaxPage() {
                     </div>
                     <div className="cbt-final-cta__form">
                         <CrossBorderLeadForm
+                            formLocation="footer"
                             heading="Book your free cross-border consultation"
                             subheading="Takes about 60 seconds. No obligation."
                         />
                     </div>
                 </div>
             </section>
+
+            <MobileStickyBar />
         </main>
     );
 }
