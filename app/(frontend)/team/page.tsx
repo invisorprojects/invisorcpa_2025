@@ -88,12 +88,7 @@ export default function Team() {
                         </div>
                     </div>
                     {TEAMS.map((team, index) => (
-                        <TeamCard
-                            key={index}
-                            name={team.name}
-                            qualification={team.qualification}
-                            path={team.path}
-                        />
+                        <TeamCard key={index} {...team} />
                     ))}
                 </div>
             </section>

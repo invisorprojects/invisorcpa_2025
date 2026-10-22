@@ -1,4 +1,13 @@
-export const TEAMS = [
+export interface TeamMember {
+    name: string;
+    qualification?: string;
+    bio?: string;
+    path: string;
+    link?: string;
+    linkText?: string;
+}
+
+export const TEAMS: TeamMember[] = [
     // {
     //     name: 'Geevar Thambi',
     //     qualification: 'MBA, CMA, CSCA, CPB, EA',
@@ -65,5 +74,13 @@ export const TEAMS = [
         name: 'Jomis John',
         qualification: '',
         path: '/assets/team/jomis.webp',
+    },
+    {
+        name: 'Binoj Joseph',
+        qualification: 'Financial Advisor & Mortgage Broker',
+        bio: "Binoj Joseph is a dedicated Financial Advisor and Mortgage Broker working with Invisor and Experior Financial Group, where he has earned Silver Legacy Ownership in recognition of his outstanding achievements. He has helped more than 200 clients make confident decisions about their financial future. Binoj takes the time to understand each family's goals and offers clear, practical guidance on insurance protection, wealth-building, and home financing, helping families build lasting security.",
+        path: '/assets/team/binoj.webp',
+        link: 'https://experiorfinancial.com/binoj-joseph-silver-legacy-owner/',
+        linkText: 'Profile Link',
     },
 ];
