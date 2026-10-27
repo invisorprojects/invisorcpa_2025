@@ -12,19 +12,20 @@ import {
 import { HardDriveUpload, Menu } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
+import { CountryDropdown } from './CountryDropdown';
 
 export function NavBar() {
     const path = usePathname();
     return (
         <>
-            <nav className="hidden flex-row items-center justify-center gap-2 md:flex md:gap-4 lg:gap-10 xl:gap-12">
+            <nav className="hidden flex-row items-center justify-center gap-2 md:flex md:gap-3 lg:gap-6 xl:gap-8">
                 {NAV_ITEMS.map((item, index) => (
                     <Link
                         key={index}
                         href={item.disabled ? `${path}` : item.href}
                     >
                         <span
-                            className={`flex font-semibold whitespace-nowrap md:text-base lg:text-lg ${
+                            className={`flex font-semibold whitespace-nowrap text-sm lg:text-base ${
                                 path === item.href
                                     ? 'text-blue-600'
                                     : 'hover:text-blue-500'
@@ -49,6 +50,12 @@ export function NavBar() {
                         <SheetTitle></SheetTitle>
                         <div className="flex h-full flex-col justify-between gap-4 p-4">
                             <div className="flex flex-col gap-4">
+                                <div className="border-b pb-3">
+                                    <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-500">
+                                        Country / Region
+                                    </p>
+                                    <CountryDropdown variant="mobile-sheet" />
+                                </div>
                                 {NAV_ITEMS.map((item, index) => (
                                     <Link
                                         key={index}

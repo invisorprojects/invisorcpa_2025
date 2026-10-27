@@ -2,16 +2,18 @@ import Link from 'next/link';
 import { NavBar } from './NavBar';
 import Image from 'next/image';
 import { Button } from '../ui/button';
-import { FileUp, HardDriveUpload, Upload } from 'lucide-react';
+import { HardDriveUpload } from 'lucide-react';
 import {
     Tooltip,
     TooltipContent,
     TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { CountryDropdown } from './CountryDropdown';
+
 export function Header() {
     return (
         <header className="sticky top-0 z-50 flex h-20 flex-row items-center justify-between border-b bg-white px-2 shadow-sm sm:px-4 md:px-8 lg:px-12 xl:px-24">
-            <Link className="" href={'/'}>
+            <Link className="shrink-0 mr-2 lg:mr-4" href={'/'}>
                 <Image
                     className="h-10 w-auto"
                     src="/invisorcpa-logo.png"
@@ -21,10 +23,12 @@ export function Header() {
                     priority={true}
                 />
             </Link>
-            <div className="flex items-center justify-between gap-10 sm:flex-row-reverse md:flex-row">
+            <div className="flex items-center justify-between gap-3 sm:gap-6 md:gap-10 sm:flex-row-reverse md:flex-row">
+                <CountryDropdown className="md:hidden" />
                 <NavBar />
             </div>
-            <div className="hidden items-center md:flex md:gap-4 lg:gap-6">
+            <div className="hidden items-center md:flex md:gap-3 lg:gap-4 xl:gap-6">
+                <CountryDropdown />
                 <Tooltip>
                     <TooltipTrigger asChild>
                         <Link
