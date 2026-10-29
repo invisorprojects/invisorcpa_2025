@@ -9,16 +9,18 @@ import { captureTracking, trackingValues } from './tracking';
 /* ------------------------------------------------------------------ *
  * Zoho web-to-lead configuration
  * ------------------------------------------------------------------ *
- * The form posts to the existing Zoho web-to-lead endpoint. Standard
- * fields (name, email, phone, message) flow today. The new fields
- * (service_needed, years_behind, UTM set, gclid, lead source, form
- * location, landing page) are sent too, but they only land in Zoho once
- * the matching custom fields are created and their Zoho field names are
- * filled into ZOHO_CUSTOM_FIELD_NAMES below.
+ * The form posts to the existing Zoho web-to-lead endpoint with the same
+ * standard fields as components/ContactUsForm.tsx (name, email, phone,
+ * message). The full name goes into First Name. The extra fields (UTM
+ * set, gclid, lead source, form location, landing page) only land in
+ * Zoho once the matching custom fields are created and their Zoho field
+ * names are filled into ZOHO_CUSTOM_FIELD_NAMES below.
  *
  * TODO(crm): replace the empty strings with the Zoho field names (e.g.
- * "LEADCF40") once Nisam creates the custom picklists / text fields from
- * section 5 of the spec. Empty values are simply omitted from the POST.
+ * "LEADCF40") once the custom fields exist. Lead Source is left empty
+ * until "Google Ads – Cross-Border" / "Website – Cross-Border LP" are
+ * added to the Lead Source picklist, since Zoho can reject the whole lead
+ * on an unknown picklist value. Empty values are omitted from the POST.
  * ------------------------------------------------------------------ */
 const ZOHO_ENDPOINT = 'https://crm.zoho.in/crm/WebToLeadForm';
 
@@ -37,9 +39,7 @@ const ZOHO_HIDDEN: Record<string, string> = {
 };
 
 const ZOHO_CUSTOM_FIELD_NAMES = {
-    service_needed: '', // Service Needed (custom picklist)
-    years_behind: '', // Years Behind (custom picklist)
-    lead_source: 'Lead Source',
+    lead_source: '', // 'Lead Source' once the picklist values exist
     utm_source: '', // UTM Source (custom text)
     utm_medium: '', // UTM Medium (custom text)
     utm_campaign: '', // UTM Campaign (custom text)
@@ -54,21 +54,6 @@ const LANDING_PAGE_PATH = '/lp/cross-border-tax';
 const THANK_YOU_PATH = '/lp/cross-border-tax/thank-you';
 const PHONE_DISPLAY = '226-227-3482';
 
-const SERVICE_OPTIONS = [
-    'US tax return (1040)',
-    'Catching up on missed US filings',
-    'FBAR or foreign account reporting',
-    'US income or property as a Canadian',
-    'Not sure, help me figure it out',
-];
-
-const YEARS_OPTIONS = [
-    "I'm up to date",
-    '1–2 years',
-    '3 or more years',
-    "I've never filed",
-];
-
 type FormLocation = 'hero' | 'footer';
 
 type Props = {
@@ -78,10 +63,7 @@ type Props = {
 };
 
 type Values = {
-    service_needed: string;
-    years_behind: string;
-    first_name: string;
-    last_name: string;
+    full_name: string;
     email: string;
     phone: string;
     message: string;
@@ -90,10 +72,7 @@ type Values = {
 type FieldKey = keyof Values;
 
 const EMPTY_VALUES: Values = {
-    service_needed: '',
-    years_behind: '',
-    first_name: '',
-    last_name: '',
+    full_name: '',
     email: '',
     phone: '',
     message: '',
@@ -102,15 +81,8 @@ const EMPTY_VALUES: Values = {
 function validate(values: Values): Partial<Record<FieldKey, string>> {
     const errors: Partial<Record<FieldKey, string>> = {};
 
-    if (!values.service_needed) {
-        errors.service_needed = 'Please choose what you need help with.';
-    }
-    if (!values.years_behind) {
-        errors.years_behind =
-            'Please let us know how many years you are behind.';
-    }
-    if (!values.first_name.trim()) {
-        errors.first_name = 'Please enter your first name.';
+    if (!values.full_name.trim()) {
+        errors.full_name = 'Please enter your full name.';
     }
     if (!values.email.trim()) {
         errors.email = 'Please enter your email address.';
@@ -164,12 +136,10 @@ export default function CrossBorderLeadForm({
         });
 
         // Standard fields — map semantic names to Zoho web-to-lead names.
-        body.append('First Name', values.first_name.trim());
-        // Zoho requires a Last Name; send "(not provided)" when empty.
-        body.append(
-            'Last Name',
-            values.last_name.trim() || '(not provided)'
-        );
+        // The full name goes into First Name; Zoho requires a Last Name,
+        // so it gets a placeholder.
+        body.append('First Name', values.full_name.trim());
+        body.append('Last Name', '(not provided)');
         body.append('Email', values.email.trim());
         body.append('Phone', values.phone.trim());
         // Message currently maps to the LEADCF32 custom field used by this form.
@@ -182,8 +152,6 @@ export default function CrossBorderLeadForm({
                 : 'Website – Cross-Border LP';
 
         const extras: Record<string, string> = {
-            service_needed: values.service_needed,
-            years_behind: values.years_behind,
             lead_source: leadSource,
             utm_source: tracking.utm_source,
             utm_medium: tracking.utm_medium,
@@ -240,8 +208,6 @@ export default function CrossBorderLeadForm({
             window.dataLayer.push({
                 event: 'lead_submit',
                 form_location: formLocation,
-                service_needed: values.service_needed,
-                years_behind: values.years_behind,
             });
 
             // Hand off to the thank-you page via sessionStorage (keeps the
@@ -250,7 +216,7 @@ export default function CrossBorderLeadForm({
             try {
                 sessionStorage.setItem(
                     'lead_first_name',
-                    values.first_name.trim()
+                    values.full_name.trim().split(/\s+/)[0]
                 );
                 sessionStorage.setItem('lead_email', values.email.trim());
                 sessionStorage.setItem('lead_phone', values.phone.trim());
@@ -282,137 +248,41 @@ export default function CrossBorderLeadForm({
 
                 <form onSubmit={handleSubmit} noValidate className="cbt-lead-form">
                     <div className="cbt-form-grid">
-                        {/* 1. Service needed */}
+                        {/* 1. Full name */}
                         <label
-                            htmlFor={`${uid}-service_needed`}
+                            htmlFor={`${uid}-full_name`}
                             className="cbt-form-grid__wide"
                         >
                             <span>
-                                What do you need help with?{' '}
-                                <b aria-hidden="true">*</b>
-                            </span>
-                            <select
-                                id={`${uid}-service_needed`}
-                                name="service_needed"
-                                required
-                                aria-required="true"
-                                aria-invalid={!!errors.service_needed}
-                                aria-describedby={describe('service_needed')}
-                                value={values.service_needed}
-                                onChange={(e) =>
-                                    setField('service_needed')(e.target.value)
-                                }
-                            >
-                                <option value="" disabled>
-                                    Choose one…
-                                </option>
-                                {SERVICE_OPTIONS.map((option) => (
-                                    <option key={option} value={option}>
-                                        {option}
-                                    </option>
-                                ))}
-                            </select>
-                            {errors.service_needed && (
-                                <small
-                                    id={`${uid}-service_needed-error`}
-                                    className="cbt-field-error"
-                                    role="alert"
-                                >
-                                    {errors.service_needed}
-                                </small>
-                            )}
-                        </label>
-
-                        {/* 2. Years behind */}
-                        <label
-                            htmlFor={`${uid}-years_behind`}
-                            className="cbt-form-grid__wide"
-                        >
-                            <span>
-                                How many years of US returns are you behind?{' '}
-                                <b aria-hidden="true">*</b>
-                            </span>
-                            <select
-                                id={`${uid}-years_behind`}
-                                name="years_behind"
-                                required
-                                aria-required="true"
-                                aria-invalid={!!errors.years_behind}
-                                aria-describedby={describe('years_behind')}
-                                value={values.years_behind}
-                                onChange={(e) =>
-                                    setField('years_behind')(e.target.value)
-                                }
-                            >
-                                <option value="" disabled>
-                                    Choose one…
-                                </option>
-                                {YEARS_OPTIONS.map((option) => (
-                                    <option key={option} value={option}>
-                                        {option}
-                                    </option>
-                                ))}
-                            </select>
-                            {errors.years_behind && (
-                                <small
-                                    id={`${uid}-years_behind-error`}
-                                    className="cbt-field-error"
-                                    role="alert"
-                                >
-                                    {errors.years_behind}
-                                </small>
-                            )}
-                        </label>
-
-                        {/* 3. First name */}
-                        <label htmlFor={`${uid}-first_name`}>
-                            <span>
-                                First name <b aria-hidden="true">*</b>
+                                Full name <b aria-hidden="true">*</b>
                             </span>
                             <input
-                                id={`${uid}-first_name`}
-                                name="first_name"
+                                id={`${uid}-full_name`}
+                                name="full_name"
                                 type="text"
                                 maxLength={40}
-                                autoComplete="given-name"
+                                autoComplete="name"
                                 aria-required="true"
-                                aria-invalid={!!errors.first_name}
-                                aria-describedby={describe('first_name')}
-                                value={values.first_name}
+                                aria-invalid={!!errors.full_name}
+                                aria-describedby={describe('full_name')}
+                                value={values.full_name}
                                 onChange={(e) =>
-                                    setField('first_name')(e.target.value)
+                                    setField('full_name')(e.target.value)
                                 }
-                                placeholder="Jane"
+                                placeholder="Jane Doe"
                             />
-                            {errors.first_name && (
+                            {errors.full_name && (
                                 <small
-                                    id={`${uid}-first_name-error`}
+                                    id={`${uid}-full_name-error`}
                                     className="cbt-field-error"
                                     role="alert"
                                 >
-                                    {errors.first_name}
+                                    {errors.full_name}
                                 </small>
                             )}
                         </label>
 
-                        {/* 4. Last name (optional) */}
-                        <label htmlFor={`${uid}-last_name`}>
-                            <span>Last name</span>
-                            <input
-                                id={`${uid}-last_name`}
-                                name="last_name"
-                                type="text"
-                                maxLength={80}
-                                autoComplete="family-name"
-                                value={values.last_name}
-                                onChange={(e) =>
-                                    setField('last_name')(e.target.value)
-                                }
-                                placeholder="Doe"
-                            />
-                        </label>
-
-                        {/* 5. Email */}
+                        {/* 2. Email */}
                         <label
                             htmlFor={`${uid}-email`}
                             className="cbt-form-grid__wide"
@@ -447,7 +317,7 @@ export default function CrossBorderLeadForm({
                             )}
                         </label>
 
-                        {/* 6. Phone */}
+                        {/* 3. Phone */}
                         <label
                             htmlFor={`${uid}-phone`}
                             className="cbt-form-grid__wide"
@@ -482,7 +352,7 @@ export default function CrossBorderLeadForm({
                             )}
                         </label>
 
-                        {/* 7. Message (optional) */}
+                        {/* 4. Message (optional) */}
                         <label
                             htmlFor={`${uid}-message`}
                             className="cbt-form-grid__wide"
