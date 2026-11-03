@@ -1,4 +1,68 @@
 export const SERVICES = [
+  {
+    slug: "eor-service-canada",
+    title: "EOR Service in Canada",
+    description:
+      "Grow your Canadian team with Employer of Record (EOR) support. Simplify employee onboarding, payroll administration, and ongoing employment coordination with a service tailored to your business.",
+    why: [
+      {
+        caption: "Canadian Hiring Support",
+        content:
+          "Get practical support as you plan and build your team in Canada.",
+      },
+      {
+        caption: "Simplified Administration",
+        content:
+          "Bring employee records, payroll coordination, and routine administration into one supported process.",
+      },
+      {
+        caption: "Flexible Team Growth",
+        content: "Adapt your employment support as your hiring needs evolve.",
+      },
+    ],
+    includes: [
+      {
+        caption: "Employee Onboarding",
+        content: "Coordinate onboarding documents and employee information.",
+      },
+      {
+        caption: "Payroll Coordination",
+        content:
+          "Support recurring payroll inputs, pay schedules, and reporting.",
+      },
+      {
+        caption: "Employment Administration",
+        content:
+          "Coordinate employee records, leave tracking, and benefits administration.",
+      },
+      {
+        caption: "Ongoing Support",
+        content:
+          "Provide a point of contact for employment administration questions.",
+      },
+    ],
+    our_process: [
+      {
+        caption: "Discuss Your Hiring Plans",
+        content: "Review your roles, locations, timelines, and support needs.",
+      },
+      {
+        caption: "Define the Arrangement",
+        content:
+          "Confirm service scope, responsibilities, pricing, and onboarding requirements.",
+      },
+      {
+        caption: "Onboard Your Team",
+        content: "Gather employee information and coordinate payroll setup.",
+      },
+      {
+        caption: "Manage Ongoing Administration",
+        content: "Maintain records and coordinate recurring employee support.",
+      },
+    ],
+  },
+
+
     {
         slug: 'personal-tax-returns',
         title: 'Personal Tax Accountant Toronto',
