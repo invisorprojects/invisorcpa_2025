@@ -7,6 +7,7 @@ import { ArrowRight, Phone } from 'lucide-react';
 import '../../(frontend)/globals.css';
 import './cross-border-tax.css';
 import ScrollLink from './_components/scroll-link';
+import { GoogleTagManager } from '@/components/GoogleTagManager';
 
 /* Page-scoped typography: Source Serif 4 for headings, Public Sans for body. */
 const sourceSerif = Source_Serif_4({
@@ -88,17 +89,8 @@ export default function CrossBorderTaxLayout({
             className={`${sourceSerif.variable} ${publicSans.variable} scroll-smooth antialiased`}
         >
             <head>
-                {/* Google Tag Manager */}
-                <Script id="google-tag-manager" strategy="beforeInteractive">
-                    {`
-                        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                        })(window,document,'script','dataLayer','GTM-P99CPN5G');
-                    `}
-                </Script>
-                {/* End Google Tag Manager */}
+                {/* Google Tag Manager — must stay first in <head> */}
+                <GoogleTagManager />
             </head>
             <body className="cbt-site">
                 <CrossBorderHeader />

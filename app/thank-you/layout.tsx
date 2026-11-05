@@ -1,6 +1,6 @@
-import Script from 'next/script';
 import '../(frontend)/globals.css';
 import { openSans, poppins } from '@/constants/FONTS';
+import { GoogleTagManager } from '@/components/GoogleTagManager';
 
 export default function ThankYouLayout({
     children,
@@ -13,17 +13,8 @@ export default function ThankYouLayout({
             className={`${poppins.variable} ${openSans.variable} antialiased`}
         >
             <head>
-                {/* Google Tag Manager */}
-                <Script id="google-tag-manager" strategy="beforeInteractive">
-                    {`
-                        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                        })(window,document,'script','dataLayer','GTM-P99CPN5G');
-                    `}
-                </Script>
-                {/* End Google Tag Manager */}
+                {/* Google Tag Manager — must stay first in <head> */}
+                <GoogleTagManager />
             </head>
             <body>{children}</body>
         </html>
