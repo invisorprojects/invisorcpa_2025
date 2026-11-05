@@ -24,8 +24,9 @@ const SERVICE_LINKS = [
 
 const NAV_LINKS = [
     { label: 'Pricing', href: '#pricing' },
-    { label: 'Offices & Remote Reach', href: '#offices' },
+    { label: 'Offices', long: 'Offices & Remote Reach', href: '#offices' },
     { label: 'Software Stack', href: '#software' },
+    { label: 'Reviews', href: '#reviews' },
     { label: 'FAQs', href: '#faqs' },
 ];
 
@@ -77,12 +78,12 @@ export default function SiteHeader() {
 
     return (
         <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur">
-            <div className="mx-auto flex h-20 max-w-[1560px] sm:h-24 items-center justify-between gap-6 px-4 sm:px-6 lg:px-10">
+            <div className="mx-auto flex h-20 max-w-[1480px] sm:h-24 items-center justify-between gap-6 px-4 sm:px-6 lg:px-10">
                 <Logo />
 
                 <nav
                     aria-label="Primary"
-                    className="hidden items-center gap-9 text-[1.05rem] font-medium text-slate-700 xl:flex"
+                    className="hidden items-center gap-7 text-[1rem] font-medium text-slate-700 xl:flex 2xl:gap-9 2xl:text-[1.05rem]"
                 >
                     <div className="relative" ref={dropdownRef}>
                         <button
@@ -125,7 +126,16 @@ export default function SiteHeader() {
                             href={l.href}
                             className="transition-colors hover:text-sky-700"
                         >
-                            {l.label}
+                            {l.long ? (
+                                <>
+                                    <span className="2xl:hidden">{l.label}</span>
+                                    <span className="hidden 2xl:inline">
+                                        {l.long}
+                                    </span>
+                                </>
+                            ) : (
+                                l.label
+                            )}
                         </a>
                     ))}
                 </nav>

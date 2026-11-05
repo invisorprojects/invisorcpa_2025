@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 import '../(frontend)/globals.css';
+import './redesign.css';
 
 /* Page-scoped typography for the redesign demo:
  * Plus Jakarta Sans for headings, Inter for body copy. */
