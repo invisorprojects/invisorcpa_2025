@@ -7,39 +7,40 @@ import { PrivacyConsent } from '@/components/privacy-consent';
 import { captureTracking, trackingValues } from './tracking';
 
 /* ------------------------------------------------------------------ *
- * Zoho web-to-lead configuration
+ * Zoho web form configuration ("Cross border Leads")
  * ------------------------------------------------------------------ *
- * The form posts to the existing Zoho web-to-lead endpoint with the same
- * standard fields as components/ContactUsForm.tsx (name, email, phone,
- * message). The full name goes into First Name. The extra fields (UTM
- * set, gclid, lead source, form location, landing page) only land in
- * Zoho once the matching custom fields are created and their Zoho field
- * names are filled into ZOHO_CUSTOM_FIELD_NAMES below.
+ * Posts to the Zoho CRM web form for the custom module labelled "Leads"
+ * in CRM (module CustomModule1, API name ACR_leads). Note the standard
+ * Zoho Leads module is relabelled "CA Tax" in this org, so this form
+ * deliberately does NOT use WebToLeadForm.
  *
- * TODO(crm): replace the empty strings with the Zoho field names (e.g.
- * "LEADCF40") once the custom fields exist. Lead Source is left empty
- * until "Google Ads – Cross-Border" / "Website – Cross-Border LP" are
- * added to the Lead Source picklist, since Zoho can reject the whole lead
- * on an unknown picklist value. Empty values are omitted from the POST.
+ * Field mapping (from the Zoho-generated snippet):
+ *   NAME      → Client Name (required)
+ *   Email     → Email
+ *   COBJ1CF2  → Contact Number 1
+ *   COBJ1CF45 → Client Message
+ *
+ * Zoho only stores fields that are part of the web form. To capture more
+ * (e.g. Lead Source = "Website - Cross border", UTM values), add them as
+ * hidden fields in the Zoho web form builder, then put their field names
+ * (COBJ1CFxx / "Lead Source") into ZOHO_CUSTOM_FIELD_NAMES below. Empty
+ * names are skipped.
  * ------------------------------------------------------------------ */
-const ZOHO_ENDPOINT = 'https://crm.zoho.in/crm/WebToLeadForm';
+const ZOHO_ENDPOINT = 'https://crm.zoho.in/crm/WebForm';
 
 const ZOHO_HIDDEN: Record<string, string> = {
     xnQsjsdp:
-        '93108f27608e72f336668528c22d0a704fb5730fe4728712f14c0d302bbaf90c',
+        'b22ad1114c13dfb28bfdf53d34f6c825f2c6ae3b06e6e2f131ea1052d282f643',
     zc_gad: '',
     xmIwtLD:
-        '8725995e4973668ac96e905ff69d10c175b1dff4e226bb139ed1fc2f7bed83ff460a34cbdceb8d1c8770bd7e75477a80',
-    actionType: 'TGVhZHM=',
-    returnURL: 'null',
-    ldeskuid: '',
-    LDTuvid: '',
-    aG9uZXlwb3Q: '',
-    'Lead Status': 'New Enquiry',
+        'f3ff9a408c3efa81d231724863c3d44035aea0f7f7eab57f1e91742b52e4211f86536eb5537acb142cb0af1b3af0cc80',
+    actionType: 'Q3VzdG9tTW9kdWxlMQ==', // base64 "CustomModule1"
+    returnURL: 'https://invisorcpa.ca/lp/cross-border-tax',
+    aG9uZXlwb3Q: '', // honeypot — must stay empty
 };
 
 const ZOHO_CUSTOM_FIELD_NAMES = {
-    lead_source: '', // 'Lead Source' once the picklist values exist
+    lead_source: '', // add Lead Source as a hidden field in the Zoho form first
     utm_source: '', // UTM Source (custom text)
     utm_medium: '', // UTM Medium (custom text)
     utm_campaign: '', // UTM Campaign (custom text)
@@ -135,21 +136,17 @@ export default function CrossBorderLeadForm({
             body.append(name, value);
         });
 
-        // Standard fields — map semantic names to Zoho web-to-lead names.
-        // The full name goes into First Name; Zoho requires a Last Name,
-        // so it gets a placeholder.
-        body.append('First Name', values.full_name.trim());
-        body.append('Last Name', '(not provided)');
+        // Map form fields to the "Cross border Leads" web form field names.
+        body.append('NAME', values.full_name.trim());
         body.append('Email', values.email.trim());
-        body.append('Phone', values.phone.trim());
-        // Message currently maps to the LEADCF32 custom field used by this form.
-        body.append('LEADCF32', values.message.trim());
+        body.append('COBJ1CF2', values.phone.trim());
+        body.append('COBJ1CF45', values.message.trim());
 
-        // Lead Source rule from the spec.
+        // Values must match the Lead Source picklist in the Leads module.
         const leadSource =
             tracking.utm_source === 'google'
-                ? 'Google Ads – Cross-Border'
-                : 'Website – Cross-Border LP';
+                ? 'Google Ads'
+                : 'Website - Cross border';
 
         const extras: Record<string, string> = {
             lead_source: leadSource,
