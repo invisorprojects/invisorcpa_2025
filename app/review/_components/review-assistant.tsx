@@ -2,6 +2,7 @@
 
 import {
     Check,
+    Copy,
     ExternalLink,
     MessageCircle,
     Quote,
@@ -9,6 +10,7 @@ import {
     Send,
     Sparkles,
     Star,
+    X,
 } from 'lucide-react';
 import {
     AnimatePresence,
@@ -17,7 +19,13 @@ import {
     useReducedMotion,
 } from 'motion/react';
 import { useRouter } from 'next/navigation';
-import { useEffect, useRef, useState, useTransition } from 'react';
+import {
+    useCallback,
+    useEffect,
+    useRef,
+    useState,
+    useTransition,
+} from 'react';
 import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
@@ -351,15 +359,200 @@ function OptionGrid({
     );
 }
 
+const PASTE_STEPS: { title: string; detail: string }[] = [
+    {
+        title: 'Tap 5 stars',
+        detail: 'Choose your star rating at the top of the Google screen.',
+    },
+    {
+        title: 'Press and hold the text box, then tap Paste',
+        detail: 'Your review will appear in the box.',
+    },
+    {
+        title: 'Tap Post',
+        detail: 'That’s it. Thank you!',
+    },
+];
+
+function PasteGuideSheet({
+    review,
+    copyFailed,
+    isOpening,
+    onOpenGoogle,
+    onClose,
+}: {
+    review: ReviewOption | null;
+    copyFailed: boolean;
+    isOpening: boolean;
+    onOpenGoogle: () => void;
+    onClose: () => void;
+}) {
+    const shouldReduceMotion = useReducedMotion();
+    const isOpen = Boolean(review);
+
+    useEffect(() => {
+        if (!isOpen) {
+            return;
+        }
+
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+
+        function handleKeyDown(event: KeyboardEvent) {
+            if (event.key === 'Escape') {
+                onClose();
+            }
+        }
+
+        window.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            document.body.style.overflow = previousOverflow;
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [isOpen, onClose]);
+
+    return (
+        <AnimatePresence>
+            {review ? (
+                <motion.div
+                    key="paste-guide"
+                    className="fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-6"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.2 }}
+                >
+                    <button
+                        type="button"
+                        aria-label="Close"
+                        className="absolute inset-0 bg-[#0b1c30]/55 backdrop-blur-[2px]"
+                        onClick={onClose}
+                    />
+                    <motion.div
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby="paste-guide-title"
+                        className="relative flex max-h-[92dvh] w-full flex-col overflow-y-auto rounded-t-3xl bg-white px-5 pt-3 pb-[max(1.25rem,env(safe-area-inset-bottom))] shadow-[0_-12px_40px_rgba(11,28,48,0.25)] sm:max-w-md sm:rounded-3xl sm:px-6 sm:pt-6 sm:pb-6"
+                        initial={shouldReduceMotion ? { opacity: 0 } : { y: '100%' }}
+                        animate={shouldReduceMotion ? { opacity: 1 } : { y: 0 }}
+                        exit={shouldReduceMotion ? { opacity: 0 } : { y: '100%' }}
+                        transition={
+                            shouldReduceMotion
+                                ? { duration: 0 }
+                                : { type: 'spring', stiffness: 380, damping: 36 }
+                        }
+                    >
+                        <div
+                            className="mx-auto mb-4 h-1.5 w-10 rounded-full bg-[#dfe0e0] sm:hidden"
+                            aria-hidden="true"
+                        />
+                        <button
+                            type="button"
+                            onClick={onClose}
+                            aria-label="Close"
+                            className="absolute top-3 right-3 flex size-9 items-center justify-center rounded-full text-[#616363] hover:bg-[#f1f5f9] focus-visible:ring-3 focus-visible:ring-[#bfc1ff]/70 focus-visible:outline-none sm:top-4 sm:right-4"
+                        >
+                            <X className="size-5" aria-hidden="true" />
+                        </button>
+
+                        <div className="flex flex-col items-center text-center">
+                            <motion.span
+                                className={cn(
+                                    'flex size-14 items-center justify-center rounded-full',
+                                    copyFailed
+                                        ? 'bg-[#fff4e5] text-[#b45309]'
+                                        : 'bg-[#e7f7ee] text-[#15803d]'
+                                )}
+                                initial={shouldReduceMotion ? false : { scale: 0.4, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                transition={
+                                    shouldReduceMotion
+                                        ? { duration: 0 }
+                                        : { type: 'spring', stiffness: 420, damping: 18, delay: 0.1 }
+                                }
+                            >
+                                {copyFailed ? (
+                                    <Copy className="size-7" aria-hidden="true" />
+                                ) : (
+                                    <Check className="size-8" strokeWidth={3} aria-hidden="true" />
+                                )}
+                            </motion.span>
+                            <h2
+                                id="paste-guide-title"
+                                className="mt-3 text-xl font-bold text-[#0b1c30]"
+                            >
+                                {copyFailed
+                                    ? 'Copy your review first'
+                                    : 'Your review is copied!'}
+                            </h2>
+                            <p className="mt-1 text-sm text-[#464650]">
+                                {copyFailed
+                                    ? 'Press and hold the text below, tap Select All, then Copy.'
+                                    : 'Now paste it on Google in 3 quick steps:'}
+                            </p>
+                        </div>
+
+                        <ol className="mt-5 space-y-3">
+                            {PASTE_STEPS.map((step, index) => (
+                                <li key={step.title} className="flex items-start gap-3">
+                                    <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#1b1e65] text-sm font-bold text-white">
+                                        {index + 1}
+                                    </span>
+                                    <div className="pt-0.5">
+                                        <p className="text-[15px] leading-6 font-bold text-[#0b1c30]">
+                                            {step.title}
+                                        </p>
+                                        <p className="text-sm text-[#616363]">
+                                            {step.detail}
+                                        </p>
+                                    </div>
+                                </li>
+                            ))}
+                        </ol>
+
+                        <Button
+                            type="button"
+                            onClick={onOpenGoogle}
+                            disabled={isOpening}
+                            className="mt-6 h-14 w-full rounded-xl bg-[#1b1e65] text-base font-bold text-white shadow-[0_10px_24px_rgba(27,30,101,0.25)] hover:bg-[#020252]"
+                        >
+                            {isOpening ? 'Opening Google…' : 'Open Google & paste'}
+                            <ExternalLink className="size-5" aria-hidden="true" />
+                        </Button>
+
+                        <div className="mt-5">
+                            <p className="mb-1.5 text-xs font-semibold text-[#616363]">
+                                Your review
+                            </p>
+                            <p className="max-h-32 overflow-y-auto rounded-xl border border-[#e2e8f0] bg-[#f8fafc] p-3 text-sm leading-6 text-[#334155] select-all">
+                                {review.text}
+                            </p>
+                        </div>
+
+                        <button
+                            type="button"
+                            onClick={onClose}
+                            className="mt-3 self-center rounded-md px-3 py-2 text-sm font-semibold text-[#1b1e65] hover:underline focus-visible:ring-3 focus-visible:ring-[#bfc1ff]/70 focus-visible:outline-none"
+                        >
+                            Choose a different review
+                        </button>
+                    </motion.div>
+                </motion.div>
+            ) : null}
+        </AnimatePresence>
+    );
+}
+
 function ReviewCard({
     review,
     isSelected,
-    isRedirecting,
+    isCopied,
     onSelect,
 }: {
     review: ReviewOption;
     isSelected: boolean;
-    isRedirecting: boolean;
+    isCopied: boolean;
     onSelect: (review: ReviewOption) => void;
 }) {
     const shouldReduceMotion = useReducedMotion();
@@ -371,11 +564,10 @@ function ReviewCard({
             whileHover={shouldReduceMotion ? undefined : { y: -3 }}
             whileTap={shouldReduceMotion ? undefined : { scale: 0.99 }}
             onClick={() => onSelect(review)}
-            disabled={isRedirecting}
             aria-pressed={isSelected}
-            aria-label={`Use this ${review.tone} review`}
+            aria-label={`Copy this ${review.tone} review`}
             className={cn(
-                'group relative w-full overflow-hidden rounded-2xl border bg-white p-5 text-left shadow-[0_12px_28px_rgba(27,30,101,0.08)] transition-colors focus-visible:ring-3 focus-visible:ring-[#bfc1ff]/70 focus-visible:outline-none disabled:cursor-wait disabled:opacity-75',
+                'group relative w-full overflow-hidden rounded-2xl border bg-white p-5 text-left shadow-[0_12px_28px_rgba(27,30,101,0.08)] transition-colors focus-visible:ring-3 focus-visible:ring-[#bfc1ff]/70 focus-visible:outline-none',
                 isSelected
                     ? 'border-[#1b1e65] ring-2 ring-[#bfc1ff]/70'
                     : 'border-[#e2e8f0] hover:border-[#1b1e65]/35'
@@ -423,12 +615,33 @@ function ReviewCard({
             </p>
             <div className="mt-5 flex items-center justify-between gap-3 border-t border-[#e2e8f0] pt-4">
                 <span className="text-xs font-semibold text-[#616363]">
-                    Tap to copy and open Google
+                    {isCopied ? 'Copied to your clipboard' : 'Tap to copy'}
                 </span>
-                <span className="inline-flex items-center gap-1.5 text-sm font-bold text-[#1b1e65]">
-                    Use this
-                    <ExternalLink className="size-4" aria-hidden="true" />
-                </span>
+                <AnimatePresence initial={false} mode="wait">
+                    {isCopied ? (
+                        <motion.span
+                            key="copied"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.8 }}
+                            className="inline-flex items-center gap-1.5 rounded-full bg-[#e7f7ee] px-3 py-1.5 text-sm font-bold text-[#15803d]"
+                        >
+                            <Check className="size-4" strokeWidth={3} aria-hidden="true" />
+                            Copied
+                        </motion.span>
+                    ) : (
+                        <motion.span
+                            key="copy"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.8 }}
+                            className="inline-flex items-center gap-1.5 rounded-full bg-[#1b1e65] px-3 py-1.5 text-sm font-bold text-white"
+                        >
+                            <Copy className="size-4" aria-hidden="true" />
+                            Copy this review
+                        </motion.span>
+                    )}
+                </AnimatePresence>
             </div>
         </motion.button>
     );
@@ -447,7 +660,10 @@ export function ReviewAssistant({
     const [details, setDetails] = useState('');
     const [reviews, setReviews] = useState<ReviewOption[]>([]);
     const [selectedReviewId, setSelectedReviewId] = useState('');
-    const [redirectingReviewId, setRedirectingReviewId] = useState('');
+    const [copiedReviewId, setCopiedReviewId] = useState('');
+    const [guideReview, setGuideReview] = useState<ReviewOption | null>(null);
+    const [copyFailed, setCopyFailed] = useState(false);
+    const [isOpeningGoogle, setIsOpeningGoogle] = useState(false);
     const [error, setError] = useState('');
     const [isPending, startTransition] = useTransition();
     const router = useRouter();
@@ -496,7 +712,10 @@ export function ReviewAssistant({
         setDetails('');
         setReviews([]);
         setSelectedReviewId('');
-        setRedirectingReviewId('');
+        setCopiedReviewId('');
+        setGuideReview(null);
+        setCopyFailed(false);
+        setIsOpeningGoogle(false);
         setError('');
     }
 
@@ -535,7 +754,7 @@ export function ReviewAssistant({
         setError('');
         setReviews([]);
         setSelectedReviewId('');
-        setRedirectingReviewId('');
+        setCopiedReviewId('');
         setPhase('submitted');
         toast.success('Submitted. Thank you for your feedback.');
 
@@ -602,39 +821,58 @@ export function ReviewAssistant({
         const reviewText = text.trim();
 
         if (!reviewText) {
-            toast.error('Select a review first.');
             return false;
         }
 
         try {
-            const copied = await copyTextToClipboard(reviewText);
-
-            if (!copied) {
-                throw new Error('Copy command failed.');
-            }
-
-            return true;
+            return await copyTextToClipboard(reviewText);
         } catch {
-            toast.error('Could not copy the review.');
             return false;
         }
     }
 
     async function selectReview(review: ReviewOption) {
-        const placeId = OFFICE_PLACE_IDS[initialOffice];
-
         setSelectedReviewId(review.id);
-        setRedirectingReviewId(review.id);
 
         const copied = await copyReview(review.text);
 
-        if (!copied) {
-            setRedirectingReviewId('');
+        setCopiedReviewId(copied ? review.id : '');
+        setCopyFailed(!copied);
+        setGuideReview(review);
+
+        if (copied && typeof navigator.vibrate === 'function') {
+            navigator.vibrate(30);
+        }
+    }
+
+    const closeGuide = useCallback(() => {
+        setGuideReview(null);
+        setIsOpeningGoogle(false);
+    }, []);
+
+    async function openGoogleReview() {
+        if (!guideReview) {
             return;
         }
 
-        toast.success('Review copied. Opening Google review page.');
+        const placeId = OFFICE_PLACE_IDS[initialOffice];
+
+        setIsOpeningGoogle(true);
+
+        // Copy again on this tap so the clipboard is fresh right before the
+        // client lands on Google, even if they copied something else meanwhile.
+        const copied = await copyReview(guideReview.text);
+
+        if (copied) {
+            setCopiedReviewId(guideReview.id);
+            setCopyFailed(false);
+        }
+
         window.location.assign(`${GOOGLE_REVIEW_BASE_URL}${placeId}`);
+
+        // If Google opens in its app, this page stays behind it. Re-enable the
+        // button so it works when the client comes back.
+        window.setTimeout(() => setIsOpeningGoogle(false), 2500);
     }
 
     return (
@@ -852,9 +1090,10 @@ export function ReviewAssistant({
                                     className="space-y-4"
                                 >
                                     <ChatBubble>
-                                        I made three options. Pick the one that
-                                        sounds most like you. I&apos;ll copy it
-                                        before opening Google.
+                                        I made three options. Tap the one that
+                                        sounds most like you to copy it.
+                                        I&apos;ll show you how to paste it on
+                                        Google.
                                     </ChatBubble>
 
                                     <div className="space-y-3">
@@ -865,8 +1104,8 @@ export function ReviewAssistant({
                                                 isSelected={
                                                     review.id === selectedReviewId
                                                 }
-                                                isRedirecting={
-                                                    redirectingReviewId === review.id
+                                                isCopied={
+                                                    copiedReviewId === review.id
                                                 }
                                                 onSelect={selectReview}
                                             />
@@ -901,6 +1140,14 @@ export function ReviewAssistant({
                     </div>
                 </section>
             </div>
+
+            <PasteGuideSheet
+                review={guideReview}
+                copyFailed={copyFailed}
+                isOpening={isOpeningGoogle}
+                onOpenGoogle={openGoogleReview}
+                onClose={closeGuide}
+            />
         </main>
     );
 }
