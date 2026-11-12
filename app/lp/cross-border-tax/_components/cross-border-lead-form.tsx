@@ -96,6 +96,9 @@ function validate(values: Values): Partial<Record<FieldKey, string>> {
     } else if (digits.length < 10) {
         errors.phone = 'Please enter a phone number with at least 10 digits.';
     }
+    if (!values.message.trim()) {
+        errors.message = 'Please enter a message.';
+    }
 
     return errors;
 }
@@ -349,22 +352,36 @@ export default function CrossBorderLeadForm({
                             )}
                         </label>
 
-                        {/* 4. Message (optional) */}
+                        {/* 4. Message */}
                         <label
                             htmlFor={`${uid}-message`}
                             className="cbt-form-grid__wide"
                         >
-                            <span>Message</span>
+                            <span>
+                                Message <b aria-hidden="true">*</b>
+                            </span>
                             <textarea
                                 id={`${uid}-message`}
                                 name="message"
                                 rows={3}
+                                aria-required="true"
+                                aria-invalid={!!errors.message}
+                                aria-describedby={describe('message')}
                                 value={values.message}
                                 onChange={(e) =>
                                     setField('message')(e.target.value)
                                 }
-                                placeholder="Anything else we should know? (optional)"
+                                placeholder="Anything else we should know?"
                             />
+                            {errors.message && (
+                                <small
+                                    id={`${uid}-message-error`}
+                                    className="cbt-field-error"
+                                    role="alert"
+                                >
+                                    {errors.message}
+                                </small>
+                            )}
                         </label>
                     </div>
 
