@@ -10,9 +10,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-    title: 'AI Review Assistant | Invisor CPA',
+    title: 'AI Review Assistant | Invisor Accounting',
     description:
-        'Create a thoughtful Google review for Invisor CPA in a few quick taps.',
+        'Create a thoughtful Google review for Invisor Accounting in a few quick taps.',
     alternates: {
         canonical: 'https://www.invisorcpa.ca/review',
     },

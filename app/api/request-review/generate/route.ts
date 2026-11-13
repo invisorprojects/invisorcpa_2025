@@ -192,10 +192,10 @@ async function generateReviewOptions({
         },
         output: Output.json({
             name: 'review_options',
-            description: 'Three valid Google review options for Invisor CPA.',
+            description: 'Three valid Google review options for Invisor Accounting.',
         }),
         system:
-            'You write authentic, first-person Google reviews for Invisor CPA, an accounting firm in Canada. Write like a real satisfied client: specific, calm, clear, and believable. Do not mention that AI wrote the review. Do not include ratings, bullets, names other than the selected Invisor team member, dates, dollar amounts, CRA outcomes, refund amounts, legal guarantees, or facts the client did not provide.',
+            'You write authentic, first-person Google reviews for Invisor Accounting, an accounting firm in Canada. Write like a real satisfied client: specific, calm, clear, and believable. Do not mention that AI wrote the review. Do not include ratings, bullets, names other than the selected Invisor team member, dates, dollar amounts, CRA outcomes, refund amounts, legal guarantees, or facts the client did not provide.',
         prompt,
     });
 
@@ -247,7 +247,7 @@ export async function POST(request: Request) {
     }
 
     const prompt = [
-        'Create exactly three Google review options for Invisor CPA.',
+        'Create exactly three Google review options for Invisor Accounting.',
         'Each review must be first-person and suitable for a public Google review.',
         'Each review must be between 60 and 110 words.',
         'Even if specific notes or team member names are omitted, write complete, realistic reviews expanding on the selected service and experience.',
@@ -261,7 +261,7 @@ export async function POST(request: Request) {
         `Experience rating: ${experienceRating}`,
         `Experience: ${experience}`,
         `What stood out: ${standout}`,
-        teamMember ? `Worked with: ${teamMember}` : 'Worked with: Invisor CPA team',
+        teamMember ? `Worked with: ${teamMember}` : 'Worked with: Invisor Accounting team',
         details ? `Specific note: ${details}` : 'Specific note: none (expand naturally on the client rating and experience)',
         '',
         'Keep wording natural. Avoid hype such as "best ever", "life-changing", or repeated marketing phrases.',

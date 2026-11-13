@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Review Our Service | Invisor CPA',
+    title: 'Review Our Service | Invisor Accounting',
     description:
-        'Share your feedback about Invisor CPA and rate your service experience.',
+        'Share your feedback about Invisor Accounting and rate your service experience.',
     alternates: {
         canonical: 'https://www.invisorcpa.ca/review',
     },

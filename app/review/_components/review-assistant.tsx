@@ -890,7 +890,7 @@ export function ReviewAssistant({
                         <AssistantAvatar />
                         <div>
                             <p className="text-sm font-bold tracking-[0.08em] text-[#1b1e65] uppercase">
-                                Invisor CPA
+                                Invisor Accounting
                             </p>
                             <h1 className="text-xl leading-7 font-bold text-[#0b1c30] sm:text-2xl">
                                 Create your review
