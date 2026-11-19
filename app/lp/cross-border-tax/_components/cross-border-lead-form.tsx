@@ -99,6 +99,9 @@ function validate(values: Values): Partial<Record<FieldKey, string>> {
     } else if (digits.length < 10) {
         errors.phone = 'Please enter a phone number with at least 10 digits.';
     }
+    if (!values.province.trim()) {
+        errors.province = 'Please enter your province or state.';
+    }
     if (!values.message.trim()) {
         errors.message = 'Please enter a message.';
     }
@@ -148,9 +151,7 @@ export default function CrossBorderLeadForm({
         body.append('NAME', values.full_name.trim());
         body.append('Email', values.email.trim());
         body.append('COBJ1CF2', values.phone.trim());
-        if (values.province.trim()) {
-            body.append('COBJ1CF47', values.province.trim());
-        }
+        body.append('COBJ1CF47', values.province.trim());
         body.append('COBJ1CF45', values.message.trim());
 
         // Values must match the Lead Source picklist in the Leads module.
@@ -360,24 +361,38 @@ export default function CrossBorderLeadForm({
                             )}
                         </label>
 
-                        {/* 4. Province / State (optional) */}
+                        {/* 4. Province / State */}
                         <label
                             htmlFor={`${uid}-province`}
                             className="cbt-form-grid__wide"
                         >
-                            <span>Province / State</span>
+                            <span>
+                                Province / State <b aria-hidden="true">*</b>
+                            </span>
                             <input
                                 id={`${uid}-province`}
                                 name="province"
                                 type="text"
                                 maxLength={255}
                                 autoComplete="address-level1"
+                                aria-required="true"
+                                aria-invalid={!!errors.province}
+                                aria-describedby={describe('province')}
                                 value={values.province}
                                 onChange={(e) =>
                                     setField('province')(e.target.value)
                                 }
                                 placeholder="Ontario"
                             />
+                            {errors.province && (
+                                <small
+                                    id={`${uid}-province-error`}
+                                    className="cbt-field-error"
+                                    role="alert"
+                                >
+                                    {errors.province}
+                                </small>
+                            )}
                         </label>
 
                         {/* 5. Message */}

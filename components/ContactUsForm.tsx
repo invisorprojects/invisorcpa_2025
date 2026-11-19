@@ -73,16 +73,24 @@ export default function ContactUsForm() {
         const phone = String(data.get('COBJ1CF2') ?? '').trim();
         const message = String(data.get('COBJ1CF45') ?? '').trim();
 
-        if (!name) {
-            setError('Please enter your name.');
-            (form.elements.namedItem('NAME') as HTMLInputElement)?.focus();
-            return;
+        const fail = (field: string, msg: string) => {
+            setError(msg);
+            (form.elements.namedItem(field) as HTMLElement | null)?.focus();
+        };
+
+        if (!name) return fail('NAME', 'Please enter your name.');
+        if (!email) return fail('Email', 'Please enter your email address.');
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            return fail('Email', 'Please enter a valid email address.');
         }
-        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            setError('Please enter a valid email address.');
-            (form.elements.namedItem('Email') as HTMLInputElement)?.focus();
-            return;
+        if (!phone) return fail('COBJ1CF2', 'Please enter your phone number.');
+        if (phone.replace(/\D/g, '').length < 10) {
+            return fail(
+                'COBJ1CF2',
+                'Please enter a phone number with at least 10 digits.'
+            );
         }
+        if (!message) return fail('COBJ1CF45', 'Please enter a message.');
 
         setError('');
         setIsSubmitting(true);
@@ -217,12 +225,13 @@ export default function ContactUsForm() {
                     <div className="space-y-2">
                         <label htmlFor="Email" className={labelClass}>
                             <Mail className="h-3.5 w-3.5 text-slate-400" />
-                            Email Address
+                            Email Address <span className="text-red-500">*</span>
                         </label>
                         <Input
                             type="email"
                             id="Email"
                             name="Email"
+                            aria-required="true"
                             maxLength={100}
                             autoComplete="email"
                             inputMode="email"
@@ -235,12 +244,13 @@ export default function ContactUsForm() {
                     <div className="space-y-2">
                         <label htmlFor="COBJ1CF2" className={labelClass}>
                             <Phone className="h-3.5 w-3.5 text-slate-400" />
-                            Phone Number
+                            Phone Number <span className="text-red-500">*</span>
                         </label>
                         <Input
                             type="tel"
                             id="COBJ1CF2"
                             name="COBJ1CF2"
+                            aria-required="true"
                             maxLength={30}
                             autoComplete="tel"
                             inputMode="tel"
@@ -253,11 +263,12 @@ export default function ContactUsForm() {
                     <div className="space-y-2">
                         <label htmlFor="COBJ1CF45" className={labelClass}>
                             <MessageSquare className="h-3.5 w-3.5 text-slate-400" />
-                            Message
+                            Message <span className="text-red-500">*</span>
                         </label>
                         <Textarea
                             id="COBJ1CF45"
                             name="COBJ1CF45"
+                            aria-required="true"
                             placeholder="Tell us about your requirements..."
                             className="min-h-[100px] resize-y rounded-lg border-slate-200 bg-slate-50/50 text-slate-900 transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100"
                         />
