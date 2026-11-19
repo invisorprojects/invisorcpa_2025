@@ -18,29 +18,30 @@ import { captureTracking, trackingValues } from './tracking';
  *   NAME      → Client Name (required)
  *   Email     → Email
  *   COBJ1CF2  → Contact Number 1
+ *   COBJ1CF47 → Province
  *   COBJ1CF45 → Client Message
+ *   COBJ1CF43 → Lead Source (picklist)
  *
  * Zoho only stores fields that are part of the web form. To capture more
- * (e.g. Lead Source = "Website - Cross border", UTM values), add them as
- * hidden fields in the Zoho web form builder, then put their field names
- * (COBJ1CFxx / "Lead Source") into ZOHO_CUSTOM_FIELD_NAMES below. Empty
- * names are skipped.
+ * (e.g. UTM values), add them as hidden fields in the Zoho web form
+ * builder, then put their field names (COBJ1CFxx) into
+ * ZOHO_CUSTOM_FIELD_NAMES below. Empty names are skipped.
  * ------------------------------------------------------------------ */
 const ZOHO_ENDPOINT = 'https://crm.zoho.in/crm/WebForm';
 
 const ZOHO_HIDDEN: Record<string, string> = {
     xnQsjsdp:
-        'b22ad1114c13dfb28bfdf53d34f6c825f2c6ae3b06e6e2f131ea1052d282f643',
+        '9ba81458c9ec50d358f842e1989118dfb13cd1aaff21887a6d61ef9e658e85ec',
     zc_gad: '',
     xmIwtLD:
-        'f3ff9a408c3efa81d231724863c3d44035aea0f7f7eab57f1e91742b52e4211f86536eb5537acb142cb0af1b3af0cc80',
+        '351b73404167445d83b3bf0e296657d08bfdf95db278f7c75f0f111879531a355fe8c2e24218c95470d28b9711afe441',
     actionType: 'Q3VzdG9tTW9kdWxlMQ==', // base64 "CustomModule1"
     returnURL: 'https://invisorcpa.ca/lp/cross-border-tax',
     aG9uZXlwb3Q: '', // honeypot — must stay empty
 };
 
 const ZOHO_CUSTOM_FIELD_NAMES = {
-    lead_source: '', // add Lead Source as a hidden field in the Zoho form first
+    lead_source: 'COBJ1CF43', // Lead Source picklist
     utm_source: '', // UTM Source (custom text)
     utm_medium: '', // UTM Medium (custom text)
     utm_campaign: '', // UTM Campaign (custom text)
@@ -67,6 +68,7 @@ type Values = {
     full_name: string;
     email: string;
     phone: string;
+    province: string;
     message: string;
 };
 
@@ -76,6 +78,7 @@ const EMPTY_VALUES: Values = {
     full_name: '',
     email: '',
     phone: '',
+    province: '',
     message: '',
 };
 
@@ -133,7 +136,9 @@ export default function CrossBorderLeadForm({
     };
 
     const buildZohoBody = (tracking: Record<string, string>) => {
-        const body = new FormData();
+        // URL-encoded, same as Zoho's own <form method="POST"> sends. Zoho's
+        // WebForm endpoint does not reliably parse multipart/form-data.
+        const body = new URLSearchParams();
 
         Object.entries(ZOHO_HIDDEN).forEach(([name, value]) => {
             body.append(name, value);
@@ -143,6 +148,9 @@ export default function CrossBorderLeadForm({
         body.append('NAME', values.full_name.trim());
         body.append('Email', values.email.trim());
         body.append('COBJ1CF2', values.phone.trim());
+        if (values.province.trim()) {
+            body.append('COBJ1CF47', values.province.trim());
+        }
         body.append('COBJ1CF45', values.message.trim());
 
         // Values must match the Lead Source picklist in the Leads module.
@@ -352,7 +360,27 @@ export default function CrossBorderLeadForm({
                             )}
                         </label>
 
-                        {/* 4. Message */}
+                        {/* 4. Province / State (optional) */}
+                        <label
+                            htmlFor={`${uid}-province`}
+                            className="cbt-form-grid__wide"
+                        >
+                            <span>Province / State</span>
+                            <input
+                                id={`${uid}-province`}
+                                name="province"
+                                type="text"
+                                maxLength={255}
+                                autoComplete="address-level1"
+                                value={values.province}
+                                onChange={(e) =>
+                                    setField('province')(e.target.value)
+                                }
+                                placeholder="Ontario"
+                            />
+                        </label>
+
+                        {/* 5. Message */}
                         <label
                             htmlFor={`${uid}-message`}
                             className="cbt-form-grid__wide"
