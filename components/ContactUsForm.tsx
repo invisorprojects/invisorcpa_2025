@@ -1,231 +1,132 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
+import React, { useRef, useState } from 'react';
 import Script from 'next/script';
-import { User, Mail, Phone, RefreshCw, Send, CheckCircle2, MessageSquare } from 'lucide-react';
+import {
+    User,
+    Mail,
+    Phone,
+    RefreshCw,
+    Send,
+    CheckCircle2,
+    MessageSquare,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { PrivacyConsent } from '@/components/privacy-consent';
 
+/* ------------------------------------------------------------------ *
+ * Zoho web form configuration ("Website Homepage Leads")
+ * ------------------------------------------------------------------ *
+ * Posts to the Zoho CRM web form for the custom module labelled "Leads"
+ * in CRM (CustomModule1). Used on /contact-us, blog posts and case
+ * studies.
+ *
+ * Field mapping (from the Zoho-generated snippet):
+ *   NAME      → Client Name (required)
+ *   Email     → Email
+ *   COBJ1CF2  → Contact Number 1
+ *   COBJ1CF45 → Client Message
+ *   COBJ1CF43 → Lead Source (hidden, always "Website")
+ * ------------------------------------------------------------------ */
+const ZOHO_ENDPOINT = 'https://crm.zoho.in/crm/WebForm';
+
+const ZOHO_HIDDEN: Record<string, string> = {
+    xnQsjsdp:
+        '8de2b3989e03e220b5e53bec6f65331b97275c5a1b4929bcb6a2ae24e5acc2c9',
+    zc_gad: '',
+    xmIwtLD:
+        '1a06b9641c6808fc7c767f29e60be0f6aeb4639955cb4ce012709a13b501b1bbf804b5e9c0baa74fc917e11ea26337fb',
+    actionType: 'Q3VzdG9tTW9kdWxlMQ==', // base64 "CustomModule1"
+    returnURL: 'https://www.invisorcpa.ca/contact-us',
+    COBJ1CF43: 'Website', // Lead Source
+    aG9uZXlwb3Q: '', // honeypot — must stay empty
+};
+
+const ZOHO_ANALYTICS_SRC =
+    'https://crm.zohopublic.in/crm/WebFormAnalyticsServeServlet?rid=8e4e872aa68528e62020b03fb17170ffc88f9507479e672cb1136315cd9d706ba67cbdc8ef7dbe84aaad56e9a4d9dec2gid2209b3e45e3cac6cb85c86115efcb3cbf39faf15414c3f3955db9801bc8310bcgid6b05066bf6603220f01e44dad110b07f954380d0b3d3b56b8c4cfea280a82181gid2fc83a1cfbb35394de64bcbd16277e54cdbdf60e102415fd91a82b86c4b528db&tw=ea629b86b4aced857b6a7e80c57cf5c43be8770360cc2808ade21e799e0faaf3&version=v2';
+
+const SUCCESS_MESSAGE =
+    'Thank you! Your message has been received. Our team will reach out to you shortly.';
+
+const inputClass =
+    'h-11 rounded-lg border-slate-200 bg-slate-50/50 text-slate-900 transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100';
+
+const labelClass =
+    'flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300';
+
 export default function ContactUsForm() {
+    const formRef = useRef<HTMLFormElement>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [showSuccess, setShowSuccess] = useState(false);
+    const [error, setError] = useState('');
 
-    useEffect(() => {
-        // Define Zoho global helper functions
-        (window as any).addAriaSelected1324457000002829011 = function (event: any) {
-            if (!event || !event.target) return;
-            var optionElem = event.target;
-            var previousSelectedOption = optionElem.querySelector('[aria-selected=true]');
-            if (previousSelectedOption) {
-                previousSelectedOption.removeAttribute('aria-selected');
-            }
-            if (optionElem.options && optionElem.selectedIndex >= 0) {
-                optionElem.options[optionElem.selectedIndex].setAttribute('aria-selected', 'true');
-            }
-        };
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        if (isSubmitting) return;
 
-        (window as any).validateEmail1324457000002829011 = function () {
-            var form = document.forms['WebToLeads1324457000002829011' as any] as HTMLFormElement;
-            if (!form) return true;
-            var emailFld = form.querySelectorAll('[ftype=email]') as NodeListOf<HTMLInputElement>;
-            for (var i = 0; i < emailFld.length; i++) {
-                var emailVal = emailFld[i].value;
-                if (emailVal.replace(/^\s+|\s+$/g, '').length !== 0) {
-                    var atpos = emailVal.indexOf('@');
-                    var dotpos = emailVal.lastIndexOf('.');
-                    if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= emailVal.length) {
-                        alert('Please enter a valid email address.');
-                        emailFld[i].focus();
-                        return false;
-                    }
-                }
-            }
-            return true;
-        };
+        const form = event.currentTarget;
+        const data = new FormData(form);
+        const name = String(data.get('NAME') ?? '').trim();
+        const email = String(data.get('Email') ?? '').trim();
+        const phone = String(data.get('COBJ1CF2') ?? '').trim();
+        const message = String(data.get('COBJ1CF45') ?? '').trim();
 
-        (window as any).trackVisitor1324457000002829011 = function () {
-            try {
-                if ((window as any).$zoho) {
-                    var form = document.forms['WebToLeads1324457000002829011' as any];
-                    if (form) {
-                        var LDTuvidObj = form['LDTuvid'];
-                        if (LDTuvidObj && (window as any).$zoho.salesiq?.visitor?.uniqueid) {
-                            LDTuvidObj.value = (window as any).$zoho.salesiq.visitor.uniqueid();
-                        }
-                        var name = '';
-                        var lastnameObj = form['Last Name'];
-                        if (lastnameObj) {
-                            name = lastnameObj.value;
-                        }
-                        var firstnameObj = form['First Name'];
-                        if (firstnameObj) {
-                            name = firstnameObj.value + ' ' + name;
-                        }
-                        if ((window as any).$zoho.salesiq?.visitor?.name) {
-                            (window as any).$zoho.salesiq.visitor.name(name);
-                        }
-                        var emailObj = form['Email'];
-                        if (emailObj && (window as any).$zoho.salesiq?.visitor?.email) {
-                            (window as any).$zoho.salesiq.visitor.email(emailObj.value);
-                        }
-                    }
-                }
-            } catch (e) {}
-        };
-
-        (window as any).checkMandatory1324457000002829011 = function (isAjax: boolean) {
-            var mndFileds = ['Last Name'];
-            var fldLangVal = ['Last Name'];
-            var form = document.forms['WebToLeads1324457000002829011' as any];
-            if (!form) return false;
-            for (var i = 0; i < mndFileds.length; i++) {
-                var fieldObj = form[mndFileds[i]];
-                if (fieldObj) {
-                    if (fieldObj.value.replace(/^\s+|\s+$/g, '').length === 0) {
-                        if (fieldObj.type === 'file') {
-                            alert('Please select a file to upload.');
-                            fieldObj.focus();
-                            return false;
-                        }
-                        alert(fldLangVal[i] + ' cannot be empty.');
-                        fieldObj.focus();
-                        return false;
-                    } else if (fieldObj.nodeName === 'SELECT') {
-                        if (fieldObj.options[fieldObj.selectedIndex].value === '-None-') {
-                            alert(fldLangVal[i] + ' cannot be none.');
-                            fieldObj.focus();
-                            return false;
-                        }
-                    } else if (fieldObj.type === 'checkbox') {
-                        if (fieldObj.checked === false) {
-                            alert('Please accept ' + fldLangVal[i]);
-                            fieldObj.focus();
-                            return false;
-                        }
-                    }
-                }
-            }
-            (window as any).trackVisitor1324457000002829011();
-            if (!(window as any).validateEmail1324457000002829011()) {
-                return false;
-            }
-            var urlparams = new URLSearchParams(window.location.search);
-            if (urlparams.has('service') && urlparams.get('service') === 'smarturl') {
-                var webform = document.getElementById('webform1324457000002829011');
-                var service = urlparams.get('service');
-                var smarturlfield = document.createElement('input');
-                smarturlfield.setAttribute('type', 'hidden');
-                smarturlfield.setAttribute('value', service || '');
-                smarturlfield.setAttribute('name', 'service');
-                if (webform) webform.appendChild(smarturlfield);
-            }
-            var submitBtn = document.querySelector('.crmWebToEntityForm .formsubmit') as HTMLInputElement;
-            if (submitBtn) submitBtn.setAttribute('disabled', 'true');
-            return true;
-        };
-
-        if (typeof (window as any)._wfa_fstprtcken === 'undefined') {
-            (window as any)._wfa_fstprtcken = {};
+        if (!name) {
+            setError('Please enter your name.');
+            (form.elements.namedItem('NAME') as HTMLInputElement)?.focus();
+            return;
         }
-        (window as any)._wfa_fstprtcken[1324457000002829011] = true;
-
-        const formElement = document.getElementById('webform1324457000002829011');
-        const handleFormSubmit = function (e: Event) {
-            var ismandatory = (window as any).checkMandatory1324457000002829011(true);
-            e.preventDefault();
-            if (ismandatory === undefined || ismandatory) {
-                setIsSubmitting(true);
-                if (typeof (window as any)._wfa_track !== 'undefined' && (window as any)._wfa_track.wfa_submit) {
-                    (window as any)._wfa_track.wfa_submit(e);
-                }
-                var formData = new FormData(formElement as HTMLFormElement);
-                fetch('https://crm.zoho.in/crm/WebToLeadForm', {
-                    method: 'POST',
-                    body: formData,
-                    cache: 'no-cache',
-                })
-                    .then((response) => {
-                        const contentType = response.headers.get('Content-Type');
-                        return contentType && contentType.includes('application/json')
-                            ? response.json()
-                            : response.text();
-                    })
-                    .then((data) => {
-                        setIsSubmitting(false);
-                        if (typeof data === 'object') {
-                            if (data.actionsubmit === 'Splash Message') {
-                                var splashinfodom = document.getElementById('wf_splash_info');
-                                var splashdom = document.getElementById('wf_splash');
-                                if (splashinfodom && splashdom) {
-                                    splashinfodom.innerText = data.actionvalue || 'Thank you! Your submission has been received.';
-                                    (document.getElementById('webform1324457000002829011') as HTMLFormElement)?.reset();
-                                    splashdom.style.display = 'flex';
-                                    setTimeout(function () {
-                                        var sDom = document.getElementById('wf_splash');
-                                        if (sDom) sDom.style.display = 'none';
-                                    }, 5000);
-                                }
-                                if (typeof (window as any)._wfa_track !== 'undefined' && (window as any)._wfa_track.wfa_post_submit) {
-                                    (window as any)._wfa_track.wfa_post_submit(e);
-                                }
-                            } else if (data.actionsubmit === 'redirect_url' || data.actionsubmit === 'parent_redirect') {
-                                if (data.success) {
-                                    if (typeof (window as any)._wfa_track !== 'undefined' && (window as any)._wfa_track.wfa_post_submit) {
-                                        (window as any)._wfa_track.wfa_post_submit(e);
-                                    }
-                                }
-                                if (data.actionsubmit === 'redirect_url') {
-                                    window.location.assign(data.redirectUrl);
-                                } else if (data.actionsubmit === 'parent_redirect') {
-                                    window.parent.location = data.redirectUrl;
-                                }
-                            } else if (data.actionsubmit === 'add_hash') {
-                                document.location.hash = data.hash;
-                            } else if (data.actionsubmit === 'error_msg') {
-                                alert(data.message);
-                            } else if (data.actionsubmit === 'thankyou_page') {
-                                if (typeof (window as any)._wfa_track !== 'undefined' && (window as any)._wfa_track.wfa_post_submit) {
-                                    (window as any)._wfa_track.wfa_post_submit(e);
-                                }
-                                window.location.assign(data.redirectUrl);
-                            }
-                        } else {
-                            // In case Zoho returns direct HTML content
-                            document.open();
-                            document.write(data);
-                            document.close();
-                        }
-                        let formDom = document.querySelector('.crmWebToEntityForm .formsubmit') as HTMLInputElement;
-                        if (formDom) {
-                            formDom.removeAttribute('disabled');
-                        }
-                    })
-                    .catch(() => {
-                        setIsSubmitting(false);
-                        alert('An error occurred. Please try again.');
-                        let formDom = document.querySelector('.crmWebToEntityForm .formsubmit') as HTMLInputElement;
-                        if (formDom) {
-                            formDom.removeAttribute('disabled');
-                        }
-                    });
-            }
-        };
-
-        if (formElement) {
-            formElement.addEventListener('submit', handleFormSubmit);
+        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            setError('Please enter a valid email address.');
+            (form.elements.namedItem('Email') as HTMLInputElement)?.focus();
+            return;
         }
 
-        return () => {
-            if (formElement) {
-                formElement.removeEventListener('submit', handleFormSubmit);
-            }
-        };
-    }, []);
+        setError('');
+        setIsSubmitting(true);
+
+        // URL-encoded, same as Zoho's own <form method="POST"> sends.
+        const body = new URLSearchParams();
+        Object.entries(ZOHO_HIDDEN).forEach(([key, value]) =>
+            body.append(key, value)
+        );
+        body.append('NAME', name);
+        body.append('Email', email);
+        body.append('COBJ1CF2', phone);
+        body.append('COBJ1CF45', message);
+
+        try {
+            // Zoho's WebForm endpoint doesn't send CORS headers, so the
+            // response is opaque; a network failure still throws.
+            await fetch(ZOHO_ENDPOINT, {
+                method: 'POST',
+                body,
+                mode: 'no-cors',
+                cache: 'no-store',
+            });
+
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                event: 'lead_submit',
+                form_location: 'contact_form',
+            });
+
+            formRef.current?.reset();
+            setShowSuccess(true);
+            setTimeout(() => setShowSuccess(false), 8000);
+        } catch {
+            setError(
+                'Something went wrong. Please try again or call 226-227-3482.'
+            );
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     return (
-        <div id="crmWebToEntityForm" className="zcwf_lblLeft crmWebToEntityForm w-full">
+        <div className="w-full">
             {/* SalesIQ Script */}
             <Script
                 id="zoho-salesiq-init"
@@ -253,242 +154,129 @@ export default function ContactUsForm() {
                     `,
                 }}
             />
-            {/* Analytics Tracking Code */}
+            {/* Zoho web form analytics */}
             <Script
                 id="wf_anal"
-                src="https://crm.zohopublic.in/crm/WebFormAnalyticsServeServlet?rid=49ccacb85890151def45efaf3036fed561c4663bf2a8e68fcd046f01ae21f9a68052f2dc52ae298f393f095133ed3e62gide84d0131a9aab88bc58b1ecbe0aaa56f7f13c688d18cf749059f9c1e877270e1gidcd5de85c08fef1146ef30404ffd73f37242a3dd0b62be1691c49c312ffb23f68gid499417063d81621b2bb44eb6f6c4458552aa273867c783ffcfd41c903cf01be8&tw=ea20361527057f5044d256014df2b1edd5c583d0a13b3e5d1cde87a629e7211c&version=v2"
+                src={ZOHO_ANALYTICS_SRC}
                 strategy="afterInteractive"
             />
 
-            {/* Success Splash Message Banner */}
-            <div
-                id="wf_splash"
-                style={{ display: 'none' }}
-                className="mb-6 items-center gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-emerald-800 shadow-sm transition-all dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-emerald-300"
-            >
-                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white">
-                    <CheckCircle2 className="h-5 w-5" />
+            {/* Success message */}
+            {showSuccess && (
+                <div
+                    role="status"
+                    className="mb-6 flex items-center gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-emerald-800 shadow-sm transition-all dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-emerald-300"
+                >
+                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white">
+                        <CheckCircle2 className="h-5 w-5" />
+                    </div>
+                    <span className="text-sm font-medium">
+                        {SUCCESS_MESSAGE}
+                    </span>
                 </div>
-                <span id="wf_splash_info" className="text-sm font-medium"></span>
-            </div>
+            )}
 
             {/* Form Container */}
-            <div className="relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-6 sm:p-8 shadow-xl shadow-slate-200/40 transition-all dark:border-slate-800 dark:bg-slate-900 dark:shadow-none">
+            <div className="relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-6 shadow-xl shadow-slate-200/40 transition-all sm:p-8 dark:border-slate-800 dark:bg-slate-900 dark:shadow-none">
                 <div className="mb-6 space-y-1">
                     <h3 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
                         Send Us a Message
                     </h3>
                     <p className="text-sm text-slate-500 dark:text-slate-400">
-                        Fill in your details below and our CPA team will reach out to you promptly.
+                        Fill in your details below and our CPA team will reach
+                        out to you promptly.
                     </p>
                 </div>
 
                 <form
-                    id="webform1324457000002829011"
-                    name="WebToLeads1324457000002829011"
+                    ref={formRef}
+                    onSubmit={handleSubmit}
+                    noValidate
                     acceptCharset="UTF-8"
                     className="space-y-5"
                 >
-                    {/* Hidden tracking fields required by Zoho */}
-                    <input
-                        type="text"
-                        style={{ display: 'none' }}
-                        name="xnQsjsdp"
-                        value="93108f27608e72f336668528c22d0a704fb5730fe4728712f14c0d302bbaf90c"
-                        readOnly
-                    />
-                    <input type="hidden" name="zc_gad" id="zc_gad" value="" />
-                    <input
-                        type="text"
-                        style={{ display: 'none' }}
-                        name="xmIwtLD"
-                        value="8725995e4973668ac96e905ff69d10c175b1dff4e226bb139ed1fc2f7bed83ff460a34cbdceb8d1c8770bd7e75477a80"
-                        readOnly
-                    />
-                    <input
-                        type="text"
-                        style={{ display: 'none' }}
-                        name="actionType"
-                        value="TGVhZHM="
-                        readOnly
-                    />
-                    <input
-                        type="text"
-                        style={{ display: 'none' }}
-                        name="returnURL"
-                        value="null"
-                        readOnly
-                    />
-                    {/* Do not remove this code. */}
-                    <input
-                        type="text"
-                        style={{ display: 'none' }}
-                        id="ldeskuid"
-                        name="ldeskuid"
-                    />
-                    <input
-                        type="text"
-                        style={{ display: 'none' }}
-                        id="LDTuvid"
-                        name="LDTuvid"
-                    />
-                    <input
-                        type="text"
-                        style={{ display: 'none' }}
-                        name="aG9uZXlwb3Q"
-                        value=""
-                        readOnly
-                    />
-
-                    {/* Name Fields Grid */}
-                    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                        {/* First Name */}
-                        <div className="space-y-2">
-                            <label
-                                htmlFor="First_Name"
-                                className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300"
-                            >
-                                <User className="h-3.5 w-3.5 text-slate-400" />
-                                First Name
-                            </label>
-                            <Input
-                                type="text"
-                                id="First_Name"
-                                aria-required="false"
-                                aria-label="First Name"
-                                name="First Name"
-                                maxLength={40}
-                                placeholder="John"
-                                className="h-11 rounded-lg border-slate-200 bg-slate-50/50 text-slate-900 transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100"
-                            />
-                        </div>
-
-                        {/* Last Name */}
-                        <div className="space-y-2">
-                            <label
-                                htmlFor="Last_Name"
-                                className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300"
-                            >
-                                <User className="h-3.5 w-3.5 text-slate-400" />
-                                Last Name <span className="text-red-500">*</span>
-                            </label>
-                            <Input
-                                type="text"
-                                id="Last_Name"
-                                aria-required="true"
-                                aria-label="Last Name"
-                                name="Last Name"
-                                maxLength={80}
-                                required
-                                placeholder="Doe"
-                                className="h-11 rounded-lg border-slate-200 bg-slate-50/50 text-slate-900 transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100"
-                            />
-                        </div>
+                    {/* Name */}
+                    <div className="space-y-2">
+                        <label htmlFor="NAME" className={labelClass}>
+                            <User className="h-3.5 w-3.5 text-slate-400" />
+                            Full Name <span className="text-red-500">*</span>
+                        </label>
+                        <Input
+                            type="text"
+                            id="NAME"
+                            name="NAME"
+                            aria-required="true"
+                            maxLength={120}
+                            autoComplete="name"
+                            placeholder="John Doe"
+                            className={inputClass}
+                        />
                     </div>
 
-                    {/* Email Field */}
+                    {/* Email */}
                     <div className="space-y-2">
-                        <label
-                            htmlFor="Email"
-                            className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300"
-                        >
+                        <label htmlFor="Email" className={labelClass}>
                             <Mail className="h-3.5 w-3.5 text-slate-400" />
                             Email Address
                         </label>
                         <Input
-                            type="text"
-                            {...({ ftype: 'email' } as any)}
-                            autoComplete="off"
+                            type="email"
                             id="Email"
-                            aria-required="false"
-                            aria-label="Email"
                             name="Email"
                             maxLength={100}
+                            autoComplete="email"
+                            inputMode="email"
                             placeholder="john@example.com"
-                            className="h-11 rounded-lg border-slate-200 bg-slate-50/50 text-slate-900 transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100"
+                            className={inputClass}
                         />
                     </div>
 
-                    {/* Phone Field */}
+                    {/* Phone */}
                     <div className="space-y-2">
-                        <label
-                            htmlFor="Phone"
-                            className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300"
-                        >
+                        <label htmlFor="COBJ1CF2" className={labelClass}>
                             <Phone className="h-3.5 w-3.5 text-slate-400" />
                             Phone Number
                         </label>
                         <Input
-                            type="text"
-                            id="Phone"
-                            aria-required="false"
-                            aria-label="Phone"
-                            name="Phone"
+                            type="tel"
+                            id="COBJ1CF2"
+                            name="COBJ1CF2"
                             maxLength={30}
+                            autoComplete="tel"
+                            inputMode="tel"
                             placeholder="+1 (555) 000-0000"
-                            className="h-11 rounded-lg border-slate-200 bg-slate-50/50 text-slate-900 transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100"
+                            className={inputClass}
                         />
                     </div>
 
-                    {/* Purpose Field */}
+                    {/* Message */}
                     <div className="space-y-2">
-                        <label
-                            htmlFor="LEADCF32"
-                            className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300"
-                        >
+                        <label htmlFor="COBJ1CF45" className={labelClass}>
                             <MessageSquare className="h-3.5 w-3.5 text-slate-400" />
                             Message
                         </label>
                         <Textarea
-                            id="LEADCF32"
-                            aria-required="false"
-                            aria-label="LEADCF32"
-                            name="LEADCF32"
+                            id="COBJ1CF45"
+                            name="COBJ1CF45"
                             placeholder="Tell us about your requirements..."
-                            className="min-h-[100px] rounded-lg border-slate-200 bg-slate-50/50 text-slate-900 transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100 resize-y"
+                            className="min-h-[100px] resize-y rounded-lg border-slate-200 bg-slate-50/50 text-slate-900 transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100"
                         />
                     </div>
 
-                    {/* Hidden Lead Status Dropdown Field (Zoho requirement) */}
-                    <div className="hidden">
-                        <label htmlFor="Lead_Status">Stage</label>
-                        <select
-                            id="Lead_Status"
-                            aria-required="false"
-                            aria-label="Lead Status"
-                            name="Lead Status"
-                            defaultValue="New Enquiry"
+                    {error && (
+                        <p
+                            role="alert"
+                            className="text-sm font-medium text-red-600"
                         >
-                            <option value="-None-">-None-</option>
-                            <option value="New Enquiry">New Enquiry</option>
-                            <option value="Carryovers">Carryovers</option>
-                            <option value="Appointment Fixed">Appointment Fixed</option>
-                            <option value="Onboarded">Onboarded</option>
-                            <option value="Pigeon Send">Pigeon Send</option>
-                            <option value="Partial Document Arrived">Partial Document Arrived</option>
-                            <option value="Document Arrived">Document Arrived</option>
-                            <option value="Work Started">Work Started</option>
-                            <option value="For Review">For Review</option>
-                            <option value="Waiting For Signature">Waiting For Signature</option>
-                            <option value="T183 Signed">T183 Signed</option>
-                            <option value="E-Filed">E-Filed</option>
-                            <option value="Paper Filed">Paper Filed</option>
-                            <option value="Refiled">Refiled</option>
-                            <option value="Rollover To Next Year">Rollover To Next Year</option>
-                            <option value="Dropped File">Dropped File</option>
-                            <option value="Blacklisted">Blacklisted</option>
-                            <option value="Deceased">Deceased</option>
-                            <option value="Junk Clients">Junk Clients</option>
-                        </select>
-                    </div>
+                            {error}
+                        </p>
+                    )}
 
-                    {/* Action Buttons */}
                     <div className="flex items-center gap-3 pt-2">
                         <Button
                             type="submit"
-                            id="formsubmit"
                             disabled={isSubmitting}
-                            className="formsubmit zcwf_button flex-1 h-12 rounded-xl bg-gradient-to-r from-blue-600 to-sky-500 font-semibold text-white shadow-md shadow-blue-500/20 transition-all hover:from-blue-700 hover:to-sky-600 hover:shadow-lg hover:shadow-blue-500/30 active:scale-[0.99] disabled:opacity-70"
+                            className="h-12 flex-1 rounded-xl bg-gradient-to-r from-blue-600 to-sky-500 font-semibold text-white shadow-md shadow-blue-500/20 transition-all hover:from-blue-700 hover:to-sky-600 hover:shadow-lg hover:shadow-blue-500/30 active:scale-[0.99] disabled:opacity-70"
                         >
                             {isSubmitting ? (
                                 <span className="flex items-center justify-center gap-2">
@@ -502,13 +290,6 @@ export default function ContactUsForm() {
                                 </span>
                             )}
                         </Button>
-
-                        <input
-                            type="reset"
-                            className="hidden"
-                            name="reset"
-                            value="Reset"
-                        />
                     </div>
                     <PrivacyConsent className="text-slate-500 dark:text-slate-400" />
                 </form>
