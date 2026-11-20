@@ -7,19 +7,35 @@ import {
     AccordionTrigger,
 } from '@/components/ui/accordion';
 import {
+    ArrowLeftRight,
     ArrowRight,
     BadgeCheck,
+    Briefcase,
     Building2,
+    CalendarClock,
     Check,
-    FileCheck2,
+    ChevronRight,
+    ClipboardCheck,
+    FileSearch,
+    FileText,
+    FlaskConical,
     Globe2,
+    Home,
     Landmark,
     LockKeyhole,
+    Mail,
+    MapPin,
     MessageCircle,
-    MonitorCheck,
-    Phone,
+    Network,
+    PhoneCall,
+    PiggyBank,
+    Plane,
+    Receipt,
+    ScrollText,
     ShieldCheck,
-    Sparkles,
+    Star,
+    UserCheck,
+    Users,
 } from 'lucide-react';
 import CrossBorderLeadForm from './_components/cross-border-lead-form';
 import MobileStickyBar from './_components/mobile-sticky-bar';
@@ -30,191 +46,178 @@ const WA_LINK =
     'https://wa.me/12262273482?text=Hi%2C%20I%27d%20like%20a%20free%20cross-border%20tax%20consultation.';
 
 export const metadata: Metadata = {
-    title: 'Cross-Border Tax Accountants | US & Canadian Returns | Invisor CPA',
+    title: 'Cross-Border Tax, Done Right | US & Canadian Returns | Invisor',
     description:
-        'CPA and IRS Enrolled Agent team that files both your US and Canadian returns, FBAR and foreign reporting together. Free consultation and fixed-fee quote.',
+        'One CPA and IRS Enrolled Agent team for your Canadian and US tax filings: personal and corporate returns, FBAR, T1135, treaty positions and planning. Free consultation.',
     alternates: { canonical: pageUrl },
     robots: { index: false, follow: true },
 };
 
-const situations = [
+const audiences = [
     {
         icon: Globe2,
-        title: '“I’m a US citizen or green card holder living in Canada.”',
-        body: 'You likely need to file a US return every year, even if you owe nothing.',
-    },
-    {
-        icon: Landmark,
-        title: '“I have Canadian bank accounts, a TFSA or RRSP.”',
-        body: 'These may need FBAR and FATCA reporting, and a TFSA isn’t tax-free in the eyes of the IRS.',
-    },
-    {
-        icon: FileCheck2,
-        title: '“I haven’t filed US taxes in years, or ever.”',
-        body: 'The IRS Streamlined procedures may let you catch up without penalties, if you qualify.',
+        title: 'US citizens and green card holders',
+        body: 'living in Canada, and Canadians with US citizenship or US tax residence.',
     },
     {
         icon: Building2,
-        title: '“I’m Canadian, with US rental income, property or work.”',
-        body: 'You may need a US non-resident return and the right treaty elections.',
+        title: 'Owners',
+        body: 'with companies, partnerships or trusts in both countries.',
+    },
+    {
+        icon: Briefcase,
+        title: 'Businesses',
+        body: 'with intercompany invoices, staff or contractors across the border.',
+    },
+    {
+        icon: Home,
+        title: 'Families',
+        body: 'with property, registered accounts or estates on both sides of the border.',
+    },
+    {
+        icon: ArrowLeftRight,
+        title: 'People who have moved',
+        body: 'between the two countries and need departure or arrival filings.',
     },
 ];
 
-const reasons = [
+const services = [
     {
-        icon: Sparkles,
-        title: 'Your first consultation is free.',
-        body: 'Some cross-border specialists charge hundreds of dollars just to talk. We’ll review your situation, tell you what you need to file and give you a fixed quote, at no cost.',
+        icon: UserCheck,
+        title: 'Residency and treaty tie-breakers',
+        body: 'We work out where you are resident under Canadian and US rules, and apply the treaty tie-breaker where both countries could claim you.',
     },
     {
-        icon: BadgeCheck,
-        title: 'Credentials that count with the IRS.',
-        body: 'Our team includes a CPA and an IRS Enrolled Agent, the IRS’s highest credential, authorized to represent taxpayers before the IRS.',
+        icon: FileText,
+        title: 'Personal and corporate returns in both countries',
+        body: 'T1, T2, 1040 and 1120 returns prepared from the same set of facts, so the two sides agree.',
+    },
+    {
+        icon: Receipt,
+        title: 'Foreign tax credits and treaty positions',
+        body: 'Tax paid in one country credited against tax due in the other, with treaty positions disclosed where they change the result.',
+    },
+    {
+        icon: Landmark,
+        title: 'Foreign reporting: T1135, FBAR and Form 8938',
+        body: 'Canadian T1135 for foreign property, FBAR for accounts and Form 8938 under FATCA, each filed only where the threshold is met.',
+    },
+    {
+        icon: Plane,
+        title: 'Departure and change-of-residence filings',
+        body: 'Final and arrival filings when you move between Canada and the US, including elections that apply to the move.',
+    },
+    {
+        icon: PiggyBank,
+        title: 'RRSPs, TFSAs, RESPs, 401(k)s and IRAs',
+        body: 'Correct reporting of registered and retirement accounts on the other side of the border, including the elections that apply.',
+    },
+    {
+        icon: ScrollText,
+        title: 'Estate and gift filings',
+        body: 'Estate and gift tax filings for people with assets in both countries, coordinated with your estate lawyer.',
+    },
+    {
+        icon: Network,
+        title: 'Entity setup and registrations',
+        body: 'Setting up a company or branch in Canada or the US, with the tax and payroll registrations it needs.',
+    },
+    {
+        icon: Building2,
+        title: 'Foreign-owned companies and inter-company filings',
+        body: 'Form 5472 and 1120 for Canadian-owned US companies, T106 and Schedule 50 for Canadian corporations with US ties.',
+    },
+    {
+        icon: Users,
+        title: 'Cross-border employment and remote workers',
+        body: 'Payroll, permanent establishment reviews and tax for employees who work across the border or on assignment.',
+    },
+    {
+        icon: FlaskConical,
+        title: 'SR&ED and US R&D credits',
+        body: 'Claims for the Canadian SR&ED incentive and the US federal R&D credit for qualifying work in either country.',
     },
     {
         icon: ShieldCheck,
-        title: 'A real Canadian firm.',
-        body: 'Offices in London and Fergus, Ontario, 1,000+ clients across Canada, and a 4.9-star Google rating from 158 reviews. Not an anonymous website.',
-    },
-    {
-        icon: MonitorCheck,
-        title: 'Done entirely online.',
-        body: 'Upload documents securely, meet by phone or video, and sign electronically, wherever you live in Canada.',
+        title: 'CRA and IRS notices',
+        body: 'Responding to letters from the CRA and IRS, and acting as your authorized representative with both agencies.',
     },
 ];
 
-const locationCards = [
-    {
-        src: '/assets/our-process.webp',
-        alt: 'Invisor CPA London office',
-        title: 'London, Ontario',
-        caption: '341 Talbot Street',
-    },
-    {
-        src: '/assets/section-2-1.webp',
-        alt: 'The Invisor team at work',
-        title: 'A team that works together',
-        caption: 'Canadian and US filings coordinated in-house',
-    },
-    {
-        src: '/assets/about-us.webp',
-        alt: 'Invisor CPA Fergus office team',
-        title: 'Fergus, Ontario',
-        caption: '645-B St. David Street North',
-    },
-];
-
-const usServices = [
-    'US federal tax return (Form 1040)',
-    'Foreign tax credits and US–Canada treaty elections',
-    'FBAR (FinCEN Form 114)',
-    'FATCA reporting (Form 8938)',
-    'Streamlined filing to catch up on missed years',
-    'IRS notices and correspondence',
-];
-
-const caServices = [
-    'Canadian personal tax return (T1)',
-    'Coordinating credits across both returns',
-    'TFSA, RRSP and RESP reporting for US persons',
-    'US rental income and property for Canadians',
-    'US non-resident returns (1040-NR)',
-    'Cross-border planning when moving between countries',
+const alsoServed = [
+    { code: 'AU', name: 'Australia' },
+    { code: 'UK', name: 'United Kingdom' },
+    { code: 'DE', name: 'Germany' },
+    { code: 'MX', name: 'Mexico' },
+    { code: 'SG', name: 'Singapore' },
+    { code: 'AE', name: 'UAE' },
+    { code: 'PT', name: 'Portugal' },
 ];
 
 const steps = [
     {
-        title: 'Book your free consultation',
-        body: 'A 20-minute call with a cross-border specialist. We’ll learn your situation and tell you exactly what you need to file.',
+        icon: PhoneCall,
+        title: 'Discovery call',
+        body: 'A free call to map where you live, work, earn and hold assets.',
     },
     {
-        title: 'Get a fixed quote',
-        body: 'You’ll know the full cost upfront, plus a simple checklist of documents to gather. No hourly surprises.',
+        icon: FileSearch,
+        title: 'Document review',
+        body: 'We review the records you already have and list what is missing.',
     },
     {
-        title: 'We file both returns',
-        body: 'Upload your documents securely. We prepare your US and Canadian filings, you review and sign, and we file.',
+        icon: ClipboardCheck,
+        title: 'Preparation',
+        body: 'We prepare your returns and reports in both countries, with positions kept consistent.',
+    },
+    {
+        icon: BadgeCheck,
+        title: 'CPA or Enrolled Agent review',
+        body: 'A senior reviewer checks every return before it is filed.',
+    },
+    {
+        icon: CalendarClock,
+        title: 'Ongoing planning',
+        body: 'We plan next year’s filings, instalments and reporting before the deadlines.',
     },
 ];
 
-const team = [
-    {
-        role: 'IRS Enrolled Agent',
-        name: 'Geevar Thambi, EA',
-        description:
-            'US returns, FBAR and Streamlined filings, with authority to represent clients before the IRS.',
-        src: '/assets/team/team-members-3.webp',
-    },
-];
-
-const sampleTestimonials = [
-    {
-        name: 'Emily Carter',
-        location: 'Toronto, Ontario',
-        rating: 5,
-        quote: 'Living in Canada as a US citizen made tax season feel overwhelming. The team coordinated my Canadian return, US return and FBAR together, explained every step clearly and made the whole process far easier than I expected.',
-    },
-    {
-        name: 'Michael Reynolds',
-        location: 'Seattle, Washington',
-        rating: 5,
-        quote: 'I moved back to the US after several years in Ontario and needed help sorting out filings in both countries. I received a clear plan, a fixed quote and responsive support from start to finish.',
-    },
-    {
-        name: 'Claire Thompson',
-        location: 'Vancouver, British Columbia',
-        rating: 5,
-        quote: 'They helped me catch up on several years of US returns and foreign-account reporting through the Streamlined process. What had felt stressful for years was handled with patience, clarity and real cross-border expertise.',
-    },
+const stats = [
+    { value: '4.9★', label: 'Google rating, 158 reviews' },
+    { value: '1,000+', label: 'clients across Canada' },
+    { value: 'CPA + EA', label: 'credentials on the team' },
+    { value: '2', label: 'countries, one set of facts' },
 ];
 
 const faqs = [
     {
-        q: 'How much does it cost?',
-        a: 'Every situation is different, so we don’t charge you for guesswork. After your free consultation you’ll get a fixed quote for your US and Canadian filings before any work starts. The price you’re quoted is the price you pay.',
+        q: 'Do I have to file in both countries?',
+        a: 'Often, yes. US citizens and green card holders generally have to file a US return wherever they live, and Canadian residents file in Canada. Canadians with US rental property, US work or US companies may also have US filings. On the first call we confirm exactly which returns apply to you.',
     },
     {
-        q: 'I haven’t filed US taxes in years. Am I in trouble?',
-        a: 'You may have a practical path forward. If the missed filings were non-willful, the IRS Streamlined Foreign Offshore Procedures can allow eligible taxpayers to catch up with three years of returns and six years of FBARs, generally without the usual penalties. We’ll assess whether the program fits your situation.',
+        q: 'What is FBAR, and what is T1135?',
+        a: 'FBAR (FinCEN Form 114) is the US report of foreign bank and financial accounts, required when the combined balance passes US$10,000 at any point in the year. T1135 is the Canadian foreign income verification statement, required when the cost of your foreign property passes C$100,000. Both carry penalties for late filing even when no tax is owed.',
     },
     {
-        q: 'Do I really have to file a US return if I owe nothing?',
-        a: 'Often, yes. US citizens and green card holders generally have a filing requirement based on income, regardless of where they live. Canadian tax paid can often be used through foreign tax credits, so filing does not necessarily mean owing US tax.',
+        q: 'I have not filed for several years. Can you help?',
+        a: 'Yes. If the missed US filings were non-willful, the IRS Streamlined procedures can let eligible taxpayers catch up with three years of returns and six years of FBARs, generally without the usual penalties. On the Canadian side we can look at the Voluntary Disclosures Program where it fits.',
     },
     {
         q: 'Will I be taxed twice on the same income?',
-        a: 'Usually not when the returns are coordinated correctly. The Canada–US tax treaty and foreign tax credits are designed to prevent double taxation. The order and treatment of those credits matters, which is why one team preparing both sides is valuable.',
+        a: 'Usually not when the returns are coordinated. The Canada–US tax treaty and foreign tax credits are designed to prevent double tax, but the order and treatment of those credits matters, which is why one team preparing both sides helps.',
     },
     {
-        q: 'Do I need to come to your office?',
-        a: 'No. Meetings can happen by phone or video, documents are shared through a secure portal and signatures are completed electronically. Clients near London or Fergus are also welcome to meet us in person.',
+        q: 'Do you work with my lawyer or financial adviser?',
+        a: 'Yes. We regularly coordinate with estate lawyers, immigration lawyers and financial advisers so the tax positions match the legal and investment decisions being made.',
     },
     {
-        q: 'Is my information secure?',
-        a: 'Yes. Documents are shared through a secure portal rather than ordinary email, and your information is kept confidential.',
-    },
-    {
-        q: 'I’m Canadian, not American. Can you still help?',
-        a: 'Yes. Canadians with US rental property, employment income, business activity or extended stays may have US filing obligations. We handle the US filing and coordinate it with the Canadian return.',
-    },
-    {
-        q: 'What should I have ready for the consultation?',
-        a: 'A high-level picture is enough: your citizenship or residency status, where you lived and worked, what years may be outstanding, and any US income, property or Canadian financial accounts. We’ll tell you which documents are actually needed after the call.',
+        q: 'How much does it cost?',
+        a: 'After your free consultation you get a fixed quote for your Canadian and US filings before any work starts. The price you are quoted is the price you pay.',
     },
 ];
 
-function Eyebrow({
-    children,
-    inverse = false,
-}: {
-    children: React.ReactNode;
-    inverse?: boolean;
-}) {
-    return (
-        <p className={`cbt-eyebrow${inverse ? ' cbt-eyebrow--inverse' : ''}`}>
-            {children}
-        </p>
-    );
+function Eyebrow({ children }: { children: React.ReactNode }) {
+    return <p className="rd-eyebrow">{children}</p>;
 }
 
 export default function CrossBorderTaxPage() {
@@ -242,7 +245,7 @@ export default function CrossBorderTaxPage() {
     };
 
     return (
-        <main className="cbt-page">
+        <main id="top" className="cbt-page rd-page">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
@@ -250,376 +253,326 @@ export default function CrossBorderTaxPage() {
                 }}
             />
 
-            <section className="cbt-hero">
-                <div className="cbt-container cbt-hero__grid">
-                    <div className="cbt-hero__copy">
-                        <p className="cbt-hero__badge">
-                            <ShieldCheck aria-hidden="true" />
-                            Cross-border tax specialists · Serving all of Canada
-                        </p>
-                        <h1>
-                            Cross-Border Tax Accountants Who File Both Your{' '}
-                            <span>US and Canadian</span> Returns
-                        </h1>
-                        <p className="cbt-hero__lead">
-                            Our CPA and IRS Enrolled Agent team prepares your US
-                            return, Canadian return, FBAR and foreign reporting
-                            together, so your credits line up across both countries
-                            and nothing gets missed.
-                        </p>
-                        <div className="cbt-pills" aria-label="Service benefits">
-                            <span>
-                                <Check aria-hidden="true" />
-                                Free consultation
-                            </span>
-                            <span>
-                                <Check aria-hidden="true" />
-                                Fixed-fee quote upfront
-                            </span>
-                            <span>
-                                <Check aria-hidden="true" />
-                                100% online, anywhere in Canada
-                            </span>
-                        </div>
-                        <div className="cbt-hero__rating">
-                            <span className='' aria-label="Five stars">★★★★★</span>
-                            <div>
-                                <strong>4.9 on Google</strong>
-                                <small>
-                                    158 reviews · 1,000+ clients across Canada
-                                </small>
+            {/* ---------------- Hero ---------------- */}
+            <section className="rd-hero">
+                <div className="cbt-container">
+                    <nav className="rd-breadcrumb" aria-label="Breadcrumb">
+                        <Home aria-hidden="true" />
+                        <span>Home</span>
+                        <ChevronRight aria-hidden="true" />
+                        <span>Services</span>
+                        <ChevronRight aria-hidden="true" />
+                        <strong>Cross-border tax</strong>
+                    </nav>
+
+                    <div className="rd-hero__panel">
+                        <div className="rd-hero__copy">
+                            <p className="rd-hero__badge">
+                                <span className="rd-flag-pair" aria-hidden="true">
+                                    <Image
+                                        src="/assets/flags/ca.svg"
+                                        alt=""
+                                        width={22}
+                                        height={22}
+                                    />
+                                    <Image
+                                        src="/assets/flags/us.svg"
+                                        alt=""
+                                        width={22}
+                                        height={22}
+                                    />
+                                </span>
+                                Canada · United States
+                            </p>
+                            <h1>
+                                Cross-border tax, <mark>done right</mark>
+                            </h1>
+                            <p className="rd-hero__lead">
+                                If you live, earn or invest in two countries, you
+                                can have obligations in both. We coordinate your
+                                Canadian and US tax in one team, for individuals,
+                                owners and businesses, so positions stay
+                                consistent across every filing.
+                            </p>
+                            <ul className="rd-hero__points">
+                                <li>
+                                    <Check aria-hidden="true" />
+                                    Free first consultation
+                                </li>
+                                <li>
+                                    <Check aria-hidden="true" />
+                                    Fixed quote before work starts
+                                </li>
+                                <li>
+                                    <Check aria-hidden="true" />
+                                    CPA and IRS Enrolled Agent review
+                                </li>
+                            </ul>
+                            <div className="rd-hero__rating">
+                                <span className="rd-stars" aria-label="Five stars">
+                                    {Array.from({ length: 5 }).map((_, i) => (
+                                        <Star key={i} aria-hidden="true" />
+                                    ))}
+                                </span>
+                                <p>
+                                    <strong>4.9 on Google</strong> · 158 reviews ·
+                                    1,000+ clients
+                                </p>
                             </div>
                         </div>
-                    </div>
 
-                    <div id="hero-form" className="cbt-hero__form">
-                        <CrossBorderLeadForm formLocation="hero" />
+                        <div id="hero-form" className="rd-hero__form">
+                            <CrossBorderLeadForm
+                                formLocation="hero"
+                                heading="Book your free consultation"
+                            />
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section className="cbt-statbar" aria-label="Invisor at a glance">
-                <div className="cbt-container cbt-statbar__grid">
-                    <div>
-                        <strong>4.9 on Google</strong>
-                        <span>158 reviews</span>
-                    </div>
-                    <div>
-                        <strong>1,000+ clients</strong>
-                        <span>across Canada</span>
-                    </div>
-                    <div>
-                        <strong>CPA + IRS EA</strong>
-                        <span>on the team</span>
-                    </div>
-                    <div>
-                        <strong>London &amp; Fergus</strong>
-                        <span>offices in Ontario</span>
-                    </div>
+            {/* ---------------- Stats strip ---------------- */}
+            <section className="rd-stats" aria-label="Invisor at a glance">
+                <div className="cbt-container rd-stats__grid">
+                    {stats.map((s) => (
+                        <div key={s.label}>
+                            <strong>{s.value}</strong>
+                            <span>{s.label}</span>
+                        </div>
+                    ))}
                 </div>
             </section>
 
-            <section id="who-we-help" className="cbt-section cbt-section--intro">
-                <div className="cbt-container">
-                    <div className="cbt-section-heading cbt-section-heading--wide">
-                        <Eyebrow>Is this you?</Eyebrow>
+            {/* ---------------- Who it is for ---------------- */}
+            <section id="who-we-help" className="rd-section">
+                <div className="cbt-container rd-split">
+                    <div className="rd-split__intro">
+                        <Eyebrow>Who it is for</Eyebrow>
                         <h2>
-                            Two countries. Two tax systems. One set of forms most
-                            accountants rarely see.
+                            Built for people and businesses with cross-border
+                            lives
                         </h2>
                         <p>
-                            The US taxes its citizens wherever they live, and Canada
-                            taxes its residents. If you’re caught between the two, you
-                            probably have filing obligations you’ve been told
-                            different things about. Do any of these sound familiar?
+                            Whether you live, work, own a business or hold assets
+                            in both Canada and the US, we help you navigate the
+                            tax responsibilities that come with cross-border
+                            connections.
+                        </p>
+
+                        <div className="rd-bridge" aria-hidden="true">
+                            <div className="rd-bridge__country">
+                                <Image
+                                    src="/assets/flags/ca.svg"
+                                    alt=""
+                                    width={56}
+                                    height={56}
+                                />
+                                <strong>Canada</strong>
+                                <span>T1 · T2 · T1135</span>
+                            </div>
+                            <div className="rd-bridge__link">
+                                <span />
+                                <i>
+                                    <ArrowLeftRight />
+                                </i>
+                                <span />
+                            </div>
+                            <div className="rd-bridge__country">
+                                <Image
+                                    src="/assets/flags/us.svg"
+                                    alt=""
+                                    width={56}
+                                    height={56}
+                                />
+                                <strong>United States</strong>
+                                <span>1040 · 1120 · FBAR</span>
+                            </div>
+                            <p className="rd-bridge__caption">
+                                One team · one set of facts · both returns
+                            </p>
+                        </div>
+                    </div>
+
+                    <ul className="rd-audience">
+                        {audiences.map(({ icon: Icon, title, body }) => (
+                            <li key={title}>
+                                <span className="rd-icon">
+                                    <Icon aria-hidden="true" />
+                                </span>
+                                <p>
+                                    <strong>{title}</strong> {body}
+                                </p>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </section>
+
+            {/* ---------------- What we do ---------------- */}
+            <section id="services" className="rd-section rd-section--tint">
+                <div className="cbt-container">
+                    <div className="rd-heading-row">
+                        <div>
+                            <Eyebrow>What we do</Eyebrow>
+                            <h2>
+                                Complete cross-border tax support, from planning
+                                to compliance
+                            </h2>
+                        </div>
+                        <p>
+                            From personal and corporate tax filings to
+                            international reporting, treaty planning and business
+                            structuring, we coordinate every detail across Canada
+                            and the US to keep your tax obligations aligned.
                         </p>
                     </div>
-                    <div className="cbt-situation-grid">
-                        {situations.map(({ icon: Icon, title, body }) => (
-                            <article className="cbt-situation" key={title}>
-                                <span className="cbt-iconbox">
+
+                    <div className="rd-service-grid">
+                        {services.map(({ icon: Icon, title, body }) => (
+                            <article key={title} className="rd-service">
+                                <span className="rd-icon">
                                     <Icon aria-hidden="true" />
                                 </span>
                                 <h3>{title}</h3>
                                 <p>{body}</p>
                             </article>
                         ))}
+                        <article className="rd-service rd-service--cta">
+                            <h3>Not sure what applies to you?</h3>
+                            <p>
+                                That is what the free consultation is for. We
+                                will tell you what you need to file.
+                            </p>
+                            <ScrollLink
+                                href="#hero-form"
+                                className="rd-btn rd-btn--light"
+                            >
+                                Find out
+                                <ArrowRight aria-hidden="true" />
+                            </ScrollLink>
+                        </article>
                     </div>
                 </div>
             </section>
 
-            <section className="cbt-section cbt-section--good-news">
-                <div className="cbt-container cbt-good-news">
-                    <div
-                        className="cbt-tax-visual"
-                        aria-label="US and Canadian tax returns prepared together"
-                    >
-                        <div className="cbt-tax-sheet cbt-tax-sheet--back">
-                            <span>CANADA</span>
-                            <strong>T1</strong>
-                            <small>Personal income tax return</small>
-                        </div>
-                        <div className="cbt-tax-sheet cbt-tax-sheet--front">
-                            <span>UNITED STATES</span>
-                            <strong>1040</strong>
-                            <small>Individual income tax return</small>
-                            <div
-                                className="cbt-tax-sheet__lines"
+            {/* ---------------- Countries ---------------- */}
+            <section className="rd-section">
+                <div className="cbt-container rd-countries">
+                    <div>
+                        <Eyebrow>Countries</Eyebrow>
+                        <h2>Cross-border tax for Canada, the US and beyond</h2>
+                        <p>
+                            Our core work is Canada and the United States. US
+                            cross-border tax is also offered to clients with ties
+                            to Australia, the UK, Germany, Mexico, Singapore, the
+                            UAE and Portugal.
+                        </p>
+                        <p className="rd-note">
+                            <MapPin aria-hidden="true" />
+                            Local tax services are not offered in those
+                            countries.
+                        </p>
+                    </div>
+
+                    <div className="rd-countries__card">
+                        <div className="rd-countries__main">
+                            <div>
+                                <Image
+                                    src="/assets/flags/ca.svg"
+                                    alt=""
+                                    width={64}
+                                    height={64}
+                                />
+                                <span>Canada</span>
+                            </div>
+                            <svg
+                                viewBox="0 0 200 60"
+                                className="rd-countries__arc"
                                 aria-hidden="true"
                             >
-                                <i />
-                                <i />
-                                <i />
+                                <path d="M5 50 Q100 -10 195 50" />
+                            </svg>
+                            <div>
+                                <Image
+                                    src="/assets/flags/us.svg"
+                                    alt=""
+                                    width={64}
+                                    height={64}
+                                />
+                                <span>United States</span>
                             </div>
                         </div>
-                        <div className="cbt-tax-check">
-                            <FileCheck2 aria-hidden="true" />
-                            <span>Prepared together</span>
-                        </div>
-                    </div>
-                    <div className="cbt-good-news__copy">
-                        <Eyebrow>The good news</Eyebrow>
-                        <h2>
-                            One team. Both returns. Nothing falls through the gap.
-                        </h2>
-                        <p>
-                            Many Americans in Canada owe little or nothing to the IRS
-                            once their Canadian taxes are credited. The risk is in
-                            not filing correctly, because some reporting penalties
-                            apply even when no tax is owed.
+                        <p className="rd-countries__label">
+                            US cross-border tax also for
                         </p>
-                        <p>
-                            Many US expat firms prepare only the US side and send you
-                            elsewhere for Canada. We prepare both in-house, so your
-                            income, credits and deadlines line up.
-                        </p>
-                        <ScrollLink
-                            href="#hero-form"
-                            className="cbt-button cbt-button--primary"
-                        >
-                            Book my free consultation
-                            <ArrowRight aria-hidden="true" />
-                        </ScrollLink>
+                        <ul className="rd-countries__list">
+                            {alsoServed.map((c) => (
+                                <li key={c.code} title={c.name}>
+                                    <b>{c.code}</b>
+                                    <span>{c.name}</span>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             </section>
 
-            <section className="cbt-section cbt-section--why">
+            {/* ---------------- Process ---------------- */}
+            <section id="how-it-works" className="rd-section rd-section--navy">
                 <div className="cbt-container">
-                    <div className="cbt-section-heading">
-                        <Eyebrow>Why Invisor</Eyebrow>
-                        <h2>Why cross-border clients choose us</h2>
+                    <div className="rd-heading-row rd-heading-row--inverse">
+                        <div>
+                            <Eyebrow>How we work</Eyebrow>
+                            <h2>A clear and structured process</h2>
+                        </div>
+                        <p>
+                            No obligation at any step. If we are not the right
+                            fit, we will tell you on the first call.
+                        </p>
                     </div>
-                    <div className="cbt-reasons-grid">
-                        {reasons.map(({ icon: Icon, title, body }) => (
-                            <article key={title}>
-                                <span className="cbt-iconbox">
-                                    <Icon aria-hidden="true" />
-                                </span>
+                    <ol className="rd-steps">
+                        {steps.map(({ icon: Icon, title, body }, index) => (
+                            <li key={title}>
+                                <div className="rd-steps__top">
+                                    <span className="rd-icon rd-icon--inverse">
+                                        <Icon aria-hidden="true" />
+                                    </span>
+                                    <em>0{index + 1}</em>
+                                </div>
                                 <h3>{title}</h3>
                                 <p>{body}</p>
-                            </article>
-                        ))}
-                    </div>
-                    <div className="cbt-location-grid">
-                        {locationCards.map((card) => (
-                            <article key={card.title} className="cbt-location-card">
-                                <div className="cbt-location-card__image">
-                                    <Image
-                                        src={card.src}
-                                        alt={card.alt}
-                                        fill
-                                        sizes="(max-width: 760px) 100vw, 33vw"
-                                        className="object-cover"
-                                    />
-                                </div>
-                                <div>
-                                    <h3>{card.title}</h3>
-                                    <p>{card.caption}</p>
-                                </div>
-                            </article>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            <section id="services" className="cbt-section cbt-section--services">
-                <div className="cbt-container">
-                    <div className="cbt-section-heading">
-                        <Eyebrow>What we handle</Eyebrow>
-                        <h2>
-                            Everything a Canada–US filer needs, in one place
-                        </h2>
-                    </div>
-                    <div className="cbt-services-grid">
-                        <article className="cbt-service-panel">
-                            <header>
-                                <span>US</span>
-                                <h3>United States</h3>
-                            </header>
-                            <ul>
-                                {usServices.map((service) => (
-                                    <li key={service}>
-                                        <Check aria-hidden="true" />
-                                        {service}
-                                    </li>
-                                ))}
-                            </ul>
-                        </article>
-                        <article className="cbt-service-panel cbt-service-panel--accent">
-                            <header>
-                                <span>CA</span>
-                                <h3>Canada and cross-border</h3>
-                            </header>
-                            <ul>
-                                {caServices.map((service) => (
-                                    <li key={service}>
-                                        <Check aria-hidden="true" />
-                                        {service}
-                                    </li>
-                                ))}
-                            </ul>
-                        </article>
-                    </div>
-                    <div className="cbt-services-cta">
-                        <p>
-                            Not sure what applies to you? That’s what the free
-                            consultation is for.
-                        </p>
-                        <ScrollLink
-                            href="#hero-form"
-                            className="cbt-button cbt-button--primary"
-                        >
-                            Find out what I need to file
-                            <ArrowRight aria-hidden="true" />
-                        </ScrollLink>
-                    </div>
-                </div>
-            </section>
-
-            <section id="how-it-works" className="cbt-section cbt-process">
-                <div className="cbt-container">
-                    <div className="cbt-section-heading cbt-section-heading--inverse">
-                        <Eyebrow inverse>How it works</Eyebrow>
-                        <h2>Getting compliant is simpler than you think</h2>
-                    </div>
-                    <ol className="cbt-steps">
-                        {steps.map((step, index) => (
-                            <li key={step.title}>
-                                <span className="cbt-step-number">
-                                    0{index + 1}
-                                </span>
-                                <h3>{step.title}</h3>
-                                <p>{step.body}</p>
                             </li>
                         ))}
                     </ol>
-                    <div className="cbt-process__footer">
-                        <p>
-                            No obligation at any step. If we’re not the right fit,
-                            we’ll tell you.
-                        </p>
-                        <ScrollLink
-                            href="#hero-form"
-                            className="cbt-button cbt-button--light"
-                        >
-                            Start with a free consultation
-                            <ArrowRight aria-hidden="true" />
-                        </ScrollLink>
-                    </div>
                 </div>
             </section>
 
-            <section className="cbt-section cbt-team-section">
-                <div className="cbt-container">
-                    <div className="cbt-section-heading">
-                        <Eyebrow>Your specialist</Eyebrow>
-                        <h2>Meet your cross-border tax specialist</h2>
-                        <p>
-                            Geevar leads your US filings, FBAR and Streamlined
-                            cases, working in-house alongside our CPA and
-                            Canadian tax team so both returns are prepared under
-                            one roof.
-                        </p>
-                    </div>
-                    <div className="cbt-team-grid">
-                        {team.map((member) => (
-                            <article key={member.name} className="cbt-team-card">
-                                <div className="cbt-team-card__image">
-                                    <Image
-                                        src={member.src}
-                                        alt={member.name}
-                                        fill
-                                        sizes="(max-width: 700px) 34vw, 180px"
-                                        className="object-cover"
-                                    />
-                                </div>
-                                <div>
-                                    <span>{member.role}</span>
-                                    <h3>{member.name}</h3>
-                                    <p>{member.description}</p>
-                                </div>
-                            </article>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            <section id="reviews" className="cbt-section cbt-reviews-section">
-                <div className="cbt-container cbt-reviews-layout">
-                    <aside className="cbt-review-score">
-                        <strong>4.9</strong>
-                        <span aria-label="Five stars">★★★★★</span>
-                        <p>From 158 Google reviews of our London office</p>
-                        <a
-                            href="https://www.google.com/search?q=Invisor+CPA+London+reviews"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            Read all reviews on Google
-                            <ArrowRight aria-hidden="true" />
-                        </a>
-                    </aside>
-                    <div className="cbt-review-content">
-                        <div className="cbt-review-grid">
-                            {sampleTestimonials.map((testimonial) => (
-                                <article
-                                    key={testimonial.name}
-                                    className="cbt-review-card"
-                                >
-                                    <div
-                                        className="cbt-review-card__stars"
-                                        aria-label={`${testimonial.rating} out of 5 stars`}
-                                    >
-                                        {'★'.repeat(testimonial.rating)}
-                                    </div>
-                                    <blockquote>“{testimonial.quote}”</blockquote>
-                                    <footer>
-                                        <strong>{testimonial.name}</strong>
-                                        <span>{testimonial.location}</span>
-                                    </footer>
-                                </article>
-                            ))}
-                        </div>
-                        <p className="cbt-review-disclosure">
-                            Sample testimonial content for design preview. Replace
-                            with verified client reviews before publishing.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="faq" className="cbt-section cbt-faq-section">
-                <div className="cbt-container cbt-faq-wrap">
-                    <div className="cbt-section-heading cbt-section-heading--center">
+            {/* ---------------- FAQ ---------------- */}
+            <section id="faq" className="rd-section">
+                <div className="cbt-container rd-faq">
+                    <div className="rd-faq__intro">
                         <Eyebrow>FAQ</Eyebrow>
-                        <h2>Questions people ask before they call us</h2>
+                        <h2>Common questions</h2>
+                        <p>
+                            Straight answers to what people ask before they call
+                            us. Anything else, ask us directly.
+                        </p>
+                        <div className="rd-faq__help">
+                            <span className="rd-icon">
+                                <MessageCircle aria-hidden="true" />
+                            </span>
+                            <div>
+                                <strong>Still have a question?</strong>
+                                <p>Talk to a cross-border specialist today.</p>
+                                <a href="tel:+12262273482">Call 226-227-3482</a>
+                            </div>
+                        </div>
                     </div>
                     <Accordion
                         type="single"
                         collapsible
                         defaultValue="faq-0"
-                        className="cbt-faq-list"
+                        className="rd-faq__list"
                     >
                         {faqs.map((faq, index) => (
                             <AccordionItem
@@ -634,47 +587,70 @@ export default function CrossBorderTaxPage() {
                 </div>
             </section>
 
-            <section className="cbt-final-cta">
-                <div className="cbt-container cbt-final-cta__grid">
-                    <div className="cbt-final-cta__copy">
-                        <Eyebrow inverse>Start here</Eyebrow>
-                        <h2>
-                            Get your cross-border taxes handled, starting with a
-                            free consultation
-                        </h2>
+            {/* ---------------- Contact ---------------- */}
+            <section className="rd-section rd-section--tint rd-contact-section">
+                <div className="cbt-container rd-contact">
+                    <div className="rd-contact__copy">
+                        <Eyebrow>Contact</Eyebrow>
+                        <h2>Let’s talk about your cross-border finances</h2>
                         <p>
-                            Tell us your situation in about 60 seconds. A
-                            cross-border specialist will reply within 1 business
-                            day with what you need to file and a fixed quote.
+                            Book a consultation to review your situation, the
+                            countries you operate in and where your filings need
+                            work. A specialist replies within one business day.
                         </p>
-                        <strong>Prefer to talk now?</strong>
-                        <div className="cbt-final-cta__actions">
-                            <a
-                                href="tel:+12262273482"
-                                className="cbt-button cbt-button--light"
-                            >
-                                <Phone aria-hidden="true" />
-                                Call 226-227-3482
-                            </a>
+                        <ul className="rd-contact__list">
+                            <li>
+                                <span className="rd-icon">
+                                    <Mail aria-hidden="true" />
+                                </span>
+                                <div>
+                                    <small>Email</small>
+                                    <a href="mailto:connect@invisorcpa.ca">
+                                        connect@invisorcpa.ca
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <span className="rd-icon">
+                                    <PhoneCall aria-hidden="true" />
+                                </span>
+                                <div>
+                                    <small>Phone</small>
+                                    <a href="tel:+12262273482">
+                                        +1 226-227-3482
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <span className="rd-icon">
+                                    <MapPin aria-hidden="true" />
+                                </span>
+                                <div>
+                                    <small>Offices</small>
+                                    <span>London and Fergus, Ontario</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <div className="rd-contact__actions">
                             <a
                                 href={WA_LINK}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="cbt-button cbt-button--outline-light"
+                                className="rd-btn rd-btn--outline"
                             >
                                 <MessageCircle aria-hidden="true" />
                                 Message on WhatsApp
                             </a>
-                        </div>
-                        <div className="cbt-final-cta__trust">
-                            <LockKeyhole aria-hidden="true" />
-                            Secure, confidential and no obligation
+                            <span className="rd-secure">
+                                <LockKeyhole aria-hidden="true" />
+                                Secure, confidential, no obligation
+                            </span>
                         </div>
                     </div>
-                    <div className="cbt-final-cta__form">
+                    <div className="rd-contact__form">
                         <CrossBorderLeadForm
                             formLocation="footer"
-                            heading="Book your free cross-border consultation"
+                            heading="Book a consultation"
                             subheading="Takes about 60 seconds. No obligation."
                         />
                     </div>
