@@ -6,6 +6,10 @@
  * ================================================================== */
 
 :root {
+    /* Fonts come from app/fonts/redesign-fonts.ts; the older cbt-* rules
+       (form, thank-you page) still read these two names. */
+    --font-cbt-serif: var(--font-rd-heading);
+    --font-cbt-sans: var(--font-rd-body);
     --rd-navy: #141766;
     --rd-navy-deep: #0c0e45;
     --rd-blue: #2563c9;

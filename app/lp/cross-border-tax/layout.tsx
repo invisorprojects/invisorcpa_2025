@@ -2,29 +2,13 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import Script from 'next/script';
-import { Inter, Manrope } from 'next/font/google';
+import { bodyFont, headingFont } from '../../fonts/redesign-fonts';
 import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react';
 import '../../(frontend)/globals.css';
 import './cross-border-tax.css';
 import './redesign.css';
 import ScrollLink from './_components/scroll-link';
 import { GoogleTagManager } from '@/components/GoogleTagManager';
-
-/* Page-scoped typography (redesign): Manrope for headings, Inter for body.
-   The CSS variable names are kept so the thank-you page styles still apply. */
-const headingFont = Manrope({
-    subsets: ['latin'],
-    weight: ['600', '700', '800'],
-    variable: '--font-cbt-serif',
-    display: 'swap',
-});
-
-const bodyFont = Inter({
-    subsets: ['latin'],
-    weight: ['400', '500', '600', '700'],
-    variable: '--font-cbt-sans',
-    display: 'swap',
-});
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://www.invisorcpa.ca'),

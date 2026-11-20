@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import { Inter, Manrope } from 'next/font/google';
+import { bodyFont, headingFont } from '../fonts/redesign-fonts';
 import '../(frontend)/globals.css';
 import './redesign.css';
 import { SiteHeader } from '@/components/redesign/site-header';
@@ -15,20 +15,6 @@ import {
  * Pages move here from (frontend) one at a time; navigating between the
  * two route groups does a full page load, which is expected.
  */
-
-const headingFont = Manrope({
-    subsets: ['latin'],
-    weight: ['600', '700', '800'],
-    variable: '--font-rd-heading',
-    display: 'swap',
-});
-
-const bodyFont = Inter({
-    subsets: ['latin'],
-    weight: ['400', '500', '600', '700'],
-    variable: '--font-rd-body',
-    display: 'swap',
-});
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://www.invisorcpa.ca'),
