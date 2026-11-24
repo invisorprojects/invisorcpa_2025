@@ -601,10 +601,7 @@ export default function CrossBorderTaxPage() {
                                 </article>
                             ))}
                         </div>
-                        <p className="cbt-review-disclosure">
-                            Sample testimonial content for design preview. Replace
-                            with verified client reviews before publishing.
-                        </p>
+
                     </div>
                 </div>
             </section>
