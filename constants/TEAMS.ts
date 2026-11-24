@@ -18,6 +18,12 @@ export const TEAMS: TeamMember[] = [
         qualification: 'MBA, CGA, CPA',
         path: '/assets/team/team-members-2.webp',
     },
+    {
+        name: 'Rimzhim Gupta',
+        qualification: 'CA, CPA',
+        bio: 'Rimzhim Gupta is a finance professional with more than 14 years of experience, including leading roles at Ascend LLP & GMSPC CPA. She also worked with the Royal Canadian Mint as a Senior Financial Reporting Advisor. She looks after compilation, audit, and CFO advisory services as a principal partner at Invisor.',
+        path: '/assets/team/rimzhim.webp',
+    },
   {
         name: 'Andrea Alba Vasquez',
         qualification: 'PCP',
