@@ -40,8 +40,8 @@ function CrossBorderHeader() {
                     <Image
                         src="/invisorcpa-logo.png"
                         alt="Invisor"
-                        width={980}
-                        height={256}
+                        width={500}
+                        height={120}
                         priority
                     />
                 </ScrollLink>

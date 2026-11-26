@@ -9,23 +9,23 @@ export function PerformanceOptimizer() {
                         .font-display-swap {
                             font-display: swap;
                         }
-                        
+
                         /* Reduce layout shift for images */
                         .image-optimized {
                             aspect-ratio: auto;
                             object-fit: cover;
                         }
-                        
+
                         /* Smooth scrolling */
                         html {
                             scroll-behavior: smooth;
                         }
-                        
+
                         /* Optimize button interactions */
                         button {
                             transition: all 0.2s ease-in-out;
                         }
-                        
+
                         /* Optimize link hover states */
                         a {
                             transition: color 0.2s ease-in-out;
@@ -54,7 +54,7 @@ export function PerformanceOptimizer() {
                 rel="preload"
                 href="/invisorcpa-logo.png"
                 as="image"
-                type="image/webp"
+                type="image/png"
             />
             <link
                 rel="preload"

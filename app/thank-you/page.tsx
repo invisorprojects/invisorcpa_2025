@@ -51,10 +51,10 @@ export default function ThankYouPage() {
                         <Image
                             src="/invisorcpa-logo.png"
                             alt="Invisor CPA"
-                            width={980}
-                            height={256}
+                            width={500}
+                            height={120}
                             priority
-                            className="h-10 w-auto"
+                            className="h-9 w-auto"
                         />
                     </Link>
 

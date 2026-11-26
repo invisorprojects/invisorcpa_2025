@@ -15,11 +15,11 @@ export function Header() {
         <header className="sticky top-0 z-50 flex h-20 flex-row items-center justify-between border-b bg-white px-2 shadow-sm sm:px-4 md:px-8 lg:px-12 xl:px-24">
             <Link className="shrink-0 mr-2 lg:mr-4" href={'/'}>
                 <Image
-                    className="h-10 w-auto"
+                    className="h-9 w-auto"
                     src="/invisorcpa-logo.png"
                     alt="Invisor"
-                    width={805}
-                    height={220}
+                    width={500}
+                    height={120}
                     priority={true}
                 />
             </Link>

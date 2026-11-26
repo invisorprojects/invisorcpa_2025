@@ -46,10 +46,10 @@ function BookkeepingOntarioHeader() {
                         <Image
                             src="/invisorcpa-logo.png"
                             alt="Invisor"
-                            width={980}
-                            height={256}
+                            width={500}
+                            height={120}
                             priority
-                            className="h-10 w-auto"
+                            className="h-9 w-auto"
                         />
                     </Link>
 
@@ -79,10 +79,10 @@ function BookkeepingOntarioFooter() {
                             <Image
                                 src="/invisorcpa-logo.png"
                                 alt="Invisor"
-                                width={980}
-                                height={256}
+                                width={500}
+                                height={120}
                                 priority
-                                className="h-10 w-auto"
+                                className="h-9 w-auto"
                             />
                         </Link>
                         <p className="max-w-[560px] text-base leading-8 text-white/60">
